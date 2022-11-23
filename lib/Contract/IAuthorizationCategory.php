@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\FilesConfidential\Contract;
+namespace OCA\Files_Confidential\Contract;
 
 interface IAuthorizationCategory {
 	public function getName(): string;

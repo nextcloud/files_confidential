@@ -1,8 +1,8 @@
 <?php
 
-namespace OCA\FilesConfidential\Model;
+namespace OCA\Files_Confidential\Model;
 
-use OCA\FilesConfidential\Contract\IAuthorizationCategory;
+use OCA\Files_Confidential\Contract\IAuthorizationCategory;
 
 class AuthorizationCategory implements IAuthorizationCategory {
 	private string $name = '';

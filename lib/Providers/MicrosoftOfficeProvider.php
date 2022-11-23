@@ -1,11 +1,11 @@
 <?php
 
-namespace OCA\FilesConfidential\Providers;
+namespace OCA\Files_Confidential\Providers;
 
-use OCA\FilesConfidential\Contract\IPolicy;
-use OCA\FilesConfidential\Contract\IProvider;
-use OCA\FilesConfidential\Model\AuthorizationCategory;
-use OCA\FilesConfidential\Model\Policy;
+use OCA\Files_Confidential\Contract\IPolicy;
+use OCA\Files_Confidential\Contract\IProvider;
+use OCA\Files_Confidential\Model\AuthorizationCategory;
+use OCA\Files_Confidential\Model\Policy;
 use OCP\Files\File;
 use Sabre\Xml\ParseException;
 use Sabre\Xml\Reader;
@@ -35,7 +35,7 @@ class MicrosoftOfficeProvider implements IProvider {
 
 	/**
 	 * @param \OCP\Files\File $file
-	 * @return \OCA\FilesConfidential\Contract\IPolicy
+	 * @return \OCA\Files_Confidential\Contract\IPolicy
 	 */
 	public function getPolicyForFile(File $file): ?IPolicy {
 		$zipArchive = new \ZipArchive();

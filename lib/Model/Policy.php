@@ -1,9 +1,9 @@
 <?php
 
-namespace OCA\FilesConfidential\Model;
+namespace OCA\Files_Confidential\Model;
 
-use OCA\FilesConfidential\Contract\IAuthorizationCategory;
-use OCA\FilesConfidential\Contract\IPolicy;
+use OCA\Files_Confidential\Contract\IAuthorizationCategory;
+use OCA\Files_Confidential\Contract\IPolicy;
 
 class Policy implements IPolicy {
 	private string $name = '';

@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\FilesConfidential\Errors;
+namespace OCA\Files_Confidential\Errors;
 
 class Unavailable extends \Exception {
 }

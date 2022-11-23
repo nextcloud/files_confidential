@@ -4,7 +4,7 @@
     },
     "autoload": {
         "psr-4": {
-            "OCA\\FilesSensitiveInformation\\": "lib/"
+            "OCA\\Files_Confidential\\": "lib/"
         }
     },
     "require-dev": {
