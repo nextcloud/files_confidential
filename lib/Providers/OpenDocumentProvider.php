@@ -4,7 +4,6 @@ namespace OCA\Files_Confidential\Providers;
 
 use OCA\Files_Confidential\Contract\IPolicy;
 use OCA\Files_Confidential\Contract\IProvider;
-use OCA\Files_Confidential\Model\AuthorizationCategory;
 use OCA\Files_Confidential\Model\Policy;
 use OCP\Files\File;
 use Sabre\Xml\ParseException;
@@ -12,10 +11,10 @@ use Sabre\Xml\Reader;
 use Sabre\Xml\Service;
 
 class OpenDocumentProvider implements IProvider {
-	const ELEMENT_DOCUMENT_META = '{urn:oasis:names:tc:opendocument:xmlns:office:1.0}document-meta';
-	const ELEMENT_META = '{urn:oasis:names:tc:opendocument:xmlns:office:1.0}meta';
-	const ELEMENT_USER_DEFINED = '{urn:oasis:names:tc:opendocument:xmlns:meta:1.0}user-defined';
-	const ATTRIBUTE_NAME = '{urn:oasis:names:tc:opendocument:xmlns:meta:1.0}name';
+	public const ELEMENT_DOCUMENT_META = '{urn:oasis:names:tc:opendocument:xmlns:office:1.0}document-meta';
+	public const ELEMENT_META = '{urn:oasis:names:tc:opendocument:xmlns:office:1.0}meta';
+	public const ELEMENT_USER_DEFINED = '{urn:oasis:names:tc:opendocument:xmlns:meta:1.0}user-defined';
+	public const ATTRIBUTE_NAME = '{urn:oasis:names:tc:opendocument:xmlns:meta:1.0}name';
 
 	public function getSupportedMimeTypes(): array {
 		return [
@@ -43,7 +42,7 @@ class OpenDocumentProvider implements IProvider {
 	 */
 	public function getPolicyForFile(File $file): ?IPolicy {
 		$zipArchive = new \ZipArchive();
-		if ($zipArchive->open($file->getInternalPath()) === false) {
+		if ($zipArchive->open($file->getStorage()->getLocalFile($file->getInternalPath())) === false) {
 			return null;
 		}
 

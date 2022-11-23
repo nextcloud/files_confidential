@@ -38,7 +38,7 @@ class Policy implements IPolicy {
 			}
 			$keyParts = explode(':', $prop['key']);
 			$policy->setType($keyParts[2]);
-			$key = array_slice($keyParts, 3);
+			$key = implode(':', array_slice($keyParts, 3));
 			$value = $prop['value'];
 
 			// we've matched all (urn:bails:*:)* now, and $key is everything after the closing paren
@@ -191,10 +191,14 @@ class Policy implements IPolicy {
 
 
 	/**
-	 * @return string
+	 * @return ?\DateTime
 	 */
-	public function getStartValidityDate(): string {
-		return $this->startValidityDate;
+	public function getStartValidityDate(): ?\DateTime {
+		try {
+			return new \DateTime(explode(',', $this->startValidityDate)[0]);
+		} catch (\Exception $e) {
+			return null;
+		}
 	}
 
 	/**
@@ -207,10 +211,14 @@ class Policy implements IPolicy {
 	}
 
 	/**
-	 * @return string
+	 * @return ?\DateTime
 	 */
-	public function getEndValidityDate(): string {
-		return $this->endValidityDate;
+	public function getEndValidityDate(): ?\DateTime {
+		try {
+			return new \DateTime(explode(',', $this->endValidityDate)[0]);
+		} catch (\Exception $e) {
+			return null;
+		}
 	}
 
 	/**

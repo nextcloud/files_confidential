@@ -4,7 +4,6 @@ namespace OCA\Files_Confidential\Providers;
 
 use OCA\Files_Confidential\Contract\IPolicy;
 use OCA\Files_Confidential\Contract\IProvider;
-use OCA\Files_Confidential\Model\AuthorizationCategory;
 use OCA\Files_Confidential\Model\Policy;
 use OCP\Files\File;
 use Sabre\Xml\ParseException;
@@ -12,9 +11,9 @@ use Sabre\Xml\Reader;
 use Sabre\Xml\Service;
 
 class MicrosoftOfficeProvider implements IProvider {
-	const ELEMENT_PROPERTIES = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}Properties';
-	const ELEMENT_PROPERTY = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}property';
-	const ATTRIBUTE_NAME = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}name';// not sure if the ns is necessary here
+	public const ELEMENT_PROPERTIES = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}Properties';
+	public const ELEMENT_PROPERTY = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}property';
+	public const ATTRIBUTE_NAME = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}name';// not sure if the ns is necessary here
 
 	public function getSupportedMimeTypes(): array {
 		return [
@@ -39,7 +38,7 @@ class MicrosoftOfficeProvider implements IProvider {
 	 */
 	public function getPolicyForFile(File $file): ?IPolicy {
 		$zipArchive = new \ZipArchive();
-		if ($zipArchive->open($file->getInternalPath()) === false) {
+		if ($zipArchive->open($file->getStorage()->getLocalFile($file->getInternalPath())) === false) {
 			return null;
 		}
 
