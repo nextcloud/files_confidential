@@ -1,0 +1,7 @@
+node_modules
+vendor
+bin
+build
+.idea
+/.php-cs-fixer.cache
+watch.sh
