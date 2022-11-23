@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>files_confidential</id>
+	<name>Confidential Files</name>
+	<summary>Allows Nextcloud to handle files marked as confidential</summary>
+	<version>0.1.0</version>
+	<licence>agpl</licence>
+	<author mail="mklehr@gmx.net">Marcel Klehr</author>
+	<category>organization</category>
+	<website>https://github.com/nextcloud-gmbh/files_confidential</website>
+	<bugs>https://github.com/nextcloud-gmbh/files_confidential/issues</bugs>
+	<repository type="git">https://github.com/nextcloud-gmbh/files_confidential.git</repository>
+	<dependencies>
+		<php min-version="7.4" />
+		<nextcloud min-version="26" max-version="26" />
+	</dependencies>
+</info>
