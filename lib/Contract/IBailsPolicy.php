@@ -4,7 +4,7 @@ namespace OCA\Files_Confidential\Contract;
 
 use DateTime;
 
-interface IPolicy {
+interface IBailsPolicy {
 	public function getName(): ?string;
 
 	public function getId(): ?string;
@@ -28,7 +28,7 @@ interface IPolicy {
 	public function getImpactScale():string;
 
 	/**
-	 * @return list<IAuthorizationCategory>
+	 * @return list<IBailsAuthorizationCategory>
 	 */
 	public function getCategories():array;
 }

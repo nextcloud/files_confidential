@@ -1,7 +1,7 @@
 <?php
 
-use OCA\Files_Confidential\Providers\MicrosoftOfficeProvider;
-use OCA\Files_Confidential\Providers\OpenDocumentProvider;
+use OCA\Files_Confidential\BailsProviders\MicrosoftOfficeBailsProvider;
+use OCA\Files_Confidential\BailsProviders\OpenDocumentBailsProvider;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
 use Test\TestCase;
@@ -9,7 +9,7 @@ use Test\TestCase;
 /**
  * @group DB
  */
-class ProviderTest extends TestCase {
+class BailsProviderTest extends TestCase {
 	public const TEST_USER1 = 'test-user1';
 
 	private OCP\Files\File $testFile;
@@ -30,9 +30,9 @@ class ProviderTest extends TestCase {
 	}
 
 	public function testMicrosoftOfficeProvider() : void {
-		$this->testFile = $this->userFolder->newFile('/test.docx', file_get_contents(__DIR__.'/res/test.docx'));
-		/** @var \OCA\Files_Confidential\Contract\IProvider $provider */
-		$provider = \OC::$server->get(MicrosoftOfficeProvider::class);
+		$this->testFile = $this->userFolder->newFile('/test.docx', file_get_contents(__DIR__ . '/res/test_bails.docx'));
+		/** @var \OCA\Files_Confidential\Contract\IBailsProvider $provider */
+		$provider = \OC::$server->get(MicrosoftOfficeBailsProvider::class);
 		$policy = $provider->getPolicyForFile($this->testFile);
 
 		$this->assertEquals('TSCP Example Policy', $policy->getName());
@@ -56,9 +56,9 @@ class ProviderTest extends TestCase {
 	}
 
 	public function testOpenDocumentProvider() : void {
-		$this->testFile = $this->userFolder->newFile('/test.docx', file_get_contents(__DIR__.'/res/test.odt'));
-		/** @var \OCA\Files_Confidential\Contract\IProvider $provider */
-		$provider = \OC::$server->get(OpenDocumentProvider::class);
+		$this->testFile = $this->userFolder->newFile('/test.docx', file_get_contents(__DIR__ . '/res/test_bails.odt'));
+		/** @var \OCA\Files_Confidential\Contract\IBailsProvider $provider */
+		$provider = \OC::$server->get(OpenDocumentBailsProvider::class);
 		$policy = $provider->getPolicyForFile($this->testFile);
 
 		$this->assertEquals('TSCP Example Policy', $policy->getName());

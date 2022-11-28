@@ -2,10 +2,10 @@
 
 namespace OCA\Files_Confidential\Model;
 
-use OCA\Files_Confidential\Contract\IAuthorizationCategory;
-use OCA\Files_Confidential\Contract\IPolicy;
+use OCA\Files_Confidential\Contract\IBailsAuthorizationCategory;
+use OCA\Files_Confidential\Contract\IBailsPolicy;
 
-class Policy implements IPolicy {
+class BailsPolicy implements IBailsPolicy {
 	private string $name = '';
 	private string $id = '';
 	private string $type = '';
@@ -25,11 +25,11 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param list<array{key:string, value:string}> $props
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public static function fromBAILS(array $props): Policy {
+	public static function fromBAILS(array $props): BailsPolicy {
 		$policy = new self();
-		$lastCategory = new AuthorizationCategory();
+		$lastCategory = new BailsAuthorizationCategory();
 		$policy->addCategory($lastCategory);
 
 		foreach ($props as $prop) {
@@ -102,9 +102,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $name
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setName(string $name): Policy {
+	public function setName(string $name): BailsPolicy {
 		$this->name = $name;
 		return $this;
 	}
@@ -118,9 +118,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $id
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setId(string $id): Policy {
+	public function setId(string $id): BailsPolicy {
 		$this->id = $id;
 		return $this;
 	}
@@ -134,9 +134,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $authorityName
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setAuthorityName(string $authorityName): Policy {
+	public function setAuthorityName(string $authorityName): BailsPolicy {
 		$this->authorityName = $authorityName;
 		return $this;
 	}
@@ -150,9 +150,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $authorityId
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setAuthorityId(string $authorityId): Policy {
+	public function setAuthorityId(string $authorityId): BailsPolicy {
 		$this->authorityId = $authorityId;
 		return $this;
 	}
@@ -166,9 +166,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $authorizationName
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setAuthorizationName(string $authorizationName): Policy {
+	public function setAuthorizationName(string $authorizationName): BailsPolicy {
 		$this->authorizationName = $authorizationName;
 		return $this;
 	}
@@ -182,9 +182,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $authorizationId
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setAuthorizationId(string $authorizationId): Policy {
+	public function setAuthorizationId(string $authorizationId): BailsPolicy {
 		$this->authorizationId = $authorizationId;
 		return $this;
 	}
@@ -203,9 +203,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $startValidityDate
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setStartValidityDate(string $startValidityDate): Policy {
+	public function setStartValidityDate(string $startValidityDate): BailsPolicy {
 		$this->startValidityDate = $startValidityDate;
 		return $this;
 	}
@@ -223,9 +223,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $endValidityDate
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setEndValidityDate(string $endValidityDate): Policy {
+	public function setEndValidityDate(string $endValidityDate): BailsPolicy {
 		$this->endValidityDate = $endValidityDate;
 		return $this;
 	}
@@ -239,9 +239,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $type
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setType(string $type): Policy {
+	public function setType(string $type): BailsPolicy {
 		$this->type = $type;
 		return $this;
 	}
@@ -255,9 +255,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $authorityCountry
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setAuthorityCountry(string $authorityCountry): Policy {
+	public function setAuthorityCountry(string $authorityCountry): BailsPolicy {
 		$this->authorityCountry = $authorityCountry;
 		return $this;
 	}
@@ -271,9 +271,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $confidentialityImpact
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setConfidentialityImpact(string $confidentialityImpact): Policy {
+	public function setConfidentialityImpact(string $confidentialityImpact): BailsPolicy {
 		$this->confidentialityImpact = $confidentialityImpact;
 		return $this;
 	}
@@ -287,9 +287,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $integrityImpact
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setIntegrityImpact(string $integrityImpact): Policy {
+	public function setIntegrityImpact(string $integrityImpact): BailsPolicy {
 		$this->integrityImpact = $integrityImpact;
 		return $this;
 	}
@@ -303,9 +303,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $availabilityImpact
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setAvailabilityImpact(string $availabilityImpact): Policy {
+	public function setAvailabilityImpact(string $availabilityImpact): BailsPolicy {
 		$this->availabilityImpact = $availabilityImpact;
 		return $this;
 	}
@@ -319,9 +319,9 @@ class Policy implements IPolicy {
 
 	/**
 	 * @param string $impactScale
-	 * @return Policy
+	 * @return BailsPolicy
 	 */
-	public function setImpactScale(string $impactScale): Policy {
+	public function setImpactScale(string $impactScale): BailsPolicy {
 		$this->impactScale = $impactScale;
 		return $this;
 	}
@@ -333,7 +333,7 @@ class Policy implements IPolicy {
 		return $this->categories;
 	}
 
-	public function addCategory(IAuthorizationCategory $category): Policy {
+	public function addCategory(IBailsAuthorizationCategory $category): BailsPolicy {
 		$this->categories[] = $category;
 		return $this;
 	}

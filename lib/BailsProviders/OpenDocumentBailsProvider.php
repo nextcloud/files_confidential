@@ -1,16 +1,16 @@
 <?php
 
-namespace OCA\Files_Confidential\Providers;
+namespace OCA\Files_Confidential\BailsProviders;
 
-use OCA\Files_Confidential\Contract\IPolicy;
-use OCA\Files_Confidential\Contract\IProvider;
-use OCA\Files_Confidential\Model\Policy;
+use OCA\Files_Confidential\Contract\IBailsPolicy;
+use OCA\Files_Confidential\Contract\IBailsProvider;
+use OCA\Files_Confidential\Model\BailsPolicy;
 use OCP\Files\File;
 use Sabre\Xml\ParseException;
 use Sabre\Xml\Reader;
 use Sabre\Xml\Service;
 
-class OpenDocumentProvider implements IProvider {
+class OpenDocumentBailsProvider implements IBailsProvider {
 	public const ELEMENT_DOCUMENT_META = '{urn:oasis:names:tc:opendocument:xmlns:office:1.0}document-meta';
 	public const ELEMENT_META = '{urn:oasis:names:tc:opendocument:xmlns:office:1.0}meta';
 	public const ELEMENT_USER_DEFINED = '{urn:oasis:names:tc:opendocument:xmlns:meta:1.0}user-defined';
@@ -38,9 +38,9 @@ class OpenDocumentProvider implements IProvider {
 
 	/**
 	 * @param \OCP\Files\File $file
-	 * @return \OCA\Files_Confidential\Contract\IPolicy
+	 * @return \OCA\Files_Confidential\Contract\IBailsPolicy
 	 */
-	public function getPolicyForFile(File $file): ?IPolicy {
+	public function getPolicyForFile(File $file): ?IBailsPolicy {
 		$zipArchive = new \ZipArchive();
 		if ($zipArchive->open($file->getStorage()->getLocalFile($file->getInternalPath())) === false) {
 			return null;
@@ -82,6 +82,6 @@ class OpenDocumentProvider implements IProvider {
 			return null;
 		}
 
-		return Policy::fromBAILS($props);
+		return BailsPolicy::fromBAILS($props);
 	}
 }

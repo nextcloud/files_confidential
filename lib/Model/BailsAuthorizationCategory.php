@@ -2,9 +2,9 @@
 
 namespace OCA\Files_Confidential\Model;
 
-use OCA\Files_Confidential\Contract\IAuthorizationCategory;
+use OCA\Files_Confidential\Contract\IBailsAuthorizationCategory;
 
-class AuthorizationCategory implements IAuthorizationCategory {
+class BailsAuthorizationCategory implements IBailsAuthorizationCategory {
 	private string $name = '';
 	private string $id = '';
 	private string $idOID = '';
@@ -18,9 +18,9 @@ class AuthorizationCategory implements IAuthorizationCategory {
 
 	/**
 	 * @param string $name
-	 * @return AuthorizationCategory
+	 * @return BailsAuthorizationCategory
 	 */
-	public function setName(string $name): AuthorizationCategory {
+	public function setName(string $name): BailsAuthorizationCategory {
 		$this->name = $name;
 		return $this;
 	}
@@ -34,9 +34,9 @@ class AuthorizationCategory implements IAuthorizationCategory {
 
 	/**
 	 * @param string $id
-	 * @return AuthorizationCategory
+	 * @return BailsAuthorizationCategory
 	 */
-	public function setId(string $id): AuthorizationCategory {
+	public function setId(string $id): BailsAuthorizationCategory {
 		$this->id = $id;
 		return $this;
 	}
@@ -50,9 +50,9 @@ class AuthorizationCategory implements IAuthorizationCategory {
 
 	/**
 	 * @param string $idOID
-	 * @return AuthorizationCategory
+	 * @return BailsAuthorizationCategory
 	 */
-	public function setIdOID(string $idOID): AuthorizationCategory {
+	public function setIdOID(string $idOID): BailsAuthorizationCategory {
 		$this->idOID = $idOID;
 		return $this;
 	}
