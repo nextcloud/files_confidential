@@ -20,13 +20,10 @@ class OpenDocumentStateClassificationProvider implements IStateClassificationPro
 
 	public function getSupportedMimeTypes(): array {
 		return [
-			'application/vnd.oasis.opendocument.spreadsheet', // ods
 			'application/vnd.oasis.opendocument.text', // odt
 			'application/vnd.oasis.opendocument.text-template', // ott
 			'application/vnd.oasis.opendocument.text-web', // oth
 			'application/vnd.oasis.opendocument.text-master', // odm
-			'application/vnd.oasis.opendocument.spreadsheet', // ods
-			'application/vnd.oasis.opendocument.spreadsheet-template', // ots
 		];
 	}
 

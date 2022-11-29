@@ -24,14 +24,6 @@ class MicrosoftStateClassificationProvider implements IStateClassificationProvid
 			'application/vnd.ms-word.document.macroEnabled.12', // docm
 			'application/vnd.openxmlformats-officedocument.wordprocessingml.template', // dotx
 			'application/vnd.ms-word.template.macroEnabled.12', // dotm
-			'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', // xlsx
-			'application/vnd.ms-excel.sheet.macroEnabled.12', // xlsm
-			'application/vnd.openxmlformats-officedocument.spreadsheetml.template', // xltx
-			'application/vnd.ms-excel.template.macroEnabled.12', // xltm
-			'application/vnd.openxmlformats-officedocument.presentationml.presentation', // pptx
-			'application/vnd.ms-powerpoint.presentation.macroEnabled.12', // pptm
-			'application/vnd.openxmlformats-officedocument.presentationml.template', // potx
-			'application/vnd.ms-powerpoint.template.macroEnabled.12', // potm
 		];
 	}
 
