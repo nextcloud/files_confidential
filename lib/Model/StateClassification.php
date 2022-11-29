@@ -5,7 +5,6 @@ namespace OCA\Files_Confidential\Model;
 use OCA\Files_Confidential\Contract\IStateClassification;
 
 class StateClassification {
-
 	public static function findLabelInText(string $text): int {
 		foreach (self::LABELS as $country) {
 			foreach ($country['labels'][0] as $label) {
@@ -28,7 +27,7 @@ class StateClassification {
 				}
 			}
 		}
-		foreach(self::LABELS as $country) {
+		foreach (self::LABELS as $country) {
 			foreach ($country['labels'][3] as $label) {
 				if (stripos($text, $label) !== false) {
 					return IStateClassification::RESTRICTED;
@@ -39,18 +38,18 @@ class StateClassification {
 	}
 
 	// Source: https://en.wikipedia.org/wiki/Classified_information
-	const LABELS = [
+	public const LABELS = [
 		['country' => 'Albania', 'labels' => [['Teper Sekret'],['Sekret'],['Konfidencial'],['I Kufizuar']]],
 		['country' => 'Argentina', 'labels' => [['Estrictamente Secreto y Confidencial'],['Secreto'],['Confidencial'],['Reservado']]],
 		['country' => 'Armenia', 'labels' => [['Հատուկ կարևորության'],['Հույժ գաղտնի'],['Գաղտնի'],['Ծառայողական օգտագործման համար']]],
 		['country' => 'Australia', 'labels' => [['Top Secret'], ['Secret'], ['Retired. Treat as Secret.'],['Protected']]],
 		['country' => 'Austria', 'labels' => [['Streng Geheim'],['Geheim'],['Vertraulich'],['Eingeschränkt']]],
 		['country' => 'Belgium', 'labels' => [['Zeer Geheim','Très Secret'],['Geheim','Secret'],['Vertrouwelijk','Confidentiel'],['Beperkte Verspreiding','Diffusion restreinte']]],
-		['country' => 'Bolivia', 'labels' =>[['Supersecreto', 'Muy Secreto'],['Secreto'],['Confidencial'],['Reservado']]],
-		['country' => 'Bosnia and Herzegovina', 'labels'=> [['Vrlo tajno'],['Tajno'],['Povjerljivo'],['Interno']]],
-		['country' => 'Brazil', 'labels'=> [['Ultrassecreto'],['Secreto'],['Confidencial']['Reservado']]],
+		['country' => 'Bolivia', 'labels' => [['Supersecreto', 'Muy Secreto'],['Secreto'],['Confidencial'],['Reservado']]],
+		['country' => 'Bosnia and Herzegovina', 'labels' => [['Vrlo tajno'],['Tajno'],['Povjerljivo'],['Interno']]],
+		['country' => 'Brazil', 'labels' => [['Ultrassecreto'],['Secreto'],['Confidencial'],['Reservado']]],
 		['country' => 'Bulgaria', 'labels' => [['Strògo sèkretno', 'Строго секретно'], ['Sèkretno','Секретно'], ['Poveritèlno','Поверително'], ['Za služebno polzvàne','За служебно ползване']]],
- 	 	['country' => 'Cambodia', 'labels' => [['Sam Ngat Bamphot'],['Sam Ngat Roeung'],['Art Kambang'],['Ham Kom Psay']]],
+		['country' => 'Cambodia', 'labels' => [['Sam Ngat Bamphot'],['Sam Ngat Roeung'],['Art Kambang'],['Ham Kom Psay']]],
 		['country' => 'Canada', 'labels' => [['Top Secret', 'Très secret'],['Secret'],['Confidential','Confidentiel'],['Protected A','Protected B','Protected C', 'Protégé A', 'Protégé B', 'Protégé C']]],
 		[ 'country' => 'Chile', 'labels' => [['Secreto'],['Secreto'],['Reservado'],['Reservado']]],
 		[ 'country' => 'China', 'labels' => [['Juémì (绝密)'],['Jīmì (机密)'],['Mìmì (秘密)'],['(内部)']]],

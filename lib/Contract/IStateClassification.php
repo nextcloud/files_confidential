@@ -2,11 +2,9 @@
 
 namespace OCA\Files_Confidential\Contract;
 
-interface IStateClassification
-{
-	const RESTRICTED = 1;
-	const CONFIDENTIAL = 2;
-	const SECRET = 4;
-	const TOP_SECRET = 8;
-
+interface IStateClassification {
+	public const RESTRICTED = 1;
+	public const CONFIDENTIAL = 2;
+	public const SECRET = 4;
+	public const TOP_SECRET = 8;
 }

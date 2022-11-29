@@ -13,7 +13,7 @@ use Sabre\Xml\Service;
 class MicrosoftOfficeBailsProvider implements IBailsProvider {
 	public const ELEMENT_PROPERTIES = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}Properties';
 	public const ELEMENT_PROPERTY = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}property';
-	public const ATTRIBUTE_NAME = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}name';// not sure if the ns is necessary here
+	public const ATTRIBUTE_NAME = 'name';
 
 	public function getSupportedMimeTypes(): array {
 		return [
@@ -63,6 +63,7 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 				return $props;
 			}
 		];
+
 
 		try {
 			$props = $service->parse($xml);
