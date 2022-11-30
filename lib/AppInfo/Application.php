@@ -8,10 +8,12 @@
 
 namespace OCA\Files_Confidential\AppInfo;
 
+use OCA\Files_Confidential\HookListener;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
+use OCP\WorkflowEngine\Events\RegisterChecksEvent;
 
 class Application extends App implements IBootstrap {
 	public const APP_ID = 'files_confidential';
@@ -22,6 +24,7 @@ class Application extends App implements IBootstrap {
 
 	public function register(IRegistrationContext $context): void {
 		@include_once __DIR__ . '/../../vendor/autoload.php';
+		$context->registerEventListener(RegisterChecksEvent::class, HookListener::class);
 	}
 
 	/**

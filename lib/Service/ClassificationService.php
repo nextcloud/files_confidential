@@ -4,6 +4,7 @@ namespace OCA\Files_Confidential\Service;
 
 use OCA\Files_Confidential\Contract\IClassificationLabel;
 use OCA\Files_Confidential\Model\ClassificationLabel;
+use OCP\Files\File;
 
 class ClassificationService {
 
@@ -18,7 +19,7 @@ class ClassificationService {
 		$this->settings = $settings;
 	}
 
-	public function getClassificationLabelForFile(\OCP\Files\File $file) : ?IClassificationLabel{
+	public function getClassificationLabelForFile(File $file) : ?IClassificationLabel{
 		$labels = $this->settings->getClassificationLabels();
 
 		$bailsPolicy = $this->bailsService->getPolicyForFile($file);
