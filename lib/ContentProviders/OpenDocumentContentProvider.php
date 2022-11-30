@@ -1,16 +1,15 @@
 <?php
 
-namespace OCA\Files_Confidential\StateClassificationProviders;
+namespace OCA\Files_Confidential\ContentProviders;
 
-use OCA\Files_Confidential\Contract\IStateClassificationProvider;
-use OCA\Files_Confidential\Model\StateClassification;
+use OCA\Files_Confidential\Contract\IContentProvider;
 use OCP\Files\File;
 use OCP\Files\NotFoundException;
 use Sabre\Xml\ParseException;
 use Sabre\Xml\Reader;
 use Sabre\Xml\Service;
 
-class OpenDocumentStateClassificationProvider implements IStateClassificationProvider {
+class OpenDocumentContentProvider implements IContentProvider {
 	public const ELEMENT_DOCUMENT_STYLES = '{urn:oasis:names:tc:opendocument:xmlns:office:1.0}document-styles';
 	public const ELEMENT_MASTER_STYLES = '{urn:oasis:names:tc:opendocument:xmlns:office:1.0}master-styles';
 	public const ELEMENT_MASTER_PAGE = '{urn:oasis:names:tc:opendocument:xmlns:style:1.0}master-page';
@@ -29,9 +28,10 @@ class OpenDocumentStateClassificationProvider implements IStateClassificationPro
 
 	/**
 	 * @param \OCP\Files\File $file
-	 * @return int
+	 * @return string
 	 */
-	public function getClassificationForFile(File $file): int {
+	public function getContentForFile(File $file): string
+	{
 		try {
 			$localFilepath = $file->getStorage()->getLocalFile($file->getInternalPath());
 		} catch (NotFoundException $e) {
@@ -75,9 +75,9 @@ class OpenDocumentStateClassificationProvider implements IStateClassificationPro
 			$watermark = $service->parse($xml);
 		} catch (ParseException $e) {
 			// log
-			return 0;
+			return '';
 		}
 
-		return StateClassification::findLabelInText($watermark);
+		return $watermark;
 	}
 }

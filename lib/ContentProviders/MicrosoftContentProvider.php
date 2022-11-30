@@ -1,8 +1,8 @@
 <?php
 
-namespace OCA\Files_Confidential\StateClassificationProviders;
+namespace OCA\Files_Confidential\ContentProviders;
 
-use OCA\Files_Confidential\Contract\IStateClassificationProvider;
+use OCA\Files_Confidential\Contract\IContentProvider;
 use OCA\Files_Confidential\Model\StateClassification;
 use OCP\Files\File;
 use OCP\Files\NotFoundException;
@@ -10,7 +10,7 @@ use Sabre\Xml\ParseException;
 use Sabre\Xml\Reader;
 use Sabre\Xml\Service;
 
-class MicrosoftStateClassificationProvider implements IStateClassificationProvider {
+class MicrosoftContentProvider implements IContentProvider {
 	public const ELEMENT_HDR = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hdr';
 	public const ELEMENT_P = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}p';
 	public const ELEMENT_R = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}r';
@@ -29,9 +29,10 @@ class MicrosoftStateClassificationProvider implements IStateClassificationProvid
 
 	/**
 	 * @param \OCP\Files\File $file
-	 * @return int
+	 * @return string
 	 */
-	public function getClassificationForFile(File $file): int {
+	public function getContentForFile(File $file): string
+	{
 		try {
 			$localFilepath = $file->getStorage()->getLocalFile($file->getInternalPath());
 		} catch (NotFoundException $e) {
@@ -74,9 +75,9 @@ class MicrosoftStateClassificationProvider implements IStateClassificationProvid
 			$watermark = $service->parse($xml);
 		} catch (ParseException $e) {
 			// log
-			return 0;
+			return '';
 		}
 
-		return StateClassification::findLabelInText($watermark);
+		return $watermark;
 	}
 }

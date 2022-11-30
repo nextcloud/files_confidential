@@ -1,8 +1,8 @@
 <?php
 
 use OCA\Files_Confidential\Contract\IStateClassification;
-use OCA\Files_Confidential\StateClassificationProviders\MicrosoftStateClassificationProvider;
-use OCA\Files_Confidential\StateClassificationProviders\OpenDocumentStateClassificationProvider;
+use OCA\Files_Confidential\ContentProviders\MicrosoftContentProvider;
+use OCA\Files_Confidential\ContentProviders\OpenDocumentContentProvider;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
 use Test\TestCase;
@@ -32,17 +32,17 @@ class StateClassificationProviderTest extends TestCase {
 
 	public function testOpenDocumentProvider() : void {
 		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/test_watermark_top_secret.odt'));
-		/** @var \OCA\Files_Confidential\Contract\IStateClassificationProvider $provider */
-		$provider = \OC::$server->get(OpenDocumentStateClassificationProvider::class);
-		$stateClassification = $provider->getClassificationForFile($this->testFile);
+		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
+		$provider = \OC::$server->get(OpenDocumentContentProvider::class);
+		$stateClassification = $provider->getContentForFile($this->testFile);
 		$this->assertEquals(IStateClassification::TOP_SECRET, $stateClassification);
 	}
 
 	public function testMicrosoftProvider() : void {
 		$this->testFile = $this->userFolder->newFile('/test.docx', file_get_contents(__DIR__ . '/res/test_watermark_top_secret.docx'));
-		/** @var \OCA\Files_Confidential\Contract\IStateClassificationProvider $provider */
-		$provider = \OC::$server->get(MicrosoftStateClassificationProvider::class);
-		$stateClassification = $provider->getClassificationForFile($this->testFile);
+		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
+		$provider = \OC::$server->get(MicrosoftContentProvider::class);
+		$stateClassification = $provider->getContentForFile($this->testFile);
 		$this->assertEquals(IStateClassification::TOP_SECRET, $stateClassification);
 	}
 
