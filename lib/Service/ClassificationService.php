@@ -7,19 +7,17 @@ use OCA\Files_Confidential\Model\ClassificationLabel;
 use OCP\Files\File;
 
 class ClassificationService {
-
 	private ContentProviderService $contentService;
 	private BailsPolicyProviderService $bailsService;
 	private SettingsService $settings;
 
-	public function __construct(ContentProviderService $contentService, BailsPolicyProviderService $bailsService, SettingsService $settings)
-	{
+	public function __construct(ContentProviderService $contentService, BailsPolicyProviderService $bailsService, SettingsService $settings) {
 		$this->contentService = $contentService;
 		$this->bailsService = $bailsService;
 		$this->settings = $settings;
 	}
 
-	public function getClassificationLabelForFile(File $file) : ?IClassificationLabel{
+	public function getClassificationLabelForFile(File $file) : ?IClassificationLabel {
 		$labels = $this->settings->getClassificationLabels();
 
 		$bailsPolicy = $this->bailsService->getPolicyForFile($file);
@@ -27,7 +25,7 @@ class ClassificationService {
 		foreach ($labels as $label) {
 			foreach ($label->getBailsCategories() as $categoryId) {
 				// All defined categories for this label must be assigned to the document for the label to be applied
-				if (!in_array($categoryId, array_map(fn($cat) => $cat->getId(), $bailsPolicy->getCategories()))) {
+				if (!in_array($categoryId, array_map(fn ($cat) => $cat->getId(), $bailsPolicy->getCategories()))) {
 					continue 2;
 				}
 			}
@@ -41,13 +39,13 @@ class ClassificationService {
 			if ($labelFromPolicy !== null) {
 				if ($labelFromContent->getIndex() > $labelFromPolicy->getIndex()) {
 					return $labelFromPolicy;
-				}else {
+				} else {
 					return $labelFromContent;
 				}
-			}else{
+			} else {
 				return $labelFromContent;
 			}
-		}else{
+		} else {
 			return null;
 		}
 	}

@@ -30,8 +30,7 @@ class OpenDocumentContentProvider implements IContentProvider {
 	 * @param \OCP\Files\File $file
 	 * @return string
 	 */
-	public function getContentForFile(File $file): string
-	{
+	public function getContentForFile(File $file): string {
 		try {
 			$localFilepath = $file->getStorage()->getLocalFile($file->getInternalPath());
 		} catch (NotFoundException $e) {

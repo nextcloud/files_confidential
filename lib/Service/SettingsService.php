@@ -7,8 +7,7 @@ use OCP\IConfig;
 use Psr\Log\LoggerInterface;
 use Safe\Exceptions\JsonException;
 
-class SettingsService
-{
+class SettingsService {
 	private string $appName;
 	private IConfig $config;
 	/**
@@ -16,8 +15,7 @@ class SettingsService
 	 */
 	private LoggerInterface $logger;
 
-	public function __construct($appName, IConfig $config, LoggerInterface $logger)
-	{
+	public function __construct($appName, IConfig $config, LoggerInterface $logger) {
 		$this->appName = $appName;
 		$this->config = $config;
 		$this->logger = $logger;
@@ -34,8 +32,8 @@ class SettingsService
 			return [];
 		}
 		try {
-			return array_map(fn($labelRaw) => ClassificationLabel::fromArray($labelRaw), $labelsRaw);
-		}catch(\ValueError $e) {
+			return array_map(fn ($labelRaw) => ClassificationLabel::fromArray($labelRaw), $labelsRaw);
+		} catch(\ValueError $e) {
 			$this->logger->warning('Could not load labels setting', ['exception' => $e]);
 			return [];
 		}

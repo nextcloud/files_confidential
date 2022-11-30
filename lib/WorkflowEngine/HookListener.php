@@ -8,17 +8,14 @@ use OCP\EventDispatcher\IEventListener;
 use OCP\WorkflowEngine\Events\RegisterChecksEvent;
 use OCP\WorkflowEngine\ICheck;
 
-class HookListener implements IEventListener
-{
+class HookListener implements IEventListener {
 	private ICheck $check;
 
-	public function __construct(ClassificationLabelCheck $check)
-	{
+	public function __construct(ClassificationLabelCheck $check) {
 		$this->check = $check;
 	}
 
-	public function handle(Event $event): void
-	{
+	public function handle(Event $event): void {
 		if ($event instanceof RegisterChecksEvent) {
 			$event->registerCheck($this->check);
 		}

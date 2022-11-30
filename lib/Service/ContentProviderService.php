@@ -12,8 +12,7 @@ class ContentProviderService {
 	 */
 	private array $providers;
 
-	public function __construct(MicrosoftContentProvider $microsoft, OpenDocumentContentProvider $openDocument)
-	{
+	public function __construct(MicrosoftContentProvider $microsoft, OpenDocumentContentProvider $openDocument) {
 		$this->providers[] = $microsoft;
 		$this->providers[] = $openDocument;
 	}

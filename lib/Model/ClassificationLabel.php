@@ -17,7 +17,7 @@ class ClassificationLabel implements IClassificationLabel {
 	private array $categories;
 
 	public static function findLabelsInText(string $text, array $labels): ?IClassificationLabel {
-		foreach($labels as $label) {
+		foreach ($labels as $label) {
 			foreach ($label->getKeywords() as $keyword) {
 				if (stripos($text, $keyword) !== false) {
 					return $label;
@@ -46,23 +46,19 @@ class ClassificationLabel implements IClassificationLabel {
 		return new ClassificationLabel($labelRaw['index'], $labelRaw['name'], $labelRaw['keywords'], $labelRaw['categories']);
 	}
 
-	public function getIndex(): int
-	{
+	public function getIndex(): int {
 		return $this->index;
 	}
 
-	public function getName(): string
-	{
+	public function getName(): string {
 		return $this->name;
 	}
 
-	public function getKeywords(): array
-	{
+	public function getKeywords(): array {
 		return $this->keywords;
 	}
 
-	public function getBailsCategories(): array
-	{
+	public function getBailsCategories(): array {
 		return $this->categories;
 	}
 }

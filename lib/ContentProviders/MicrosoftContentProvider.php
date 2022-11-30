@@ -3,7 +3,6 @@
 namespace OCA\Files_Confidential\ContentProviders;
 
 use OCA\Files_Confidential\Contract\IContentProvider;
-use OCA\Files_Confidential\Model\StateClassification;
 use OCP\Files\File;
 use OCP\Files\NotFoundException;
 use Sabre\Xml\ParseException;
@@ -31,8 +30,7 @@ class MicrosoftContentProvider implements IContentProvider {
 	 * @param \OCP\Files\File $file
 	 * @return string
 	 */
-	public function getContentForFile(File $file): string
-	{
+	public function getContentForFile(File $file): string {
 		try {
 			$localFilepath = $file->getStorage()->getLocalFile($file->getInternalPath());
 		} catch (NotFoundException $e) {

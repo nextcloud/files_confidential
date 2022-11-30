@@ -47,7 +47,7 @@ class ClassificationLabelCheck implements IFileCheck, ICheck {
 			);
 		}
 		$labels = $this->settings->getClassificationLabels();
-		$labels = array_values(array_filter($labels, fn($label) => $label->getName() === $value));
+		$labels = array_values(array_filter($labels, fn ($label) => $label->getName() === $value));
 		if (isset($labels[0])) {
 			return false;
 		}
@@ -55,7 +55,7 @@ class ClassificationLabelCheck implements IFileCheck, ICheck {
 		$classification = $this->classificationService->getClassificationLabelForFile($this->file);
 		if ($classification !== null) {
 			$actualIndex = $classification->getIndex();
-		}else{
+		} else {
 			$actualIndex = self::UNCLASSIFIED_INDEX;
 		}
 		$comparedIndex = $labels[0]->getIndex();
@@ -84,7 +84,7 @@ class ClassificationLabelCheck implements IFileCheck, ICheck {
 			throw new \UnexpectedValueException($this->l->t('The given operator is invalid'), 1);
 		}
 
-		if (!in_array($value, array_map(fn($label) => $label->getName(), $this->settings->getClassificationLabels()))) {
+		if (!in_array($value, array_map(fn ($label) => $label->getName(), $this->settings->getClassificationLabels()))) {
 			throw new \UnexpectedValueException($this->l->t('The given label does not exist'), 2);
 		}
 	}
