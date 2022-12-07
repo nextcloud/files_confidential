@@ -1,0 +1,49 @@
+{
+  "name": "files_confidential",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production webpack --progress --config webpack.js",
+    "dev": "NODE_ENV=development webpack --progress --config webpack.js",
+    "watch": "NODE_ENV=development webpack --progress --watch --config webpack.js",
+    "lint": "eslint --ext .js,.vue src",
+    "lint:fix": "eslint --ext .js,.vue src --fix",
+    "stylelint": "stylelint src",
+    "stylelint:fix": "stylelint src --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nextcloud-gmbh/files_confidential.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nextcloud-gmbh/files_confidential/issues"
+  },
+  "homepage": "https://github.com/nextcloud-gmbh/files_confidential#readme",
+  "devDependencies": {
+    "@nextcloud/axios": "^1.9.0",
+    "@nextcloud/babel-config": "^1.0.0",
+    "@nextcloud/browserslist-config": "^2.3.0",
+    "@nextcloud/eslint-config": "^8.1.2",
+    "@nextcloud/initial-state": "^1.2.1",
+    "@nextcloud/router": "^2.0.0",
+    "@nextcloud/stylelint-config": "^2.2.0",
+    "@nextcloud/vue": "^7.1.0",
+    "@nextcloud/webpack-vue-config": "^5.1.0",
+    "vue": "^2.7.13",
+    "vue-material-design-icons": "^5.1.2"
+  },
+  "engines": {
+    "node": "^16.0.0",
+    "npm": "^7.0.0 || ^8.0.0"
+  },
+  "browserslist": [
+    "extends @nextcloud/browserslist-config"
+  ]
+}

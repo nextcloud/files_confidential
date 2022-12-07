@@ -46,6 +46,19 @@ class ClassificationLabel implements IClassificationLabel {
 		return new ClassificationLabel($labelRaw['index'], $labelRaw['name'], $labelRaw['keywords'], $labelRaw['categories']);
 	}
 
+	public function toArray() : array {
+		return ['index' => $this->getIndex(), 'name' => $this->getName(), 'keywords' => $this->getKeywords(), 'categories' => $this->getBailsCategories()];
+	}
+
+	public static function getDefaultLabels() {
+		return array_map(fn($label)=>ClassificationLabel::fromArray($label), [
+			['index' => 0, 'name' => 'Top secret', 'keywords' => ['top secret'], 'categories' => []],
+			['index' => 1, 'name' => 'Secret', 'keywords' => ['secret'], 'categories' => []],
+			['index' => 2, 'name' => 'Confidential', 'keywords' => ['confidential'], 'categories' => []],
+			['index' => 3, 'name' => 'Restricted', 'keywords' => ['restricted'], 'categories' => []],
+		]);
+	}
+
 	public function getIndex(): int {
 		return $this->index;
 	}

@@ -3,20 +3,17 @@
 namespace OCA\Files_Confidential\Service;
 
 use OCA\Files_Confidential\Model\ClassificationLabel;
+use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\JSONResponse;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
 use Safe\Exceptions\JsonException;
 
 class SettingsService {
-	private string $appName;
 	private IConfig $config;
-	/**
-	 * @var \Psr\Log\LoggerInterface
-	 */
 	private LoggerInterface $logger;
 
-	public function __construct($appName, IConfig $config, LoggerInterface $logger) {
-		$this->appName = $appName;
+	public function __construct(IConfig $config, LoggerInterface $logger) {
 		$this->config = $config;
 		$this->logger = $logger;
 	}
@@ -24,12 +21,15 @@ class SettingsService {
 	/**
 	 * @return list<\OCA\Files_Confidential\Contract\IClassificationLabel>
 	 */
-	public function getClassificationLabels():array {
+	public function getClassificationLabels(): array {
 		try {
-			$labelsRaw = \Safe\json_decode($this->config->getAppValue($this->appName, 'labels', '[]'), true);
+			$labelsRaw = \Safe\json_decode($this->config->getAppValue('files_confidential', 'labels', '[]'), true);
 		} catch (JsonException $e) {
 			$this->logger->warning('Could not load labels setting', ['exception' => $e]);
 			return [];
+		}
+		if (count($labelsRaw) === 0) {
+			return ClassificationLabel::getDefaultLabels();
 		}
 		try {
 			return array_map(fn ($labelRaw) => ClassificationLabel::fromArray($labelRaw), $labelsRaw);
@@ -37,5 +37,28 @@ class SettingsService {
 			$this->logger->warning('Could not load labels setting', ['exception' => $e]);
 			return [];
 		}
+	}
+
+	/**
+	 * @param array{index:int, name:string, keywords:list<string>, categories:list<string>}[] $labelsRaw
+	 * @return void
+	 * @throws \Safe\Exceptions\JsonException
+	 * @throws \ValueError
+	 */
+	public function setClassificationLabels(array $labelsRaw): void {
+		try {
+			$labels = array_map(fn ($labelRaw) => ClassificationLabel::fromArray($labelRaw), $labelsRaw);
+		} catch(\ValueError $e) {
+			$this->logger->warning('Could not store labels setting', ['exception' => $e]);
+			throw $e;
+		}
+		$array = array_map(fn($label) => $label->toArray(), $labels);
+		try {
+			$json = \Safe\json_encode($array);
+		} catch (JsonException $e) {
+			$this->logger->warning('Could not store labels setting', ['exception' => $e]);
+			throw $e;
+		}
+		$this->config->setAppValue('files_confidential', 'labels', $json);
 	}
 }
