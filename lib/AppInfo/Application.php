@@ -8,7 +8,7 @@
 
 namespace OCA\Files_Confidential\AppInfo;
 
-use OCA\Files_Confidential\HookListener;
+use OCA\Files_Confidential\WorkflowEngine\HookListener;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;

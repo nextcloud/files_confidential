@@ -7,28 +7,24 @@ use OCA\Files_Confidential\Service\SettingsService;
 use OCA\WorkflowEngine\Entity\File;
 use OCP\Files\Node;
 use OCP\Files\Storage\IStorage;
-use OCP\IL10N;
 use OCP\WorkflowEngine\ICheck;
 use OCP\WorkflowEngine\IEntity;
-use OCP\WorkflowEngine\IFileCheck;
+use OCP\WorkflowEngine\IEntityCheck;
 
-class ClassificationLabelCheck implements IFileCheck, ICheck {
+class ClassificationLabelCheck implements IEntityCheck, ICheck {
 	public const UNCLASSIFIED_INDEX = 10000000000;
 
 	protected IStorage $storage;
 	protected string $path;
-	protected bool $isDir;
 	private SettingsService $settings;
 	private ClassificationService $classificationService;
-	private Node $file;
+	private ?Node $file;
 
 	/**
-	 * @param IL10N $l
 	 * @param \OCA\Files_Confidential\Service\SettingsService $settings
 	 * @param \OCA\Files_Confidential\Service\ClassificationService $classificationService
 	 */
-	public function __construct(IL10N $l, SettingsService $settings, ClassificationService $classificationService) {
-		$this->l = $l;
+	public function __construct(SettingsService $settings, ClassificationService $classificationService) {
 		$this->settings = $settings;
 		$this->classificationService = $classificationService;
 	}
@@ -37,9 +33,6 @@ class ClassificationLabelCheck implements IFileCheck, ICheck {
 	 * @inheritDoc
 	 */
 	public function executeCheck($operator, $value): bool {
-		if ($this->isDir) {
-			return false;
-		}
 		if (!$this->file instanceof \OCP\Files\File) {
 			throw new \UnexpectedValueException(
 				'Expected File got {class}',
@@ -47,8 +40,8 @@ class ClassificationLabelCheck implements IFileCheck, ICheck {
 			);
 		}
 		$labels = $this->settings->getClassificationLabels();
-		$labels = array_values(array_filter($labels, fn ($label) => $label->getName() === $value));
-		if (isset($labels[0])) {
+		$labels = array_values(array_filter($labels, fn ($label) => $label->getIndex() === intval($value)));
+		if (!isset($labels[0])) {
 			return false;
 		}
 
@@ -81,11 +74,11 @@ class ClassificationLabelCheck implements IFileCheck, ICheck {
 	 */
 	public function validateCheck($operator, $value) {
 		if (!in_array($operator, ['less', '!less', 'greater', '!greater', 'equal'])) {
-			throw new \UnexpectedValueException($this->l->t('The given operator is invalid'), 1);
+			throw new \UnexpectedValueException('The given operator is invalid', 1);
 		}
-
-		if (!in_array($value, array_map(fn ($label) => $label->getName(), $this->settings->getClassificationLabels()))) {
-			throw new \UnexpectedValueException($this->l->t('The given label does not exist'), 2);
+		$value = intval($value);
+		if (!in_array($value, array_map(fn($label) => $label->getIndex(), $this->settings->getClassificationLabels()))) {
+			throw new \UnexpectedValueException('The given label does not exist', 2);
 		}
 	}
 
@@ -93,7 +86,7 @@ class ClassificationLabelCheck implements IFileCheck, ICheck {
 	 * @inheritDoc
 	 */
 	public function supportedEntities(): array {
-		return [ OCA\WorkflowEngine\Entity\File::class ];
+		return [ File::class ];
 	}
 
 	/**
@@ -101,17 +94,6 @@ class ClassificationLabelCheck implements IFileCheck, ICheck {
 	 */
 	public function isAvailableForScope(int $scope): bool {
 		return true;
-	}
-
-	/**
-	 * @param IStorage $storage
-	 * @param string $path
-	 * @param bool $isDir
-	 */
-	public function setFileInfo(IStorage $storage, string $path, bool $isDir = false): void {
-		$this->storage = $storage;
-		$this->path = $path;
-		$this->isDir = $isDir;
 	}
 
 	/**
