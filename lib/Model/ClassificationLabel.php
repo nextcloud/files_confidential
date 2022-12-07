@@ -51,7 +51,7 @@ class ClassificationLabel implements IClassificationLabel {
 	}
 
 	public static function getDefaultLabels() {
-		return array_map(fn($label)=>ClassificationLabel::fromArray($label), [
+		return array_map(fn ($label) => ClassificationLabel::fromArray($label), [
 			['index' => 0, 'name' => 'Top secret', 'keywords' => ['top secret'], 'categories' => []],
 			['index' => 1, 'name' => 'Secret', 'keywords' => ['secret'], 'categories' => []],
 			['index' => 2, 'name' => 'Confidential', 'keywords' => ['confidential'], 'categories' => []],

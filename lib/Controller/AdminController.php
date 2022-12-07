@@ -25,7 +25,7 @@ class AdminController extends Controller {
 
 	public function setClassificationLabels($value): JSONResponse {
 		try {
-			$this->settingsService->setClassificationLabels( $value);
+			$this->settingsService->setClassificationLabels($value);
 			return new JSONResponse([], Http::STATUS_OK);
 		} catch (\Exception $e) {
 			return new JSONResponse([], Http::STATUS_BAD_REQUEST);

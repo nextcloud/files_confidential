@@ -77,7 +77,7 @@ class ClassificationLabelCheck implements IEntityCheck, ICheck {
 			throw new \UnexpectedValueException('The given operator is invalid', 1);
 		}
 		$value = intval($value);
-		if (!in_array($value, array_map(fn($label) => $label->getIndex(), $this->settings->getClassificationLabels()))) {
+		if (!in_array($value, array_map(fn ($label) => $label->getIndex(), $this->settings->getClassificationLabels()))) {
 			throw new \UnexpectedValueException('The given label does not exist', 2);
 		}
 	}

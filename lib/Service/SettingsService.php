@@ -3,8 +3,6 @@
 namespace OCA\Files_Confidential\Service;
 
 use OCA\Files_Confidential\Model\ClassificationLabel;
-use OCP\AppFramework\Http;
-use OCP\AppFramework\Http\JSONResponse;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
 use Safe\Exceptions\JsonException;
@@ -52,7 +50,7 @@ class SettingsService {
 			$this->logger->warning('Could not store labels setting', ['exception' => $e]);
 			throw $e;
 		}
-		$array = array_map(fn($label) => $label->toArray(), $labels);
+		$array = array_map(fn ($label) => $label->toArray(), $labels);
 		try {
 			$json = \Safe\json_encode($array);
 		} catch (JsonException $e) {

@@ -28,8 +28,8 @@ class HookListener implements IEventListener {
 			Util::addScript('files_confidential', 'files_confidential-flow');
 
 			$labels = $this->settings->getClassificationLabels();
-			$labels = array_map(fn($label) => $label->toArray(), $labels);
-			$this->initialState->provideInitialState('files_confidential','labels', $labels);
+			$labels = array_map(fn ($label) => $label->toArray(), $labels);
+			$this->initialState->provideInitialState('files_confidential', 'labels', $labels);
 		}
 	}
 }
