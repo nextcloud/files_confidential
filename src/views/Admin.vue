@@ -8,6 +8,17 @@
 	<div id="files_confidential">
 		<NcLoadingIcon v-if="loading" class="loading-icon" />
 		<CheckIcon v-if="!loading && success" class="success-icon" />
+		<NcSettingsSection :title="t('files_confidential', 'Business Authroization Framework')">
+			<input ref="fileInput"
+				type="file"
+				name="baf"
+				@change="onImportSubmit">
+			<NcButton type="secondary"
+				:aria-label="t('files_confidential', 'Upload policy')"
+				@click="$refs.fileInput.click()">
+				{{ t('files_confidential', 'Upload policy') }}
+			</NcButton>
+		</NcSettingsSection>
 		<NcSettingsSection :title="t('files_confidential', 'Classification labels')">
 			<p>{{ t('files_confidential', 'Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow.') }}</p>
 			<p>&nbsp;</p>
@@ -86,7 +97,7 @@
 						</template>
 					</NcButton>
 				</div>
-				<div :key="'--new--'" :class="{'label':true, 'collapsed': true}">
+				<div :key="'--new--'" :class="{'label':true, 'collapsed': true, 'add': true}">
 					<NcButton type="primary"
 						class="add"
 						:aria-label="t('files_confidential', 'Add new label')"
@@ -224,6 +235,30 @@ export default {
 				throw e
 			}
 		},
+
+		async onImportSubmit(e) {
+			const file = e.target.files[0]
+			const data = new FormData()
+			data.append('baf', file)
+			this.loading = true
+			let res
+			try {
+				({ data: res } = await axios.post(generateUrl('/apps/files_confidential/admin/baf'), data))
+			} catch (e) {
+				this.loading = false
+				return
+			}
+			if (res.status === 'error') {
+				this.error = res.data[0]
+				this.loading = false
+				return
+			}
+			this.loading = false
+			this.success = true
+			setTimeout(() => {
+				this.success = false
+			}, 3000)
+		},
 	},
 }
 </script>
@@ -303,9 +338,14 @@ figure[class^='icon-'] {
 	bottom: 5px;
 }
 
-button.add {
-	position: absolute;
-	left: 50%;
+#files_confidential .label.add {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+input[type="file"] {
+	display: none;
 }
 
 /* animations */

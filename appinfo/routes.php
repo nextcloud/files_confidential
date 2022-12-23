@@ -22,5 +22,6 @@ return [
 	'routes' => [
 		//internal ADMIN API
 		['name' => 'admin#set_classification_labels', 'url' => '/admin/settings/labels', 'verb' => 'PUT'],
+		['name' => 'admin#import_baf', 'url' => '/admin/baf', 'verb' => 'POST'],
 	],
 ];
