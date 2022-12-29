@@ -40,6 +40,7 @@ class BafService {
 							$child['attributes']['Name'],
 							[$child['attributes']['Name']],
 							[$child['attributes']['Identifier']],
+							[],
 						);
 					}
 				}

@@ -19,4 +19,9 @@ interface IClassificationLabel {
 	 * @return list<string>
 	 */
 	public function getBailsCategories(): array;
+
+	/**
+	 * @return list<string>
+	 */
+	public function getSearchExpressions(): array;
 }

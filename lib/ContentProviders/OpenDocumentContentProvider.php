@@ -2,6 +2,7 @@
 
 namespace OCA\Files_Confidential\ContentProviders;
 
+use DOMDocument;
 use OCA\Files_Confidential\Contract\IContentProvider;
 use OCP\Files\File;
 use OCP\Files\NotFoundException;
@@ -44,7 +45,6 @@ class OpenDocumentContentProvider implements IContentProvider {
 		}
 
 		$xml = $zipArchive->getFromName('styles.xml');
-		$zipArchive->close();
 
 		$service = new Service();
 		$service->elementMap = [
@@ -68,7 +68,7 @@ class OpenDocumentContentProvider implements IContentProvider {
 						self::ELEMENT_HEADER,
 						self::ELEMENT_TEXT_P
 					],
-					// Header
+					// Footer
 					[
 						self::ELEMENT_MASTER_STYLES,
 						self::ELEMENT_MASTER_PAGE,
@@ -105,12 +105,19 @@ class OpenDocumentContentProvider implements IContentProvider {
 		];
 
 		try {
-			$contentStrings = $service->parse($xml);
+			$contentStrings = implode(' ',$service->parse($xml));
 		} catch (ParseException $e) {
 			// log
-			return '';
+			$contentStrings = '';
 		}
 
-		return implode(' ', $contentStrings);
+		$data = $zipArchive->getFromName('content.xml');
+
+		$xml = new DOMDocument();
+		$xml->loadXML($data, \LIBXML_NOENT | \LIBXML_XINCLUDE | \LIBXML_NOERROR | \LIBXML_NOWARNING);
+		$contentStrings .= ' '.strip_tags($xml->saveXML());
+
+		$zipArchive->close();
+		return  $contentStrings;
 	}
 }

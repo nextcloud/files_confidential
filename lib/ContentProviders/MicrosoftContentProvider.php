@@ -2,6 +2,7 @@
 
 namespace OCA\Files_Confidential\ContentProviders;
 
+use DOMDocument;
 use OCA\Files_Confidential\Contract\IContentProvider;
 use OCP\Files\File;
 use OCP\Files\NotFoundException;
@@ -108,7 +109,6 @@ class MicrosoftContentProvider implements IContentProvider {
 		}
 
 		$xml = $zipArchive->getFromName('word/footer1.xml');
-		$zipArchive->close();
 
 		$service = new Service();
 		$service->elementMap = [
@@ -157,8 +157,15 @@ class MicrosoftContentProvider implements IContentProvider {
 			$content .= implode(' ', $service->parse($xml));
 		} catch (ParseException $e) {
 			// log
-			return $content;
 		}
+
+		$data = $zipArchive->getFromName('word/document.xml');
+
+		$xml = new DOMDocument();
+		$xml->loadXML($data, \LIBXML_NOENT | \LIBXML_XINCLUDE | \LIBXML_NOERROR | \LIBXML_NOWARNING);
+		$content .= ' '.strip_tags($xml->saveXML());
+
+		$zipArchive->close();
 
 		return $content;
 	}

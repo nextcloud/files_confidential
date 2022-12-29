@@ -2,6 +2,7 @@
 
 use OCA\Files_Confidential\ContentProviders\MicrosoftContentProvider;
 use OCA\Files_Confidential\ContentProviders\OpenDocumentContentProvider;
+use OCA\Files_Confidential\Model\ClassificationLabel;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
 use Test\TestCase;
@@ -57,6 +58,24 @@ class ContentProviderTest extends TestCase {
 		$this->assertStringContainsStringIgnoringCase('top secret', $content);
 	}
 
+	/**
+	 * @dataProvider openDocumentSearchDataProvider
+	 * @param string $file
+	 * @return void
+	 * @throws \OCP\AppFramework\QueryException
+	 * @throws \OCP\Files\NotPermittedException
+	 */
+	public function testOpenDocumentSearchExpressions(string $file) : void {
+		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/'.$file));
+		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
+		$provider = \OC::$server->get(OpenDocumentContentProvider::class);
+		$content = $provider->getContentForFile($this->testFile);
+
+		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN']);
+		$foundLabel = ClassificationLabel::findLabelsInText($content, [$label]);
+		$this->assertEquals($label, $foundLabel);
+	}
+
 	public function microsoftContentDataProvider() {
 		return [
 			['test_watermark_top_secret.docx'],
@@ -73,8 +92,14 @@ class ContentProviderTest extends TestCase {
 		];
 	}
 
+	public function openDocumentSearchDataProvider() {
+		return [
+			['test_iban.odt'],
+		];
+	}
+
 	private function loginAndGetUserFolder(string $userId) {
-		$this->loginAsUser($userId);
+		self::loginAsUser($userId);
 		return $this->rootFolder->getUserFolder($userId);
 	}
 }

@@ -2,7 +2,9 @@
 
 namespace OCA\Files_Confidential\Model;
 
+use DeepCopy\Matcher\Matcher;
 use OCA\Files_Confidential\Contract\IClassificationLabel;
+use OCA\Files_Confidential\Service\MatcherService;
 
 class ClassificationLabel implements IClassificationLabel {
 	private string $name;
@@ -16,10 +18,22 @@ class ClassificationLabel implements IClassificationLabel {
 	 */
 	private array $categories;
 
+	/**
+	 * @var list<string>
+	 */
+	private array $searchExpressions;
+
 	public static function findLabelsInText(string $text, array $labels): ?IClassificationLabel {
+		$matcherService = MatcherService::getInstance();
 		foreach ($labels as $label) {
 			foreach ($label->getKeywords() as $keyword) {
 				if (stripos($text, $keyword) !== false) {
+					return $label;
+				}
+			}
+			foreach($label->getSearchExpressions() as $expression) {
+				$pattern = $matcherService->getMatchExpression($expression);
+				if (preg_match($pattern, $text) !== false) {
 					return $label;
 				}
 			}
@@ -27,11 +41,12 @@ class ClassificationLabel implements IClassificationLabel {
 		return null;
 	}
 
-	public function __construct(int $index, string $name, array $keywords, array $categories) {
+	public function __construct(int $index, string $name, array $keywords, array $categories, array $searchExpressions) {
 		$this->index = $index;
 		$this->name = $name;
 		$this->keywords = $keywords;
 		$this->categories = $categories;
+		$this->searchExpressions = $searchExpressions;
 	}
 
 	/**
@@ -40,10 +55,10 @@ class ClassificationLabel implements IClassificationLabel {
 	 * @throws \ValueError
 	 */
 	public static function fromArray(array $labelRaw): ClassificationLabel {
-		if (!isset($labelRaw['index'], $labelRaw['name'], $labelRaw['keywords'], $labelRaw['categories'])) {
+		if (!isset($labelRaw['index'], $labelRaw['name'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'])) {
 			throw new \ValueError();
 		}
-		return new ClassificationLabel($labelRaw['index'], $labelRaw['name'], $labelRaw['keywords'], $labelRaw['categories']);
+		return new ClassificationLabel($labelRaw['index'], $labelRaw['name'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions']);
 	}
 
 	public function toArray() : array {
@@ -52,10 +67,10 @@ class ClassificationLabel implements IClassificationLabel {
 
 	public static function getDefaultLabels() {
 		return array_map(fn ($label) => ClassificationLabel::fromArray($label), [
-			['index' => 0, 'name' => 'Top secret', 'keywords' => ['top secret'], 'categories' => []],
-			['index' => 1, 'name' => 'Secret', 'keywords' => ['secret'], 'categories' => []],
-			['index' => 2, 'name' => 'Confidential', 'keywords' => ['confidential'], 'categories' => []],
-			['index' => 3, 'name' => 'Restricted', 'keywords' => ['restricted'], 'categories' => []],
+			['index' => 0, 'name' => 'Top secret', 'keywords' => ['top secret'], 'categories' => [], 'searchExpressions' => []],
+			['index' => 1, 'name' => 'Secret', 'keywords' => ['secret'], 'categories' => [],  'searchExpressions' => []],
+			['index' => 2, 'name' => 'Confidential', 'keywords' => ['confidential'], 'categories' => [], 'searchExpressions' => []],
+			['index' => 3, 'name' => 'Restricted', 'keywords' => ['restricted'], 'categories' => [], 'searchExpressions' => []],
 		]);
 	}
 
@@ -73,5 +88,9 @@ class ClassificationLabel implements IClassificationLabel {
 
 	public function getBailsCategories(): array {
 		return $this->categories;
+	}
+
+	public function getSearchExpressions(): array {
+		return $this->searchExpressions;
 	}
 }
