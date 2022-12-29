@@ -308,22 +308,30 @@ figure[class^='icon-'] {
 	top: 5px;
 }
 
-#files_confidential .label .up {
-	position: absolute;
-	left: 5px;
-	top:50px;
-}
-
 #files_confidential .label .expand,
 #files_confidential .label .collapse {
 	display: block;
 	width: 100% !important;
 }
 
+#files_confidential .label .up {
+	position: absolute;
+	left: 5px;
+	top:50px;
+}
+
 #files_confidential .label .down {
 	position: absolute;
 	left: 5px;
 	bottom: 50px;
+}
+
+#files_confidential .label:nth-last-child(2) .down {
+	display: none;
+}
+
+#files_confidential .label:first-child .up {
+	display: none;
 }
 
 #files_confidential .label.collapsed .up {
