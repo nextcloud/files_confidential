@@ -8,7 +8,7 @@
 	<div id="files_confidential">
 		<NcLoadingIcon v-if="loading" class="loading-icon" />
 		<CheckIcon v-if="!loading && success" class="success-icon" />
-		<NcSettingsSection :title="t('files_confidential', 'Business Authroization Framework')">
+		<NcSettingsSection :title="t('files_confidential', 'Business Authorization Framework')">
 			<input ref="fileInput"
 				type="file"
 				name="baf"

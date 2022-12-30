@@ -2,7 +2,7 @@
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
 	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
 	<id>files_confidential</id>
-	<name>Confidential Files</name>
+	<name>Confidential files</name>
 	<summary>Allows Nextcloud to handle files marked as confidential</summary>
 	<version>0.3.0</version>
 	<licence>agpl</licence>
