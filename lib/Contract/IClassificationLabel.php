@@ -8,7 +8,7 @@ interface IClassificationLabel {
 	 * @return int
 	 */
 	public function getIndex(): int;
-	public function getName(): string;
+	public function getTag(): string;
 
 	/**
 	 * @return list<string>
