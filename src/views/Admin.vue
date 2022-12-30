@@ -23,7 +23,7 @@
 			<p>{{ t('files_confidential', 'Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow.') }}</p>
 			<p>&nbsp;</p>
 			<transition-group name="labels" tag="div">
-				<div v-for="label in labels" :key="label.id" :class="{'label':true, 'collapsed': !label.expanded}">
+				<div v-for="label in labels" :key="label.id" :class="{'label':true}">
 					<NcButton type="tertiary-no-background"
 						class="close"
 						:aria-label="t('files_confidential', 'Remove label')"
@@ -48,54 +48,39 @@
 							<ArrowDownIcon />
 						</template>
 					</NcButton>
-					<NcTextField :value.sync="label.name" :label="t('files_confidential', 'Label name')" @update:value="onChange()">
-						<LabelOutlineIcon />
-					</NcTextField>
-					<div class="option">
-						<label>
-							{{ t('files_confidential', 'TSCP policy category IDs') }}<br>
-							<NcSelect v-model="label.categories"
-								multiple
-								taggable
-								no-drop
-								select-on-tab
-								push-tags
-								@input="onChange()" />
-						</label>
+					<NcSelect v-model="label.tag"
+						:options="tags"
+						:label="'display-name'"
+						:multiple="false"
+						:placeholder="t('files_confidential', 'Select tag')"
+						@input="onChange()" />
+					<div class="options">
+						<div class="option">
+							<label>
+								{{ t('files_confidential', 'TSCP policy category IDs') }}<br>
+								<NcSelect v-model="label.categories"
+									multiple
+									taggable
+									no-drop
+									select-on-tab
+									push-tags
+									@input="onChange()" />
+							</label>
+						</div>
+						<div class="option">
+							<label>
+								{{ t('files_confidential', 'Keywords to look for in files') }}<br>
+								<NcSelect v-model="label.keywords"
+									label-visible
+									multiple
+									taggable
+									no-drop
+									select-on-tab
+									push-tags
+									@input="onChange()" />
+							</label>
+						</div>
 					</div>
-					<div class="option">
-						<label>
-							{{ t('files_confidential', 'Keywords to look for in files') }}<br>
-							<NcSelect v-model="label.keywords"
-								label-visible
-								multiple
-								taggable
-								no-drop
-								select-on-tab
-								push-tags
-								@input="onChange()" />
-						</label>
-					</div>
-					<NcButton v-if="!label.expanded"
-						type="tertiary"
-						class="expand"
-						wide
-						:aria-label="t('files_confidential', 'Expand label options')"
-						@click="toggle(label.index)">
-						<template #icon>
-							<ChevronDownIcon />
-						</template>
-					</NcButton>
-					<NcButton v-else
-						type="tertiary"
-						class="collapse"
-						wide
-						:aria-label="t('files_confidential', 'Expand label options')"
-						@click="toggle(label.index)">
-						<template #icon>
-							<ChevronUpIcon />
-						</template>
-					</NcButton>
 				</div>
 				<div :key="'--new--'" :class="{'label':true, 'collapsed': true, 'add': true}">
 					<NcButton type="primary"
@@ -113,18 +98,16 @@
 </template>
 
 <script>
-import LabelOutlineIcon from 'vue-material-design-icons/LabelOutline.vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 import ArrowUpIcon from 'vue-material-design-icons/ArrowUp.vue'
 import ArrowDownIcon from 'vue-material-design-icons/ArrowDown.vue'
-import ChevronDownIcon from 'vue-material-design-icons/ChevronDown.vue'
-import ChevronUpIcon from 'vue-material-design-icons/ChevronUp.vue'
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
-import { NcSelect, NcSettingsSection, NcTextField, NcButton, NcLoadingIcon } from '@nextcloud/vue'
+import { NcSelect, NcSettingsSection, NcButton, NcLoadingIcon } from '@nextcloud/vue'
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
+import client from '../DavClient.js'
 
 const SETTINGS = ['labels']
 
@@ -133,14 +116,10 @@ export default {
 	components: {
 		NcSelect,
 		NcSettingsSection,
-		NcTextField,
-		LabelOutlineIcon,
 		NcButton,
 		CloseIcon,
 		ArrowUpIcon,
 		ArrowDownIcon,
-		ChevronDownIcon,
-		ChevronUpIcon,
 		PlusIcon,
 		NcLoadingIcon,
 		CheckIcon,
@@ -153,6 +132,7 @@ export default {
 			error: '',
 			timeout: null,
 			labels: [],
+			tags: [],
 		}
 	},
 
@@ -163,8 +143,9 @@ export default {
 		},
 	},
 	async created() {
+		this.tags = await this.getTags()
 		this.labels = loadState('files_confidential', 'labels')
-			.map(label => ({ ...label, id: Math.random() }))
+			.map(label => ({ ...label, id: Math.random(), tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))
 	},
 
 	methods: {
@@ -192,16 +173,16 @@ export default {
 			this.$set(this.labels, index, { ...this.labels[index], expanded: !this.labels[index].expanded })
 		},
 		addLabel() {
-			if (this.labels.filter(label => label.name.trim() === '').length > 0) {
+			if (this.labels.filter(label => !label.tag).length > 0) {
 				return
 			}
 			this.labels.push({
 				id: Math.random(),
 				index: this.labels.length,
-				name: '',
-				expanded: true,
+				tag: '',
 				keywords: [],
 				categories: [],
+				searchExpressions: [],
 			})
 		},
 		onChange() {
@@ -226,6 +207,9 @@ export default {
 		},
 
 		async setValue(setting, value) {
+			if (setting === 'labels') {
+				value = value.map(label => ({ ...label, tag: label.tag.id }))
+			}
 			try {
 				await axios.put(generateUrl(`/apps/files_confidential/admin/settings/${setting}`), {
 					value,
@@ -258,6 +242,25 @@ export default {
 			setTimeout(() => {
 				this.success = false
 			}, 3000)
+		},
+
+		async getTags() {
+			const response = await client.getDirectoryContents('/systemtags/', Object.assign({}, {
+				data: `<?xml version="1.0"?>
+			<d:propfind  xmlns:d="DAV:"
+				xmlns:oc="http://owncloud.org/ns">
+				<d:prop>
+					<oc:id />
+					<oc:display-name />
+					<oc:user-visible />
+					<oc:user-assignable />
+					<oc:can-assign />
+				</d:prop>
+			</d:propfind>`,
+				details: true,
+			}))
+
+			return response.data.map(item => item.props).filter(item => item.id)
 		},
 	},
 }
@@ -294,24 +297,20 @@ figure[class^='icon-'] {
 	padding: 12px 60px;
 }
 
-#files_confidential .label > .option {
+#files_confidential .label > .options {
+	display: flex;
+	flex-direction: row;
 	margin-top: 20px;
 }
 
-#files_confidential .label.collapsed > .option {
-	display: none;
+#files_confidential .options > .option {
+	margin-right: 20px;
 }
 
 #files_confidential .label .close {
 	position: absolute;
 	right: 5px;
 	top: 5px;
-}
-
-#files_confidential .label .expand,
-#files_confidential .label .collapse {
-	display: block;
-	width: 100% !important;
 }
 
 #files_confidential .label .up {
@@ -334,18 +333,6 @@ figure[class^='icon-'] {
 	display: none;
 }
 
-#files_confidential .label.collapsed .up {
-	position: absolute;
-	left: 5px;
-	top: 5px;
-}
-
-#files_confidential .label.collapsed .down {
-	position: absolute;
-	left: 5px;
-	bottom: 5px;
-}
-
 #files_confidential .label.add {
 	display: flex;
 	align-items: center;
@@ -354,6 +341,16 @@ figure[class^='icon-'] {
 
 input[type="file"] {
 	display: none;
+}
+
+/*
+ Fixes vue-select clear buttons to avoid them inheriting wrong button style
+ */
+.vs__deselect {
+	min-height: auto !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	border: none !important;
 }
 
 /* animations */
