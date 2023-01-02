@@ -313,6 +313,7 @@ figure[class^='icon-'] {
 #files_confidential .label > .options {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	margin-top: 20px;
 }
 
