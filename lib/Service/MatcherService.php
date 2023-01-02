@@ -4,8 +4,8 @@ namespace OCA\Files_Confidential\Service;
 
 class MatcherService {
 	public $expressions = [
-		'EMAIL' => '\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',
-		'CREDIT_CARD' => '\b(\d[ -]*?){13,16,19}\b',
+		'E-Mail' => '\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',
+		'Credit card' => '\b(\d[ -]*?){13,16,19}\b',
 
 		'IBAN' => '\b([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?\b',
 
@@ -36,9 +36,6 @@ class MatcherService {
 			return null;
 		}
 		return '/'.$this->expressions[$name].'/';
-	}
-
-	private function __construct() {
 	}
 
 	private static $instance = null;

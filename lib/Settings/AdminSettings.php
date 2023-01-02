@@ -6,6 +6,7 @@
 
 namespace OCA\Files_Confidential\Settings;
 
+use OCA\Files_Confidential\Service\MatcherService;
 use OCA\Files_Confidential\Service\SettingsService;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IInitialStateService;
@@ -15,9 +16,12 @@ class AdminSettings implements ISettings {
 	private SettingsService $settingsService;
 	private IInitialStateService $initialState;
 
-	public function __construct(SettingsService $settingsService, IInitialStateService $initialState) {
+	private MatcherService $matcherService;
+
+	public function __construct(SettingsService $settingsService, IInitialStateService $initialState, MatcherService $matcherService) {
 		$this->settingsService = $settingsService;
 		$this->initialState = $initialState;
+		$this->matcherService = $matcherService;
 	}
 
 	/**
@@ -27,6 +31,7 @@ class AdminSettings implements ISettings {
 		$labels = $this->settingsService->getClassificationLabels();
 		$labels = array_map(fn ($label) => $label->toArray(), $labels);
 		$this->initialState->provideInitialState('files_confidential', 'labels', $labels);
+		$this->initialState->provideInitialState('files_confidential', 'searchExpressions', array_keys($this->matcherService->expressions));
 
 		return new TemplateResponse('files_confidential', 'admin');
 	}

@@ -80,6 +80,17 @@
 									@input="onChange()" />
 							</label>
 						</div>
+						<div class="option">
+							<label>
+								{{ t('files_confidential', 'Data to look for in files') }}<br>
+								<NcSelect v-model="label.searchExpressions"
+									label-visible
+									multiple
+									select-on-tab
+									:options="searchExpressions"
+									@input="onChange()" />
+							</label>
+						</div>
 					</div>
 				</div>
 				<div :key="'--new--'" :class="{'label':true, 'collapsed': true, 'add': true}">
@@ -133,6 +144,7 @@ export default {
 			timeout: null,
 			labels: [],
 			tags: [],
+			searchExpressions: [],
 		}
 	},
 
@@ -144,6 +156,7 @@ export default {
 	},
 	async created() {
 		this.tags = await this.getTags()
+		this.searchExpressions = loadState('files_confidential', 'searchExpressions')
 		this.labels = loadState('files_confidential', 'labels')
 			.map(label => ({ ...label, id: Math.random(), tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))
 	},
