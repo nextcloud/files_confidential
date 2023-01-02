@@ -1,9 +1,5 @@
 <?php
 
-use OCA\Files_Confidential\ContentProviders\MicrosoftContentProvider;
-use OCA\Files_Confidential\ContentProviders\OpenDocumentContentProvider;
-use OCP\Files\Folder;
-use OCP\Files\IRootFolder;
 use Test\TestCase;
 
 /**

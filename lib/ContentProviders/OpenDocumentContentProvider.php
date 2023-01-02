@@ -105,7 +105,7 @@ class OpenDocumentContentProvider implements IContentProvider {
 		];
 
 		try {
-			$contentStrings = implode(' ',$service->parse($xml));
+			$contentStrings = implode(' ', $service->parse($xml));
 		} catch (ParseException $e) {
 			// log
 			$contentStrings = '';

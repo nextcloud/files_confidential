@@ -61,7 +61,7 @@ class AdminController extends Controller {
 
 		$labels = $this->bafService->parseXml($xml);
 		try {
-			$this->settingsService->setClassificationLabels(array_map(static fn($label) => $label->toArray(), $labels));
+			$this->settingsService->setClassificationLabels(array_map(static fn ($label) => $label->toArray(), $labels));
 		} catch (JsonException $e) {
 			$result['errors'][] = $this->l10n->t('Could not store extracted labels');
 			return new JSONResponse(['status' => 'error', 'data' => $result['errors']]);

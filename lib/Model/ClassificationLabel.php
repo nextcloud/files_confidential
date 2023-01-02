@@ -2,7 +2,6 @@
 
 namespace OCA\Files_Confidential\Model;
 
-use DeepCopy\Matcher\Matcher;
 use OCA\Files_Confidential\Contract\IClassificationLabel;
 use OCA\Files_Confidential\Service\MatcherService;
 
@@ -31,7 +30,7 @@ class ClassificationLabel implements IClassificationLabel {
 					return $label;
 				}
 			}
-			foreach($label->getSearchExpressions() as $expression) {
+			foreach ($label->getSearchExpressions() as $expression) {
 				$pattern = $matcherService->getMatchExpression($expression);
 				if (preg_match($pattern, $text) !== false) {
 					return $label;

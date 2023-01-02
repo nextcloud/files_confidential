@@ -2,8 +2,7 @@
 
 namespace OCA\Files_Confidential\Service;
 
-class MatcherService
-{
+class MatcherService {
 	public $expressions = [
 		'EMAIL' => '\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',
 		'CREDIT_CARD' => '\b(\d[ -]*?){13,16,19}\b',
@@ -39,7 +38,8 @@ class MatcherService
 		return '/'.$this->expressions[$name].'/';
 	}
 
-	private function __construct() {}
+	private function __construct() {
+	}
 
 	private static $instance = null;
 
@@ -50,4 +50,3 @@ class MatcherService
 		return self::$instance = (self::$instance ?? new MatcherService());
 	}
 }
-
