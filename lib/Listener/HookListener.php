@@ -27,7 +27,7 @@ class HookListener implements IEventListener {
 			if ($label === null) {
 				return;
 			}
-			$this->tagMapper->assignTags($event->getNode()->getId(), 'file', [$label->getTag()]);
+			$this->tagMapper->assignTags($event->getNode()->getId(), 'files', [(int)$label->getTag()]);
 		}
 	}
 }

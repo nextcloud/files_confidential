@@ -22,14 +22,16 @@ class ClassificationService {
 
 		$bailsPolicy = $this->bailsService->getPolicyForFile($file);
 		$labelFromPolicy = null;
-		foreach ($labels as $label) {
-			foreach ($label->getBailsCategories() as $categoryId) {
-				// All defined categories for this label must be assigned to the document for the label to be applied
-				if (!in_array($categoryId, array_map(fn ($cat) => $cat->getId(), $bailsPolicy->getCategories()))) {
-					continue 2;
+		if ($bailsPolicy !== null) {
+			foreach ($labels as $label) {
+				foreach ($label->getBailsCategories() as $categoryId) {
+					// All defined categories for this label must be assigned to the document for the label to be applied
+					if (!in_array($categoryId, array_map(fn($cat) => $cat->getId(), $bailsPolicy->getCategories()))) {
+						continue 2;
+					}
 				}
+				$labelFromPolicy = $label;
 			}
-			$labelFromPolicy = $label;
 		}
 
 		$content = $this->contentService->getContentForFile($file);
@@ -39,14 +41,12 @@ class ClassificationService {
 			if ($labelFromPolicy !== null) {
 				if ($labelFromContent->getIndex() > $labelFromPolicy->getIndex()) {
 					return $labelFromPolicy;
-				} else {
-					return $labelFromContent;
 				}
-			} else {
 				return $labelFromContent;
 			}
-		} else {
-			return null;
+			return $labelFromContent;
 		}
+
+		return null;
 	}
 }

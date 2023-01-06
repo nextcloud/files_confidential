@@ -37,12 +37,12 @@ class ClassificationLabel implements IClassificationLabel {
 			}
 			foreach ($label->getSearchExpressions() as $expression) {
 				$pattern = $matcherService->getMatchExpression($expression);
-				if (preg_match($pattern, $text) !== false) {
+				if (preg_match($pattern, $text) === 1) {
 					return $label;
 				}
 			}
 			foreach ($label->getRegularExpressions() as $pattern) {
-				if (preg_match('/'.$pattern.'/', $text) !== false) {
+				if (preg_match('/'.$pattern.'/', $text) === 1) {
 					return $label;
 				}
 			}
