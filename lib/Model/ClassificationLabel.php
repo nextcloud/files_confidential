@@ -22,6 +22,11 @@ class ClassificationLabel implements IClassificationLabel {
 	 */
 	private array $searchExpressions;
 
+	/**
+	 * @var list<string>
+	 */
+	private array $regularExpressions;
+
 	public static function findLabelsInText(string $text, array $labels): ?IClassificationLabel {
 		$matcherService = MatcherService::getInstance();
 		foreach ($labels as $label) {
@@ -36,16 +41,22 @@ class ClassificationLabel implements IClassificationLabel {
 					return $label;
 				}
 			}
+			foreach ($label->getRegularExpressions() as $pattern) {
+				if (preg_match('/'.$pattern.'/', $text) !== false) {
+					return $label;
+				}
+			}
 		}
 		return null;
 	}
 
-	public function __construct(int $index, string $tag, array $keywords, array $categories, array $searchExpressions) {
+	public function __construct(int $index, string $tag, array $keywords, array $categories, array $searchExpressions, array $regularExpressions) {
 		$this->index = $index;
 		$this->tag = $tag;
 		$this->keywords = $keywords;
 		$this->categories = $categories;
 		$this->searchExpressions = $searchExpressions;
+		$this->regularExpressions = $regularExpressions;
 	}
 
 	/**
@@ -54,10 +65,10 @@ class ClassificationLabel implements IClassificationLabel {
 	 * @throws \ValueError
 	 */
 	public static function fromArray(array $labelRaw): ClassificationLabel {
-		if (!isset($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'])) {
+		if (!isset($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'])) {
 			throw new \ValueError();
 		}
-		return new ClassificationLabel($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions']);
+		return new ClassificationLabel($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions']);
 	}
 
 	public function toArray() : array {
@@ -66,16 +77,17 @@ class ClassificationLabel implements IClassificationLabel {
 			'tag' => $this->getTag(),
 			'keywords' => $this->getKeywords(),
 			'categories' => $this->getBailsCategories(),
-			'searchExpressions' => $this->getSearchExpressions()
+			'searchExpressions' => $this->getSearchExpressions(),
+			'regularExpressions' => $this->getRegularExpressions(),
 		];
 	}
 
 	public static function getDefaultLabels() {
 		return array_map(fn ($label) => ClassificationLabel::fromArray($label), [
-			['index' => 0, 'tag' => 'Top secret', 'keywords' => ['top secret'], 'categories' => [], 'searchExpressions' => []],
-			['index' => 1, 'tag' => 'Secret', 'keywords' => ['secret'], 'categories' => [],  'searchExpressions' => []],
-			['index' => 2, 'tag' => 'Confidential', 'keywords' => ['confidential'], 'categories' => [], 'searchExpressions' => []],
-			['index' => 3, 'tag' => 'Restricted', 'keywords' => ['restricted'], 'categories' => [], 'searchExpressions' => []],
+			['index' => 0, 'tag' => 'Top secret', 'keywords' => ['top secret'], 'categories' => [], 'searchExpressions' => [], 'regularExpressions' => []],
+			['index' => 1, 'tag' => 'Secret', 'keywords' => ['secret'], 'categories' => [],  'searchExpressions' => [], 'regularExpressions' => []],
+			['index' => 2, 'tag' => 'Confidential', 'keywords' => ['confidential'], 'categories' => [], 'searchExpressions' => [], 'regularExpressions' => []],
+			['index' => 3, 'tag' => 'Restricted', 'keywords' => ['restricted'], 'categories' => [], 'searchExpressions' => [], 'regularExpressions' => []],
 		]);
 	}
 
@@ -97,5 +109,9 @@ class ClassificationLabel implements IClassificationLabel {
 
 	public function getSearchExpressions(): array {
 		return $this->searchExpressions;
+	}
+
+	public function getRegularExpressions(): array {
+		return $this->regularExpressions;
 	}
 }

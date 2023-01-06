@@ -24,4 +24,9 @@ interface IClassificationLabel {
 	 * @return list<string>
 	 */
 	public function getSearchExpressions(): array;
+
+	/**
+	 * @return list<string>
+	 */
+	public function getRegularExpressions(): array;
 }

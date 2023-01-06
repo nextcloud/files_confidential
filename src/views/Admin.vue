@@ -48,16 +48,19 @@
 							<ArrowDownIcon />
 						</template>
 					</NcButton>
-					<NcSelect v-model="label.tag"
-						:options="tags"
-						:label="'display-name'"
-						:multiple="false"
-						:placeholder="t('files_confidential', 'Select tag')"
-						@input="onChange()" />
+					<label>
+						<div class="text"><TagIcon /> {{ t('files_confidential', 'Tag') }}</div>
+						<NcSelect v-model="label.tag"
+							:options="tags"
+							:label="'display-name'"
+							:multiple="false"
+							:placeholder="t('files_confidential', 'Select tag')"
+							@input="onChange()" />
+					</label>
 					<div class="options">
 						<div class="option">
 							<label>
-								{{ t('files_confidential', 'TSCP policy category IDs') }}<br>
+								<div class="text"><PoundBoxIcon /> {{ t('files_confidential', 'TSCP policy category IDs') }}</div>
 								<NcSelect v-model="label.categories"
 									multiple
 									taggable
@@ -69,7 +72,7 @@
 						</div>
 						<div class="option">
 							<label>
-								{{ t('files_confidential', 'Keywords to look for in files') }}<br>
+								<div class="text"><TextRecognitionIcon /> {{ t('files_confidential', 'Keywords to look for in document content') }}</div>
 								<NcSelect v-model="label.keywords"
 									label-visible
 									multiple
@@ -80,15 +83,46 @@
 									@input="onChange()" />
 							</label>
 						</div>
-						<div class="option">
+						<div class="option data">
 							<label>
-								{{ t('files_confidential', 'Data to look for in files') }}<br>
+								<div class="text"><TextRecognitionIcon /> {{ t('files_confidential', 'Data to look for in document content') }}</div>
 								<NcSelect v-model="label.searchExpressions"
 									label-visible
 									multiple
 									select-on-tab
-									:options="searchExpressions"
-									@input="onChange()" />
+									:options="Object.keys(searchExpressions)"
+									@input="onChange()">
+									<template #option="{label: option}">
+										<span>{{ option }}</span><br>
+										<small><i>/{{ searchExpressions[option] }}/</i></small>
+									</template>
+									<template #selected-option="{label: option}">
+										<div>
+											<span>{{ option }}</span><br>
+											<small><i>/{{ searchExpressions[option] }}/</i></small>
+										</div>
+									</template>
+								</NcSelect>
+							</label>
+						</div>
+						<div class="option regex">
+							<label>
+								<div class="text"><TextRecognitionIcon /> {{ t('files_confidential', 'Regular Expressions to look for in document content') }}</div>
+								<NcSelect v-model="label.regularExpressions"
+									label-visible
+									multiple
+									select-on-tab
+									taggable
+									no-drop
+									push-tags
+									@input="onChange()">
+									<template #option="{label: option}">
+										<small><i>/{{ option }}/</i></small>
+									</template>
+									<template #selected-option="{label: option}">
+										<small><i>/{{ option }}/</i></small>
+									</template>
+								</NcSelect>
 							</label>
 						</div>
 					</div>
@@ -114,6 +148,9 @@ import ArrowUpIcon from 'vue-material-design-icons/ArrowUp.vue'
 import ArrowDownIcon from 'vue-material-design-icons/ArrowDown.vue'
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
+import TagIcon from 'vue-material-design-icons/Tag.vue'
+import PoundBoxIcon from 'vue-material-design-icons/PoundBox.vue'
+import TextRecognitionIcon from 'vue-material-design-icons/TextRecognition.vue'
 import { NcSelect, NcSettingsSection, NcButton, NcLoadingIcon } from '@nextcloud/vue'
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl } from '@nextcloud/router'
@@ -134,6 +171,9 @@ export default {
 		PlusIcon,
 		NcLoadingIcon,
 		CheckIcon,
+		TagIcon,
+		PoundBoxIcon,
+		TextRecognitionIcon,
 	},
 
 	data() {
@@ -196,6 +236,7 @@ export default {
 				keywords: [],
 				categories: [],
 				searchExpressions: [],
+				regularExpressions: [],
 			})
 		},
 		onChange() {
@@ -302,6 +343,11 @@ figure[class^='icon-'] {
 	border: none;
 }
 
+#files_confidential label .text {
+	display: flex;
+	margin-bottom: 5px;
+}
+
 #files_confidential .label {
 	position: relative;
 	background-color: var(--color-background-dark);
@@ -319,6 +365,12 @@ figure[class^='icon-'] {
 
 #files_confidential .options > .option {
 	margin-right: 20px;
+	margin-top: 10px;
+}
+
+#files_confidential .options > .option.data,
+#files_confidential .options > .option.regex {
+	width: 100%;
 }
 
 #files_confidential .label .close {
@@ -360,7 +412,8 @@ input[type="file"] {
 /*
  Fixes vue-select clear buttons to avoid them inheriting wrong button style
  */
-.vs__deselect {
+.vs__deselect,
+.vs__clear {
 	min-height: auto !important;
 	padding: 0 !important;
 	margin: 0 !important;

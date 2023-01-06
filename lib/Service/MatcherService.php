@@ -4,7 +4,7 @@ namespace OCA\Files_Confidential\Service;
 
 class MatcherService {
 	public $expressions = [
-		'E-Mail' => '\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',
+		'E-Mail' => '\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b',
 		'Credit card' => '\b(\d[ -]*?){13,16,19}\b',
 
 		'IBAN' => '\b([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?\b',
@@ -24,7 +24,20 @@ class MatcherService {
 		'French INSEE' => '\b[0-9]{13}\s?[0-9]{2}\b',
 		'National identity number (Norway)' => '\b[0-9]{11}\b',
 		'National Identity Number Spain' => '\b[0-9]{8}[A-Z]\b',
-		'Personal Identity Number Sweden' => '\b[0-9]{6}-[0-9]{4}\b'
+		'Personal Identity Number Sweden' => '\b[0-9]{6}-[0-9]{4}\b',
+
+		// Driver's License numbers
+		'United Kingdom Driver\'s License' => '\b[A-Za-z0-9][A-Za-z0-9]{4}\d[0156](0[1-9]|[12]\d|3[01])\d{2}[A-Za-z0-9]{3}[A-Za-z]{2}\d{2}\D\b',
+		'Finland Driver\'s License' => '\b[A-Za-z0-9][A-Za-z0-9]{9}[^A-Za-z0-9]\b',
+		'Portugal Driver\'s License' => '\b[A-Za-z0-9][A-Za-z0-9]{7,9}[^A-Za-z0-9]\b',
+		'Spain Driver\'s License' => '\b[A-Za-z0-9][A-Za-z0-9]{8}[^A-Za-z0-9]\b',
+		'France Driver\'s License' => '\b\d{12}\D\b',
+		'Japan Driver\'s License' => '\b\d{12}\D\b',
+		'Belgium Driver\'s License' => '\b\d{10}\D\b',
+		'Netherlands Driver\'s License' => '\b\d{10}\D\b',
+		'Sweden Driver\'s License' => '\b\d{10}\D\b',
+		'Taiwan ID Number' => '\b[a-zA-Z][12]\d{8}\b',
+		'Philippines Driver\'s License' => '\b[a-zA-Z]\d{2}[-]?\d{2}[-]?\d{6}\b',
 	];
 
 	/**
