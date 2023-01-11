@@ -23,110 +23,15 @@
 			<p>{{ t('files_confidential', 'Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow.') }}</p>
 			<p>&nbsp;</p>
 			<transition-group name="labels" tag="div">
-				<div v-for="label in labels" :key="label.id" :class="{'label':true}">
-					<NcButton type="tertiary-no-background"
-						class="close"
-						:aria-label="t('files_confidential', 'Remove label')"
-						@click="removeLabel(label.index)">
-						<template #icon>
-							<CloseIcon />
-						</template>
-					</NcButton>
-					<NcButton type="tertiary-no-background"
-						class="up"
-						:aria-label="t('files_confidential', 'Move label up')"
-						@click="moveUpLabel(label.index)">
-						<template #icon>
-							<ArrowUpIcon />
-						</template>
-					</NcButton>
-					<NcButton type="tertiary-no-background"
-						class="down"
-						:aria-label="t('files_confidential', 'Move label down')"
-						@click="moveDownLabel(label.index)">
-						<template #icon>
-							<ArrowDownIcon />
-						</template>
-					</NcButton>
-					<label>
-						<div class="text"><TagIcon /> {{ t('files_confidential', 'Tag') }}</div>
-						<NcSelect v-model="label.tag"
-							:options="tags"
-							:label="'display-name'"
-							:multiple="false"
-							:placeholder="t('files_confidential', 'Select tag')"
-							@input="onChange()" />
-					</label>
-					<div class="options">
-						<div class="option">
-							<label>
-								<div class="text"><PoundBoxIcon /> {{ t('files_confidential', 'TSCP policy category IDs') }}</div>
-								<NcSelect v-model="label.categories"
-									multiple
-									taggable
-									no-drop
-									select-on-tab
-									push-tags
-									@input="onChange()" />
-							</label>
-						</div>
-						<div class="option">
-							<label>
-								<div class="text"><TextRecognitionIcon /> {{ t('files_confidential', 'Keywords to look for in document content') }}</div>
-								<NcSelect v-model="label.keywords"
-									label-visible
-									multiple
-									taggable
-									no-drop
-									select-on-tab
-									push-tags
-									@input="onChange()" />
-							</label>
-						</div>
-						<div class="option data">
-							<label>
-								<div class="text"><TextRecognitionIcon /> {{ t('files_confidential', 'Data to look for in document content') }}</div>
-								<NcSelect v-model="label.searchExpressions"
-									label-visible
-									multiple
-									select-on-tab
-									:options="Object.keys(searchExpressions)"
-									@input="onChange()">
-									<template #option="{label: option}">
-										<span>{{ option }}</span><br>
-										<small><i>/{{ searchExpressions[option] }}/</i></small>
-									</template>
-									<template #selected-option="{label: option}">
-										<div>
-											<span>{{ option }}</span><br>
-											<small><i>/{{ searchExpressions[option] }}/</i></small>
-										</div>
-									</template>
-								</NcSelect>
-							</label>
-						</div>
-						<div class="option regex">
-							<label>
-								<div class="text"><TextRecognitionIcon /> {{ t('files_confidential', 'Regular Expressions to look for in document content') }}</div>
-								<NcSelect v-model="label.regularExpressions"
-									label-visible
-									multiple
-									select-on-tab
-									taggable
-									no-drop
-									push-tags
-									@input="onChange()">
-									<template #option="{label: option}">
-										<small><i>/{{ option }}/</i></small>
-									</template>
-									<template #selected-option="{label: option}">
-										<small><i>/{{ option }}/</i></small>
-									</template>
-								</NcSelect>
-							</label>
-						</div>
-					</div>
-				</div>
+				<ClassificationLabel v-for="label in labels"
+					:key="label.id"
+					:label="label"
+					:tags="tags"
+					:search-expressions="searchExpressions"
+					@moveUp="moveUpLabel(label.index)"
+					@moveDown="moveDownLabel(label.index)"
+					@remove="removeLabel(label.index)"
+					@change="onChange()" />
 				<div :key="'--new--'" :class="{'label':true, 'collapsed': true, 'add': true}">
 					<NcButton type="primary"
 						class="add"
@@ -143,18 +48,14 @@
 </template>
 
 <script>
-import CloseIcon from 'vue-material-design-icons/Close.vue'
-import ArrowUpIcon from 'vue-material-design-icons/ArrowUp.vue'
-import ArrowDownIcon from 'vue-material-design-icons/ArrowDown.vue'
+
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
-import TagIcon from 'vue-material-design-icons/Tag.vue'
-import PoundBoxIcon from 'vue-material-design-icons/PoundBox.vue'
-import TextRecognitionIcon from 'vue-material-design-icons/TextRecognition.vue'
-import { NcSelect, NcSettingsSection, NcButton, NcLoadingIcon } from '@nextcloud/vue'
+import { NcSettingsSection, NcButton, NcLoadingIcon } from '@nextcloud/vue'
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
+import ClassificationLabel from '../components/ClassificationLabel.vue'
 import client from '../DavClient.js'
 
 const SETTINGS = ['labels']
@@ -162,18 +63,12 @@ const SETTINGS = ['labels']
 export default {
 	name: 'Admin',
 	components: {
-		NcSelect,
 		NcSettingsSection,
 		NcButton,
-		CloseIcon,
-		ArrowUpIcon,
-		ArrowDownIcon,
 		PlusIcon,
 		NcLoadingIcon,
 		CheckIcon,
-		TagIcon,
-		PoundBoxIcon,
-		TextRecognitionIcon,
+		ClassificationLabel,
 	},
 
 	data() {
