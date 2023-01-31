@@ -37,10 +37,11 @@ class BafService {
 					if ($child['name'] === self::ELEMENT_CATEGORY) {
 						$categories[] = new ClassificationLabel(
 							$i++,
-							$child['attributes']['Name'],
-							[$child['attributes']['Name']],
+							'',
+							[],
 							[$child['attributes']['Identifier']],
 							[],
+							[$child['attributes']['Name']],
 						);
 					}
 				}
