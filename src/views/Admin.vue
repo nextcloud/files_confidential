@@ -239,13 +239,14 @@ figure[class^='icon-'] {
 }
 
 #files_confidential label .text {
-	display: flex;
+	display: table-cell;
 	margin-bottom: 5px;
+	min-width: 350px;
 }
 
 #files_confidential .label {
 	position: relative;
-	background-color: var(--color-background-dark);
+	box-shadow: 0 0 2px 0 var(--color-box-shadow);
 	margin-bottom: 20px;
 	border-radius: var(--border-radius-large);
 	padding: 12px 60px;
@@ -272,26 +273,6 @@ figure[class^='icon-'] {
 	position: absolute;
 	right: 5px;
 	top: 5px;
-}
-
-#files_confidential .label .up {
-	position: absolute;
-	left: 5px;
-	top:50px;
-}
-
-#files_confidential .label .down {
-	position: absolute;
-	left: 5px;
-	bottom: 50px;
-}
-
-#files_confidential .label:nth-last-child(2) .down {
-	display: none;
-}
-
-#files_confidential .label:first-child .up {
-	display: none;
 }
 
 #files_confidential .label.add {

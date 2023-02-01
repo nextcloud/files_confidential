@@ -8,24 +8,8 @@
 				<CloseIcon />
 			</template>
 		</NcButton>
-		<NcButton type="tertiary-no-background"
-			class="up"
-			:aria-label="t('files_confidential', 'Move label up')"
-			@click="$emit('move-up',label.index)">
-			<template #icon>
-				<ArrowUpIcon />
-			</template>
-		</NcButton>
-		<NcButton type="tertiary-no-background"
-			class="down"
-			:aria-label="t('files_confidential', 'Move label down')"
-			@click="$emit('move-down', label.index)">
-			<template #icon>
-				<ArrowDownIcon />
-			</template>
-		</NcButton>
 		<label>
-			<div class="text"><TagIcon /> {{ t('files_confidential', 'Tag') }}</div>
+			<div class="text">{{ t('files_confidential', 'Add tag ...') }}</div>
 			<NcSelect v-model="label.tag"
 				:options="tags"
 				:label="'display-name'"
@@ -36,7 +20,7 @@
 		<div class="options">
 			<div class="option">
 				<label>
-					<div class="text"><PoundBoxIcon /> {{ t('files_confidential', 'TSCP policy category IDs') }}</div>
+					<div class="text">{{ t('files_confidential', '... if document has TSCP policy category ID') }}</div>
 					<NcSelect v-model="label.categories"
 						multiple
 						taggable
@@ -48,32 +32,35 @@
 			</div>
 			<div class="option data">
 				<label>
-					<div class="text"><TextRecognitionIcon /> {{ t('files_confidential', 'Data to look for in document content') }}</div>
-					<div :style="{display:'flex', flexDirection:'row'}">
-						<NcSelect v-model="input"
-							label-visible
-							taggable
-							select-on-tab
-							:options="Object.keys(searchExpressions)"
-							@input="$emit('change')">
-							<template #option="{label: option}">
-								<span>{{ option }}</span><br>
-								<small><i>/{{ searchExpressions[option]||option }}/</i></small>
-							</template>
-						</NcSelect>
-						<NcButton @click="addExpression()">Add</NcButton>
+					<div class="text">{{ t('files_confidential', '... if document contains') }}</div>
+					<div class="text">
+						<div :style="{display:'flex', flexDirection:'row'}">
+							<NcSelect v-model="input"
+								label-visible
+								taggable
+								select-on-tab
+								:options="Object.keys(searchExpressions)"
+								:placeholder="t('files_confidential', 'Enter Regular Expression')"
+								@input="$emit('change')">
+								<template #option="{label: option}">
+									<span><strong>{{ option }}</strong></span><br>
+									<small><i>/{{ searchExpressions[option]||option }}/</i></small>
+								</template>
+							</NcSelect>
+							<NcButton @click="addExpression()">Add</NcButton>
+						</div>
 					</div>
 				</label>
 			</div>
 			<div class="option regex">
 				<ul>
 					<li v-for="(exp,i) in label.searchExpressions" :key="exp">
-						{{ exp }}<br><i>/{{ searchExpressions[exp] }}/</i>
+						<strong :title="searchExpressions[exp]">{{ exp }}</strong>
 						<NcButton type="tertiary-no-background"
 							:aria-label="t('files_confidential', 'Remove search expression')"
 							@click="label.searchExpressions.splice(i,1)">
 							<template #icon>
-								<CloseIcon />
+								<TrashCan />
 							</template>
 						</NcButton>
 					</li>
@@ -83,7 +70,7 @@
 							:aria-label="t('files_confidential', 'Remove search expression')"
 							@click="label.regularExpressions.splice(i,1)">
 							<template #icon>
-								<CloseIcon />
+								<TrashCan />
 							</template>
 						</NcButton>
 					</li>
@@ -95,11 +82,7 @@
 
 <script>
 import CloseIcon from 'vue-material-design-icons/Close.vue'
-import ArrowUpIcon from 'vue-material-design-icons/ArrowUp.vue'
-import ArrowDownIcon from 'vue-material-design-icons/ArrowDown.vue'
-import TagIcon from 'vue-material-design-icons/Tag.vue'
-import PoundBoxIcon from 'vue-material-design-icons/PoundBox.vue'
-import TextRecognitionIcon from 'vue-material-design-icons/TextRecognition.vue'
+import TrashCan from 'vue-material-design-icons/TrashCan.vue'
 import { NcSelect, NcButton } from '@nextcloud/vue'
 export default {
 	name: 'ClassificationLabel',
@@ -107,11 +90,7 @@ export default {
 		NcSelect,
 		NcButton,
 		CloseIcon,
-		ArrowUpIcon,
-		ArrowDownIcon,
-		TagIcon,
-		PoundBoxIcon,
-		TextRecognitionIcon,
+		TrashCan,
 	},
 	props: {
 		label: {
@@ -147,13 +126,20 @@ export default {
 </script>
 
 <style scoped>
+.option.regex {
+	position: relative;
+	left: 350px;
+}
+
 .option.regex li {
+	width: 400px;
 	margin-bottom: 10px;
-	list-style-type: circle;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .option.regex li button {
-	float: right;
-	margin-top: -20px;
+	margin-top: -10px;
 }
 </style>
