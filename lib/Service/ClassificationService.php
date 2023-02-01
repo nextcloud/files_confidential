@@ -24,6 +24,9 @@ class ClassificationService {
 		$labelFromPolicy = null;
 		if ($bailsPolicy !== null) {
 			foreach ($labels as $label) {
+				if (count($label->getBailsCategories()) === 0) {
+					continue;
+				}
 				foreach ($label->getBailsCategories() as $categoryId) {
 					// All defined categories for this label must be assigned to the document for the label to be applied
 					if (!in_array($categoryId, array_map(fn($cat) => $cat->getId(), $bailsPolicy->getCategories()))) {
@@ -45,6 +48,10 @@ class ClassificationService {
 				return $labelFromContent;
 			}
 			return $labelFromContent;
+		}
+
+		if ($labelFromPolicy !== null) {
+			return $labelFromPolicy;
 		}
 
 		return null;
