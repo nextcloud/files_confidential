@@ -13,7 +13,7 @@
 	<repository type="git">https://github.com/nextcloud-gmbh/files_confidential.git</repository>
 	<dependencies>
 		<php min-version="7.4" />
-		<nextcloud min-version="25" max-version="26" />
+		<nextcloud min-version="25" max-version="27" />
 	</dependencies>
 	<settings>
 		<admin>OCA\Files_Confidential\Settings\AdminSettings</admin>
