@@ -8,6 +8,7 @@ use OCP\EventDispatcher\IEventListener;
 use OCP\Files\Events\Node\NodeWrittenEvent;
 use OCP\Files\File;
 use OCP\SystemTag\ISystemTagObjectMapper;
+use Psr\Log\LoggerInterface;
 
 class HookListener implements IEventListener {
 	private ClassificationService $classificationService;
@@ -23,11 +24,15 @@ class HookListener implements IEventListener {
 	 */
 	public function handle(Event $event): void {
 		if ($event instanceof NodeWrittenEvent && $event->getNode() instanceof File) {
-			$label = $this->classificationService->getClassificationLabelForFile($event->getNode());
-			if ($label === null) {
-				return;
+			try {
+				$label = $this->classificationService->getClassificationLabelForFile($event->getNode());
+				if ($label === null) {
+					return;
+				}
+				$this->tagMapper->assignTags($event->getNode()->getId(), 'files', [(int)$label->getTag()]);
+			} catch (\Throwable $e) {
+				\OCP\Server::get(LoggerInterface::class)->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
 			}
-			$this->tagMapper->assignTags($event->getNode()->getId(), 'files', [(int)$label->getTag()]);
 		}
 	}
 }
