@@ -5,6 +5,7 @@ namespace OCA\Files_Confidential\ContentProviders;
 use DOMDocument;
 use OCA\Files_Confidential\Contract\IContentProvider;
 use OCP\Files\File;
+use OCP\Files\InvalidPathException;
 use OCP\Files\NotFoundException;
 use Sabre\Xml\ParseException;
 use Sabre\Xml\Reader;
@@ -35,14 +36,22 @@ class MicrosoftContentProvider implements IContentProvider {
 	 */
 	public function getContentForFile(File $file): string {
 		try {
+			if ($file->getSize() === 0) {
+				return '';
+			}
+		} catch (InvalidPathException|NotFoundException $e) {
+			return '';
+		}
+
+		try {
 			$localFilepath = $file->getStorage()->getLocalFile($file->getInternalPath());
 		} catch (NotFoundException $e) {
-			return 0;
+			return '';
 		}
 
 		$zipArchive = new \ZipArchive();
 		if ($zipArchive->open($localFilepath) === false) {
-			return 0;
+			return '';
 		}
 
 		$xml = $zipArchive->getFromName('word/header1.xml');

@@ -6,6 +6,8 @@ use OCA\Files_Confidential\Contract\IBailsPolicy;
 use OCA\Files_Confidential\Contract\IBailsProvider;
 use OCA\Files_Confidential\Model\BailsPolicy;
 use OCP\Files\File;
+use OCP\Files\InvalidPathException;
+use OCP\Files\NotFoundException;
 use Sabre\Xml\ParseException;
 use Sabre\Xml\Reader;
 use Sabre\Xml\Service;
@@ -37,6 +39,14 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 	 * @return \OCA\Files_Confidential\Contract\IBailsPolicy
 	 */
 	public function getPolicyForFile(File $file): ?IBailsPolicy {
+		try {
+			if ($file->getSize() === 0) {
+				return null;
+			}
+		} catch (InvalidPathException|NotFoundException $e) {
+			return null;
+		}
+
 		$zipArchive = new \ZipArchive();
 		if ($zipArchive->open($file->getStorage()->getLocalFile($file->getInternalPath())) === false) {
 			return null;
