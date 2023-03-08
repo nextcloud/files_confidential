@@ -29,7 +29,7 @@ class ClassificationService {
 				}
 				foreach ($label->getBailsCategories() as $categoryId) {
 					// All defined categories for this label must be assigned to the document for the label to be applied
-					if (!in_array($categoryId, array_map(fn($cat) => $cat->getId(), $bailsPolicy->getCategories()))) {
+					if (!in_array($categoryId, array_map(fn ($cat) => $cat->getId(), $bailsPolicy->getCategories()))) {
 						continue 2;
 					}
 				}
