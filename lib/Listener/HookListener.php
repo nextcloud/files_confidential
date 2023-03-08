@@ -2,7 +2,6 @@
 
 namespace OCA\Files_Confidential\Listener;
 
-use OC\Files\Node\Folder;
 use OCA\Files_Confidential\Service\ClassificationService;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;

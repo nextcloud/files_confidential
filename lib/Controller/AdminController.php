@@ -13,7 +13,6 @@ use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\Files\IAppData;
 use OCP\Files\NotFoundException;
-use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IRequest;
 use Safe\Exceptions\JsonException;
@@ -52,7 +51,7 @@ class AdminController extends Controller {
 	 * @return \OCP\AppFramework\Http\JSONResponse
 	 * @throws \OCP\Files\NotPermittedException
 	 */
-	public function importBaf() : JSONResponse{
+	public function importBaf() : JSONResponse {
 		$upload = $this->request->getUploadedFile('baf');
 		$result = [];
 		if ($upload['type'] !== 'text/xml') {
