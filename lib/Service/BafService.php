@@ -38,7 +38,7 @@ class BafService {
 						$categories[] = new ClassificationLabel(
 							$i++,
 							'',
-							[],
+							[$child['attributes']['Name']],
 							[$child['attributes']['Identifier']],
 							[],
 							[$child['attributes']['Name']],
