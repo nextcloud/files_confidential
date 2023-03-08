@@ -37,7 +37,7 @@
     "@nextcloud/vue": "^7.1.0",
     "@nextcloud/webpack-vue-config": "^5.1.0",
     "vue": "^2.7.13",
-    "vue-material-design-icons": "^5.1.2"
+    "vue-material-design-icons": "^5.2.0"
   },
   "engines": {
     "node": "^16.0.0",
