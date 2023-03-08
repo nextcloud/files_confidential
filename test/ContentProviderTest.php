@@ -71,7 +71,7 @@ class ContentProviderTest extends TestCase {
 		$provider = \OC::$server->get(OpenDocumentContentProvider::class);
 		$content = $provider->getContentForFile($this->testFile);
 
-		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN']);
+		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], []);
 		$foundLabel = ClassificationLabel::findLabelsInText($content, [$label]);
 		$this->assertEquals($label, $foundLabel);
 	}
