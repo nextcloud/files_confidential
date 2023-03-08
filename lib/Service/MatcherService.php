@@ -3,7 +3,10 @@
 namespace OCA\Files_Confidential\Service;
 
 class MatcherService {
-	public $expressions = [
+	/**
+	 * @var string[]
+	 */
+	public array $expressions = [
 		'E-Mail' => '\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b',
 		'Credit card' => '\b(\d[ -]*?){13,16,19}\b',
 

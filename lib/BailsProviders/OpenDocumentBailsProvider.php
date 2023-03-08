@@ -52,7 +52,8 @@ class OpenDocumentBailsProvider implements IBailsProvider {
 		}
 
 		$zipArchive = new \ZipArchive();
-		if ($zipArchive->open($file->getStorage()->getLocalFile($file->getInternalPath())) === false) {
+		$path = $file->getStorage()->getLocalFile($file->getInternalPath());
+		if ($path === false || $zipArchive->open($path) === false) {
 			return null;
 		}
 

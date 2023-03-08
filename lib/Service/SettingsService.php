@@ -21,6 +21,7 @@ class SettingsService {
 	 */
 	public function getClassificationLabels(): array {
 		try {
+			/** @var array $labelsRaw */
 			$labelsRaw = \Safe\json_decode($this->config->getAppValue('files_confidential', 'labels', '[]'), true);
 		} catch (JsonException $e) {
 			$this->logger->warning('Could not load labels setting', ['exception' => $e]);
@@ -52,6 +53,7 @@ class SettingsService {
 		}
 		$array = array_map(fn ($label) => $label->toArray(), $labels);
 		try {
+			/** @var string $json */
 			$json = \Safe\json_encode($array);
 		} catch (JsonException $e) {
 			$this->logger->warning('Could not store labels setting', ['exception' => $e]);

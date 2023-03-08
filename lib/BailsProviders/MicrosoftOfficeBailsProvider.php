@@ -48,7 +48,8 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 		}
 
 		$zipArchive = new \ZipArchive();
-		if ($zipArchive->open($file->getStorage()->getLocalFile($file->getInternalPath())) === false) {
+		$path = $file->getStorage()->getLocalFile($file->getInternalPath());
+		if ($path === false || $zipArchive->open($path) === false) {
 			return null;
 		}
 
@@ -76,6 +77,7 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 
 
 		try {
+			/** @var list<array{key:string, value:string}>  $props */
 			$props = $service->parse($xml);
 		} catch (ParseException $e) {
 			// log

@@ -29,4 +29,9 @@ interface IClassificationLabel {
 	 * @return list<string>
 	 */
 	public function getRegularExpressions(): array;
+
+	/**
+	 * @return array
+	 */
+	public function toArray(): array;
 }
