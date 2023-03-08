@@ -10,5 +10,6 @@ module.exports = {
 		'n/no-process-exit': 'off',
 		'no-console': 'off',
 		'n/no-missing-require': 'off',
+		'vue/no-mutating-props': 'off',
 	},
 }
