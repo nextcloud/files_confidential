@@ -50,7 +50,7 @@ class OpenDocumentContentProvider implements IContentProvider {
 
 
 		$zipArchive = new \ZipArchive();
-		if ($zipArchive->open($localFilepath) === false) {
+		if ($localFilepath === false || $zipArchive->open($localFilepath) === false) {
 			return '';
 		}
 
@@ -123,9 +123,11 @@ class OpenDocumentContentProvider implements IContentProvider {
 
 		$data = $zipArchive->getFromName('content.xml');
 
-		$xml = new DOMDocument();
-		$xml->loadXML($data, \LIBXML_NOENT | \LIBXML_XINCLUDE | \LIBXML_NOERROR | \LIBXML_NOWARNING);
-		$contentStrings .= ' '.strip_tags($xml->saveXML());
+		if ($data !== false) {
+			$xml = new DOMDocument();
+			$xml->loadXML($data, \LIBXML_NOENT | \LIBXML_XINCLUDE | \LIBXML_NOERROR | \LIBXML_NOWARNING);
+			$contentStrings .= ' ' . strip_tags($xml->saveXML());
+		}
 
 		$zipArchive->close();
 		return  $contentStrings;

@@ -27,6 +27,11 @@ class ClassificationLabel implements IClassificationLabel {
 	 */
 	private array $regularExpressions;
 
+	/**
+	 * @param string $text
+	 * @param list<IClassificationLabel> $labels
+	 * @return \OCA\Files_Confidential\Contract\IClassificationLabel|null
+	 */
 	public static function findLabelsInText(string $text, array $labels): ?IClassificationLabel {
 		$matcherService = MatcherService::getInstance();
 		foreach ($labels as $label) {
@@ -61,7 +66,7 @@ class ClassificationLabel implements IClassificationLabel {
 
 	/**
 	 * @param array{index:int, tag:string, keywords:list<string>, categories:list<string>} $labelRaw
-	 * @return \OCA\Files_Confidential\Model\ClassificationLabel
+	 * @return IClassificationLabel
 	 * @throws \ValueError
 	 */
 	public static function fromArray(array $labelRaw): ClassificationLabel {
@@ -82,6 +87,9 @@ class ClassificationLabel implements IClassificationLabel {
 		];
 	}
 
+	/**
+	 * @return IClassificationLabel[]
+	 */
 	public static function getDefaultLabels() {
 		return array_map(fn ($label) => ClassificationLabel::fromArray($label), [
 			['index' => 0, 'tag' => 'Top secret', 'keywords' => ['top secret'], 'categories' => [], 'searchExpressions' => [], 'regularExpressions' => []],

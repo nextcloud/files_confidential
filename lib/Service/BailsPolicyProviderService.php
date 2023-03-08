@@ -11,7 +11,7 @@ class BailsPolicyProviderService {
 	/**
 	 * @var list<\OCA\Files_Confidential\Contract\IBailsProvider>
 	 */
-	private array $providers;
+	private array $providers = [];
 
 	public function __construct(MicrosoftOfficeBailsProvider $microsoft, OpenDocumentBailsProvider $openDocument) {
 		$this->providers[] = $microsoft;

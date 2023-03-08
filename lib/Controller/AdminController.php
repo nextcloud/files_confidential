@@ -27,17 +27,19 @@ class AdminController extends Controller {
 
 	private IAppData $appData;
 
-
-	public function __construct(string $appName, IRequest $request, IConfig $config, SettingsService $settingsService, IL10N $l10n, BafService $bafService, IAppData $appData) {
+	public function __construct(string $appName, IRequest $request, SettingsService $settingsService, IL10N $l10n, BafService $bafService, IAppData $appData) {
 		parent::__construct($appName, $request);
-		$this->config = $config;
 		$this->settingsService = $settingsService;
 		$this->l10n = $l10n;
 		$this->bafService = $bafService;
 		$this->appData = $appData;
 	}
 
-	public function setClassificationLabels($value): JSONResponse {
+	/**
+	 * @param array $value
+	 * @return \OCP\AppFramework\Http\JSONResponse
+	 */
+	public function setClassificationLabels(array $value): JSONResponse {
 		try {
 			$this->settingsService->setClassificationLabels($value);
 			return new JSONResponse([], Http::STATUS_OK);
@@ -46,8 +48,13 @@ class AdminController extends Controller {
 		}
 	}
 
-	public function importBaf() {
+	/**
+	 * @return \OCP\AppFramework\Http\JSONResponse
+	 * @throws \OCP\Files\NotPermittedException
+	 */
+	public function importBaf() : JSONResponse{
 		$upload = $this->request->getUploadedFile('baf');
+		$result = [];
 		if ($upload['type'] !== 'text/xml') {
 			$result['errors'][] = $this->l10n->t('Unsupported file type for import');
 			return new JSONResponse(['status' => 'error', 'data' => $result['errors']]);
@@ -61,7 +68,7 @@ class AdminController extends Controller {
 
 		$labels = $this->bafService->parseXml($xml);
 		try {
-			$this->settingsService->setClassificationLabels(array_map(static fn ($label) => $label->toArray(), $labels));
+			$this->settingsService->setClassificationLabels(array_map(static fn ($label):array => $label->toArray(), $labels));
 		} catch (JsonException $e) {
 			$result['errors'][] = $this->l10n->t('Could not store extracted labels');
 			return new JSONResponse(['status' => 'error', 'data' => $result['errors']]);

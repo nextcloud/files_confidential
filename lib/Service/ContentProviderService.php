@@ -10,7 +10,7 @@ class ContentProviderService {
 	/**
 	 * @var list<\OCA\Files_Confidential\Contract\IContentProvider>
 	 */
-	private array $providers;
+	private array $providers = [];
 
 	public function __construct(MicrosoftContentProvider $microsoft, OpenDocumentContentProvider $openDocument) {
 		$this->providers[] = $microsoft;

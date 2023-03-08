@@ -50,7 +50,7 @@ class MicrosoftContentProvider implements IContentProvider {
 		}
 
 		$zipArchive = new \ZipArchive();
-		if ($zipArchive->open($localFilepath) === false) {
+		if ($localFilepath === false || $zipArchive->open($localFilepath) === false) {
 			return '';
 		}
 
@@ -170,9 +170,11 @@ class MicrosoftContentProvider implements IContentProvider {
 
 		$data = $zipArchive->getFromName('word/document.xml');
 
-		$xml = new DOMDocument();
-		$xml->loadXML($data, \LIBXML_NOENT | \LIBXML_XINCLUDE | \LIBXML_NOERROR | \LIBXML_NOWARNING);
-		$content .= ' '.strip_tags($xml->saveXML());
+		if ($data !== false) {
+			$xml = new DOMDocument();
+			$xml->loadXML($data, \LIBXML_NOENT | \LIBXML_XINCLUDE | \LIBXML_NOERROR | \LIBXML_NOWARNING);
+			$content .= ' ' . strip_tags($xml->saveXML());
+		}
 
 		$zipArchive->close();
 

@@ -21,7 +21,7 @@ class BailsPolicy implements IBailsPolicy {
 	private string $availabilityImpact = '';
 	private string $impactScale = '';
 
-	private array $categories;
+	private array $categories = [];
 
 	/**
 	 * @param list<array{key:string, value:string}> $props

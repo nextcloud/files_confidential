@@ -2,6 +2,7 @@
 
 namespace OCA\Files_Confidential\Listener;
 
+use OC\Files\Node\Folder;
 use OCA\Files_Confidential\Service\ClassificationService;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
@@ -23,13 +24,14 @@ class HookListener implements IEventListener {
 	 * @inheritDoc
 	 */
 	public function handle(Event $event): void {
-		if ($event instanceof NodeWrittenEvent && $event->getNode() instanceof File) {
+		$node = $event->getNode();
+		if ($event instanceof NodeWrittenEvent && $node instanceof File) {
 			try {
-				$label = $this->classificationService->getClassificationLabelForFile($event->getNode());
+				$label = $this->classificationService->getClassificationLabelForFile($node);
 				if ($label === null) {
 					return;
 				}
-				$this->tagMapper->assignTags($event->getNode()->getId(), 'files', [(int)$label->getTag()]);
+				$this->tagMapper->assignTags((string)$event->getNode()->getId(), 'files', [(int)$label->getTag()]);
 			} catch (\Throwable $e) {
 				\OCP\Server::get(LoggerInterface::class)->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
 			}
