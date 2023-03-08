@@ -132,7 +132,6 @@ appstore:
 	--include=/COPYING \
 	--include=/CHANGELOG.md \
 	--include=/README.md \
-	--include=/node_modules \
 	--include=/package.json \
 	--include=/package-lock.json \
 	--include=/composer.json \
