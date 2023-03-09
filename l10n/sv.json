@@ -1,0 +1,5 @@
+{ "translations": {
+    "Unsupported file type for import" : "Ogiltig filtyp för import",
+    "Failed to save settings" : "Kunde inte spara inställningarna"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

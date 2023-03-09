@@ -1,0 +1,5 @@
+{ "translations": {
+    "Unsupported file type for import" : "İçe aktarılacak dosya türü desteklenmiyor",
+    "Failed to save settings" : "Ayarlar kaydedilemedi"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}

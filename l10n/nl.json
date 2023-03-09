@@ -1,0 +1,5 @@
+{ "translations": {
+    "Unsupported file type for import" : "Bestandstype wordt niet ondersteund voor importeren",
+    "Failed to save settings" : "Kon instellingen niet opslaan"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
