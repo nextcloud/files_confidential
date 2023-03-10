@@ -1,0 +1,5 @@
+{ "translations": {
+    "Unsupported file type for import" : "Tipo de ficheiro non admitido para importar",
+    "Failed to save settings" : "Produciuse un fallo ao gardar os axustes"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

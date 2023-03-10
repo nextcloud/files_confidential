@@ -1,0 +1,5 @@
+{ "translations": {
+    "Unsupported file type for import" : "El tipus de fitxer que es importar no és compatible",
+    "Failed to save settings" : "Ha fallat desar els paràmetres"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

@@ -1,0 +1,5 @@
+{ "translations": {
+    "Unsupported file type for import" : "Ein Import von Dateien dieses Typs wird nicht unterstützt",
+    "Failed to save settings" : "Einstellungen konnten nicht gespeichert werden"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
