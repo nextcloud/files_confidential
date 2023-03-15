@@ -138,6 +138,7 @@ appstore:
 	--include=/composer.json \
 	--include=/composer.lock \
 	--include=/src \
+	--include=/js \
 	--include=/l10n \
 	--include=/lib \
 	--include=/img \
