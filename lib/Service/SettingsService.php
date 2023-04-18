@@ -27,9 +27,6 @@ class SettingsService {
 			$this->logger->warning('Could not load labels setting', ['exception' => $e]);
 			return [];
 		}
-		if (count($labelsRaw) === 0) {
-			return ClassificationLabel::getDefaultLabels();
-		}
 		try {
 			return array_map(fn ($labelRaw) => ClassificationLabel::fromArray($labelRaw), $labelsRaw);
 		} catch(\ValueError $e) {

@@ -87,18 +87,6 @@ class ClassificationLabel implements IClassificationLabel {
 		];
 	}
 
-	/**
-	 * @return IClassificationLabel[]
-	 */
-	public static function getDefaultLabels() {
-		return array_map(fn ($label) => ClassificationLabel::fromArray($label), [
-			['index' => 0, 'tag' => 'Top secret', 'keywords' => ['top secret'], 'categories' => [], 'searchExpressions' => [], 'regularExpressions' => []],
-			['index' => 1, 'tag' => 'Secret', 'keywords' => ['secret'], 'categories' => [],  'searchExpressions' => [], 'regularExpressions' => []],
-			['index' => 2, 'tag' => 'Confidential', 'keywords' => ['confidential'], 'categories' => [], 'searchExpressions' => [], 'regularExpressions' => []],
-			['index' => 3, 'tag' => 'Restricted', 'keywords' => ['restricted'], 'categories' => [], 'searchExpressions' => [], 'regularExpressions' => []],
-		]);
-	}
-
 	public function getIndex(): int {
 		return $this->index;
 	}
