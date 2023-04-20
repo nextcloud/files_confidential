@@ -14,6 +14,7 @@ OC.L10N.register(
     "... if document contains" : "... если документ содержит",
     "Enter Regular Expression" : "Введите регулярное выражение",
     "Remove search expression" : "Удалить выражение поиска",
+    "Business Authorization Framework" : "Фреймворк для Бизнес-авторизации",
     "Upload policy" : "Политике загрузки",
     "Classification labels" : "Квалификационные метки",
     "Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow." : "Определите классификационные метки, которые применяются к различным документам. На основе этих меток вы можете определить правила в Nextcloud Flow.",

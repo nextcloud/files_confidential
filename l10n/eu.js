@@ -2,6 +2,7 @@ OC.L10N.register(
     "files_confidential",
     {
     "Unsupported file type for import" : "Inportatzeko fitxategi mota ez onartua",
+    "Confidential files" : "Fitxategi konfidentzialak",
     "Add tag ..." : "Gehitu etiketa ...",
     "Select tag" : "Hautatu etiketa",
     "Upload policy" : "Karga politika",
