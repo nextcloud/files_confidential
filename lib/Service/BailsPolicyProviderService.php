@@ -2,9 +2,9 @@
 
 namespace OCA\Files_Confidential\Service;
 
-use OCA\Files_Confidential\Contract\IBailsPolicy;
 use OCA\Files_Confidential\BailsProviders\MicrosoftOfficeBailsProvider;
 use OCA\Files_Confidential\BailsProviders\OpenDocumentBailsProvider;
+use OCA\Files_Confidential\Contract\IBailsPolicy;
 use OCP\Files\File;
 
 class BailsPolicyProviderService {
