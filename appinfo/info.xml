@@ -9,7 +9,7 @@ This app allows you to define a set of classification labels that will be assign
 For each classification label you can define a set of rules when it will be assigned to a file, based on text
 content or BAILS classification meta data.
 ]]></description>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<licence>agpl</licence>
 	<author mail="mklehr@gmx.net" homepage="https://marcelklehr.de">Marcel Klehr</author>
 	<namespace>Files_Confidential</namespace>
