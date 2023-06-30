@@ -60,7 +60,10 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 		$service->elementMap = [
 			self::ELEMENT_PROPERTIES => function (Reader $reader) {
 				$children = $reader->parseInnerTree();
-				$props = [];
+                $props = [];
+                if ($children === null) {
+                    return $props;
+                }
 				foreach ($children as $child) {
 					if (
 						$child['name'] === self::ELEMENT_PROPERTY &&
