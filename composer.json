@@ -1,7 +1,7 @@
 {
     "require": {
         "php": ">=7.4",
-      "ext-dom": "*",
+        "ext-dom": "*",
         "ext-libxml": "*"
     },
     "autoload": {
@@ -22,10 +22,5 @@
         "cs:fix": "php-cs-fixer fix",
         "psalm": "psalm.phar",
         "test:unit": "phpunit --config test/phpunit.xml"
-    },
-    "config": {
-        "platform": {
-            "php": "7.4"
-        }
     }
 }
