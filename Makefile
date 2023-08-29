@@ -126,6 +126,8 @@ source:
 .PHONY: appstore
 appstore:
 	composer install --no-dev
+	composer install
+	composer install --no-dev
 	rm -rf $(sign_dir)
 	mkdir -p $(sign_dir)
 	rm -rf $(appstore_build_directory)
