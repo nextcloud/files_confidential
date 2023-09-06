@@ -1,6 +1,10 @@
 {
+	"config": {
+		"platform":{
+			"php": "7.4"
+		}
+	},
     "require": {
-        "php": ">=7.4",
         "ext-dom": "*",
         "ext-libxml": "*"
     },
@@ -14,7 +18,7 @@
         "nextcloud/coding-standard": "^1",
         "phpunit/phpunit": "^9.5",
         "psalm/phar": "^4.3",
-        "nextcloud/ocp": "dev-master"
+        "nextcloud/ocp": "dev-stable25"
     },
     "scripts": {
         "lint": "find . -name \\*.php -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
