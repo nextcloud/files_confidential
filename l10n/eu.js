@@ -2,7 +2,7 @@ OC.L10N.register(
     "files_confidential",
     {
     "Unsupported file type for import" : "Inportatzeko fitxategi mota ez onartua",
-    "Could not read uploaded file" : "Ezin izan da kargatutako fitxategia irakurri",
+    "Could not read uploaded file" : "Ezin izan da igotako fitxategia irakurri",
     "Could not store extracted labels" : "Ezin izan dira ateratako etiketak gorde",
     "Confidential files" : "Fitxategi konfidentzialak",
     "Workflows for handling confidential files in Nextcloud" : "Nextcloud-en isilpeko fitxategiak kudeatzeko lan-fluxuak",
@@ -15,7 +15,7 @@ OC.L10N.register(
     "Enter Regular Expression" : "Sartu adierazpen erregularra",
     "Remove search expression" : "Kendu bilaketa-espresioa",
     "Business Authorization Framework" : "Enpresaren baimenen esparrua",
-    "Upload policy" : "Karga politika",
+    "Upload policy" : "Igoera politika",
     "Classification labels" : "Sailkapen-etiketak",
     "Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow." : "Dokumentu ezberdinei aplikatzen zaizkien sailkapen etiketak definitzea. Etiketa hauetan oinarrituta arauak defini ditzakezu Nextcloud Flow-en.",
     "Add new label" : "Gehitu etiketa berria",
