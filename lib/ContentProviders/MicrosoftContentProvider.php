@@ -50,7 +50,7 @@ class MicrosoftContentProvider implements IContentProvider {
 		}
 
 		$zipArchive = new \ZipArchive();
-		if ($localFilepath === false || $zipArchive->open($localFilepath) === false) {
+		if (!is_string($localFilepath) || $zipArchive->open($localFilepath) === false) {
 			return '';
 		}
 

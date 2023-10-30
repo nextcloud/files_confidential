@@ -49,7 +49,7 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 
 		$zipArchive = new \ZipArchive();
 		$path = $file->getStorage()->getLocalFile($file->getInternalPath());
-		if ($path === false || $zipArchive->open($path) === false) {
+		if (!is_string($path) || $zipArchive->open($path) === false) {
 			return null;
 		}
 
