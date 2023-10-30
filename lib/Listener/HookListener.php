@@ -10,6 +10,9 @@ use OCP\Files\File;
 use OCP\SystemTag\ISystemTagObjectMapper;
 use Psr\Log\LoggerInterface;
 
+/**
+ * @implements IEventListener<NodeWrittenEvent>
+ */
 class HookListener implements IEventListener {
 	private ClassificationService $classificationService;
 

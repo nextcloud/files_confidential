@@ -21,6 +21,9 @@ class BailsPolicy implements IBailsPolicy {
 	private string $availabilityImpact = '';
 	private string $impactScale = '';
 
+    /**
+     * @var list<IBailsAuthorizationCategory>
+     */
 	private array $categories = [];
 
 	/**

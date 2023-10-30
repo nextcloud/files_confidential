@@ -54,12 +54,12 @@ class MatcherService {
 		return '/'.$this->expressions[$name].'/';
 	}
 
-	private static $instance = null;
+	private static ?MatcherService $instance = null;
 
 	/**
-	 * @return static
+	 * @return MatcherService
 	 */
-	public static function getInstance() : self {
+	public static function getInstance() : MatcherService {
 		return self::$instance = (self::$instance ?? new MatcherService());
 	}
 }

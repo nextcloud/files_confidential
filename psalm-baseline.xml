@@ -1,42 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.x-dev@">
+<files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
   <file src="lib/BailsProviders/MicrosoftOfficeBailsProvider.php">
-    <InvalidScalarArgument occurrences="1">
-      <code>$path</code>
-    </InvalidScalarArgument>
-    <MixedAssignment occurrences="1">
+    <MixedAssignment>
       <code>$service</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="1">
+    <MixedMethodCall>
       <code>parse</code>
     </MixedMethodCall>
-    <MixedPropertyAssignment occurrences="1">
+    <MixedPropertyAssignment>
       <code>$service</code>
     </MixedPropertyAssignment>
-    <UndefinedClass occurrences="3">
+    <UndefinedClass>
       <code>ParseException</code>
       <code>Reader</code>
       <code>Service</code>
     </UndefinedClass>
   </file>
   <file src="lib/BailsProviders/OpenDocumentBailsProvider.php">
-    <InvalidScalarArgument occurrences="1">
-      <code>$path</code>
-    </InvalidScalarArgument>
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$props</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment>
       <code>$props</code>
       <code>$service</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="1">
+    <MixedMethodCall>
       <code>parse</code>
     </MixedMethodCall>
-    <MixedPropertyAssignment occurrences="1">
+    <MixedPropertyAssignment>
       <code>$service</code>
     </MixedPropertyAssignment>
-    <UndefinedClass occurrences="4">
+    <UndefinedClass>
       <code>ParseException</code>
       <code>Reader</code>
       <code>Reader</code>
@@ -44,29 +38,23 @@
     </UndefinedClass>
   </file>
   <file src="lib/ContentProviders/MicrosoftContentProvider.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$data</code>
-    </ArgumentTypeCoercion>
-    <InvalidScalarArgument occurrences="1">
-      <code>$localFilepath</code>
-    </InvalidScalarArgument>
-    <MixedArgument occurrences="2">
-      <code>$service-&gt;parse($xml)</code>
-      <code>$service-&gt;parse($xml)</code>
+    <MixedArgument>
+      <code><![CDATA[$service->parse($xml)]]></code>
+      <code><![CDATA[$service->parse($xml)]]></code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment>
       <code>$service</code>
       <code>$service</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="2">
+    <MixedMethodCall>
       <code>parse</code>
       <code>parse</code>
     </MixedMethodCall>
-    <MixedPropertyAssignment occurrences="2">
+    <MixedPropertyAssignment>
       <code>$service</code>
       <code>$service</code>
     </MixedPropertyAssignment>
-    <UndefinedClass occurrences="6">
+    <UndefinedClass>
       <code>ParseException</code>
       <code>ParseException</code>
       <code>Reader</code>
@@ -76,143 +64,100 @@
     </UndefinedClass>
   </file>
   <file src="lib/ContentProviders/OpenDocumentContentProvider.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$data</code>
-    </ArgumentTypeCoercion>
-    <InvalidScalarArgument occurrences="1">
-      <code>$localFilepath</code>
-    </InvalidScalarArgument>
-    <MixedArgument occurrences="1">
-      <code>$service-&gt;parse($xml)</code>
+    <MixedArgument>
+      <code><![CDATA[$service->parse($xml)]]></code>
     </MixedArgument>
-    <MixedAssignment occurrences="1">
+    <MixedAssignment>
       <code>$service</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="1">
+    <MixedMethodCall>
       <code>parse</code>
     </MixedMethodCall>
-    <MixedPropertyAssignment occurrences="1">
+    <MixedPropertyAssignment>
       <code>$service</code>
     </MixedPropertyAssignment>
-    <UndefinedClass occurrences="3">
+    <UndefinedClass>
       <code>ParseException</code>
       <code>Reader</code>
       <code>Service</code>
     </UndefinedClass>
   </file>
   <file src="lib/Controller/AdminController.php">
-    <MixedArgument occurrences="1">
-      <code>$upload['tmp_name']</code>
+    <MixedArgument>
+      <code><![CDATA[$upload['tmp_name']]]></code>
     </MixedArgument>
-    <MixedArgumentTypeCoercion occurrences="2">
+    <MixedArgumentTypeCoercion>
       <code>$value</code>
-      <code>array_map(static fn ($label):array =&gt; $label-&gt;toArray(), $labels)</code>
+      <code><![CDATA[array_map(static fn ($label):array => $label->toArray(), $labels)]]></code>
     </MixedArgumentTypeCoercion>
-    <UndefinedClass occurrences="1">
+    <UndefinedClass>
       <code>JsonException</code>
     </UndefinedClass>
   </file>
   <file src="lib/Listener/HookListener.php">
-    <MixedAssignment occurrences="1">
-      <code>$node</code>
-    </MixedAssignment>
-    <UndefinedMethod occurrences="1">
-      <code>getNode</code>
-    </UndefinedMethod>
-  </file>
-  <file src="lib/Model/BailsPolicy.php">
-    <MixedReturnTypeCoercion occurrences="2">
-      <code>$this-&gt;categories</code>
-      <code>array</code>
-    </MixedReturnTypeCoercion>
+    <RedundantCondition>
+      <code>$event instanceof NodeWrittenEvent</code>
+    </RedundantCondition>
   </file>
   <file src="lib/Model/ClassificationLabel.php">
-    <MismatchingDocblockReturnType occurrences="1">
+    <MismatchingDocblockReturnType>
       <code>IClassificationLabel</code>
     </MismatchingDocblockReturnType>
-    <MixedInferredReturnType occurrences="1">
+    <MixedInferredReturnType>
       <code>IClassificationLabel</code>
     </MixedInferredReturnType>
-    <MixedPropertyTypeCoercion occurrences="4">
-      <code>$categories</code>
-      <code>$keywords</code>
-      <code>$regularExpressions</code>
-      <code>$searchExpressions</code>
-    </MixedPropertyTypeCoercion>
-    <PossiblyNullArgument occurrences="1">
-      <code>$pattern</code>
-    </PossiblyNullArgument>
   </file>
   <file src="lib/Service/BafService.php">
-    <MixedAssignment occurrences="1">
+    <MixedAssignment>
       <code>$service</code>
     </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
+    <MixedInferredReturnType>
       <code>IClassificationLabel[]</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="1">
+    <MixedMethodCall>
       <code>parse</code>
     </MixedMethodCall>
-    <MixedPropertyAssignment occurrences="1">
+    <MixedPropertyAssignment>
       <code>$service</code>
     </MixedPropertyAssignment>
-    <MixedReturnStatement occurrences="1">
-      <code>$service-&gt;parse($xml)</code>
+    <MixedReturnStatement>
+      <code><![CDATA[$service->parse($xml)]]></code>
     </MixedReturnStatement>
-    <UndefinedClass occurrences="4">
+    <UndefinedClass>
       <code>ParseException</code>
       <code>Reader</code>
       <code>Reader</code>
       <code>Service</code>
     </UndefinedClass>
   </file>
-  <file src="lib/Service/MatcherService.php">
-    <MissingPropertyType occurrences="1">
-      <code>$instance</code>
-    </MissingPropertyType>
-    <MixedAssignment occurrences="1">
-      <code>self::$instance</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>static</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>self::$instance = (self::$instance ?? new MatcherService())</code>
-    </MixedReturnStatement>
-  </file>
   <file src="lib/Service/SettingsService.php">
-    <InvalidArgument occurrences="1">
+    <InvalidArgument>
       <code>$labelRaw</code>
     </InvalidArgument>
-    <InvalidThrow occurrences="1">
+    <InvalidThrow>
       <code>throw $e;</code>
     </InvalidThrow>
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$labelRaw</code>
     </MixedArgument>
-    <MixedReturnTypeCoercion occurrences="3">
-      <code>ClassificationLabel::getDefaultLabels()</code>
-      <code>array_map(fn ($labelRaw) =&gt; ClassificationLabel::fromArray($labelRaw), $labelsRaw)</code>
-      <code>list&lt;\OCA\Files_Confidential\Contract\IClassificationLabel&gt;</code>
-    </MixedReturnTypeCoercion>
-    <UndefinedClass occurrences="2">
+    <UndefinedClass>
       <code>JsonException</code>
       <code>JsonException</code>
     </UndefinedClass>
-    <UndefinedDocblockClass occurrences="1">
+    <UndefinedDocblockClass>
       <code>\Safe\Exceptions\JsonException</code>
     </UndefinedDocblockClass>
-    <UndefinedFunction occurrences="2">
-      <code>\Safe\json_decode($this-&gt;config-&gt;getAppValue('files_confidential', 'labels', '[]'), true)</code>
+    <UndefinedFunction>
+      <code><![CDATA[\Safe\json_decode($this->config->getAppValue('files_confidential', 'labels', '[]'), true)]]></code>
       <code>\Safe\json_encode($array)</code>
     </UndefinedFunction>
   </file>
   <file src="lib/Settings/AdminSettings.php">
-    <DeprecatedClass occurrences="2">
+    <DeprecatedInterface>
       <code>IInitialStateService</code>
       <code>IInitialStateService</code>
-    </DeprecatedClass>
-    <DeprecatedMethod occurrences="2">
+    </DeprecatedInterface>
+    <DeprecatedMethod>
       <code>provideInitialState</code>
       <code>provideInitialState</code>
     </DeprecatedMethod>

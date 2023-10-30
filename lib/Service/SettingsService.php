@@ -28,7 +28,7 @@ class SettingsService {
 			return [];
 		}
 		try {
-			return array_map(fn ($labelRaw) => ClassificationLabel::fromArray($labelRaw), $labelsRaw);
+			return array_values(array_map(fn ($labelRaw) => ClassificationLabel::fromArray($labelRaw), $labelsRaw));
 		} catch(\ValueError $e) {
 			$this->logger->warning('Could not load labels setting', ['exception' => $e]);
 			return [];

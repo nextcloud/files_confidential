@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e328d4aac9c90781b54a26e659567f08",
+    "content-hash": "d18e55f3608595b2db7d50efc0c01f77",
     "packages": [],
     "packages-dev": [
         {
@@ -183,12 +183,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextcloud-deps/ocp.git",
-                "reference": "fa7ed9794598fa62f13cc4a6c4cafd25af4b6c3e"
+                "reference": "89782b01a6e496b6e4e16a449cb25eebc78a2359"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/fa7ed9794598fa62f13cc4a6c4cafd25af4b6c3e",
-                "reference": "fa7ed9794598fa62f13cc4a6c4cafd25af4b6c3e",
+                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/89782b01a6e496b6e4e16a449cb25eebc78a2359",
+                "reference": "89782b01a6e496b6e4e16a449cb25eebc78a2359",
                 "shasum": ""
             },
             "require": {
@@ -220,7 +220,7 @@
                 "issues": "https://github.com/nextcloud-deps/ocp/issues",
                 "source": "https://github.com/nextcloud-deps/ocp/tree/master"
             },
-            "time": "2023-10-24T00:31:30+00:00"
+            "time": "2023-10-27T00:30:38+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -391,16 +391,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.35.1",
+            "version": "v3.37.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "39dc3830797e107a21f8cfaca99fd0838950f8c2"
+                "reference": "e1f64aca03848c60d6eca5ab0dfc8b9f9678cb27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/39dc3830797e107a21f8cfaca99fd0838950f8c2",
-                "reference": "39dc3830797e107a21f8cfaca99fd0838950f8c2",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/e1f64aca03848c60d6eca5ab0dfc8b9f9678cb27",
+                "reference": "e1f64aca03848c60d6eca5ab0dfc8b9f9678cb27",
                 "shasum": ""
             },
             "require": {
@@ -437,9 +437,9 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
-                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.35.1"
+                "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.37.1"
             },
-            "time": "2023-10-12T13:48:08+00:00"
+            "time": "2023-10-29T20:52:01+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -865,16 +865,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "4.30.0",
+            "version": "5.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "33723713902e1345904a5c9064ef7848bee0d490"
+                "reference": "19dde3eba5901ff50ca43a5e4c43540f097e0511"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/33723713902e1345904a5c9064ef7848bee0d490",
-                "reference": "33723713902e1345904a5c9064ef7848bee0d490",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/19dde3eba5901ff50ca43a5e4c43540f097e0511",
+                "reference": "19dde3eba5901ff50ca43a5e4c43540f097e0511",
                 "shasum": ""
             },
             "require": {
@@ -894,9 +894,9 @@
             "description": "Composer-based Psalm Phar",
             "support": {
                 "issues": "https://github.com/psalm/phar/issues",
-                "source": "https://github.com/psalm/phar/tree/4.30.0"
+                "source": "https://github.com/psalm/phar/tree/5.15.0"
             },
-            "time": "2022-11-06T20:41:58+00:00"
+            "time": "2023-08-21T03:20:52+00:00"
         },
         {
             "name": "psr/clock",

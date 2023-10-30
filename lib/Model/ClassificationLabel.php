@@ -42,7 +42,7 @@ class ClassificationLabel implements IClassificationLabel {
 			}
 			foreach ($label->getSearchExpressions() as $expression) {
 				$pattern = $matcherService->getMatchExpression($expression);
-				if (preg_match($pattern, $text) === 1) {
+				if ($pattern !== null && $pattern !== '' && preg_match($pattern, $text) === 1) {
 					return $label;
 				}
 			}
@@ -55,6 +55,14 @@ class ClassificationLabel implements IClassificationLabel {
 		return null;
 	}
 
+    /**
+     * @param int $index
+     * @param string $tag
+     * @param list<string> $keywords
+     * @param list<string> $categories
+     * @param list<string> $searchExpressions
+     * @param list<string> $regularExpressions
+     */
 	public function __construct(int $index, string $tag, array $keywords, array $categories, array $searchExpressions, array $regularExpressions) {
 		$this->index = $index;
 		$this->tag = $tag;
