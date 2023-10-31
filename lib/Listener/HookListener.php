@@ -11,7 +11,7 @@ use OCP\SystemTag\ISystemTagObjectMapper;
 use Psr\Log\LoggerInterface;
 
 /**
- * @implements IEventListener<NodeWrittenEvent>
+ * @implements IEventListener<Event>
  */
 class HookListener implements IEventListener {
 	private ClassificationService $classificationService;
@@ -26,17 +26,19 @@ class HookListener implements IEventListener {
 	 * @inheritDoc
 	 */
 	public function handle(Event $event): void {
-		$node = $event->getNode();
-		if ($event instanceof NodeWrittenEvent && $node instanceof File) {
-			try {
-				$label = $this->classificationService->getClassificationLabelForFile($node);
-				if ($label === null) {
-					return;
-				}
-				$this->tagMapper->assignTags((string)$event->getNode()->getId(), 'files', [(int)$label->getTag()]);
-			} catch (\Throwable $e) {
-				\OCP\Server::get(LoggerInterface::class)->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
-			}
+		if ($event instanceof NodeWrittenEvent) {
+            $node = $event->getNode();
+            if ($node instanceof File) {
+                try {
+                    $label = $this->classificationService->getClassificationLabelForFile($node);
+                    if ($label === null) {
+                        return;
+                    }
+                    $this->tagMapper->assignTags((string)$event->getNode()->getId(), 'files', [(int)$label->getTag()]);
+                } catch (\Throwable $e) {
+                    \OCP\Server::get(LoggerInterface::class)->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
+                }
+            }
 		}
 	}
 }
