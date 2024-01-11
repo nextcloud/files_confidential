@@ -4,7 +4,7 @@
     "Could not store extracted labels" : "Konnte die extrahierten Labels nicht speichern",
     "Confidential files" : "Vertrauliche Dateien",
     "Workflows for handling confidential files in Nextcloud" : "Abläufe für den Umgang mit vertraulichen Dateien in Nextcloud",
-    "This app allows you to define a set of classification labels that will be assigned to files as Nextcloud tags.\nFor each classification label you can define a set of rules when it will be assigned to a file, based on text\ncontent or BAILS classification meta data." : "Mit dieser App können Sie eine Reihe von Klassifizierungslabels definieren, die Dateien als Nextcloud-Tags zugewiesen werden.\nFür jedes Klassifikationslabel können Sie eine Reihe von Regeln definieren, sobald es einer Datei zugewiesen wird  -  basierend auf einfachem Text oder Metadaten der BAILS-Klassifizierung.",
+    "This app allows you to define a set of classification labels that will be assigned to files as Nextcloud tags.\nFor each classification label you can define a set of rules when it will be assigned to a file, based on text\ncontent or BAILS classification meta data." : "Mit dieser App können Sie eine Reihe von Klassifizierungslabels definieren, die Dateien als Nextcloud-Schlagworte zugewiesen werden.\nFür jedes Klassifikationslabel können Sie eine Reihe von Regeln definieren, sobald es einer Datei zugewiesen wird\nbasierend auf einfachem Text oder Metadaten der BAILS-Klassifizierung.",
     "Remove label" : "Label entfernen",
     "Add tag ..." : "Schlagwort hinzufügen ...",
     "Select tag" : "Schlagwort auswählen",
