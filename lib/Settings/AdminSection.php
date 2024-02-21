@@ -43,7 +43,7 @@ class AdminSection implements IIconSection {
 	 * @return string
 	 */
 	public function getIcon(): string {
-		return $this->urlgen->imagePath('files_confidential', 'files_confidential.svg');
+		return $this->urlgen->imagePath('files_confidential', 'files_confidential-dark.svg');
 	}
 
 	/**
