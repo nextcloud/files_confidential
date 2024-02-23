@@ -1,5 +1,5 @@
 <template>
-	<div :class="{'label':true}">
+	<div class="label">
 		<NcButton type="tertiary-no-background"
 			class="close"
 			:aria-label="t('files_confidential', 'Remove label')"
@@ -14,6 +14,7 @@
 				:options="tags"
 				:label="'display-name'"
 				:multiple="false"
+				:label-outside="true"
 				:placeholder="t('files_confidential', 'Select tag')"
 				@input="$emit('change')" />
 		</label>
@@ -27,6 +28,7 @@
 						no-drop
 						select-on-tab
 						push-tags
+						:label-outside="true"
 						@input="$emit('change')" />
 				</label>
 			</div>
@@ -81,9 +83,10 @@
 </template>
 
 <script>
+import { NcSelect, NcButton } from '@nextcloud/vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 import TrashCan from 'vue-material-design-icons/TrashCan.vue'
-import { NcSelect, NcButton } from '@nextcloud/vue'
+
 export default {
 	name: 'ClassificationLabel',
 	components: {

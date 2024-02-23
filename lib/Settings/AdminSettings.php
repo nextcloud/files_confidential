@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
  * Copyright (c) 2021-2022 The Recognize contributors.
  * This file is licensed under the Affero General Public License version 3 or later. See the COPYING file.
@@ -18,7 +21,11 @@ class AdminSettings implements ISettings {
 
 	private MatcherService $matcherService;
 
-	public function __construct(SettingsService $settingsService, IInitialStateService $initialState, MatcherService $matcherService) {
+	public function __construct(
+		SettingsService $settingsService,
+		IInitialStateService $initialState,
+		MatcherService $matcherService
+	) {
 		$this->settingsService = $settingsService;
 		$this->initialState = $initialState;
 		$this->matcherService = $matcherService;
@@ -37,14 +44,14 @@ class AdminSettings implements ISettings {
 	}
 
 	/**
-	 * @return string the section ID, e.g. 'sharing'
+	 * @inheritdoc
 	 */
 	public function getSection(): string {
 		return 'files_confidential';
 	}
 
 	/**
-	 * @return int whether the form should be rather on the top or bottom of the admin section. The forms are arranged in ascending order of the priority values. It is required to return a value between 0 and 100.
+	 * @inheritdoc
 	 */
 	public function getPriority(): int {
 		return 1;
