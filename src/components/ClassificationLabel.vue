@@ -92,16 +92,6 @@
 							</NcActionButton>
 						</template>
 					</NcListItem>
-<!--					<li v-for="(regex,i) in label.regularExpressions" :key="regex">-->
-<!--						<i>/{{ regex }}/</i>-->
-<!--						<NcButton type="tertiary-no-background"-->
-<!--							:aria-label="t('files_confidential', 'Remove search expression')"-->
-<!--							@click="label.regularExpressions.splice(i,1)">-->
-<!--							<template #icon>-->
-<!--								<TrashCan />-->
-<!--							</template>-->
-<!--						</NcButton>-->
-<!--					</li>-->
 				</ul>
 			</div>
 		</div>
