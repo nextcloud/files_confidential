@@ -9,7 +9,7 @@
 		<NcLoadingIcon v-if="loading" class="loading-icon" />
 		<CheckIcon v-if="!loading && success" class="success-icon" />
 		<NcSettingsSection :name="t('files_confidential', 'Business Authorization Framework')"
-			:description="t('files_confidential', 'Upload policy classification labels from an .xml file')">
+			:description="t('files_confidential', 'Upload your TSCP/BAILS policy classification labels (XML format)')">
 			<input ref="fileInput"
 				type="file"
 				name="baf"
@@ -19,6 +19,9 @@
 				@click="$refs.fileInput.click()">
 				{{ t('files_confidential', 'Upload policy') }}
 			</NcButton>
+			<NcNoteCard type="info">
+				{{ t('files_confidential', 'Previous labels will be overwritten after successful file upload') }}
+			</NcNoteCard>
 		</NcSettingsSection>
 		<NcSettingsSection :name="t('files_confidential', 'Classification labels')"
 			:description="t('files_confidential', 'Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow.')">
@@ -54,9 +57,10 @@ import CheckIcon from 'vue-material-design-icons/Check.vue'
 import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl } from '@nextcloud/router'
-import { showError, showSuccess } from '@nextcloud/dialogs'
+import { showError, showSuccess, showWarning } from '@nextcloud/dialogs'
 import axios from '@nextcloud/axios'
 import ClassificationLabel from '../components/ClassificationLabel.vue'
 import client from '../DavClient.js'
@@ -70,6 +74,7 @@ export default {
 		NcButton,
 		PlusIcon,
 		NcLoadingIcon,
+		NcNoteCard,
 		CheckIcon,
 		ClassificationLabel,
 	},
@@ -127,8 +132,8 @@ export default {
 		},
 
 		addLabel() {
-			console.debug('add label', this.labels.filter(label => !label.tag).length > 0)
 			if (this.labels.filter(label => !label.tag).length > 0) {
+				showWarning(t('files_confidential', 'Can not add new label, until all labels have a tag assigned.'))
 				return
 			}
 			this.labels.push({
@@ -165,7 +170,9 @@ export default {
 
 		async setValue(setting, value) {
 			if (setting === 'labels') {
-				value = value.map(label => ({ ...label, tag: String(label.tag.id) }))
+				value = value.map(label => ({
+					...label, tag: String(label?.tag?.id) || '',
+				}))
 			}
 			try {
 				await axios.put(generateUrl(`/apps/files_confidential/admin/settings/${setting}`), {
@@ -190,7 +197,6 @@ export default {
 				this.loading = false
 				return
 			}
-			console.debug(res)
 			if (res.status === 'error') {
 				this.error = res.data[0]
 				this.loading = false
