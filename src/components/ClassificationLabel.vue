@@ -61,7 +61,8 @@
 			</div>
 			<div class="option regex">
 				<ul>
-					<NcListItem v-for="(exp, i) in label.searchExpressions" :key="exp"
+					<NcListItem v-for="(exp, i) in label.searchExpressions"
+						:key="exp"
 						:name="exp"
 						:compact="true"
 						:force-display-actions="true">
@@ -78,7 +79,8 @@
 							</NcActionButton>
 						</template>
 					</NcListItem>
-					<NcListItem v-for="(regex, i) in label.regularExpressions" :key="regex"
+					<NcListItem v-for="(regex, i) in label.regularExpressions"
+						:key="regex"
 						:name="regex"
 						:compact="true"
 						:force-display-actions="true">
