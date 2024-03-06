@@ -16,19 +16,11 @@ use OCP\IInitialStateService;
 use OCP\Settings\ISettings;
 
 class AdminSettings implements ISettings {
-	private SettingsService $settingsService;
-	private IInitialStateService $initialState;
-
-	private MatcherService $matcherService;
-
 	public function __construct(
-		SettingsService $settingsService,
-		IInitialStateService $initialState,
-		MatcherService $matcherService
+		private SettingsService $settingsService,
+		private IInitialStateService $initialState,
+		private MatcherService $matcherService
 	) {
-		$this->settingsService = $settingsService;
-		$this->initialState = $initialState;
-		$this->matcherService = $matcherService;
 	}
 
 	/**

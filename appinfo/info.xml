@@ -19,7 +19,7 @@ content or BAILS classification meta data.
 	<bugs>https://github.com/nextcloud/files_confidential/issues</bugs>
 	<repository type="git">https://github.com/nextcloud/files_confidential.git</repository>
 	<dependencies>
-		<php min-version="7.4" />
+		<php min-version="8.0" />
 		<nextcloud min-version="26" max-version="29" />
 	</dependencies>
 	<settings>

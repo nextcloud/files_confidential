@@ -10,12 +10,10 @@ use Psr\Log\LoggerInterface;
 use Safe\Exceptions\JsonException;
 
 class SettingsService {
-	private IConfig $config;
-	private LoggerInterface $logger;
-
-	public function __construct(IConfig $config, LoggerInterface $logger) {
-		$this->config = $config;
-		$this->logger = $logger;
+	public function __construct(
+		private IConfig $config,
+		private LoggerInterface $logger
+	) {
 	}
 
 	/**

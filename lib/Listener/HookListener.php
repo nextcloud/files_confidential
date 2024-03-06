@@ -16,14 +16,13 @@ use Psr\Log\LoggerInterface;
  * @implements IEventListener<Event>
  */
 class HookListener implements IEventListener {
-	private ClassificationService $classificationService;
-
-	private ISystemTagObjectMapper $tagMapper;
-
-	public function __construct(ClassificationService $classificationService, ISystemTagObjectMapper $tagMapper) {
-		$this->classificationService = $classificationService;
-		$this->tagMapper = $tagMapper;
+	public function __construct(
+		private ClassificationService $classificationService,
+		private ISystemTagObjectMapper $tagMapper,
+		private LoggerInterface $logger
+	) {
 	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -38,7 +37,7 @@ class HookListener implements IEventListener {
 					}
 					$this->tagMapper->assignTags((string)$event->getNode()->getId(), 'files', [(int)$label->getTag()]);
 				} catch (\Throwable $e) {
-					\OCP\Server::get(LoggerInterface::class)->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
+					$this->logger->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
 				}
 			}
 		}
