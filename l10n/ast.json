@@ -1,4 +1,5 @@
 { "translations": {
-    "Confidential files" : "Ficheros confidenciales"
+    "Confidential files" : "Ficheros confidenciales",
+    "Failed to save settings" : "Nun se pue guardar la configuración"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
