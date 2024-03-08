@@ -1,5 +1,5 @@
 <template>
-	<div :class="{'label':true}">
+	<div class="label">
 		<NcButton type="tertiary-no-background"
 			class="close"
 			:aria-label="t('files_confidential', 'Remove label')"
@@ -9,30 +9,36 @@
 			</template>
 		</NcButton>
 		<label>
-			<div class="text">{{ t('files_confidential', 'Add tag ...') }}</div>
+			<span class="text">{{ t('files_confidential', 'Add tag ...') }}</span>
 			<NcSelect v-model="label.tag"
 				:options="tags"
 				:label="'display-name'"
 				:multiple="false"
+				:label-outside="true"
+				:filter-by="(option, label, search) => {
+					return option['display-name'].toLowerCase().includes(search.toLowerCase())
+				}"
+				:limit="5"
 				:placeholder="t('files_confidential', 'Select tag')"
 				@input="$emit('change')" />
 		</label>
 		<div class="options">
 			<div class="option">
 				<label>
-					<div class="text">{{ t('files_confidential', '... if document has TSCP policy category ID') }}</div>
+					<span class="text">{{ t('files_confidential', '... if document has TSCP policy category ID') }}</span>
 					<NcSelect v-model="label.categories"
 						multiple
 						taggable
 						no-drop
 						select-on-tab
 						push-tags
+						:label-outside="true"
 						@input="$emit('change')" />
 				</label>
 			</div>
 			<div class="option data">
 				<label>
-					<div class="text">{{ t('files_confidential', '... if document contains') }}</div>
+					<span class="text">{{ t('files_confidential', '... if document contains') }}</span>
 					<div class="text">
 						<div :style="{display:'flex', flexDirection:'row'}">
 							<NcSelect v-model="input"
@@ -40,6 +46,7 @@
 								taggable
 								select-on-tab
 								:options="Object.keys(searchExpressions)"
+								:label-outside="true"
 								:placeholder="t('files_confidential', 'Enter Regular Expression')"
 								@input="$emit('change')">
 								<template #option="{label: option}">
@@ -47,33 +54,46 @@
 									<small><i>/{{ searchExpressions[option]||option }}/</i></small>
 								</template>
 							</NcSelect>
-							<NcButton @click="addExpression()">Add</NcButton>
+							<NcButton style="margin: 0 5px;" @click="addExpression()">Add</NcButton>
 						</div>
 					</div>
 				</label>
 			</div>
 			<div class="option regex">
 				<ul>
-					<li v-for="(exp,i) in label.searchExpressions" :key="exp">
-						<strong :title="searchExpressions[exp]">{{ exp }}</strong>
-						<NcButton type="tertiary-no-background"
-							:aria-label="t('files_confidential', 'Remove search expression')"
-							@click="label.searchExpressions.splice(i,1)">
-							<template #icon>
-								<TrashCan />
-							</template>
-						</NcButton>
-					</li>
-					<li v-for="(regex,i) in label.regularExpressions" :key="regex">
-						<i>/{{ regex }}/</i>
-						<NcButton type="tertiary-no-background"
-							:aria-label="t('files_confidential', 'Remove search expression')"
-							@click="label.regularExpressions.splice(i,1)">
-							<template #icon>
-								<TrashCan />
-							</template>
-						</NcButton>
-					</li>
+					<NcListItem v-for="(exp, i) in label.searchExpressions"
+						:key="exp"
+						:name="exp"
+						:compact="true"
+						:force-display-actions="true">
+						<template #subname>
+							<span :title="searchExpressions[exp]">{{ searchExpressions[exp] }}</span>
+						</template>
+						<template #actions>
+							<NcActionButton type="tertiary-no-background"
+								:aria-label="t('files_confidential', 'Remove search expression')"
+								@click="label.searchExpressions.splice(i,1)">
+								<template #icon>
+									<TrashCan />
+								</template>
+							</NcActionButton>
+						</template>
+					</NcListItem>
+					<NcListItem v-for="(regex, i) in label.regularExpressions"
+						:key="regex"
+						:name="regex"
+						:compact="true"
+						:force-display-actions="true">
+						<template #actions>
+							<NcActionButton type="tertiary-no-background"
+								:aria-label="t('files_confidential', 'Remove search expression')"
+								@click="label.regularExpressions.splice(i,1)">
+								<template #icon>
+									<TrashCan />
+								</template>
+							</NcActionButton>
+						</template>
+					</NcListItem>
 				</ul>
 			</div>
 		</div>
@@ -81,14 +101,20 @@
 </template>
 
 <script>
+import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcListItem from '@nextcloud/vue/dist/Components/NcListItem.js'
+import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 import TrashCan from 'vue-material-design-icons/TrashCan.vue'
-import { NcSelect, NcButton } from '@nextcloud/vue'
+
 export default {
 	name: 'ClassificationLabel',
 	components: {
 		NcSelect,
 		NcButton,
+		NcListItem,
+		NcActionButton,
 		CloseIcon,
 		TrashCan,
 	},

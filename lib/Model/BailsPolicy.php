@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OCA\Files_Confidential\Model;
 
 use OCA\Files_Confidential\Contract\IBailsAuthorizationCategory;
@@ -21,9 +23,9 @@ class BailsPolicy implements IBailsPolicy {
 	private string $availabilityImpact = '';
 	private string $impactScale = '';
 
-    /**
-     * @var list<IBailsAuthorizationCategory>
-     */
+	/**
+	 * @var list<IBailsAuthorizationCategory>
+	 */
 	private array $categories = [];
 
 	/**

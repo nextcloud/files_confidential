@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OCA\Files_Confidential\Model;
 
 use OCA\Files_Confidential\Contract\IClassificationLabel;
@@ -55,14 +57,14 @@ class ClassificationLabel implements IClassificationLabel {
 		return null;
 	}
 
-    /**
-     * @param int $index
-     * @param string $tag
-     * @param list<string> $keywords
-     * @param list<string> $categories
-     * @param list<string> $searchExpressions
-     * @param list<string> $regularExpressions
-     */
+	/**
+	 * @param int $index
+	 * @param string $tag
+	 * @param list<string> $keywords
+	 * @param list<string> $categories
+	 * @param list<string> $searchExpressions
+	 * @param list<string> $regularExpressions
+	 */
 	public function __construct(int $index, string $tag, array $keywords, array $categories, array $searchExpressions, array $regularExpressions) {
 		$this->index = $index;
 		$this->tag = $tag;

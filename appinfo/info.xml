@@ -9,7 +9,7 @@ This app allows you to define a set of classification labels that will be assign
 For each classification label you can define a set of rules when it will be assigned to a file, based on text
 content or BAILS classification meta data.
 ]]></description>
-	<version>2.0.1</version>
+	<version>2.1.0</version>
 	<licence>agpl</licence>
 	<author mail="mklehr@gmx.net" homepage="https://marcelklehr.de">Marcel Klehr</author>
 	<namespace>Files_Confidential</namespace>
@@ -19,8 +19,8 @@ content or BAILS classification meta data.
 	<bugs>https://github.com/nextcloud/files_confidential/issues</bugs>
 	<repository type="git">https://github.com/nextcloud/files_confidential.git</repository>
 	<dependencies>
-		<php min-version="7.4" />
-		<nextcloud min-version="26" max-version="28" />
+		<php min-version="8.0" />
+		<nextcloud min-version="26" max-version="29" />
 	</dependencies>
 	<settings>
 		<admin>OCA\Files_Confidential\Settings\AdminSettings</admin>

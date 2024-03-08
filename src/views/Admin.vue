@@ -8,7 +8,8 @@
 	<div id="files_confidential">
 		<NcLoadingIcon v-if="loading" class="loading-icon" />
 		<CheckIcon v-if="!loading && success" class="success-icon" />
-		<NcSettingsSection :title="t('files_confidential', 'Business Authorization Framework')">
+		<NcSettingsSection :name="t('files_confidential', 'Business Authorization Framework')"
+			:description="t('files_confidential', 'Upload your TSCP/BAILS policy classification labels (XML format)')">
 			<input ref="fileInput"
 				type="file"
 				name="baf"
@@ -18,10 +19,12 @@
 				@click="$refs.fileInput.click()">
 				{{ t('files_confidential', 'Upload policy') }}
 			</NcButton>
+			<NcNoteCard type="info">
+				{{ t('files_confidential', 'Previous labels will be overwritten after successful file upload') }}
+			</NcNoteCard>
 		</NcSettingsSection>
-		<NcSettingsSection :title="t('files_confidential', 'Classification labels')">
-			<p>{{ t('files_confidential', 'Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow.') }}</p>
-			<p>&nbsp;</p>
+		<NcSettingsSection :name="t('files_confidential', 'Classification labels')"
+			:description="t('files_confidential', 'Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow.')">
 			<transition-group name="labels" tag="div">
 				<ClassificationLabel v-for="label in labels"
 					:key="label.id"
@@ -51,9 +54,13 @@
 
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
-import { NcSettingsSection, NcButton, NcLoadingIcon } from '@nextcloud/vue'
+import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl } from '@nextcloud/router'
+import { showError, showSuccess, showWarning } from '@nextcloud/dialogs'
 import axios from '@nextcloud/axios'
 import ClassificationLabel from '../components/ClassificationLabel.vue'
 import client from '../DavClient.js'
@@ -67,6 +74,7 @@ export default {
 		NcButton,
 		PlusIcon,
 		NcLoadingIcon,
+		NcNoteCard,
 		CheckIcon,
 		ClassificationLabel,
 	},
@@ -74,6 +82,7 @@ export default {
 	data() {
 		return {
 			loading: false,
+			loadingLabels: false,
 			success: false,
 			error: '',
 			timeout: null,
@@ -86,14 +95,12 @@ export default {
 	watch: {
 		error(error) {
 			if (!error) return
-			OC.Notification.showTemporary(error)
+			showError(error)
 		},
 	},
+
 	async created() {
-		this.tags = await this.getTags()
-		this.searchExpressions = loadState('files_confidential', 'searchExpressions')
-		this.labels = loadState('files_confidential', 'labels')
-			.map(label => ({ ...label, id: Math.random(), tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))
+		await this.initTagsAndLabels()
 	},
 
 	methods: {
@@ -103,6 +110,7 @@ export default {
 				.map((label, index) => ({ ...label, index }))
 			this.onChange()
 		},
+
 		moveDownLabel(index) {
 			if (index === this.labels.length - 1) return
 			const labels = this.labels.splice(index, 1)
@@ -110,6 +118,7 @@ export default {
 			this.labels = this.labels.map((label, index) => ({ ...label, index }))
 			this.onChange()
 		},
+
 		moveUpLabel(index) {
 			if (index === 0) return
 			const labels = this.labels.splice(index, 1)
@@ -117,11 +126,14 @@ export default {
 			this.labels = this.labels.map((label, index) => ({ ...label, index }))
 			this.onChange()
 		},
+
 		toggle(index) {
 			this.$set(this.labels, index, { ...this.labels[index], expanded: !this.labels[index].expanded })
 		},
+
 		addLabel() {
 			if (this.labels.filter(label => !label.tag).length > 0) {
+				showWarning(t('files_confidential', 'Can not add new label, until all labels have a tag assigned.'))
 				return
 			}
 			this.labels.push({
@@ -134,6 +146,7 @@ export default {
 				regularExpressions: [],
 			})
 		},
+
 		onChange() {
 			if (this.timeout) {
 				clearTimeout(this.timeout)
@@ -157,14 +170,16 @@ export default {
 
 		async setValue(setting, value) {
 			if (setting === 'labels') {
-				value = value.map(label => ({ ...label, tag: label.tag.id }))
+				value = value.map(label => ({
+					...label, tag: String(label?.tag?.id) || '',
+				}))
 			}
 			try {
 				await axios.put(generateUrl(`/apps/files_confidential/admin/settings/${setting}`), {
 					value,
 				})
 			} catch (e) {
-				this.error = this.t('recognize', 'Failed to save settings')
+				this.error = this.t('files_confidential', 'Failed to save settings')
 				throw e
 			}
 		},
@@ -174,6 +189,7 @@ export default {
 			const data = new FormData()
 			data.append('baf', file)
 			this.loading = true
+			this.error = ''
 			let res
 			try {
 				({ data: res } = await axios.post(generateUrl('/apps/files_confidential/admin/baf'), data))
@@ -188,6 +204,8 @@ export default {
 			}
 			this.loading = false
 			this.success = true
+			showSuccess(t('files_confidential', 'Policy uploaded successfully'))
+			this.loadLabels()
 			setTimeout(() => {
 				this.success = false
 			}, 3000)
@@ -210,6 +228,21 @@ export default {
 			}))
 
 			return response.data.map(item => item.props).filter(item => item.id)
+		},
+
+		async initTagsAndLabels() {
+			this.tags = await this.getTags()
+			this.searchExpressions = loadState('files_confidential', 'searchExpressions')
+			this.labels = loadState('files_confidential', 'labels')
+				.map(label => ({ ...label, id: Math.random(), tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))
+		},
+
+		loadLabels() {
+			this.getTags()
+			axios.get(generateUrl('/apps/files_confidential/admin/settings/labels'))
+				.then(res => {
+					this.labels = res.data.map(label => ({ ...label, id: Math.random(), tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))
+				})
 		},
 	},
 }
@@ -281,7 +314,7 @@ figure[class^='icon-'] {
 	flex-direction: column;
 }
 
-input[type="file"] {
+input[type='file'] {
 	display: none;
 }
 
@@ -309,6 +342,7 @@ input[type="file"] {
 .labels-active, .list-leave-active {
 	transition: all 1s;
 }
+
 .labels-enter, .labels-leave-to {
 	opacity: 0;
 	transform: translateX(30px);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OCA\Files_Confidential\Service;
 
 use OCA\Files_Confidential\Contract\IClassificationLabel;
@@ -7,14 +9,11 @@ use OCA\Files_Confidential\Model\ClassificationLabel;
 use OCP\Files\File;
 
 class ClassificationService {
-	private ContentProviderService $contentService;
-	private BailsPolicyProviderService $bailsService;
-	private SettingsService $settings;
-
-	public function __construct(ContentProviderService $contentService, BailsPolicyProviderService $bailsService, SettingsService $settings) {
-		$this->contentService = $contentService;
-		$this->bailsService = $bailsService;
-		$this->settings = $settings;
+	public function __construct(
+		private ContentProviderService $contentService,
+		private BailsPolicyProviderService $bailsService,
+		private SettingsService $settings
+	) {
 	}
 
 	public function getClassificationLabelForFile(File $file) : ?IClassificationLabel {

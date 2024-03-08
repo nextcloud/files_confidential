@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OCA\Files_Confidential\Listener;
 
 use OCA\Files_Confidential\Service\ClassificationService;
@@ -14,31 +16,30 @@ use Psr\Log\LoggerInterface;
  * @implements IEventListener<Event>
  */
 class HookListener implements IEventListener {
-	private ClassificationService $classificationService;
-
-	private ISystemTagObjectMapper $tagMapper;
-
-	public function __construct(ClassificationService $classificationService, ISystemTagObjectMapper $tagMapper) {
-		$this->classificationService = $classificationService;
-		$this->tagMapper = $tagMapper;
+	public function __construct(
+		private ClassificationService $classificationService,
+		private ISystemTagObjectMapper $tagMapper,
+		private LoggerInterface $logger
+	) {
 	}
+
 	/**
 	 * @inheritDoc
 	 */
 	public function handle(Event $event): void {
 		if ($event instanceof NodeWrittenEvent) {
-            $node = $event->getNode();
-            if ($node instanceof File) {
-                try {
-                    $label = $this->classificationService->getClassificationLabelForFile($node);
-                    if ($label === null) {
-                        return;
-                    }
-                    $this->tagMapper->assignTags((string)$event->getNode()->getId(), 'files', [(int)$label->getTag()]);
-                } catch (\Throwable $e) {
-                    \OCP\Server::get(LoggerInterface::class)->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
-                }
-            }
+			$node = $event->getNode();
+			if ($node instanceof File) {
+				try {
+					$label = $this->classificationService->getClassificationLabelForFile($node);
+					if ($label === null) {
+						return;
+					}
+					$this->tagMapper->assignTags((string)$event->getNode()->getId(), 'files', [(int)$label->getTag()]);
+				} catch (\Throwable $e) {
+					$this->logger->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
+				}
+			}
 		}
 	}
 }

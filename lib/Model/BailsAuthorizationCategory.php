@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OCA\Files_Confidential\Model;
 
 use OCA\Files_Confidential\Contract\IBailsAuthorizationCategory;

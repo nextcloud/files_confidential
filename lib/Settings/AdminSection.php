@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
  * Copyright (c) 2021-2022 The Recognize contributors.
  * This file is licensed under the Affero General Public License version 3 or later. See the COPYING file.
@@ -11,43 +14,35 @@ use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
 
 class AdminSection implements IIconSection {
-	/*private IL10N $l;*/
-	private IURLGenerator $urlgen;
-
-	public function __construct(/*IL10N $l, */IURLGenerator $urlgen) {
-		//$this->l = $l;
-		$this->urlgen = $urlgen;
+	public function __construct(
+		private IURLGenerator $urlGenerator,
+		private IL10N $l
+	) {
 	}
 
 	/**
-	 * returns the ID of the section. It is supposed to be a lower case string
-	 *
-	 *
-	 * @return string
+	 * @inheritdoc
 	 */
 	public function getID(): string {
 		return 'files_confidential';
 	}
 
 	/**
-	 * returns the translated name as it should be displayed, e.g. 'LDAP / AD
-	 * integration'. Use the L10N service to translate it.
-	 *
-	 * @return string
+	 * @inheritdoc
 	 */
 	public function getName(): string {
-		return 'Confidential Files';
+		return $this->l->t('Confidential Files');
 	}
 
 	/**
-	 * @return string
+	 * @inheritdoc
 	 */
 	public function getIcon(): string {
-		return $this->urlgen->imagePath('files_confidential', 'files_confidential.svg');
+		return $this->urlGenerator->imagePath('files_confidential', 'files_confidential-dark.svg');
 	}
 
 	/**
-	 * @return int whether the form should be rather on the top or bottom of the settings navigation. The sections are arranged in ascending order of the priority values. It is required to return a value between 0 and 99.
+	 * @inheritdoc
 	 */
 	public function getPriority(): int {
 		return 80;

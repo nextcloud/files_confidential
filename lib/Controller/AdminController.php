@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
  * Copyright (c) 2022 The Recognize contributors.
  * This file is licensed under the Affero General Public License version 3 or later. See the COPYING file.
@@ -18,20 +21,16 @@ use OCP\IRequest;
 use Safe\Exceptions\JsonException;
 
 class AdminController extends Controller {
-	private SettingsService $settingsService;
 
-	private IL10N $l10n;
-
-	private BafService $bafService;
-
-	private IAppData $appData;
-
-	public function __construct(string $appName, IRequest $request, SettingsService $settingsService, IL10N $l10n, BafService $bafService, IAppData $appData) {
+	public function __construct(
+		string $appName,
+		IRequest $request,
+		private SettingsService $settingsService,
+		private IL10N $l10n,
+		private BafService $bafService,
+		private IAppData $appData
+	) {
 		parent::__construct($appName, $request);
-		$this->settingsService = $settingsService;
-		$this->l10n = $l10n;
-		$this->bafService = $bafService;
-		$this->appData = $appData;
 	}
 
 	/**
@@ -47,6 +46,12 @@ class AdminController extends Controller {
 		}
 	}
 
+	public function getClassificationLabels(): JSONResponse {
+		$labels = $this->settingsService->getClassificationLabels();
+		$labels = array_map(static fn ($label):array => $label->toArray(), $labels);
+		return new JSONResponse($labels);
+	}
+
 	/**
 	 * @return \OCP\AppFramework\Http\JSONResponse
 	 * @throws \OCP\Files\NotPermittedException
@@ -55,7 +60,7 @@ class AdminController extends Controller {
 		$upload = $this->request->getUploadedFile('baf');
 		$result = [];
 		if ($upload['type'] !== 'text/xml') {
-			$result['errors'][] = $this->l10n->t('Unsupported file type for import');
+			$result['errors'][] = $this->l10n->t('Unsupported file type for import. An XML file is expected.');
 			return new JSONResponse(['status' => 'error', 'data' => $result['errors']]);
 		}
 
