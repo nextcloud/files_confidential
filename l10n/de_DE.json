@@ -1,5 +1,4 @@
 { "translations": {
-    "Unsupported file type for import" : "Ein Import von Dateien dieses Typs wird nicht unterstützt",
     "Could not read uploaded file" : "Hochgeladene Datei konnte nicht gelesen werden",
     "Could not store extracted labels" : "Konnte die extrahierten Labels nicht speichern",
     "Confidential files" : "Vertrauliche Dateien",

@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "Nepodporovaný typ souboru pro import",
     "Could not read uploaded file" : "Nahraný soubor se nedaří číst",
     "Could not store extracted labels" : "Nepodařilo se uložit vyzískané popisky",
     "Confidential files" : "Důvěrné soubory",

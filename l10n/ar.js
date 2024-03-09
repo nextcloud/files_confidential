@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "لايمكن استيراد ملفات من هذا النوع",
     "Could not read uploaded file" : "الملف المرفوع لم يُمكن قراءته",
     "Could not store extracted labels" : "لم يُمكن تخزين الملصقات المستخرجة",
     "Confidential files" : "ملفات سرّية",

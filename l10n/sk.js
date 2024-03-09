@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "Nepodporovaný typ súboru na import",
     "Add tag ..." : "Pridať štítok...",
     "Select tag" : "Vyberte štítok",
     "Add new label" : "Pridať novú značku",

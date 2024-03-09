@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "Μη υποστηριζόμενος τύπος αρχείου για εισαγωγή",
     "Could not read uploaded file" : "Δεν ήταν δυνατή η ανάγνωση του μεταφορτωμένου αρχείου",
     "Could not store extracted labels" : "Δεν ήταν δυνατή η αποθήκευση ετικετών που έχουν εξαχθεί",
     "Confidential files" : "Εμπιστευτικά αρχεία",

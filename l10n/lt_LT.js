@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "Importavimui pateiktas nepalaikomas failo tipas",
     "Remove label" : "Šalinti etiketę",
     "Add tag ..." : "Pridėti žymę...",
     "Add new label" : "Pridėti naują etiketę",

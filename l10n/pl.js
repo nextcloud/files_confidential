@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "Nieobsługiwany typ pliku do importu",
     "Could not read uploaded file" : "Nie można odczytać przesłanego pliku",
     "Confidential files" : "Poufne pliki",
     "Remove label" : "Usuń etykietę",

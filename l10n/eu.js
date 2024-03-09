@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "Inportatzeko fitxategi mota ez onartua",
     "Could not read uploaded file" : "Ezin izan da igotako fitxategia irakurri",
     "Could not store extracted labels" : "Ezin izan dira ateratako etiketak gorde",
     "Confidential files" : "Fitxategi konfidentzialak",

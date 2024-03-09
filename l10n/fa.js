@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "این نوع فایل برای افزودن پشتیبانی نمی شود",
     "Could not read uploaded file" : "Could not read uploaded file",
     "Could not store extracted labels" : "Could not store extracted labels",
     "Confidential files" : "Confidential files",

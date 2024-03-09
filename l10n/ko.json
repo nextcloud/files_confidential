@@ -1,5 +1,4 @@
 { "translations": {
-    "Unsupported file type for import" : "지원하지 않는 가져오기 파일 형식",
     "Could not read uploaded file" : "업로드된 파일을 읽을 수 없음",
     "Confidential files" : "기밀 파일",
     "Workflows for handling confidential files in Nextcloud" : "Nextcloud 파일에 대한 기밀 관리 워크플로",

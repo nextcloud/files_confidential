@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "Tiedoston tyyppi ei ole tuotavaa muotoa",
     "Could not read uploaded file" : "Lähetettyä tiedostoa ei voitu lukea",
     "Confidential files" : "Luottamukselliset tiedostot",
     "Workflows for handling confidential files in Nextcloud" : "Työnkulut luottamuksellisten tiedostojen käsittelyyn Nextcloudissa",

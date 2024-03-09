@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "Nem támogatott fájltípus az importáláshoz",
     "Could not read uploaded file" : "A feltöltött fájl olvasása sikertelen",
     "Could not store extracted labels" : "A kinyert címkék tárolása sikertelen",
     "Confidential files" : "Bizalmas fájlok",

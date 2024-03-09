@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "匯入不支援的檔案格式",
     "Could not read uploaded file" : "無法讀取已上傳的檔案",
     "Could not store extracted labels" : "無法儲存已擷取的標籤",
     "Confidential files" : "機密檔案",

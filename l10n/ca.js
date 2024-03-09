@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Unsupported file type for import" : "El tipus de fitxer que es vol importar no és compatible",
     "Could not read uploaded file" : "No s'ha pogut carregar el fitxer",
     "Could not store extracted labels" : "No s'ha pogut guardar les etiquetes extretes",
     "Confidential files" : "Fitxers confidencials",
