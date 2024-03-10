@@ -1,6 +1,8 @@
 { "translations": {
+    "Unsupported file type for import. An XML file is expected." : "Nicht für den Import unterstützter Dateityp. Es wird eine XML-Datei erwartet.",
     "Could not read uploaded file" : "Hochgeladene Datei konnte nicht gelesen werden",
     "Could not store extracted labels" : "Konnte die extrahierten Labels nicht speichern",
+    "Confidential Files" : "Vertrauliche Dateien",
     "Confidential files" : "Vertrauliche Dateien",
     "Workflows for handling confidential files in Nextcloud" : "Abläufe für den Umgang mit vertraulichen Dateien in Nextcloud",
     "This app allows you to define a set of classification labels that will be assigned to files as Nextcloud tags.\nFor each classification label you can define a set of rules when it will be assigned to a file, based on text\ncontent or BAILS classification meta data." : "Mit dieser App können Sie eine Reihe von Klassifizierungslabels definieren, die Dateien als Nextcloud-Schlagworte zugewiesen werden.\nFür jedes Klassifikationslabel können Sie eine Reihe von Regeln definieren, sobald es einer Datei zugewiesen wird\nbasierend auf einfachem Text oder Metadaten der BAILS-Klassifizierung.",
@@ -12,10 +14,14 @@
     "Enter Regular Expression" : "Regulären Ausdruck eingeben",
     "Remove search expression" : "Suchausdruck entfernen",
     "Business Authorization Framework" : "Framework für Geschäftsautorisierung",
+    "Upload your TSCP/BAILS policy classification labels (XML format)" : "Ihre TSCP/BAILS-Richtlinienklassifizierungsetiketten hochladen (XML-Format)",
     "Upload policy" : "Richtlinie für das Hochladen",
+    "Previous labels will be overwritten after successful file upload" : "Vorherige Etiketten werden nach erfolgreichem Datei-Upload überschrieben.",
     "Classification labels" : "Klassifizierungsbezeichnungen",
     "Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow." : "Definieren Sie Klassifizierungsbezeichnungen, die für verschiedene Dokumente gelten. Basierend auf diesen Bezeichnungen können Sie Regeln in Nextcloud-Flow definieren.",
     "Add new label" : "Neue Bezeichnung hinzufügen",
-    "Failed to save settings" : "Einstellungen konnten nicht gespeichert werden"
+    "Can not add new label, until all labels have a tag assigned." : "Neues Etikett kann so lange nicht hinzugefügt werden, bis allen Etiketten ein Schlagwort zugewiesen ist.",
+    "Failed to save settings" : "Einstellungen konnten nicht gespeichert werden",
+    "Policy uploaded successfully" : "Richtlinie erfolgreich hochgeladen"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
