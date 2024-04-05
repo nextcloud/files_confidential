@@ -22,7 +22,7 @@ OC.L10N.register(
     "Classification labels" : "Klassifizierungsbezeichnungen",
     "Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow." : "Definieren Sie Klassifizierungsbezeichnungen, die für verschiedene Dokumente gelten. Basierend auf diesen Bezeichnungen können Sie Regeln in Nextcloud-Flow definieren.",
     "Add new label" : "Neue Bezeichnung hinzufügen",
-    "Can not add new label, until all labels have a tag assigned." : "Neues Etikett kann so lange nicht hinzugefügt werden, bis allen Etiketten ein Schlagwort zugewiesen ist.",
+    "Can not add new label, until all labels have a tag assigned." : "Es kann so lange kein neues Etikett hinzugefügt werden, bis allen Etiketten ein Schlagwort zugewiesen ist.",
     "Failed to save settings" : "Einstellungen konnten nicht gespeichert werden",
     "Policy uploaded successfully" : "Richtlinie erfolgreich hochgeladen"
 },
