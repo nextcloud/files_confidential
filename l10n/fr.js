@@ -17,7 +17,7 @@ OC.L10N.register(
     "Business Authorization Framework" : "Business Authorization Framework",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Téléversez vos étiquettes de classification de politique TSCP/BAILS (format XML)",
     "Upload policy" : "Politique de téléversement",
-    "Previous labels will be overwritten after successful file upload" : "Les étiquettes précédentes seront écrasées après le téléchargement réussi du fichier.",
+    "Previous labels will be overwritten after successful file upload" : "Les étiquettes précédentes seront écrasées après le téléversement réussi du fichier.",
     "Classification labels" : "Libellés de classification",
     "Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow." : "Définis les libellés de classification s'appliquant aux différents documents. Sur la base de ces libellés, vous pouvez ensuite définir des règles dans Nextcloud Flux.",
     "Add new label" : "Ajouter un nouveau libellé",
