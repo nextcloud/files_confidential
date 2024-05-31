@@ -1,7 +1,7 @@
 <?php
 
-use OCA\Files_Confidential\ContentProviders\MicrosoftContentProvider;
-use OCA\Files_Confidential\ContentProviders\OpenDocumentContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\MicrosoftContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\OpenDocumentContentProvider;
 use OCA\Files_Confidential\Model\ClassificationLabel;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
@@ -71,7 +71,7 @@ class ContentProviderTest extends TestCase {
 		$provider = \OC::$server->get(OpenDocumentContentProvider::class);
 		$content = $provider->getContentForFile($this->testFile);
 
-		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], []);
+		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], [], []);
 		$foundLabel = ClassificationLabel::findLabelsInText($content, [$label]);
 		$this->assertEquals($label, $foundLabel);
 	}

@@ -5,11 +5,11 @@
 	<name>Confidential files</name>
 	<summary>Workflows for handling confidential files in Nextcloud</summary>
 	<description><![CDATA[
-This app allows you to define a set of classification labels that will be assigned to files as Nextcloud tags.
-For each classification label you can define a set of rules when it will be assigned to a file, based on text
-content or BAILS classification meta data.
+This app allows you to define a set of classification rules that will assign tags files.
+For each classification rule you can define when the tag will be assigned to a file, based on text
+content, BAILS classification metadata or Microsoft Information Purview metadata.
 ]]></description>
-	<version>2.1.0</version>
+	<version>3.0.0</version>
 	<licence>agpl</licence>
 	<author mail="mklehr@gmx.net" homepage="https://marcelklehr.de">Marcel Klehr</author>
 	<namespace>Files_Confidential</namespace>
@@ -20,7 +20,7 @@ content or BAILS classification meta data.
 	<repository type="git">https://github.com/nextcloud/files_confidential.git</repository>
 	<dependencies>
 		<php min-version="8.0" />
-		<nextcloud min-version="26" max-version="29" />
+		<nextcloud min-version="28" max-version="30" />
 	</dependencies>
 	<settings>
 		<admin>OCA\Files_Confidential\Settings\AdminSettings</admin>

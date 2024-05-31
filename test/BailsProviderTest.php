@@ -1,7 +1,7 @@
 <?php
 
-use OCA\Files_Confidential\BailsProviders\MicrosoftOfficeBailsProvider;
-use OCA\Files_Confidential\BailsProviders\OpenDocumentBailsProvider;
+use OCA\Files_Confidential\Providers\BailsProviders\MicrosoftOfficeBailsProvider;
+use OCA\Files_Confidential\Providers\BailsProviders\OpenDocumentBailsProvider;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
 use Test\TestCase;

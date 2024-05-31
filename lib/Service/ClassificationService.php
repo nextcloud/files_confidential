@@ -11,6 +11,7 @@ use OCP\Files\File;
 class ClassificationService {
 	public function __construct(
 		private ContentProviderService $contentService,
+		private MetadataProviderService $metadataService,
 		private BailsPolicyProviderService $bailsService,
 		private SettingsService $settings
 	) {
@@ -36,23 +37,22 @@ class ClassificationService {
 			}
 		}
 
+		$metadata = $this->metadataService->getMetadataForFile($file);
+		$labelFromMetadata = ClassificationLabel::findLabelsInMetadata($metadata, $labels);
+
 		$content = $this->contentService->getContentForFile($file);
 		$labelFromContent = ClassificationLabel::findLabelsInText($content, $labels);
 
-		if ($labelFromContent !== null) {
-			if ($labelFromPolicy !== null) {
-				if ($labelFromContent->getIndex() > $labelFromPolicy->getIndex()) {
-					return $labelFromPolicy;
-				}
-				return $labelFromContent;
-			}
-			return $labelFromContent;
+		$labels = array_values(array_filter([$labelFromMetadata, $labelFromPolicy, $labelFromContent], fn($label) => $label !== null));
+
+		if (count($labels) === 0) {
+			return null;
 		}
 
-		if ($labelFromPolicy !== null) {
-			return $labelFromPolicy;
-		}
+		usort($labels, function ($label1, $label2) {
+			return $label1->getIndex() <=> $label2->getIndex();
+		});
 
-		return null;
+		return $labels[0];
 	}
 }

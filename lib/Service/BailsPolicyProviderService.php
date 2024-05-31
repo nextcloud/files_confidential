@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OCA\Files_Confidential\Service;
 
-use OCA\Files_Confidential\BailsProviders\MicrosoftOfficeBailsProvider;
-use OCA\Files_Confidential\BailsProviders\OpenDocumentBailsProvider;
+use OCA\Files_Confidential\Providers\BailsProviders\MicrosoftOfficeBailsProvider;
+use OCA\Files_Confidential\Providers\BailsProviders\OpenDocumentBailsProvider;
 use OCA\Files_Confidential\Contract\IBailsPolicy;
 use OCP\Files\File;
 

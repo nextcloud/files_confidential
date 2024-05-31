@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OCA\Files_Confidential\Service;
 
-use OCA\Files_Confidential\ContentProviders\MicrosoftContentProvider;
-use OCA\Files_Confidential\ContentProviders\OpenDocumentContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\MicrosoftContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\OpenDocumentContentProvider;
 use OCP\Files\File;
 
 class ContentProviderService {

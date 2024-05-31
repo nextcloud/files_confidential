@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OCA\Files_Confidential\ContentProviders;
+namespace OCA\Files_Confidential\Providers\ContentProviders;
 
 use DOMDocument;
 use OCA\Files_Confidential\Contract\IContentProvider;
