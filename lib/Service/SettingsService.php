@@ -7,7 +7,6 @@ namespace OCA\Files_Confidential\Service;
 use OCA\Files_Confidential\Model\ClassificationLabel;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
-use Safe\Exceptions\JsonException;
 
 class SettingsService {
 	public function __construct(
@@ -25,8 +24,8 @@ class SettingsService {
 			 * @var array $labelsRaw
 			 * @psalm-suppress DeprecatedMethod
 			 */
-			$labelsRaw = \Safe\json_decode($this->config->getAppValue('files_confidential', 'labels', '[]'), true);
-		} catch (JsonException $e) {
+			$labelsRaw = json_decode($this->config->getAppValue('files_confidential', 'labels', '[]'), true);
+		} catch (\JsonException $e) {
 			$this->logger->warning('Could not load labels setting', ['exception' => $e]);
 			return [];
 		}
@@ -41,7 +40,7 @@ class SettingsService {
 	/**
 	 * @param array{index:int, name:string, keywords:list<string>, categories:list<string>}[] $labelsRaw
 	 * @return void
-	 * @throws \Safe\Exceptions\JsonException
+	 * @throws \JsonException
 	 * @throws \ValueError
 	 */
 	public function setClassificationLabels(array $labelsRaw): void {
@@ -54,8 +53,8 @@ class SettingsService {
 		$array = array_map(fn ($label) => $label->toArray(), $labels);
 		try {
 			/** @var string $json */
-			$json = \Safe\json_encode($array);
-		} catch (JsonException $e) {
+			$json = json_encode($array);
+		} catch (\JsonException $e) {
 			$this->logger->warning('Could not store labels setting', ['exception' => $e]);
 			throw $e;
 		}

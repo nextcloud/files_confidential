@@ -6,7 +6,8 @@
 	},
 	"require": {
 		"ext-dom": "*",
-		"ext-libxml": "*"
+		"ext-libxml": "*",
+		"smalot/pdfparser": "^2.10"
 	},
 	"autoload": {
 		"psr-4": {

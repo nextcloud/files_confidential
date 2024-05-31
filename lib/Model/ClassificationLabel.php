@@ -30,9 +30,14 @@ class ClassificationLabel implements IClassificationLabel {
 	private array $regularExpressions;
 
 	/**
+	 * @var MetadataItem[]
+	 */
+	private array $metadataItems;
+
+	/**
 	 * @param string $text
 	 * @param list<IClassificationLabel> $labels
-	 * @return \OCA\Files_Confidential\Contract\IClassificationLabel|null
+	 * @return IClassificationLabel|null
 	 */
 	public static function findLabelsInText(string $text, array $labels): ?IClassificationLabel {
 		$matcherService = MatcherService::getInstance();
@@ -58,20 +63,47 @@ class ClassificationLabel implements IClassificationLabel {
 	}
 
 	/**
+	 * @param MetadataItem[] $metadataItems
+	 * @param list<IClassificationLabel> $labels
+	 * @return IClassificationLabel|null
+	 */
+	public static function findLabelsInMetadata(array $metadataItems, array $labels): ?IClassificationLabel {
+		foreach ($labels as $label) {
+			$matchedKeys = 0;
+			foreach ($label->getMetadataItems() as $labelMetadataItem) {
+				foreach ($metadataItems as $fileMetadataItem) {
+					if ($labelMetadataItem->getKey() === $fileMetadataItem->getKey()) {
+						$matchedKeys++;
+						if ($labelMetadataItem->getValue() !== $fileMetadataItem->getValue()) {
+							continue 3; // go to next label
+						}
+					}
+				}
+			}
+			if (count($label->getMetadataItems()) === $matchedKeys && $matchedKeys > 0) {
+				return $label;
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * @param int $index
 	 * @param string $tag
 	 * @param list<string> $keywords
 	 * @param list<string> $categories
 	 * @param list<string> $searchExpressions
 	 * @param list<string> $regularExpressions
+	 * @param MetadataItem[] $metadataItems
 	 */
-	public function __construct(int $index, string $tag, array $keywords, array $categories, array $searchExpressions, array $regularExpressions) {
+	public function __construct(int $index, string $tag, array $keywords, array $categories, array $searchExpressions, array $regularExpressions, array $metadataItems) {
 		$this->index = $index;
 		$this->tag = $tag;
 		$this->keywords = $keywords;
 		$this->categories = $categories;
 		$this->searchExpressions = $searchExpressions;
 		$this->regularExpressions = $regularExpressions;
+		$this->metadataItems = $metadataItems;
 	}
 
 	/**
@@ -80,10 +112,11 @@ class ClassificationLabel implements IClassificationLabel {
 	 * @throws \ValueError
 	 */
 	public static function fromArray(array $labelRaw): ClassificationLabel {
-		if (!isset($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'])) {
+		if (!isset($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'], $labelRaw['metadataItems'])) {
 			throw new \ValueError();
 		}
-		return new ClassificationLabel($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions']);
+		$metadata = array_values(array_filter(array_map(fn ($item) => MetadataItem::fromArray($item), $labelRaw['metadataItems']), fn ($item) => $item->getKey() !== ''));
+		return new ClassificationLabel($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'], $metadata);
 	}
 
 	public function toArray() : array {
@@ -94,6 +127,7 @@ class ClassificationLabel implements IClassificationLabel {
 			'categories' => $this->getBailsCategories(),
 			'searchExpressions' => $this->getSearchExpressions(),
 			'regularExpressions' => $this->getRegularExpressions(),
+			'metadataItems' => array_map(fn ($item) => $item->toArray(), $this->getMetadataItems()),
 		];
 	}
 
@@ -119,5 +153,9 @@ class ClassificationLabel implements IClassificationLabel {
 
 	public function getRegularExpressions(): array {
 		return $this->regularExpressions;
+	}
+
+	public function getMetadataItems(): array {
+		return $this->metadataItems;
 	}
 }

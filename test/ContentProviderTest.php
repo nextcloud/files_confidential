@@ -1,8 +1,10 @@
 <?php
 
-use OCA\Files_Confidential\ContentProviders\MicrosoftContentProvider;
-use OCA\Files_Confidential\ContentProviders\OpenDocumentContentProvider;
 use OCA\Files_Confidential\Model\ClassificationLabel;
+use OCA\Files_Confidential\Providers\ContentProviders\MicrosoftContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\OpenDocumentContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\PdfContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\PlainTextContentProvider;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
 use Test\TestCase;
@@ -71,7 +73,41 @@ class ContentProviderTest extends TestCase {
 		$provider = \OC::$server->get(OpenDocumentContentProvider::class);
 		$content = $provider->getContentForFile($this->testFile);
 
-		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], []);
+		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], [], []);
+		$foundLabel = ClassificationLabel::findLabelsInText($content, [$label]);
+		$this->assertEquals($label, $foundLabel);
+	}
+
+	/**
+	 * @dataProvider plainTextDataProvider
+	 * @param string $file
+	 * @return void
+	 * @throws \OCP\Files\NotPermittedException
+	 */
+	public function testPlainTextSearchExpressions(string $file) : void {
+		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/'.$file));
+		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
+		$provider = \OC::$server->get(PlainTextContentProvider::class);
+		$content = $provider->getContentForFile($this->testFile);
+
+		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], [], []);
+		$foundLabel = ClassificationLabel::findLabelsInText($content, [$label]);
+		$this->assertEquals($label, $foundLabel);
+	}
+
+	/**
+	 * @dataProvider pdfDataProvider
+	 * @param string $file
+	 * @return void
+	 * @throws \OCP\Files\NotPermittedException
+	 */
+	public function testPdfSearchExpressions(string $file) : void {
+		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/'.$file));
+		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
+		$provider = \OC::$server->get(PdfContentProvider::class);
+		$content = $provider->getContentForFile($this->testFile);
+
+		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], [], []);
 		$foundLabel = ClassificationLabel::findLabelsInText($content, [$label]);
 		$this->assertEquals($label, $foundLabel);
 	}
@@ -95,6 +131,18 @@ class ContentProviderTest extends TestCase {
 	public function openDocumentSearchDataProvider() {
 		return [
 			['test_iban.odt'],
+		];
+	}
+
+	public function plainTextDataProvider() {
+		return [
+			['test_iban.txt'],
+		];
+	}
+
+	public function pdfDataProvider() {
+		return [
+			['test_iban.pdf'],
 		];
 	}
 

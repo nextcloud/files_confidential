@@ -2,6 +2,8 @@
 
 namespace OCA\Files_Confidential\Contract;
 
+use OCA\Files_Confidential\Model\MetadataItem;
+
 interface IClassificationLabel {
 	/**
 	 * The lower the index the more important the label
@@ -29,6 +31,11 @@ interface IClassificationLabel {
 	 * @return list<string>
 	 */
 	public function getRegularExpressions(): array;
+
+	/**
+	 * @return MetadataItem[]
+	 */
+	public function getMetadataItems(): array;
 
 	/**
 	 * @return array

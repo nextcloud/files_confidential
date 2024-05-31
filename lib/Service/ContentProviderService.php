@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace OCA\Files_Confidential\Service;
 
-use OCA\Files_Confidential\ContentProviders\MicrosoftContentProvider;
-use OCA\Files_Confidential\ContentProviders\OpenDocumentContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\MicrosoftContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\OpenDocumentContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\PdfContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\PlainTextContentProvider;
 use OCP\Files\File;
 
 class ContentProviderService {
@@ -14,9 +16,11 @@ class ContentProviderService {
 	 */
 	private array $providers = [];
 
-	public function __construct(MicrosoftContentProvider $microsoft, OpenDocumentContentProvider $openDocument) {
+	public function __construct(MicrosoftContentProvider $microsoft, OpenDocumentContentProvider $openDocument, PdfContentProvider $pdf, PlainTextContentProvider $plainText) {
 		$this->providers[] = $microsoft;
 		$this->providers[] = $openDocument;
+		$this->providers[] = $pdf;
+		$this->providers[] = $plainText;
 	}
 
 	public function getContentForFile(File $file): string {

@@ -23,8 +23,8 @@
 				{{ t('files_confidential', 'Previous labels will be overwritten after successful file upload') }}
 			</NcNoteCard>
 		</NcSettingsSection>
-		<NcSettingsSection :name="t('files_confidential', 'Classification labels')"
-			:description="t('files_confidential', 'Define classification labels that apply to different documents. Based on these labels you can define rules in Nextcloud Flow.')">
+		<NcSettingsSection :name="t('files_confidential', 'Classification rules')"
+			:description="t('files_confidential', 'Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow.')">
 			<transition-group name="labels" tag="div">
 				<ClassificationLabel v-for="label in labels"
 					:key="label.id"
@@ -144,6 +144,7 @@ export default {
 				categories: [],
 				searchExpressions: [],
 				regularExpressions: [],
+				metadataItems: [],
 			})
 		},
 
@@ -298,6 +299,7 @@ figure[class^='icon-'] {
 }
 
 #files_confidential .options > .option.data,
+#files_confidential .options > .option.metadata,
 #files_confidential .options > .option.regex {
 	width: 100%;
 }

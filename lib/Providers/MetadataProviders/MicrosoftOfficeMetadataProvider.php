@@ -1,12 +1,9 @@
 <?php
 
-declare(strict_types=1);
+namespace OCA\Files_Confidential\Providers\MetadataProviders;
 
-namespace OCA\Files_Confidential\BailsProviders;
-
-use OCA\Files_Confidential\Contract\IBailsPolicy;
-use OCA\Files_Confidential\Contract\IBailsProvider;
-use OCA\Files_Confidential\Model\BailsPolicy;
+use OCA\Files_Confidential\Contract\IMetadataProvider;
+use OCA\Files_Confidential\Model\MetadataItem;
 use OCP\Files\File;
 use OCP\Files\InvalidPathException;
 use OCP\Files\NotFoundException;
@@ -14,7 +11,8 @@ use Sabre\Xml\ParseException;
 use Sabre\Xml\Reader;
 use Sabre\Xml\Service;
 
-class MicrosoftOfficeBailsProvider implements IBailsProvider {
+class MicrosoftOfficeMetadataProvider implements IMetadataProvider {
+
 	public const ELEMENT_PROPERTIES = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}Properties';
 	public const ELEMENT_PROPERTY = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}property';
 	public const ATTRIBUTE_NAME = 'name';
@@ -37,22 +35,21 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 	}
 
 	/**
-	 * @param \OCP\Files\File $file
-	 * @return \OCA\Files_Confidential\Contract\IBailsPolicy
+	 * @inheritDoc
 	 */
-	public function getPolicyForFile(File $file): ?IBailsPolicy {
+	public function getMetadataForFile(File $file): array {
 		try {
 			if ($file->getSize() === 0) {
-				return null;
+				return [];
 			}
 		} catch (InvalidPathException|NotFoundException $e) {
-			return null;
+			return [];
 		}
 
 		$zipArchive = new \ZipArchive();
 		$path = $file->getStorage()->getLocalFile($file->getInternalPath());
 		if (!is_string($path) || $zipArchive->open($path) === false) {
-			return null;
+			return [];
 		}
 
 		$xml = $zipArchive->getFromName('docProps/custom.xml');
@@ -60,35 +57,33 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 
 		$service = new Service();
 		$service->elementMap = [
-			self::ELEMENT_PROPERTIES => function (Reader $reader) {
+			self::ELEMENT_PROPERTIES => function (Reader $reader): array {
 				$children = $reader->parseInnerTree();
-				$props = [];
-				if ($children === null) {
-					return $props;
+				$items = [];
+				if (!is_array($children)) {
+					return $items;
 				}
+				/** @var array{name: string, attributes: array<string, string>, value: array} $child */
 				foreach ($children as $child) {
 					if (
 						$child['name'] === self::ELEMENT_PROPERTY &&
 						isset($child['attributes'][self::ATTRIBUTE_NAME], $child['value'][0], $child['value'][0]['value'])) {
-						$props[] = [
-							'key' => $child['attributes'][self::ATTRIBUTE_NAME],
-							'value' => $child['value'][0]['value'],
-						];
+						$items[] = new MetadataItem($child['attributes'][self::ATTRIBUTE_NAME], $child['value'][0]['value']);
 					}
 				}
-				return $props;
+				return $items;
 			}
 		];
 
 
 		try {
-			/** @var list<array{key:string, value:string}>  $props */
-			$props = $service->parse($xml);
+			/** @var MetadataItem[] $items */
+			$items = $service->parse($xml);
 		} catch (ParseException $e) {
 			// log
-			return null;
+			return [];
 		}
 
-		return BailsPolicy::fromBAILS($props);
+		return $items;
 	}
 }

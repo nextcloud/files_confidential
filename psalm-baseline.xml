@@ -1,165 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
-  <file src="lib/BailsProviders/MicrosoftOfficeBailsProvider.php">
-    <MixedAssignment>
-      <code>$service</code>
-    </MixedAssignment>
-    <MixedMethodCall>
-      <code>parse</code>
-    </MixedMethodCall>
-    <MixedPropertyAssignment>
-      <code>$service</code>
-    </MixedPropertyAssignment>
-    <UndefinedClass>
-      <code>ParseException</code>
-      <code>Reader</code>
-      <code>Service</code>
-    </UndefinedClass>
-  </file>
-  <file src="lib/BailsProviders/OpenDocumentBailsProvider.php">
-    <MixedArgument>
-      <code>$props</code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code>$props</code>
-      <code>$service</code>
-    </MixedAssignment>
-    <MixedMethodCall>
-      <code>parse</code>
-    </MixedMethodCall>
-    <MixedPropertyAssignment>
-      <code>$service</code>
-    </MixedPropertyAssignment>
-    <UndefinedClass>
-      <code>ParseException</code>
-      <code>Reader</code>
-      <code>Reader</code>
-      <code>Service</code>
-    </UndefinedClass>
-  </file>
-  <file src="lib/ContentProviders/MicrosoftContentProvider.php">
-    <MixedArgument>
-      <code><![CDATA[$service->parse($xml)]]></code>
-      <code><![CDATA[$service->parse($xml)]]></code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code>$service</code>
-      <code>$service</code>
-    </MixedAssignment>
-    <MixedMethodCall>
-      <code>parse</code>
-      <code>parse</code>
-    </MixedMethodCall>
-    <MixedPropertyAssignment>
-      <code>$service</code>
-      <code>$service</code>
-    </MixedPropertyAssignment>
-    <UndefinedClass>
-      <code>ParseException</code>
-      <code>ParseException</code>
-      <code>Reader</code>
-      <code>Reader</code>
-      <code>Service</code>
-      <code>Service</code>
-    </UndefinedClass>
-  </file>
-  <file src="lib/ContentProviders/OpenDocumentContentProvider.php">
-    <MixedArgument>
-      <code><![CDATA[$service->parse($xml)]]></code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code>$service</code>
-    </MixedAssignment>
-    <MixedMethodCall>
-      <code>parse</code>
-    </MixedMethodCall>
-    <MixedPropertyAssignment>
-      <code>$service</code>
-    </MixedPropertyAssignment>
-    <UndefinedClass>
-      <code>ParseException</code>
-      <code>Reader</code>
-      <code>Service</code>
-    </UndefinedClass>
-  </file>
+<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
   <file src="lib/Controller/AdminController.php">
     <MixedArgument>
       <code><![CDATA[$upload['tmp_name']]]></code>
     </MixedArgument>
     <MixedArgumentTypeCoercion>
-      <code>$value</code>
+      <code><![CDATA[$value]]></code>
       <code><![CDATA[array_map(static fn ($label):array => $label->toArray(), $labels)]]></code>
     </MixedArgumentTypeCoercion>
     <UndefinedClass>
-      <code>JsonException</code>
+      <code><![CDATA[JsonException]]></code>
     </UndefinedClass>
-  </file>
-  <file src="lib/Listener/HookListener.php">
-    <RedundantCondition>
-      <code>$event instanceof NodeWrittenEvent</code>
-    </RedundantCondition>
   </file>
   <file src="lib/Model/ClassificationLabel.php">
     <MismatchingDocblockReturnType>
-      <code>IClassificationLabel</code>
+      <code><![CDATA[IClassificationLabel]]></code>
     </MismatchingDocblockReturnType>
     <MixedInferredReturnType>
-      <code>IClassificationLabel</code>
+      <code><![CDATA[IClassificationLabel]]></code>
     </MixedInferredReturnType>
   </file>
-  <file src="lib/Service/BafService.php">
-    <MixedAssignment>
-      <code>$service</code>
-    </MixedAssignment>
-    <MixedInferredReturnType>
-      <code>IClassificationLabel[]</code>
-    </MixedInferredReturnType>
-    <MixedMethodCall>
-      <code>parse</code>
-    </MixedMethodCall>
-    <MixedPropertyAssignment>
-      <code>$service</code>
-    </MixedPropertyAssignment>
-    <MixedReturnStatement>
+  <file src="lib/Model/MetadataItem.php">
+    <MixedArgument>
+      <code><![CDATA[$metadataItem['key'] ?? '']]></code>
+      <code><![CDATA[$metadataItem['value'] ?? '']]></code>
+    </MixedArgument>
+  </file>
+  <file src="lib/Providers/BailsProviders/MicrosoftOfficeBailsProvider.php">
+    <MissingClosureReturnType>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+    </MissingClosureReturnType>
+  </file>
+  <file src="lib/Providers/BailsProviders/OpenDocumentBailsProvider.php">
+    <MissingClosureReturnType>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+    </MissingClosureReturnType>
+    <PossiblyInvalidArrayOffset>
+      <code><![CDATA[$children[0]['name']]]></code>
+      <code><![CDATA[$children[0]['value']]]></code>
+    </PossiblyInvalidArrayOffset>
+    <PossiblyNullArrayAccess>
+      <code><![CDATA[$children[0]]]></code>
+      <code><![CDATA[$children[0]['name']]]></code>
+      <code><![CDATA[$children[0]['value']]]></code>
+    </PossiblyNullArrayAccess>
+  </file>
+  <file src="lib/Providers/ContentProviders/MicrosoftContentProvider.php">
+    <MissingClosureReturnType>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+    </MissingClosureReturnType>
+    <MixedArgumentTypeCoercion>
       <code><![CDATA[$service->parse($xml)]]></code>
-    </MixedReturnStatement>
-    <UndefinedClass>
-      <code>ParseException</code>
-      <code>Reader</code>
-      <code>Reader</code>
-      <code>Service</code>
-    </UndefinedClass>
+      <code><![CDATA[$service->parse($xml)]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess>
+      <code><![CDATA[$child['attributes']]]></code>
+      <code><![CDATA[$child['attributes']['string']]]></code>
+      <code><![CDATA[$child['name']]]></code>
+      <code><![CDATA[$child['name']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$child]]></code>
+      <code><![CDATA[$child]]></code>
+      <code><![CDATA[$children]]></code>
+      <code><![CDATA[$children]]></code>
+      <code><![CDATA[$newChildrenArray[]]]></code>
+      <code><![CDATA[$newChildrenArray[]]]></code>
+      <code><![CDATA[$newChildrenArray[]]]></code>
+    </MixedAssignment>
+    <PossiblyNullIterator>
+      <code><![CDATA[$children]]></code>
+      <code><![CDATA[$children]]></code>
+    </PossiblyNullIterator>
+  </file>
+  <file src="lib/Providers/ContentProviders/OpenDocumentContentProvider.php">
+    <MissingClosureReturnType>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+    </MissingClosureReturnType>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$service->parse($xml)]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess>
+      <code><![CDATA[$child['name']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$child]]></code>
+      <code><![CDATA[$children]]></code>
+      <code><![CDATA[$newChildrenArray[]]]></code>
+    </MixedAssignment>
+    <PossiblyNullIterator>
+      <code><![CDATA[$children]]></code>
+    </PossiblyNullIterator>
+  </file>
+  <file src="lib/Providers/ContentProviders/PdfContentProvider.php">
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[!$localFilepath]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="lib/Providers/MetadataProviders/MicrosoftOfficeMetadataProvider.php">
+    <MixedArgument>
+      <code><![CDATA[$child['value'][0]['value']]]></code>
+    </MixedArgument>
   </file>
   <file src="lib/Service/SettingsService.php">
     <InvalidArgument>
-      <code>$labelRaw</code>
+      <code><![CDATA[$labelRaw]]></code>
     </InvalidArgument>
-    <InvalidThrow>
-      <code>throw $e;</code>
-    </InvalidThrow>
     <MixedArgument>
-      <code>$labelRaw</code>
+      <code><![CDATA[$labelRaw]]></code>
     </MixedArgument>
-    <UndefinedClass>
-      <code>JsonException</code>
-      <code>JsonException</code>
-    </UndefinedClass>
-    <UndefinedDocblockClass>
-      <code>\Safe\Exceptions\JsonException</code>
-    </UndefinedDocblockClass>
-    <UndefinedFunction>
-      <code><![CDATA[\Safe\json_decode($this->config->getAppValue('files_confidential', 'labels', '[]'), true)]]></code>
-      <code>\Safe\json_encode($array)</code>
-    </UndefinedFunction>
-  </file>
-  <file src="lib/Settings/AdminSettings.php">
-    <DeprecatedInterface>
-      <code>IInitialStateService</code>
-      <code>IInitialStateService</code>
-    </DeprecatedInterface>
-    <DeprecatedMethod>
-      <code>provideInitialState</code>
-      <code>provideInitialState</code>
-    </DeprecatedMethod>
   </file>
 </files>
