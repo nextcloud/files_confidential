@@ -11,8 +11,7 @@ use Sabre\Xml\ParseException;
 use Sabre\Xml\Reader;
 use Sabre\Xml\Service;
 
-class MicrosoftOfficeMetadataProvider implements IMetadataProvider
-{
+class MicrosoftOfficeMetadataProvider implements IMetadataProvider {
 
 	public const ELEMENT_PROPERTIES = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}Properties';
 	public const ELEMENT_PROPERTY = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}property';
@@ -68,7 +67,7 @@ class MicrosoftOfficeMetadataProvider implements IMetadataProvider
 					if (
 						$child['name'] === self::ELEMENT_PROPERTY &&
 						isset($child['attributes'][self::ATTRIBUTE_NAME], $child['value'][0], $child['value'][0]['value'])) {
-						$items[] = new MetadataItem( $child['attributes'][self::ATTRIBUTE_NAME], $child['value'][0]['value']);
+						$items[] = new MetadataItem($child['attributes'][self::ATTRIBUTE_NAME], $child['value'][0]['value']);
 					}
 				}
 				return $items;

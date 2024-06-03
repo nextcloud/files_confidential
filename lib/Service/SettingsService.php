@@ -7,7 +7,6 @@ namespace OCA\Files_Confidential\Service;
 use OCA\Files_Confidential\Model\ClassificationLabel;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
-use Safe\Exceptions\JsonException;
 
 class SettingsService {
 	public function __construct(

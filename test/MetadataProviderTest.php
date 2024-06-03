@@ -1,7 +1,6 @@
 <?php
 
-use OCA\Files_Confidential\Providers\BailsProviders\MicrosoftOfficeBailsProvider;
-use OCA\Files_Confidential\Providers\BailsProviders\OpenDocumentBailsProvider;
+use OCA\Files_Confidential\Providers\MetadataProviders\MicrosoftOfficeMetadataProvider;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
 use Test\TestCase;
@@ -32,10 +31,10 @@ class MetadataProviderTest extends TestCase {
 	public function testMicrosoftOfficeProvider() : void {
 		$this->testFile = $this->userFolder->newFile('/test.pptx', file_get_contents(__DIR__ . '/res/test_mips_metadata.pptx'));
 		/** @var \OCA\Files_Confidential\Contract\IMetadataProvider $provider */
-		$provider = \OC::$server->get(\OCA\Files_Confidential\Providers\MetadataProviders\MicrosoftOfficeMetadataProvider::class);
+		$provider = \OC::$server->get(MicrosoftOfficeMetadataProvider::class);
 		$metadataItems = $provider->getMetadataForFile($this->testFile);
 
-		$array = array_map(fn($item) => $item->toArray(), $metadataItems);
+		$array = array_map(fn ($item) => $item->toArray(), $metadataItems);
 		self::assertEquals([
 			['key' => "MSIP_Label_9a7859fa-fb81-458d-9040-c3b7cffe6362_Enabled", 'value' => 'true'],
 			['key' => "MSIP_Label_9a7859fa-fb81-458d-9040-c3b7cffe6362_SetDate", 'value' => '2024-01-18T23:42:17Z'],

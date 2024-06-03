@@ -43,7 +43,7 @@ class ClassificationService {
 		$content = $this->contentService->getContentForFile($file);
 		$labelFromContent = ClassificationLabel::findLabelsInText($content, $labels);
 
-		$labels = array_values(array_filter([$labelFromMetadata, $labelFromPolicy, $labelFromContent], fn($label) => $label !== null));
+		$labels = array_values(array_filter([$labelFromMetadata, $labelFromPolicy, $labelFromContent], fn ($label) => $label !== null));
 
 		if (count($labels) === 0) {
 			return null;

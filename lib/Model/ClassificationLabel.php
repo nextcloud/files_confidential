@@ -115,7 +115,7 @@ class ClassificationLabel implements IClassificationLabel {
 		if (!isset($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'], $labelRaw['metadataItems'])) {
 			throw new \ValueError();
 		}
-		$metadata = array_values(array_filter(array_map(fn($item) => MetadataItem::fromArray($item), $labelRaw['metadataItems']), fn($item) => $item->getKey() !== ''));
+		$metadata = array_values(array_filter(array_map(fn ($item) => MetadataItem::fromArray($item), $labelRaw['metadataItems']), fn ($item) => $item->getKey() !== ''));
 		return new ClassificationLabel($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'], $metadata);
 	}
 
@@ -127,7 +127,7 @@ class ClassificationLabel implements IClassificationLabel {
 			'categories' => $this->getBailsCategories(),
 			'searchExpressions' => $this->getSearchExpressions(),
 			'regularExpressions' => $this->getRegularExpressions(),
-			'metadataItems' => array_map(fn($item) => $item->toArray(), $this->getMetadataItems()),
+			'metadataItems' => array_map(fn ($item) => $item->toArray(), $this->getMetadataItems()),
 		];
 	}
 
