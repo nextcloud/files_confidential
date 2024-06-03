@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: [ '8.1', '8.2', '8.3' ]
+        php-versions: [ '8.1' ]
         server-versions: [ 'dev-stable28', 'dev-stable29', 'dev-master' ]
 
     name: Nextcloud
