@@ -3,6 +3,7 @@
 use OCA\Files_Confidential\Model\ClassificationLabel;
 use OCA\Files_Confidential\Providers\ContentProviders\MicrosoftContentProvider;
 use OCA\Files_Confidential\Providers\ContentProviders\OpenDocumentContentProvider;
+use OCA\Files_Confidential\Providers\ContentProviders\PdfContentProvider;
 use OCA\Files_Confidential\Providers\ContentProviders\PlainTextContentProvider;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
@@ -94,6 +95,23 @@ class ContentProviderTest extends TestCase {
 		$this->assertEquals($label, $foundLabel);
 	}
 
+	/**+
+	 * @dataProvider pdfDataProvider
+	 * @param string $file
+	 * @return void
+	 * @throws \OCP\Files\NotPermittedException
+	 */
+	public function testPdfSearchExpressions(string $file) : void {
+		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/'.$file));
+		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
+		$provider = \OC::$server->get(PdfContentProvider::class);
+		$content = $provider->getContentForFile($this->testFile);
+
+		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], [], []);
+		$foundLabel = ClassificationLabel::findLabelsInText($content, [$label]);
+		$this->assertEquals($label, $foundLabel);
+	}
+
 	public function microsoftContentDataProvider() {
 		return [
 			['test_watermark_top_secret.docx'],
@@ -119,6 +137,12 @@ class ContentProviderTest extends TestCase {
 	public function plainTextDataProvider() {
 		return [
 			['test_iban.txt'],
+		];
+	}
+
+	public function pdfDataProvider() {
+		return [
+			['test_iban.pdf'],
 		];
 	}
 
