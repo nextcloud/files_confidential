@@ -4,14 +4,10 @@ declare(strict_types=1);
 
 namespace OCA\Files_Confidential\Providers\ContentProviders;
 
-use DOMDocument;
 use OCA\Files_Confidential\Contract\IContentProvider;
 use OCP\Files\File;
 use OCP\Files\InvalidPathException;
 use OCP\Files\NotFoundException;
-use Sabre\Xml\ParseException;
-use Sabre\Xml\Reader;
-use Sabre\Xml\Service;
 
 class PdfContentProvider implements IContentProvider {
 	public function getSupportedMimeTypes(): array {
