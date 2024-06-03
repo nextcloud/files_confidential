@@ -20,6 +20,99 @@
       <code><![CDATA[IClassificationLabel]]></code>
     </MixedInferredReturnType>
   </file>
+  <file src="lib/Model/MetadataItem.php">
+    <MixedArgument>
+      <code><![CDATA[$metadataItem['key'] ?? '']]></code>
+      <code><![CDATA[$metadataItem['value'] ?? '']]></code>
+    </MixedArgument>
+  </file>
+  <file src="lib/Providers/BailsProviders/MicrosoftOfficeBailsProvider.php">
+    <MissingClosureReturnType>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+    </MissingClosureReturnType>
+  </file>
+  <file src="lib/Providers/BailsProviders/OpenDocumentBailsProvider.php">
+    <MissingClosureReturnType>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+    </MissingClosureReturnType>
+    <PossiblyInvalidArrayOffset>
+      <code><![CDATA[$children[0]['name']]]></code>
+      <code><![CDATA[$children[0]['value']]]></code>
+    </PossiblyInvalidArrayOffset>
+    <PossiblyNullArrayAccess>
+      <code><![CDATA[$children[0]]]></code>
+      <code><![CDATA[$children[0]['name']]]></code>
+      <code><![CDATA[$children[0]['value']]]></code>
+    </PossiblyNullArrayAccess>
+  </file>
+  <file src="lib/Providers/ContentProviders/MicrosoftContentProvider.php">
+    <MissingClosureReturnType>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+    </MissingClosureReturnType>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$service->parse($xml)]]></code>
+      <code><![CDATA[$service->parse($xml)]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess>
+      <code><![CDATA[$child['attributes']]]></code>
+      <code><![CDATA[$child['attributes']['string']]]></code>
+      <code><![CDATA[$child['name']]]></code>
+      <code><![CDATA[$child['name']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$child]]></code>
+      <code><![CDATA[$child]]></code>
+      <code><![CDATA[$children]]></code>
+      <code><![CDATA[$children]]></code>
+      <code><![CDATA[$newChildrenArray[]]]></code>
+      <code><![CDATA[$newChildrenArray[]]]></code>
+      <code><![CDATA[$newChildrenArray[]]]></code>
+    </MixedAssignment>
+    <PossiblyNullIterator>
+      <code><![CDATA[$children]]></code>
+      <code><![CDATA[$children]]></code>
+    </PossiblyNullIterator>
+  </file>
+  <file src="lib/Providers/ContentProviders/OpenDocumentContentProvider.php">
+    <MissingClosureReturnType>
+      <code><![CDATA[function (Reader $reader) {]]></code>
+    </MissingClosureReturnType>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$service->parse($xml)]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess>
+      <code><![CDATA[$child['name']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+      <code><![CDATA[$child['value']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$child]]></code>
+      <code><![CDATA[$children]]></code>
+      <code><![CDATA[$newChildrenArray[]]]></code>
+    </MixedAssignment>
+    <PossiblyNullIterator>
+      <code><![CDATA[$children]]></code>
+    </PossiblyNullIterator>
+  </file>
+  <file src="lib/Providers/ContentProviders/PdfContentProvider.php">
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[!$localFilepath]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="lib/Providers/MetadataProviders/MicrosoftOfficeMetadataProvider.php">
+    <MixedArgument>
+      <code><![CDATA[$child['value'][0]['value']]]></code>
+    </MixedArgument>
+  </file>
   <file src="lib/Service/SettingsService.php">
     <InvalidArgument>
       <code><![CDATA[$labelRaw]]></code>
