@@ -9,7 +9,7 @@
 			</template>
 		</NcButton>
 		<label>
-			<span class="text">{{ t('files_confidential', 'Add tag ...') }}</span>
+			<span class="text">{{ t('files_confidential', 'Add tag …') }}</span>
 			<NcSelect v-model="label.tag"
 				:options="tags"
 				:label="'display-name'"
@@ -25,7 +25,7 @@
 		<div class="options">
 			<div class="option">
 				<label>
-					<span class="text">{{ t('files_confidential', '... if document has TSCP policy category ID') }}</span>
+					<span class="text">{{ t('files_confidential', '… if document has TSCP policy category ID') }}</span>
 					<NcSelect v-model="label.categories"
 						multiple
 						taggable
@@ -38,7 +38,7 @@
 			</div>
       <div class="option metadata">
         <label>
-          <span class="text">{{ t('files_confidential', '... if document has all metadata values') }}</span>
+          <span class="text">{{ t('files_confidential', '… or if document has all metadata values') }}</span>
           <template v-for="item in label.metadataItems">
               <NcTextField class="field" :value.sync="item.key" @update:value="$emit('change')" :title="item.key" label="Metadata key"></NcTextField>
               <NcTextField class="field" :value.sync="item.value" @update:value="$emit('change')" :title="item.value" label="Metadata value"></NcTextField>
@@ -48,7 +48,7 @@
       </div>
 			<div class="option data">
 				<label>
-					<span class="text">{{ t('files_confidential', '... if document contains') }}</span>
+					<span class="text">{{ t('files_confidential', '… or if document contains') }}</span>
 					<div class="text">
 						<div :style="{display:'flex', flexDirection:'row'}">
 							<NcSelect v-model="input"
