@@ -144,7 +144,7 @@ export default {
 				categories: [],
 				searchExpressions: [],
 				regularExpressions: [],
-        metadataItems: [],
+				metadataItems: [],
 			})
 		},
 

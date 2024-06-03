@@ -36,16 +36,26 @@
 						@input="$emit('change')" />
 				</label>
 			</div>
-      <div class="option metadata">
-        <label>
-          <span class="text">{{ t('files_confidential', '… or if document has all metadata values') }}</span>
-          <template v-for="item in label.metadataItems">
-              <NcTextField class="field" :value.sync="item.key" @update:value="$emit('change')" :title="item.key" label="Metadata key"></NcTextField>
-              <NcTextField class="field" :value.sync="item.value" @update:value="$emit('change')" :title="item.value" label="Metadata value"></NcTextField>
-          </template>
-          <NcButton class="field" style="margin: 0 5px;" @click="addMetadataItem()">{{t('files_confidential', 'Add')}}</NcButton>
-        </label>
-      </div>
+			<div class="option metadata">
+				<label>
+					<span class="text">{{ t('files_confidential', '… or if document has all metadata values') }}</span>
+					<template v-for="(item, key) in label.metadataItems">
+						<NcTextField :key="'key' + key"
+							class="field"
+							:value.sync="item.key"
+							:title="item.key"
+							label="Metadata key"
+							@update:value="$emit('change')" />
+						<NcTextField :key="'value' + key"
+							class="field"
+							:value.sync="item.value"
+							:title="item.value"
+							label="Metadata value"
+							@update:value="$emit('change')" />
+					</template>
+					<NcButton class="field" style="margin: 0 5px;" @click="addMetadataItem()">{{ t('files_confidential', 'Add') }}</NcButton>
+				</label>
+			</div>
 			<div class="option data">
 				<label>
 					<span class="text">{{ t('files_confidential', '… or if document contains') }}</span>
@@ -64,7 +74,7 @@
 									<small><i>/{{ searchExpressions[option]||option }}/</i></small>
 								</template>
 							</NcSelect>
-							<NcButton style="margin: 0 5px;" @click="addExpression()">{{t('files_confidential', 'Add')}}</NcButton>
+							<NcButton style="margin: 0 5px;" @click="addExpression()">{{ t('files_confidential', 'Add') }}</NcButton>
 						</div>
 					</div>
 				</label>
@@ -128,7 +138,7 @@ export default {
 		NcActionButton,
 		CloseIcon,
 		TrashCan,
-    NcTextField,
+		NcTextField,
 	},
 	props: {
 		label: {
@@ -149,26 +159,26 @@ export default {
 			input: '',
 		}
 	},
-  watch: {
-    metadataKey() {
-      if (!this.metadataKey) {
-        this.label.metadataItems = []
-        this.$emit('change')
-        return
-      }
-      this.label.metadataItems = [{key: this.metadataKey, value: this.metadataValue}]
-      this.$emit('change')
-    },
-    metadataValue() {
-      if (!this.metadataKey) {
-        this.label.metadataItems = []
-        this.$emit('change')
-        return
-      }
-      this.label.metadataItems = [{key: this.metadataKey, value: this.metadataValue}]
-      this.$emit('change')
-    }
-  },
+	watch: {
+		metadataKey() {
+			if (!this.metadataKey) {
+				this.label.metadataItems = []
+				this.$emit('change')
+				return
+			}
+			this.label.metadataItems = [{ key: this.metadataKey, value: this.metadataValue }]
+			this.$emit('change')
+		},
+		metadataValue() {
+			if (!this.metadataKey) {
+				this.label.metadataItems = []
+				this.$emit('change')
+				return
+			}
+			this.label.metadataItems = [{ key: this.metadataKey, value: this.metadataValue }]
+			this.$emit('change')
+		},
+	},
 	methods: {
 		addExpression(val) {
 			if (this.searchExpressions[this.input]) {
@@ -179,9 +189,9 @@ export default {
 			this.input = ''
 			this.$emit('change')
 		},
-    addMetadataItem() {
-      this.label.metadataItems.push({'key': '', value: ''})
-    },
+		addMetadataItem() {
+			this.label.metadataItems.push({ key: '', value: '' })
+		},
 	},
 }
 </script>
