@@ -36,6 +36,10 @@ class PdfContentProvider implements IContentProvider {
 			return '';
 		}
 
+		if (!$localFilepath) {
+			return '';
+		}
+
 		// Parse PDF file and build necessary objects.
 		$parser = new \Smalot\PdfParser\Parser();
 		try {

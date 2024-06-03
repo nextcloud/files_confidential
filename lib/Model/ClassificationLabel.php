@@ -37,7 +37,7 @@ class ClassificationLabel implements IClassificationLabel {
 	/**
 	 * @param string $text
 	 * @param list<IClassificationLabel> $labels
-	 * @return \OCA\Files_Confidential\Contract\IClassificationLabel|null
+	 * @return IClassificationLabel|null
 	 */
 	public static function findLabelsInText(string $text, array $labels): ?IClassificationLabel {
 		$matcherService = MatcherService::getInstance();
@@ -63,9 +63,9 @@ class ClassificationLabel implements IClassificationLabel {
 	}
 
 	/**
-	 * @param MetadataItem[] $text
+	 * @param MetadataItem[] $metadataItems
 	 * @param list<IClassificationLabel> $labels
-	 * @return \OCA\Files_Confidential\Contract\IClassificationLabel|null
+	 * @return IClassificationLabel|null
 	 */
 	public static function findLabelsInMetadata(array $metadataItems, array $labels): ?IClassificationLabel {
 		foreach ($labels as $label) {

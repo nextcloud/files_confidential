@@ -57,12 +57,13 @@ class MicrosoftOfficeMetadataProvider implements IMetadataProvider {
 
 		$service = new Service();
 		$service->elementMap = [
-			self::ELEMENT_PROPERTIES => function (Reader $reader) {
+			self::ELEMENT_PROPERTIES => function (Reader $reader): array {
 				$children = $reader->parseInnerTree();
 				$items = [];
-				if ($children === null) {
+				if (!is_array($children)) {
 					return $items;
 				}
+				/** @var array{name: string, attributes: array<string, string>, value: array} $child */
 				foreach ($children as $child) {
 					if (
 						$child['name'] === self::ELEMENT_PROPERTY &&

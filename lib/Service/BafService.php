@@ -22,8 +22,12 @@ class BafService {
 	public function parseXml(string $xml) : array {
 		$service = new Service();
 		$service->elementMap = [
-			self::ELEMENT_BUSINESS_AUTHORIZATION => function (Reader $reader) {
+			self::ELEMENT_BUSINESS_AUTHORIZATION => function (Reader $reader): array {
 				$children = $reader->parseInnerTree();
+				if (!is_array($children)) {
+					return [];
+				}
+				/** @var array{name:string, value: array} $child */
 				foreach ($children as $child) {
 					if ($child['name'] === self::ELEMENT_INCLUDED) {
 						return $child['value'];
@@ -31,10 +35,14 @@ class BafService {
 				}
 				return [] ;
 			},
-			self::ELEMENT_INCLUDED => function (Reader $reader) {
+			self::ELEMENT_INCLUDED => function (Reader $reader): array {
 				$children = $reader->parseInnerTree();
 				$categories = [];
+				if (!is_array($children)) {
+					return $categories;
+				}
 				$i = 0;
+				/** @var array{name: string, attributes: array<string,string>} $child */
 				foreach ($children as $child) {
 					if ($child['name'] === self::ELEMENT_CATEGORY) {
 						$categories[] = new ClassificationLabel(
@@ -54,7 +62,9 @@ class BafService {
 
 
 		try {
-			return $service->parse($xml);
+			/** @var IClassificationLabel[] $labels */
+			$labels = $service->parse($xml);
+			return $labels;
 		} catch (ParseException $e) {
 			// log
 			return [];

@@ -74,6 +74,9 @@ class OpenDocumentBailsProvider implements IBailsProvider {
 			self::ELEMENT_META => function (Reader $reader) {
 				$children = $reader->parseInnerTree();
 				$props = [];
+				if (!is_array($children)) {
+					return $props;
+				}
 				foreach ($children as $child) {
 					if (
 						$child['name'] === self::ELEMENT_USER_DEFINED &&
@@ -89,6 +92,7 @@ class OpenDocumentBailsProvider implements IBailsProvider {
 		];
 
 		try {
+			/** @var list<array{key: string, value: string}> $props */
 			$props = $service->parse($xml);
 		} catch (ParseException $e) {
 			// log

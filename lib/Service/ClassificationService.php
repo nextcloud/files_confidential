@@ -43,13 +43,14 @@ class ClassificationService {
 		$content = $this->contentService->getContentForFile($file);
 		$labelFromContent = ClassificationLabel::findLabelsInText($content, $labels);
 
+		/** @var IClassificationLabel[] $labels */
 		$labels = array_values(array_filter([$labelFromMetadata, $labelFromPolicy, $labelFromContent], fn ($label) => $label !== null));
 
 		if (count($labels) === 0) {
 			return null;
 		}
 
-		usort($labels, function ($label1, $label2) {
+		usort($labels, function (IClassificationLabel $label1, IClassificationLabel $label2) {
 			return $label1->getIndex() <=> $label2->getIndex();
 		});
 

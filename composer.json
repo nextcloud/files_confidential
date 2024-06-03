@@ -19,7 +19,8 @@
 		"nextcloud/coding-standard": "^1",
 		"phpunit/phpunit": "^9.5",
 		"psalm/phar": "5.x.x",
-		"nextcloud/ocp": "dev-master"
+		"nextcloud/ocp": "dev-master",
+		"sabre/xml": "4.x"
 	},
 	"scripts": {
 		"lint": "find . -name \\*.php -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
