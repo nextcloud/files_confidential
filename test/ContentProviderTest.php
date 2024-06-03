@@ -78,7 +78,7 @@ class ContentProviderTest extends TestCase {
 		$this->assertEquals($label, $foundLabel);
 	}
 
-	/**+
+	/**
 	 * @dataProvider plainTextDataProvider
 	 * @param string $file
 	 * @return void
@@ -95,7 +95,7 @@ class ContentProviderTest extends TestCase {
 		$this->assertEquals($label, $foundLabel);
 	}
 
-	/**+
+	/**
 	 * @dataProvider pdfDataProvider
 	 * @param string $file
 	 * @return void
