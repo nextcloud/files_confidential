@@ -9,7 +9,7 @@
 			</template>
 		</NcButton>
 		<label>
-			<span class="text">{{ t('files_confidential', 'Add tag …') }}</span>
+			<span class="text">{{ t('files_confidential', 'Add tag…') }}</span>
 			<NcSelect v-model="label.tag"
 				:options="tags"
 				:label="'display-name'"
@@ -44,13 +44,13 @@
 							class="field"
 							:value.sync="item.key"
 							:title="item.key"
-							label="Metadata key"
+              :label="t('files_confidential', 'Metadata key')"
 							@update:value="$emit('change')" />
 						<NcTextField :key="'value' + key"
 							class="field"
 							:value.sync="item.value"
 							:title="item.value"
-							label="Metadata value"
+							:label="t('files_confidential', 'Metadata value')"
 							@update:value="$emit('change')" />
 					</template>
 					<NcButton class="field" style="margin: 0 5px;" @click="addMetadataItem()">{{ t('files_confidential', 'Add') }}</NcButton>
