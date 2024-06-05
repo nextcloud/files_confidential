@@ -1,4 +1,5 @@
 { "translations": {
+    "Add" : "Tilføj",
     "Add new label" : "Tilføj ny mærkat",
     "Failed to save settings" : "Kunne ikke gemme indstillinger"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

@@ -9,6 +9,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Процеси рада за управљање поверљивим фјаловима у Nextcloud",
     "Remove label" : "Уклони ознаку",
     "Select tag" : "Изабери ознаку",
+    "Add" : "Додај",
     "Enter Regular Expression" : "Унесите регуларни израз",
     "Remove search expression" : "Уклони израз претраге",
     "Business Authorization Framework" : "Оквир пословне ауторизације",

@@ -7,6 +7,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Munkafolyamatok a bizalmas fájlok kezeléséhez a Nextcloudba",
     "Remove label" : "Címke eltávolítása",
     "Select tag" : "Címke hozzáadása",
+    "Add" : "Hozzáadás",
     "Enter Regular Expression" : "Adjon meg egy reguláris kifejezést",
     "Remove search expression" : "Keresési kifejezés eltávolítása",
     "Business Authorization Framework" : "Üzleti engedélyezési keretrendszer",

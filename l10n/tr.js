@@ -9,6 +9,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Nextcloud üzerinde gizli dosyaları işleme iş akışları",
     "Remove label" : "Etiketi kaldır",
     "Select tag" : "Etiketi seçin",
+    "Add" : "Ekle",
     "Enter Regular Expression" : "Kurallı ifadeyi yazın",
     "Remove search expression" : "Arama ifadesini sil",
     "Business Authorization Framework" : "Business Authorization Framework",

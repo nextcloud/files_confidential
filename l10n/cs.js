@@ -7,6 +7,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Pracovní postupy pro obsluhu důvěrných souborů v Nextcloud",
     "Remove label" : "Odebrat popisek",
     "Select tag" : "Vybrat štítek",
+    "Add" : "Přidat",
     "Enter Regular Expression" : "Zadejte regulární výraz",
     "Remove search expression" : "Odebrat vyhledávací výraz",
     "Business Authorization Framework" : "Aplikační rámec podnikového ověřování",

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Työnkulut luottamuksellisten tiedostojen käsittelyyn Nextcloudissa",
     "Remove label" : "Poista nimike",
     "Select tag" : "Valitse tunniste",
+    "Add" : "Lisää",
     "Enter Regular Expression" : "Kirjoita säännöllinen lauseke",
     "Remove search expression" : "Poista hakulauseke",
     "Upload policy" : "Lähetyskäytäntö",

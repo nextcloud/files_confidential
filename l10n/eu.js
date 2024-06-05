@@ -7,6 +7,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Nextcloud-en isilpeko fitxategiak kudeatzeko lan-fluxuak",
     "Remove label" : "Kendu etiketa",
     "Select tag" : "Hautatu etiketa",
+    "Add" : "Gehitu",
     "Enter Regular Expression" : "Sartu adierazpen erregularra",
     "Remove search expression" : "Kendu bilaketa-espresioa",
     "Business Authorization Framework" : "Enpresaren baimenen esparrua",

@@ -4,6 +4,7 @@ OC.L10N.register(
     "Could not read uploaded file" : "Nie można odczytać przesłanego pliku",
     "Confidential files" : "Poufne pliki",
     "Remove label" : "Usuń etykietę",
+    "Add" : "Dodaj",
     "Upload policy" : "Polityka przesyłania",
     "Add new label" : "Dodaj nową etykietę",
     "Failed to save settings" : "Nie udało się zapisać ustawień"

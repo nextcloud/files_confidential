@@ -6,6 +6,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Nextcloud 파일에 대한 기밀 관리 워크플로",
     "Remove label" : "라벨 삭제",
     "Select tag" : "태그 선택",
+    "Add" : "추가",
     "Upload policy" : "업로드 정책",
     "Add new label" : "새 라벨 추가",
     "Failed to save settings" : "환경설정 저장 실패"

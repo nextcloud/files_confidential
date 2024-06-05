@@ -8,6 +8,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Flux de travail pour la prise en charge des fichiers confidentiels dans Nextcloud.",
     "Remove label" : "Supprimer le libellé",
     "Select tag" : "Sélectionner une étiquette",
+    "Add" : "Ajouter",
     "Enter Regular Expression" : "Saisir une expression régulière",
     "Remove search expression" : "Supprimer l'expression de recherche",
     "Business Authorization Framework" : "Business Authorization Framework",

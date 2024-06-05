@@ -7,6 +7,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Ροές εργασιών για το χειρισμό εμπιστευτικών αρχείων στο Nextcloud",
     "Remove label" : "Αφαίρεση ετικέτας",
     "Select tag" : "Επιλογή ετικέτας",
+    "Add" : "Προσθήκη",
     "Enter Regular Expression" : "Εισαγάγετε την κανονική έκφραση",
     "Remove search expression" : "Κατάργηση έκφρασης αναζήτησης",
     "Upload policy" : "Πολιτική μεταφόρτωσης",

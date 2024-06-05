@@ -1,5 +1,6 @@
 { "translations": {
     "Confidential files" : "Fichièrs confidencials",
-    "Remove label" : "Tirar l’etiqueta"
+    "Remove label" : "Tirar l’etiqueta",
+    "Add" : "Apondre"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

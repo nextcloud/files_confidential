@@ -2,6 +2,7 @@ OC.L10N.register(
     "files_confidential",
     {
     "Select tag" : "Vyberte štítok",
+    "Add" : "Pridať",
     "Add new label" : "Pridať novú značku",
     "Failed to save settings" : "Nepodarilo sa uložiť nastavenia"
 },
