@@ -52,7 +52,7 @@ class ContentProviderTest extends TestCase {
 	 * @throws \OCP\AppFramework\QueryException
 	 * @throws \OCP\Files\NotPermittedException
 	 */
-	public function testMicrosoftWatermark(string $file) : void {
+	public function testMicrosoftProvider(string $file) : void {
 		$this->testFile = $this->userFolder->newFile('/test.docx', file_get_contents(__DIR__ . '/res/'.$file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(MicrosoftContentProvider::class);
@@ -116,7 +116,9 @@ class ContentProviderTest extends TestCase {
 		return [
 			['test_watermark_top_secret.docx'],
 			['test_header_top_secret.docx'],
+			['test_third_header_top_secret.docx'],
 			['test_footer_top_secret.docx'],
+			['test_third_footer_top_secret.docx'],
 		];
 	}
 

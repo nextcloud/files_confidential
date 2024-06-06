@@ -14,6 +14,7 @@ use Sabre\Xml\Reader;
 use Sabre\Xml\Service;
 
 class MicrosoftContentProvider implements IContentProvider {
+	public const ELEMENT_RELATIONSHIPS = '{http://schemas.openxmlformats.org/package/2006/relationships}Relationships';
 	public const ELEMENT_HDR = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hdr';
 	public const ELEMENT_FTR = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ftr';
 	public const ELEMENT_P = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}p';
@@ -56,55 +57,19 @@ class MicrosoftContentProvider implements IContentProvider {
 			return '';
 		}
 
-		$xml = $zipArchive->getFromName('word/header1.xml');
-
+		$xml = $zipArchive->getFromName('word/_rels/document.xml.rels');
 		$service = new Service();
 		$service->elementMap = [
-			self::ELEMENT_HDR => function (Reader $reader) {
+			self::ELEMENT_RELATIONSHIPS => function (Reader $reader) {
 				$tree = $reader->parseInnerTree();
-				$results = [];
+				$results = ['headers'=>[],'footers'=>[]];
 
-				$paths = [
-					[
-						self::ELEMENT_P,
-						self::ELEMENT_R,
-						self::ELEMENT_PICT,
-						self::ELEMENT_SHAPE,
-						self::ELEMENT_TEXTPATH,
-					],
-					[
-						self::ELEMENT_P,
-						self::ELEMENT_R,
-						self::ELEMENT_T,
-					],
-				];
-
-				foreach ($paths as $path) {
-					$newChildrenArray = [$tree];
-					foreach ($path as $i => $elementName) {
-						$childrenArray = $newChildrenArray;
-						$newChildrenArray = [];
-						foreach ($childrenArray as $children) {
-							foreach ($children as $child) {
-								if ($child['name'] === $elementName) {
-									if (count($path) - 1 === $i && isset($child['attributes']['string'])) {
-										$newChildrenArray[] = $child['attributes']['string'];
-										continue;
-									}
-									if (count($path) - 1 === $i && is_array($child['value'])) {
-										continue;
-									}
-									if (count($path) - 1 !== $i && !is_array($child['value'])) {
-										continue;
-									}
-									$newChildrenArray[] = $child['value'];
-								}
-							}
-						}
-						if ($i === count($path) - 1 || count($newChildrenArray) === 0) {
-							$results = array_merge($results, $newChildrenArray);
-							break;
-						}
+				foreach ($tree as $child) {
+					if ($child['attributes']['Type'] === 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer') {
+						$results['footers'][] = $child['attributes']['Target'];
+					}
+					if ($child['attributes']['Type'] === 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/header') {
+						$results['headers'][] = $child['attributes']['Target'];
 					}
 				}
 
@@ -113,61 +78,129 @@ class MicrosoftContentProvider implements IContentProvider {
 		];
 
 		try {
-			$content = implode(' ', $service->parse($xml));
+			/** @var array{headers: list<string>, footers: list<string>} $rels */
+			$rels = $service->parse($xml);
 		} catch (ParseException $e) {
 			// log
-			$content = '';
+			$rels = ['headers'=>[],'footers'=>[]];
 		}
 
-		$xml = $zipArchive->getFromName('word/footer1.xml');
+		$content = '';
 
-		$service = new Service();
-		$service->elementMap = [
-			self::ELEMENT_FTR => function (Reader $reader) {
-				$tree = $reader->parseInnerTree();
-				$results = [];
+		foreach ($rels['headers'] as $target) {
+			$xml = $zipArchive->getFromName("word/{$target}");
+			$service = new Service();
+			$service->elementMap = [
+				self::ELEMENT_HDR => function (Reader $reader) {
+					$tree = $reader->parseInnerTree();
+					$results = [];
 
-				$paths = [
-					[
-						self::ELEMENT_P,
-						self::ELEMENT_R,
-						self::ELEMENT_T,
-					],
-				];
+					$paths = [
+						[
+							self::ELEMENT_P,
+							self::ELEMENT_R,
+							self::ELEMENT_PICT,
+							self::ELEMENT_SHAPE,
+							self::ELEMENT_TEXTPATH,
+						],
+						[
+							self::ELEMENT_P,
+							self::ELEMENT_R,
+							self::ELEMENT_T,
+						],
+					];
 
-				foreach ($paths as $path) {
-					$newChildrenArray = [$tree];
-					foreach ($path as $i => $elementName) {
-						$childrenArray = $newChildrenArray;
-						$newChildrenArray = [];
-						foreach ($childrenArray as $children) {
-							foreach ($children as $child) {
-								if ($child['name'] === $elementName) {
-									if (count($path) - 1 === $i && is_array($child['value'])) {
-										continue;
+					foreach ($paths as $path) {
+						$newChildrenArray = [$tree];
+						foreach ($path as $i => $elementName) {
+							$childrenArray = $newChildrenArray;
+							$newChildrenArray = [];
+							foreach ($childrenArray as $children) {
+								foreach ($children as $child) {
+									if ($child['name'] === $elementName) {
+										if (count($path) - 1 === $i && isset($child['attributes']['string'])) {
+											$newChildrenArray[] = $child['attributes']['string'];
+											continue;
+										}
+										if (count($path) - 1 === $i && is_array($child['value'])) {
+											continue;
+										}
+										if (count($path) - 1 !== $i && !is_array($child['value'])) {
+											continue;
+										}
+										$newChildrenArray[] = $child['value'];
 									}
-									if (count($path) - 1 !== $i && !is_array($child['value'])) {
-										continue;
-									}
-									$newChildrenArray[] = $child['value'];
 								}
 							}
-						}
-						if ($i === count($path) - 1 || count($newChildrenArray) === 0) {
-							$results = array_merge($results, $newChildrenArray);
-							break;
+							if ($i === count($path) - 1 || count($newChildrenArray) === 0) {
+								$results = array_merge($results, $newChildrenArray);
+								break;
+							}
 						}
 					}
+
+					return $results;
 				}
+			];
 
-				return $results;
+			try {
+				$content .= implode(' ', $service->parse($xml));
+			} catch (ParseException $e) {
+				// log
 			}
-		];
+		}
 
-		try {
-			$content .= implode(' ', $service->parse($xml));
-		} catch (ParseException $e) {
-			// log
+
+		foreach ($rels['footers'] as $target) {
+			$xml = $zipArchive->getFromName("word/{$target}");
+			$service = new Service();
+			$service->elementMap = [
+				self::ELEMENT_FTR => function (Reader $reader) {
+					$tree = $reader->parseInnerTree();
+					$results = [];
+
+					$paths = [
+						[
+							self::ELEMENT_P,
+							self::ELEMENT_R,
+							self::ELEMENT_T,
+						],
+					];
+
+					foreach ($paths as $path) {
+						$newChildrenArray = [$tree];
+						foreach ($path as $i => $elementName) {
+							$childrenArray = $newChildrenArray;
+							$newChildrenArray = [];
+							foreach ($childrenArray as $children) {
+								foreach ($children as $child) {
+									if ($child['name'] === $elementName) {
+										if (count($path) - 1 === $i && is_array($child['value'])) {
+											continue;
+										}
+										if (count($path) - 1 !== $i && !is_array($child['value'])) {
+											continue;
+										}
+										$newChildrenArray[] = $child['value'];
+									}
+								}
+							}
+							if ($i === count($path) - 1 || count($newChildrenArray) === 0) {
+								$results = array_merge($results, $newChildrenArray);
+								break;
+							}
+						}
+					}
+
+					return $results;
+				}
+			];
+
+			try {
+				$content .= implode(' ', $service->parse($xml));
+			} catch (ParseException $e) {
+				// log
+			}
 		}
 
 		$data = $zipArchive->getFromName('word/document.xml');
