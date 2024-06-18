@@ -27,34 +27,47 @@
     </MixedArgument>
   </file>
   <file src="lib/Providers/BailsProviders/MicrosoftOfficeBailsProvider.php">
-    <MissingClosureReturnType>
-      <code><![CDATA[function (Reader $reader) {]]></code>
-    </MissingClosureReturnType>
+    <MixedAssignment>
+      <code><![CDATA[$service]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[parse]]></code>
+    </MixedMethodCall>
+    <MixedPropertyAssignment>
+      <code><![CDATA[$service]]></code>
+    </MixedPropertyAssignment>
+    <UndefinedClass>
+      <code><![CDATA[ParseException]]></code>
+      <code><![CDATA[Reader]]></code>
+      <code><![CDATA[Service]]></code>
+    </UndefinedClass>
   </file>
   <file src="lib/Providers/BailsProviders/OpenDocumentBailsProvider.php">
-    <MissingClosureReturnType>
-      <code><![CDATA[function (Reader $reader) {]]></code>
-      <code><![CDATA[function (Reader $reader) {]]></code>
-    </MissingClosureReturnType>
-    <PossiblyInvalidArrayOffset>
-      <code><![CDATA[$children[0]['name']]]></code>
-      <code><![CDATA[$children[0]['value']]]></code>
-    </PossiblyInvalidArrayOffset>
-    <PossiblyNullArrayAccess>
-      <code><![CDATA[$children[0]]]></code>
-      <code><![CDATA[$children[0]['name']]]></code>
-      <code><![CDATA[$children[0]['value']]]></code>
-    </PossiblyNullArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$service]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[parse]]></code>
+    </MixedMethodCall>
+    <MixedPropertyAssignment>
+      <code><![CDATA[$service]]></code>
+    </MixedPropertyAssignment>
+    <UndefinedClass>
+      <code><![CDATA[ParseException]]></code>
+      <code><![CDATA[Reader]]></code>
+      <code><![CDATA[Reader]]></code>
+      <code><![CDATA[Service]]></code>
+    </UndefinedClass>
   </file>
   <file src="lib/Providers/ContentProviders/MicrosoftContentProvider.php">
     <MissingClosureReturnType>
       <code><![CDATA[function (Reader $reader) {]]></code>
       <code><![CDATA[function (Reader $reader) {]]></code>
     </MissingClosureReturnType>
-    <MixedArgumentTypeCoercion>
+    <MixedArgument>
       <code><![CDATA[$service->parse($xml)]]></code>
       <code><![CDATA[$service->parse($xml)]]></code>
-    </MixedArgumentTypeCoercion>
+    </MixedArgument>
     <MixedArrayAccess>
       <code><![CDATA[$child['attributes']]]></code>
       <code><![CDATA[$child['attributes']['string']]]></code>
@@ -75,33 +88,50 @@
       <code><![CDATA[$newChildrenArray[]]]></code>
       <code><![CDATA[$newChildrenArray[]]]></code>
       <code><![CDATA[$newChildrenArray[]]]></code>
+      <code><![CDATA[$service]]></code>
+      <code><![CDATA[$tree]]></code>
+      <code><![CDATA[$tree]]></code>
     </MixedAssignment>
-    <PossiblyNullIterator>
-      <code><![CDATA[$children]]></code>
-      <code><![CDATA[$children]]></code>
-    </PossiblyNullIterator>
+    <MixedMethodCall>
+      <code><![CDATA[parse]]></code>
+    </MixedMethodCall>
+    <MixedPropertyAssignment>
+      <code><![CDATA[$service]]></code>
+    </MixedPropertyAssignment>
+    <UndefinedClass>
+      <code><![CDATA[$reader]]></code>
+      <code><![CDATA[$reader]]></code>
+      <code><![CDATA[$service]]></code>
+      <code><![CDATA[$service]]></code>
+      <code><![CDATA[$service->elementMap]]></code>
+      <code><![CDATA[$service->elementMap]]></code>
+      <code><![CDATA[ParseException]]></code>
+      <code><![CDATA[ParseException]]></code>
+      <code><![CDATA[ParseException]]></code>
+      <code><![CDATA[Reader]]></code>
+      <code><![CDATA[Service]]></code>
+      <code><![CDATA[Service]]></code>
+      <code><![CDATA[Service]]></code>
+    </UndefinedClass>
   </file>
   <file src="lib/Providers/ContentProviders/OpenDocumentContentProvider.php">
-    <MissingClosureReturnType>
-      <code><![CDATA[function (Reader $reader) {]]></code>
-    </MissingClosureReturnType>
-    <MixedArgumentTypeCoercion>
+    <MixedArgument>
       <code><![CDATA[$service->parse($xml)]]></code>
-    </MixedArgumentTypeCoercion>
-    <MixedArrayAccess>
-      <code><![CDATA[$child['name']]]></code>
-      <code><![CDATA[$child['value']]]></code>
-      <code><![CDATA[$child['value']]]></code>
-      <code><![CDATA[$child['value']]]></code>
-    </MixedArrayAccess>
+    </MixedArgument>
     <MixedAssignment>
-      <code><![CDATA[$child]]></code>
-      <code><![CDATA[$children]]></code>
-      <code><![CDATA[$newChildrenArray[]]]></code>
+      <code><![CDATA[$service]]></code>
     </MixedAssignment>
-    <PossiblyNullIterator>
-      <code><![CDATA[$children]]></code>
-    </PossiblyNullIterator>
+    <MixedMethodCall>
+      <code><![CDATA[parse]]></code>
+    </MixedMethodCall>
+    <MixedPropertyAssignment>
+      <code><![CDATA[$service]]></code>
+    </MixedPropertyAssignment>
+    <UndefinedClass>
+      <code><![CDATA[ParseException]]></code>
+      <code><![CDATA[Reader]]></code>
+      <code><![CDATA[Service]]></code>
+    </UndefinedClass>
   </file>
   <file src="lib/Providers/ContentProviders/PdfContentProvider.php">
     <RiskyTruthyFalsyComparison>
@@ -109,9 +139,37 @@
     </RiskyTruthyFalsyComparison>
   </file>
   <file src="lib/Providers/MetadataProviders/MicrosoftOfficeMetadataProvider.php">
-    <MixedArgument>
-      <code><![CDATA[$child['value'][0]['value']]]></code>
-    </MixedArgument>
+    <MixedAssignment>
+      <code><![CDATA[$service]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[parse]]></code>
+    </MixedMethodCall>
+    <MixedPropertyAssignment>
+      <code><![CDATA[$service]]></code>
+    </MixedPropertyAssignment>
+    <UndefinedClass>
+      <code><![CDATA[ParseException]]></code>
+      <code><![CDATA[Reader]]></code>
+      <code><![CDATA[Service]]></code>
+    </UndefinedClass>
+  </file>
+  <file src="lib/Service/BafService.php">
+    <MixedAssignment>
+      <code><![CDATA[$service]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[parse]]></code>
+    </MixedMethodCall>
+    <MixedPropertyAssignment>
+      <code><![CDATA[$service]]></code>
+    </MixedPropertyAssignment>
+    <UndefinedClass>
+      <code><![CDATA[ParseException]]></code>
+      <code><![CDATA[Reader]]></code>
+      <code><![CDATA[Reader]]></code>
+      <code><![CDATA[Service]]></code>
+    </UndefinedClass>
   </file>
   <file src="lib/Service/SettingsService.php">
     <InvalidArgument>
