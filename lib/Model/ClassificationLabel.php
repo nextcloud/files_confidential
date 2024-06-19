@@ -107,15 +107,15 @@ class ClassificationLabel implements IClassificationLabel {
 	}
 
 	/**
-	 * @param array{index:int, tag:string, keywords:list<string>, categories:list<string>} $labelRaw
+	 * @param array{index:int, tag:string, keywords:list<string>, categories:list<string>, metadataItems: list<array{key: string, value: string}>} $labelRaw
 	 * @return IClassificationLabel
 	 * @throws \ValueError
 	 */
 	public static function fromArray(array $labelRaw): ClassificationLabel {
-		if (!isset($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'], $labelRaw['metadataItems'])) {
+		if (!isset($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'])) {
 			throw new \ValueError();
 		}
-		$metadata = array_values(array_filter(array_map(fn ($item) => MetadataItem::fromArray($item), $labelRaw['metadataItems']), fn ($item) => $item->getKey() !== ''));
+		$metadata = array_values(array_filter(array_map(fn ($item) => MetadataItem::fromArray($item), $labelRaw['metadataItems'] ?? []), fn ($item) => $item->getKey() !== ''));
 		return new ClassificationLabel($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'], $metadata);
 	}
 
