@@ -1,9 +1,11 @@
 { "translations": {
     "Could not read uploaded file" : "Non foi posíbel ler o ficheiro enviado",
     "Could not store extracted labels" : "Non foi posíbel almacenar as etiquetas extraídas",
+    "Confidential Files" : "Ficheiros confidenciais",
     "Confidential files" : "Ficheiros confidenciais",
     "Workflows for handling confidential files in Nextcloud" : "Fluxos de traballo para manexar ficheiros confidenciais en Nextcloud",
     "Remove label" : "Retirar a etiqueta",
+    "Add tag…" : "Engadir unha etiqueta…",
     "Select tag" : "Seleccionar a etiqueta",
     "Add" : "Engadir",
     "Enter Regular Expression" : "Introduza a expresión regular",
