@@ -62,7 +62,7 @@ class MicrosoftContentProvider implements IContentProvider {
 		$service->elementMap = [
 			self::ELEMENT_RELATIONSHIPS => function (Reader $reader) {
 				$tree = $reader->parseInnerTree();
-				$results = ['headers'=>[],'footers'=>[]];
+				$results = ['headers' => [],'footers' => []];
 
 				foreach ($tree as $child) {
 					if ($child['attributes']['Type'] === 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer') {
@@ -82,7 +82,7 @@ class MicrosoftContentProvider implements IContentProvider {
 			$rels = $service->parse($xml);
 		} catch (ParseException $e) {
 			// log
-			$rels = ['headers'=>[],'footers'=>[]];
+			$rels = ['headers' => [],'footers' => []];
 		}
 
 		$content = '';
