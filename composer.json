@@ -18,7 +18,7 @@
 		"friendsofphp/php-cs-fixer": "^3",
 		"nextcloud/coding-standard": "^1",
 		"phpunit/phpunit": "^9.5",
-		"psalm/phar": "5.x.x",
+		"psalm/phar": "^5",
 		"nextcloud/ocp": "dev-master"
 	},
 	"scripts": {
