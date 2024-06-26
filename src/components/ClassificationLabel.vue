@@ -44,7 +44,7 @@
 							class="field"
 							:value.sync="item.key"
 							:title="item.key"
-              :label="t('files_confidential', 'Metadata key')"
+							:label="t('files_confidential', 'Metadata key')"
 							@update:value="$emit('change')" />
 						<NcTextField :key="'value' + key"
 							class="field"
