@@ -30,6 +30,8 @@ class MatcherService {
 		'National identity number (Norway)' => '\b[0-9]{11}\b',
 		'National Identity Number Spain' => '\b[0-9]{8}[A-Z]\b',
 		'Personal Identity Number Sweden' => '\b[0-9]{6}-[0-9]{4}\b',
+		'National Registration Identity Card Number Singapore' => '\b[stfgmSTFGM]\d{7}\b',
+		'National Registration Identity Card Number Malaysia (myKad)' => '\b\d{6}-\d{2}-\d{4}\b',
 
 		// Driver's License numbers
 		'United Kingdom Driver\'s License' => '\b[A-Za-z0-9][A-Za-z0-9]{4}\d[0156](0[1-9]|[12]\d|3[01])\d{2}[A-Za-z0-9]{3}[A-Za-z]{2}\d{2}\D\b',
