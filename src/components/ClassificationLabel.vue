@@ -2,7 +2,8 @@
 	<div class="label">
 		<NcButton type="tertiary-no-background"
 			class="close"
-			:aria-label="t('files_confidential', 'Remove label')"
+			:aria-label="t('files_confidential', 'Remove rule')"
+			:title="t('files_confidential', 'Remove rule')"
 			@click="$emit('remove', label.index)">
 			<template #icon>
 				<CloseIcon />
@@ -82,7 +83,7 @@
 				</label>
 			</div>
 			<div class="option regex">
-				<ul>
+				<ul :aria-label="t('files_confidential', 'Search expressions within documents')">
 					<NcListItem v-for="(exp, i) in label.searchExpressions"
 						:key="exp"
 						:name="exp"
