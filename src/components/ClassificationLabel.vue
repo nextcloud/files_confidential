@@ -60,7 +60,7 @@
 				<label>
 					<span class="text">{{ t('files_confidential', '… or if document contains') }}</span>
 					<div class="text">
-						<div :style="{display:'flex', flexDirection:'row'}">
+						<div style="display: flex; flex-direction: row">
 							<NcSelect v-model="input"
 								label-visible
 								taggable
@@ -74,7 +74,9 @@
 									<small><i>/{{ searchExpressions[option]||option }}/</i></small>
 								</template>
 							</NcSelect>
-							<NcButton style="margin: 0 5px;" @click="addExpression()">{{ t('files_confidential', 'Add') }}</NcButton>
+							<NcButton style="margin: 0 5px;" @click="addExpression()">
+								{{ t('files_confidential', 'Add') }}
+							</NcButton>
 						</div>
 					</div>
 				</label>
@@ -94,7 +96,7 @@
 								:aria-label="t('files_confidential', 'Remove search expression')"
 								@click="label.searchExpressions.splice(i,1); $emit('change')">
 								<template #icon>
-									<TrashCan />
+									<TrashCan :size="20" />
 								</template>
 							</NcActionButton>
 						</template>
@@ -106,10 +108,10 @@
 						:force-display-actions="true">
 						<template #actions>
 							<NcActionButton type="tertiary-no-background"
-								:aria-label="t('files_confidential', 'Remove search expression')"
+								:aria-label="t('files_confidential', 'Remove regular expression')"
 								@click="label.regularExpressions.splice(i,1); $emit('change')">
 								<template #icon>
-									<TrashCan />
+									<TrashCan :size="20" />
 								</template>
 							</NcActionButton>
 						</template>
