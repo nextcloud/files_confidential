@@ -19,6 +19,7 @@ OC.L10N.register(
     "… or if document contains" : "... أو إذا كان المستند يحتوي على ",
     "Enter Regular Expression" : "أدخل التعبير النمطي RE",
     "Remove search expression" : "إحذف التعبير النمطي RE",
+    "Remove regular expression" : "حذف التعبير النمطي",
     "Business Authorization Framework" : "إطار تخويل الأعمال BAF",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "قم بتحميل policy classification labels لصيقات تصنيف سياسة TSCP/BAILS (تنسيق XML)",
     "Upload policy" : "إرفع السياسة الإجرائية",

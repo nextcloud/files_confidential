@@ -19,6 +19,7 @@ OC.L10N.register(
     "… or if document contains" : "… nó má tá doiciméad ann",
     "Enter Regular Expression" : "Cuir isteach Slonn Rialta",
     "Remove search expression" : "Bain slonn cuardaigh",
+    "Remove regular expression" : "Bain slonn rialta",
     "Business Authorization Framework" : "Creat Údaraithe Gnó",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Uaslódáil do lipéid aicmithe polasaí TSCP/BAILS (formáid XML)",
     "Upload policy" : "Polasaí uaslódála",

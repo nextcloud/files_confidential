@@ -19,6 +19,7 @@ OC.L10N.register(
     "… or if document contains" : "… oder wenn das Dokument folgendes enthält",
     "Enter Regular Expression" : "Regulären Ausdruck eingeben",
     "Remove search expression" : "Suchausdruck entfernen",
+    "Remove regular expression" : "Regulären Ausdruck entfernen",
     "Business Authorization Framework" : "Framework für Geschäftsautorisierung",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Ihre TSCP/BAILS-Richtlinienklassifizierungsetiketten hochladen (XML-Format)",
     "Upload policy" : "Richtlinie für das Hochladen",
