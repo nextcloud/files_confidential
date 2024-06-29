@@ -27,7 +27,7 @@
   "homepage": "https://github.com/nextcloud-gmbh/files_confidential#readme",
   "devDependencies": {
     "@nextcloud/axios": "^2.4.0",
-    "@nextcloud/babel-config": "^1.0.0",
+    "@nextcloud/babel-config": "^1.2.0",
     "@nextcloud/browserslist-config": "^3.0.1",
     "@nextcloud/dialogs": "^5.1.2",
     "@nextcloud/eslint-config": "^8.4.1",
