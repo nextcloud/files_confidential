@@ -19,6 +19,7 @@ OC.L10N.register(
     "… or if document contains" : "… 若文件包含",
     "Enter Regular Expression" : "輸入正規表示式",
     "Remove search expression" : "移除搜尋表示式",
+    "Remove regular expression" : "移除正則表示式",
     "Business Authorization Framework" : "業務授權框架",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "上傳中您的 TSCP/BAILS 政策分類標籤（XML 格式）",
     "Upload policy" : "上傳政策",
