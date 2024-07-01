@@ -2,7 +2,8 @@
 	<div class="label">
 		<NcButton type="tertiary-no-background"
 			class="close"
-			:aria-label="t('files_confidential', 'Remove label')"
+			:aria-label="t('files_confidential', 'Remove rule')"
+			:title="t('files_confidential', 'Remove rule')"
 			@click="$emit('remove', label.index)">
 			<template #icon>
 				<CloseIcon />
@@ -82,7 +83,7 @@
 				</label>
 			</div>
 			<div class="option regex">
-				<ul>
+				<ul :aria-label="t('files_confidential', 'Search expressions within documents')">
 					<NcListItem v-for="(exp, i) in label.searchExpressions"
 						:key="exp"
 						:name="exp"
@@ -106,10 +107,35 @@
 						:name="regex"
 						:compact="true"
 						:force-display-actions="true">
+						<template #subname>
+							{{ t('files_confidential', 'Regular search expression') }}
+						</template>
 						<template #actions>
 							<NcActionButton type="tertiary-no-background"
 								:aria-label="t('files_confidential', 'Remove regular expression')"
 								@click="label.regularExpressions.splice(i,1); $emit('change')">
+								<template #icon>
+									<TrashCan :size="20" />
+								</template>
+							</NcActionButton>
+						</template>
+					</NcListItem>
+				</ul>
+			</div>
+			<div v-if="hasKeywords" class="option keywords">
+				<ul :aria-label="t('files_confidential', 'Search keywords within documents')">
+					<NcListItem v-for="keyword of label.keywords"
+						:key="keyword"
+						:name="keyword"
+						:compact="true"
+						:force-display-actions="true">
+						<template #subname>
+							{{ t('files_confidential', 'Search keyword') }}
+						</template>
+						<template #actions>
+							<NcActionButton type="tertiary-no-background"
+								:aria-label="t('files_confidential', 'Remove search keyword')"
+								@click="onRemoveKeyword(keyword)">
 								<template #icon>
 									<TrashCan :size="20" />
 								</template>
@@ -156,11 +182,19 @@ export default {
 			required: true,
 		},
 	},
+
 	data() {
 		return {
 			input: '',
 		}
 	},
+
+	computed: {
+		hasKeywords() {
+			return this.label.keywords && this.label.keywords.length > 0
+		},
+	},
+
 	watch: {
 		metadataKey() {
 			if (!this.metadataKey) {
@@ -194,23 +228,33 @@ export default {
 		addMetadataItem() {
 			this.label.metadataItems.push({ key: '', value: '' })
 		},
+
+		/**
+		 * Remove a keyword from the label
+		 * @param {string} keyword Keyword to remove
+		 */
+		onRemoveKeyword(keyword) {
+			this.label.keywords = this.label.keywords.filter((text) => text !== keyword)
+			this.$emit('change')
+		},
 	},
 }
 </script>
 
 <style scoped>
-.option.regex {
+.option.regex,
+.option.keywords,
+.option.metadata .field {
 	position: relative;
-  left: 353px;
+	left: 353px;
 }
 
 .option.metadata .field {
-  position: relative;
-  left: 353px;
-  width: 42% !important;
+	width: 42% !important;
 }
 
-.option.regex li {
+.option.regex li,
+.option.keywords li {
 	width: 400px;
 	margin-bottom: 10px;
 	display: flex;
