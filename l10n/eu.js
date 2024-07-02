@@ -5,7 +5,6 @@ OC.L10N.register(
     "Could not store extracted labels" : "Ezin izan dira ateratako etiketak gorde",
     "Confidential files" : "Fitxategi konfidentzialak",
     "Workflows for handling confidential files in Nextcloud" : "Nextcloud-en isilpeko fitxategiak kudeatzeko lan-fluxuak",
-    "Remove label" : "Kendu etiketa",
     "Select tag" : "Hautatu etiketa",
     "Add" : "Gehitu",
     "Enter Regular Expression" : "Sartu adierazpen erregularra",

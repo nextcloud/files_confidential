@@ -8,7 +8,6 @@ OC.L10N.register(
     "Confidential files" : "Konfidensielle filer",
     "Workflows for handling confidential files in Nextcloud" : "Arbeidsflyt for håndtering av konfidensielle filer i Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Denne appen lar deg definere et sett med klassifiseringsregler som vil tilordne taggerfiler.\nFor hver klassifiseringsregel kan du definere når taggen skal tilordnes en fil, basert på tekst-\ninnhold, BAILS-klassifiseringsmetadata eller Microsoft Information Purview-metadata.",
-    "Remove label" : "Fjern etikett",
     "Add tag…" : "Legg til tagg...",
     "Select tag" : "Velg merke",
     "… if document has TSCP policy category ID" : "...hvis dokumentet har TSCP-policykategori-ID",

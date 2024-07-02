@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_confidential",
     {
+    "Remove rule" : "Rimuovi regola",
     "Add" : "Aggiungi",
     "Failed to save settings" : "Salvataggio impostazioni non riuscito"
 },

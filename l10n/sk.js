@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_confidential",
     {
+    "Remove rule" : "Odstrániť pravidlo",
     "Select tag" : "Vyberte štítok",
     "Add" : "Pridať",
     "Add new label" : "Pridať novú značku",

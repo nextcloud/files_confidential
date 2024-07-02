@@ -1,7 +1,6 @@
 OC.L10N.register(
     "files_confidential",
     {
-    "Remove label" : "Šalinti etiketę",
     "Add" : "Pridėti",
     "Add new label" : "Pridėti naują etiketę",
     "Failed to save settings" : "Nepavyko įrašyti nustatymų"

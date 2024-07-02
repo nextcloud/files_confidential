@@ -6,7 +6,7 @@
     "Confidential files" : "Ficheiros confidenciais",
     "Workflows for handling confidential files in Nextcloud" : "Fluxos de traballo para manexar ficheiros confidenciais en Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Esta aplicación permítelle definir un conxunto de regras de clasificación que asignarán marcas a ficheiros.\nPara cada regra de clasificación pode definir cando se asignará a marca a un ficheiro, en función do contido\ndo texto, metadatos de clasificación BAILS ou metadatos de Microsoft Information Purview.",
-    "Remove label" : "Retirar a etiqueta",
+    "Remove rule" : "Retirar a regra",
     "Add tag…" : "Engadir unha marca…",
     "Select tag" : "Seleccionar a marca",
     "… if document has TSCP policy category ID" : "…se o documento ten ID de categoría de directiva TSCP",

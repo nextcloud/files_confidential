@@ -8,7 +8,6 @@ OC.L10N.register(
     "Confidential files" : "Comhaid rúnda",
     "Workflows for handling confidential files in Nextcloud" : "Sreafaí oibre chun comhaid rúnda a láimhseáil in Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Ligeann an aip seo duit sraith rialacha aicmithe a shainiú a sannfaidh comhaid clibeanna.\nI gcás gach riail aicmithe is féidir leat a shainiú cathain a sannfar an chlib do chomhad, bunaithe ar théacs\ninneachar, meiteashonraí aicmithe BAILS nó meiteashonraí Microsoft Information Purview.",
-    "Remove label" : "Bain lipéad",
     "Add tag…" : "Cuir clib leis…",
     "Select tag" : "Roghnaigh clib",
     "… if document has TSCP policy category ID" : "… má tá ID chatagóir beartais TSCP ag an doiciméad",

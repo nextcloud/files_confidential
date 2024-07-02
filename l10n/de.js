@@ -5,7 +5,7 @@ OC.L10N.register(
     "Could not store extracted labels" : "Konnte die extrahierten Labels nicht speichern",
     "Confidential files" : "Vertrauliche Dateien",
     "Workflows for handling confidential files in Nextcloud" : "Abläufe für den Umgang mit vertraulichen Dateien in Nextcloud",
-    "Remove label" : "Label entfernen",
+    "Remove rule" : "Regel entfernen",
     "Select tag" : "Schlagwort auswählen",
     "Add" : "Hinzufügen",
     "Enter Regular Expression" : "Regulären Ausdruck eingeben",

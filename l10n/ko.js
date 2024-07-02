@@ -4,7 +4,6 @@ OC.L10N.register(
     "Could not read uploaded file" : "업로드된 파일을 읽을 수 없음",
     "Confidential files" : "기밀 파일",
     "Workflows for handling confidential files in Nextcloud" : "Nextcloud 파일에 대한 기밀 관리 워크플로",
-    "Remove label" : "라벨 삭제",
     "Select tag" : "태그 선택",
     "Add" : "추가",
     "Upload policy" : "업로드 정책",

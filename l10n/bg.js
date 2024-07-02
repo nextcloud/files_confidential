@@ -5,7 +5,6 @@ OC.L10N.register(
     "Could not store extracted labels" : "Извлечените етикети не можаха да бъдат съхранени",
     "Confidential files" : "Поверителни файлове",
     "Workflows for handling confidential files in Nextcloud" : "Работни потоци за обработка на поверителни файлове в Nextcloud",
-    "Remove label" : "Премахване на етикет",
     "Select tag" : "Избор на етикет",
     "Add" : "Добавяне",
     "Enter Regular Expression" : "Въвеждане на регулярен израз",

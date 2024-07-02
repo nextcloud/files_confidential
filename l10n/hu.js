@@ -5,7 +5,6 @@ OC.L10N.register(
     "Could not store extracted labels" : "A kinyert címkék tárolása sikertelen",
     "Confidential files" : "Bizalmas fájlok",
     "Workflows for handling confidential files in Nextcloud" : "Munkafolyamatok a bizalmas fájlok kezeléséhez a Nextcloudba",
-    "Remove label" : "Címke eltávolítása",
     "Select tag" : "Címke hozzáadása",
     "Add" : "Hozzáadás",
     "Enter Regular Expression" : "Adjon meg egy reguláris kifejezést",

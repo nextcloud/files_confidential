@@ -5,7 +5,6 @@ OC.L10N.register(
     "Could not store extracted labels" : "Неможливо зберегти ярлики, які було видобуно",
     "Confidential files" : "Конфіденційні файли",
     "Workflows for handling confidential files in Nextcloud" : "Процес керування конфіденційними файлами у Nextcloud",
-    "Remove label" : "Прибрати ярлик",
     "Select tag" : "Виберіть мітку",
     "Add" : "Додати",
     "Enter Regular Expression" : "Зазначте регулярний вираз",

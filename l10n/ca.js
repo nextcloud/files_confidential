@@ -5,7 +5,7 @@ OC.L10N.register(
     "Could not store extracted labels" : "No s'ha pogut guardar les etiquetes extretes",
     "Confidential files" : "Fitxers confidencials",
     "Workflows for handling confidential files in Nextcloud" : "Fluxos de treball per gestionar fitxers confidencials a Nextcloud",
-    "Remove label" : "Eliminar etiqueta",
+    "Remove rule" : "Suprimeix la regla",
     "Select tag" : "Seleccionar etiqueta",
     "Add" : "Afegeix",
     "Enter Regular Expression" : "Introdueixi una Expressió Regular",

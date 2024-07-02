@@ -5,7 +5,6 @@ OC.L10N.register(
     "Could not store extracted labels" : "Δεν ήταν δυνατή η αποθήκευση ετικετών που έχουν εξαχθεί",
     "Confidential files" : "Εμπιστευτικά αρχεία",
     "Workflows for handling confidential files in Nextcloud" : "Ροές εργασιών για το χειρισμό εμπιστευτικών αρχείων στο Nextcloud",
-    "Remove label" : "Αφαίρεση ετικέτας",
     "Select tag" : "Επιλογή ετικέτας",
     "Add" : "Προσθήκη",
     "Enter Regular Expression" : "Εισαγάγετε την κανονική έκφραση",

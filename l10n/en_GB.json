@@ -6,7 +6,6 @@
     "Confidential files" : "Confidential files",
     "Workflows for handling confidential files in Nextcloud" : "Workflows for handling confidential files in Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata.",
-    "Remove label" : "Remove label",
     "Add tag…" : "Add tag…",
     "Select tag" : "Select tag",
     "… if document has TSCP policy category ID" : "… if document has TSCP policy category ID",

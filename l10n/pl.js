@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Could not read uploaded file" : "Nie można odczytać przesłanego pliku",
     "Confidential files" : "Poufne pliki",
-    "Remove label" : "Usuń etykietę",
+    "Remove rule" : "Usuń regułę",
     "Add" : "Dodaj",
     "Upload policy" : "Polityka przesyłania",
     "Add new label" : "Dodaj nową etykietę",

@@ -8,7 +8,6 @@ OC.L10N.register(
     "Confidential files" : "機密檔案",
     "Workflows for handling confidential files in Nextcloud" : "在 Nextcloud 上處理機密檔案的工作流程",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "這個 App 可以讓你建立一組分類規則，用來自動為檔案加上標籤。對於每個分類規則，你都可以根據檔案的文字內容、BAILS 分類元數據或 Microsoft Information Purview 元數據來決定何時將特定標籤套用在檔案上。這樣可以大幅減輕手動分類的工作量。",
-    "Remove label" : "移除標籤",
     "Add tag…" : "添加標籤 …",
     "Select tag" : "選擇標籤",
     "… if document has TSCP policy category ID" : "… 若文件有 TSCP 政策分類 ID",

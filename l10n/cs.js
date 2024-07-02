@@ -5,7 +5,7 @@ OC.L10N.register(
     "Could not store extracted labels" : "Nepodařilo se uložit vyzískané popisky",
     "Confidential files" : "Důvěrné soubory",
     "Workflows for handling confidential files in Nextcloud" : "Pracovní postupy pro obsluhu důvěrných souborů v Nextcloud",
-    "Remove label" : "Odebrat popisek",
+    "Remove rule" : "Odebrat pravidlo",
     "Select tag" : "Vybrat štítek",
     "Add" : "Přidat",
     "Enter Regular Expression" : "Zadejte regulární výraz",
