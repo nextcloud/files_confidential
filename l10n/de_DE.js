@@ -22,7 +22,7 @@ OC.L10N.register(
     "Remove search expression" : "Suchausdruck entfernen",
     "Regular search expression" : "Regulärer Suchausdruck",
     "Remove regular expression" : "Regulären Ausdruck entfernen",
-    "Search keywords within documents" : "Schlüsselwörtern in Dokumenten suchen",
+    "Search keywords within documents" : "Schlüsselwörter in Dokumenten suchen",
     "Search keyword" : "Suchbegriff",
     "Remove search keyword" : "Suchbegriff entfernen",
     "Business Authorization Framework" : "Framework für Geschäftsautorisierung",
