@@ -28,7 +28,7 @@ class BailsPolicyProviderService {
 			}
 			try {
 				return $provider->getPolicyForFile($file);
-			} catch (\Exception) {
+			} catch (\Throwable) {
 				return null;
 			}
 		}
