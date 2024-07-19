@@ -17,7 +17,7 @@
 				:multiple="false"
 				:label-outside="true"
 				:filter-by="(option, label, search) => {
-					return option['display-name'].toLowerCase().includes(search.toLowerCase())
+					return option['display-name'].toString().toLowerCase().includes(search.toLowerCase())
 				}"
 				:limit="5"
 				:placeholder="t('files_confidential', 'Select tag')"
