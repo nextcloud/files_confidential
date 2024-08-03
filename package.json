@@ -49,6 +49,6 @@
   ],
   "dependencies": {
     "url-parse": "^1.5.10",
-    "webdav": "^4.11.3"
+    "webdav": "^5.7.0"
   }
 }
