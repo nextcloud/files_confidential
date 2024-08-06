@@ -26,7 +26,11 @@ class BailsPolicyProviderService {
 			if (!in_array($mimeType, $provider->getSupportedMimeTypes())) {
 				continue;
 			}
-			return $provider->getPolicyForFile($file);
+			try {
+				return $provider->getPolicyForFile($file);
+			} catch (\Throwable) {
+				return null;
+			}
 		}
 		return null;
 	}
