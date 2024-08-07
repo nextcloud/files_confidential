@@ -9,6 +9,9 @@ use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\Files\Events\Node\NodeWrittenEvent;
 use OCP\Files\File;
+use OCP\Files\InvalidPathException;
+use OCP\Files\NotFoundException;
+use OCP\Files\Template\FileCreatedFromTemplateEvent;
 use OCP\SystemTag\ISystemTagObjectMapper;
 use Psr\Log\LoggerInterface;
 
@@ -31,15 +34,36 @@ class HookListener implements IEventListener {
 			$node = $event->getNode();
 			if ($node instanceof File) {
 				try {
-					$label = $this->classificationService->getClassificationLabelForFile($node);
-					if ($label === null) {
-						return;
-					}
-					$this->tagMapper->assignTags((string)$event->getNode()->getId(), 'files', [(int)$label->getTag()]);
+					$this->handleNodeTagging($node);
 				} catch (\Throwable $e) {
 					$this->logger->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
 				}
 			}
 		}
+
+		if ($event instanceof FileCreatedFromTemplateEvent) {
+			$template = $event->getTemplate();
+			if ($template === null) {
+				return;
+			}
+			$node = $event->getTarget();
+			try {
+				$this->handleNodeTagging($node);
+			} catch (\Throwable $e) {
+				$this->logger->error('Failed to tag during FileCreatedFromTemplateEvent', ['exception' => $e]);
+			}
+		}
+	}
+
+	/**
+	 * @throws NotFoundException
+	 * @throws InvalidPathException
+	 */
+	private function handleNodeTagging(File $node): void {
+		$label = $this->classificationService->getClassificationLabelForFile($node);
+		if ($label === null) {
+			return;
+		}
+		$this->tagMapper->assignTags((string)$node->getId(), 'files', [(int)$label->getTag()]);
 	}
 }
