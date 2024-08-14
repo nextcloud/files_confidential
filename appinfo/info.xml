@@ -9,7 +9,7 @@ This app allows you to define a set of classification rules that will assign tag
 For each classification rule you can define when the tag will be assigned to a file, based on text
 content, BAILS classification metadata or Microsoft Information Purview metadata.
 ]]></description>
-	<version>3.0.3</version>
+	<version>4.0.0</version>
 	<licence>agpl</licence>
 	<author mail="mklehr@gmx.net" homepage="https://marcelklehr.de">Marcel Klehr</author>
 	<namespace>Files_Confidential</namespace>
@@ -20,7 +20,7 @@ content, BAILS classification metadata or Microsoft Information Purview metadata
 	<repository type="git">https://github.com/nextcloud/files_confidential.git</repository>
 	<dependencies>
 		<php min-version="8.0" />
-		<nextcloud min-version="28" max-version="30" />
+		<nextcloud min-version="28" max-version="31" />
 	</dependencies>
 	<settings>
 		<admin>OCA\Files_Confidential\Settings\AdminSettings</admin>
