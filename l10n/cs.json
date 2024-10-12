@@ -1,16 +1,23 @@
 { "translations": {
     "Could not read uploaded file" : "Nahraný soubor se nedaří číst",
     "Could not store extracted labels" : "Nepodařilo se uložit vyzískané popisky",
+    "Confidential Files" : "Důvěrné soubory",
     "Confidential files" : "Důvěrné soubory",
     "Workflows for handling confidential files in Nextcloud" : "Pracovní postupy pro obsluhu důvěrných souborů v Nextcloud",
     "Remove rule" : "Odebrat pravidlo",
+    "Add tag…" : "Přidat štítek…",
     "Select tag" : "Vybrat štítek",
+    "Metadata key" : "Klíč metadat",
+    "Metadata value" : "Hodnota metadat",
     "Add" : "Přidat",
     "Enter Regular Expression" : "Zadejte regulární výraz",
     "Remove search expression" : "Odebrat vyhledávací výraz",
+    "Search keyword" : "Hledat klíčové slovo",
     "Business Authorization Framework" : "Aplikační rámec podnikového ověřování",
     "Upload policy" : "Zásada pro nahrávání",
+    "Classification rules" : "Pravidla třídění",
     "Add new label" : "Přidat nový štítek",
-    "Failed to save settings" : "Nastavení se nepodařilo uložit"
+    "Failed to save settings" : "Nastavení se nepodařilo uložit",
+    "Policy uploaded successfully" : "Zásada úspěšně nahrána"
 },"pluralForm" :"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 }
