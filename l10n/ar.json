@@ -32,6 +32,6 @@
     "Add new label" : "أضف علامة جديدة",
     "Can not add new label, until all labels have a tag assigned." : "لا يمكن إضافة علامات جديدة حتى يتم إسناد وسم لكل العلامات",
     "Failed to save settings" : "فشل في حفظ الإعدادات",
-    "Policy uploaded successfully" : "تمّ تحميل السياسة بنجاحٍ"
+    "Policy uploaded successfully" : "تمّ تحميل السياسة بنجاح"
 },"pluralForm" :"nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;"
 }
