@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_confidential",
     {
+    "Unsupported file type for import. An XML file is expected." : "Nepodporovaný typ souboru pro import. Očekáván XML soubor.",
     "Could not read uploaded file" : "Nahraný soubor se nedaří číst",
     "Could not store extracted labels" : "Nepodařilo se uložit vyzískané popisky",
     "Confidential Files" : "Důvěrné soubory",
@@ -9,6 +10,8 @@ OC.L10N.register(
     "Remove rule" : "Odebrat pravidlo",
     "Add tag…" : "Přidat štítek…",
     "Select tag" : "Vybrat štítek",
+    "… if document has TSCP policy category ID" : "…pokud dokument má identifikátor kategorie TSCP zásady",
+    "… or if document has all metadata values" : "… nebo pokud má dokument všechny hodnoty metadat",
     "Metadata key" : "Klíč metadat",
     "Metadata value" : "Hodnota metadat",
     "Add" : "Přidat",
@@ -22,9 +25,12 @@ OC.L10N.register(
     "Search keyword" : "Hledat klíčové slovo",
     "Remove search keyword" : "Odebrat klíčové slovo vyhledávání",
     "Business Authorization Framework" : "Aplikační rámec podnikového ověřování",
+    "Upload your TSCP/BAILS policy classification labels (XML format)" : "Nahrajte své štítky klasifikace zásady TSCP/BAILS (XML formát)",
     "Upload policy" : "Zásada pro nahrávání",
+    "Previous labels will be overwritten after successful file upload" : "Po úspěšném nahrání souboru budou předchozí štítky přepsány",
     "Classification rules" : "Pravidla třídění",
     "Add new label" : "Přidat nový štítek",
+    "Can not add new label, until all labels have a tag assigned." : "Není možné přidat novou visačku, dokud všechny nemají přiřazený štítek.",
     "Failed to save settings" : "Nastavení se nepodařilo uložit",
     "Policy uploaded successfully" : "Zásada úspěšně nahrána"
 },
