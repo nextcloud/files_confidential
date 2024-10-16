@@ -29,6 +29,7 @@ OC.L10N.register(
     "Upload policy" : "Zásada pro nahrávání",
     "Previous labels will be overwritten after successful file upload" : "Po úspěšném nahrání souboru budou předchozí štítky přepsány",
     "Classification rules" : "Pravidla třídění",
+    "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definujte klasifikační pravidla, která přiřazují štítky různým dokumentům. V závislosti na těchto štítcích je možné v Nextcloud Tocích určovat pravidla.",
     "Add new label" : "Přidat nový štítek",
     "Can not add new label, until all labels have a tag assigned." : "Není možné přidat novou visačku, dokud všechny nemají přiřazený štítek.",
     "Failed to save settings" : "Nastavení se nepodařilo uložit",
