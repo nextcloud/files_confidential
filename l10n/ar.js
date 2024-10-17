@@ -15,7 +15,7 @@ OC.L10N.register(
     "… or if document has all metadata values" : "... أو إذا كان المستند لديه كل قيم البيانات الوصفية",
     "Metadata key" : "مفتاح البيانات الوصفية",
     "Metadata value" : "قيمة البيانات الوصفية",
-    "Add" : "أضِف",
+    "Add" : "إضافة ",
     "… or if document contains" : "... أو إذا كان المستند يحتوي على ",
     "Enter Regular Expression" : "أدخل التعبير النمطي RE",
     "Search expressions within documents" : "البحث عن التعابير ضمن المستندات",
