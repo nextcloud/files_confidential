@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-/*
- * Copyright (c) 2021. The Nextcloud Recognize contributors.
- *
- * This file is licensed under the Affero General Public License version 3 or later. See the COPYING file.
+/**
+ * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
 namespace OCA\Files_Confidential\AppInfo;
