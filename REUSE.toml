@@ -24,9 +24,15 @@ SPDX-FileCopyrightText = "2023 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
-path = ["img/files_confidential.svg", "img/files_confidential-dark.svg"]
+path = ["img/files_confidential.svg", "img/files_confidential-dark.svg", ""]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2020 Colton Wiscombe <https://pictogrammers.com/library/mdi/icon/book-lock-outline/>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["js/files_confidential-data_image_svg_xml_3c_21--_20-_20SPDX-FileCopyrightText_202020_20Google_20Inc_20-_20SPDX-Lice-cc29b1.js"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2020 Google LLC"
 SPDX-License-Identifier = "Apache-2.0"
 
 [[annotations]]
