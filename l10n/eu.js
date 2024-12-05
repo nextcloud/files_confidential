@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Could not read uploaded file" : "Ezin izan da igotako fitxategia irakurri",
     "Could not store extracted labels" : "Ezin izan dira ateratako etiketak gorde",
+    "Confidential Files" : "Fitxategi konfidentzialak",
     "Confidential files" : "Fitxategi konfidentzialak",
     "Workflows for handling confidential files in Nextcloud" : "Nextcloud-en isilpeko fitxategiak kudeatzeko lan-fluxuak",
     "Select tag" : "Hautatu etiketa",
