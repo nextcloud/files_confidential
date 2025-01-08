@@ -1,4 +1,10 @@
+<!--
+  - SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
 # Confidential Files
+
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/files_confidential)](https://api.reuse.software/info/github.com/nextcloud/files_confidential)
 
 This app allows administrators to define a set of classification labels that will be assigned to files as Nextcloud tags.
 For each classification label you can define a set of rules that govern when it will be assigned to a file,
