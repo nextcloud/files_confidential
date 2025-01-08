@@ -24,7 +24,7 @@ class HookListener implements IEventListener {
 	public function __construct(
 		private ClassificationService $classificationService,
 		private ISystemTagObjectMapper $tagMapper,
-		private LoggerInterface $logger
+		private LoggerInterface $logger,
 	) {
 	}
 

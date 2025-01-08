@@ -15,7 +15,8 @@ class MetadataItem {
 	 */
 	public function __construct(
 		private string $key,
-		private string $value) {
+		private string $value,
+	) {
 	}
 
 

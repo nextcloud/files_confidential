@@ -60,7 +60,7 @@ class MatcherService {
 		if (!isset($this->expressions[$name])) {
 			return null;
 		}
-		return '/'.$this->expressions[$name].'/';
+		return '/' . $this->expressions[$name] . '/';
 	}
 
 	private static ?MatcherService $instance = null;

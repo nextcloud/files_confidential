@@ -16,7 +16,7 @@ use Psr\Log\LoggerInterface;
 class SettingsService {
 	public function __construct(
 		private IConfig $config,
-		private LoggerInterface $logger
+		private LoggerInterface $logger,
 	) {
 	}
 
@@ -36,7 +36,7 @@ class SettingsService {
 		}
 		try {
 			return array_values(array_map(fn ($labelRaw) => ClassificationLabel::fromArray($labelRaw), $labelsRaw));
-		} catch(\ValueError $e) {
+		} catch (\ValueError $e) {
 			$this->logger->warning('Could not load labels setting', ['exception' => $e]);
 			return [];
 		}
@@ -51,7 +51,7 @@ class SettingsService {
 	public function setClassificationLabels(array $labelsRaw): void {
 		try {
 			$labels = array_map(fn ($labelRaw) => ClassificationLabel::fromArray($labelRaw), $labelsRaw);
-		} catch(\ValueError $e) {
+		} catch (\ValueError $e) {
 			$this->logger->warning('Could not store labels setting', ['exception' => $e]);
 			throw $e;
 		}
