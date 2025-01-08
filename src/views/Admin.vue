@@ -1,9 +1,7 @@
 <!--
-  - Copyright (c) 2021. The files_confidential contributors.
-  -
-  - This file is licensed under the Affero General Public License version 3 or later. See the COPYING file.
-  -->
-
+  - SPDX-FileCopyrightText: 2021 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
 <template>
 	<div id="files_confidential">
 		<NcLoadingIcon v-if="loading" class="loading-icon" />

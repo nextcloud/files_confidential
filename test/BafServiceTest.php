@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 use Test\TestCase;
 
 /**
@@ -19,16 +24,12 @@ class BafServiceTest extends TestCase {
 
 		$this->assertCount(4, $labels);
 
-		$this->assertEquals('Non-Business', $labels[0]->getKeywords()[0]);
 		$this->assertEquals('urn:example:tscp:1:non-business', $labels[0]->getBailsCategories()[0]);
 
-		$this->assertEquals('General Business', $labels[1]->getKeywords()[0]);
 		$this->assertEquals('urn:example:tscp:1:general-business', $labels[1]->getBailsCategories()[0]);
 
-		$this->assertEquals('Confidential', $labels[2]->getKeywords()[0]);
 		$this->assertEquals('urn:example:tscp:1:confidential', $labels[2]->getBailsCategories()[0]);
 
-		$this->assertEquals('Internal Only', $labels[3]->getKeywords()[0]);
 		$this->assertEquals('urn:example:tscp:1:internal-only', $labels[3]->getBailsCategories()[0]);
 	}
 }

@@ -1,0 +1,54 @@
+# SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+version = 1
+SPDX-PackageName = "files_confidential"
+SPDX-PackageSupplier = "Nextcloud <info@nextcloud.com>"
+SPDX-PackageDownloadLocation = "https://github.com/nextcloud/files_confidential"
+
+[[annotations]]
+path = ["l10n/**.js", "l10n/**.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 Nextcloud translators"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["composer.json", "composer.lock", "package.json", "package-lock.json", "test/res/*"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ".tx/config"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["img/files_confidential.svg", "img/files_confidential-dark.svg", ""]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2020 Colton Wiscombe <https://pictogrammers.com/library/mdi/icon/book-lock-outline/>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["js/files_confidential-data_image_svg_xml_3c_21--_20-_20SPDX-FileCopyrightText_202020_20Google_20Inc_20-_20SPDX-Lice-cc29b1.js"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2020 Google LLC"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["vendor/autoload.php", "vendor/composer/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Nils Adermann, Jordi Boggiano"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "vendor/symfony/polyfill-mbstring/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2015 Fabien Potencier"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "vendor/smalot/pdfparser/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "PDF Parser contributors"
+SPDX-License-Identifier = "LGPL-3.0-or-later"
