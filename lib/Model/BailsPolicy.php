@@ -52,7 +52,7 @@ class BailsPolicy implements IBailsPolicy {
 			$value = $prop['value'];
 
 			// we've matched all (urn:bails:*:)* now, and $key is everything after the closing paren
-			switch($key) {
+			switch ($key) {
 				case 'Policy:Identifier':
 					$policy->setId($value);
 					break;

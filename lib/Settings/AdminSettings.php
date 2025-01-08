@@ -19,7 +19,7 @@ class AdminSettings implements ISettings {
 	public function __construct(
 		private SettingsService $settingsService,
 		private IInitialState $initialState,
-		private MatcherService $matcherService
+		private MatcherService $matcherService,
 	) {
 	}
 

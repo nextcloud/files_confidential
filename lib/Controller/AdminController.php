@@ -28,7 +28,7 @@ class AdminController extends Controller {
 		private SettingsService $settingsService,
 		private IL10N $l10n,
 		private BafService $bafService,
-		private IAppData $appData
+		private IAppData $appData,
 	) {
 		parent::__construct($appName, $request);
 	}

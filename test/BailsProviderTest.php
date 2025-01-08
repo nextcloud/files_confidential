@@ -48,7 +48,7 @@ class BailsProviderTest extends TestCase {
 		$this->assertEquals('', $policy->getAuthorityCountry());
 		$this->assertEquals('None', $policy->getAuthorizationName());
 		$this->assertEquals('urn:example:tscp:1', $policy->getAuthorizationId());
-		$this->assertEquals(new DateTime("2022-11-16T15:54:17"), $policy->getStartValidityDate());
+		$this->assertEquals(new DateTime('2022-11-16T15:54:17'), $policy->getStartValidityDate());
 		$this->assertEquals(null, $policy->getEndValidityDate());
 		$this->assertEquals('3', $policy->getConfidentialityImpact());
 		$this->assertEquals('3', $policy->getIntegrityImpact());
@@ -56,8 +56,8 @@ class BailsProviderTest extends TestCase {
 		$this->assertEquals('UK-Cabinet', $policy->getImpactScale());
 		$this->assertCount(1, $policy->getCategories());
 		$this->assertEquals('Internal Only', $policy->getCategories()[0]->getName());
-		$this->assertEquals("urn:example:tscp:1:internal-only", $policy->getCategories()[0]->getId());
-		$this->assertEquals("None", $policy->getCategories()[0]->getIdOID());
+		$this->assertEquals('urn:example:tscp:1:internal-only', $policy->getCategories()[0]->getId());
+		$this->assertEquals('None', $policy->getCategories()[0]->getIdOID());
 	}
 
 	public function testOpenDocumentProvider() : void {
@@ -74,7 +74,7 @@ class BailsProviderTest extends TestCase {
 		$this->assertEquals('', $policy->getAuthorityCountry());
 		$this->assertEquals('None', $policy->getAuthorizationName());
 		$this->assertEquals('urn:example:tscp:1', $policy->getAuthorizationId());
-		$this->assertEquals(new DateTime("2022-11-16T15:54:17"), $policy->getStartValidityDate());
+		$this->assertEquals(new DateTime('2022-11-16T15:54:17'), $policy->getStartValidityDate());
 		$this->assertEquals(null, $policy->getEndValidityDate());
 		$this->assertEquals('3', $policy->getConfidentialityImpact());
 		$this->assertEquals('3', $policy->getIntegrityImpact());
@@ -82,8 +82,8 @@ class BailsProviderTest extends TestCase {
 		$this->assertEquals('UK-Cabinet', $policy->getImpactScale());
 		$this->assertCount(1, $policy->getCategories());
 		$this->assertEquals('Internal Only', $policy->getCategories()[0]->getName());
-		$this->assertEquals("urn:example:tscp:1:internal-only", $policy->getCategories()[0]->getId());
-		$this->assertEquals("None", $policy->getCategories()[0]->getIdOID());
+		$this->assertEquals('urn:example:tscp:1:internal-only', $policy->getCategories()[0]->getId());
+		$this->assertEquals('None', $policy->getCategories()[0]->getIdOID());
 	}
 
 	private function loginAndGetUserFolder(string $userId) {

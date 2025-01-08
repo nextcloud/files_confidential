@@ -44,7 +44,7 @@ class ContentProviderTest extends TestCase {
 	 * @throws \OCP\Files\NotPermittedException
 	 */
 	public function testOpenDocumentProvider(string $file) : void {
-		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/'.$file));
+		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/' . $file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(OpenDocumentContentProvider::class);
 		$content = $provider->getContentForFile($this->testFile);
@@ -58,7 +58,7 @@ class ContentProviderTest extends TestCase {
 	 * @throws \OCP\Files\NotPermittedException
 	 */
 	public function testMicrosoftProvider(string $file) : void {
-		$this->testFile = $this->userFolder->newFile('/test.docx', file_get_contents(__DIR__ . '/res/'.$file));
+		$this->testFile = $this->userFolder->newFile('/test.docx', file_get_contents(__DIR__ . '/res/' . $file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(MicrosoftContentProvider::class);
 		$content = $provider->getContentForFile($this->testFile);
@@ -73,7 +73,7 @@ class ContentProviderTest extends TestCase {
 	 * @throws \OCP\Files\NotPermittedException
 	 */
 	public function testOpenDocumentSearchExpressions(string $file) : void {
-		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/'.$file));
+		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/' . $file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(OpenDocumentContentProvider::class);
 		$content = $provider->getContentForFile($this->testFile);
@@ -90,7 +90,7 @@ class ContentProviderTest extends TestCase {
 	 * @throws \OCP\Files\NotPermittedException
 	 */
 	public function testPlainTextSearchExpressions(string $file) : void {
-		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/'.$file));
+		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/' . $file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(PlainTextContentProvider::class);
 		$content = $provider->getContentForFile($this->testFile);
@@ -107,7 +107,7 @@ class ContentProviderTest extends TestCase {
 	 * @throws \OCP\Files\NotPermittedException
 	 */
 	public function testPdfSearchExpressions(string $file) : void {
-		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/'.$file));
+		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/' . $file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(PdfContentProvider::class);
 		$content = $provider->getContentForFile($this->testFile);

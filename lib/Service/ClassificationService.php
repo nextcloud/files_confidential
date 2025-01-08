@@ -18,7 +18,7 @@ class ClassificationService {
 		private ContentProviderService $contentService,
 		private MetadataProviderService $metadataService,
 		private BailsPolicyProviderService $bailsService,
-		private SettingsService $settings
+		private SettingsService $settings,
 	) {
 	}
 

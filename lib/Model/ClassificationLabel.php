@@ -59,7 +59,7 @@ class ClassificationLabel implements IClassificationLabel {
 				}
 			}
 			foreach ($label->getRegularExpressions() as $pattern) {
-				if (preg_match('/'.$pattern.'/', $text) === 1) {
+				if (preg_match('/' . $pattern . '/', $text) === 1) {
 					return $label;
 				}
 			}
