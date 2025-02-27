@@ -25,15 +25,15 @@ OC.L10N.register(
     "Search keywords within documents" : "ھۆججەت ئىچىدىكى ئاچقۇچلۇق سۆزلەرنى ئىزدەڭ",
     "Search keyword" : "ھالقىلىق سۆز",
     "Remove search keyword" : "ئىزدەش ھالقىلىق سۆزنى ئۆچۈرۈڭ",
+    "Can not add new label, until all labels have a tag assigned." : "بارلىق بەلگىلەرگە بەلگە قويۇلمىغۇچە ، يېڭى بەلگە قوشالمايدۇ.",
+    "Failed to save settings" : "تەڭشەكلەرنى ساقلىيالمىدى",
+    "Policy uploaded successfully" : "سىياسەت مۇۋەپپەقىيەتلىك يۈكلەندى",
     "Business Authorization Framework" : "سودا ھوقۇق دائىرىسى",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "TSCP / BAILS سىياسەت تۈرگە ئايرىش بەلگىسىنى يۈكلەڭ (XML فورماتى)",
     "Upload policy" : "يۈكلەش سىياسىتى",
     "Previous labels will be overwritten after successful file upload" : "ئالدىنقى بەلگە مۇۋەپپەقىيەتلىك ھۆججەت يوللانغاندىن كېيىن يېزىلىدۇ",
     "Classification rules" : "تۈرگە ئايرىش قائىدىسى",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "ئوخشىمىغان ھۆججەتلەرگە بەلگە ئىشلىتىدىغان تۈرگە ئايرىش قائىدىلىرىگە ئېنىقلىما بېرىڭ. بۇ بەلگىلەرگە ئاساسەن Nextcloud ئېقىمىدىكى قائىدىلەرنى بەلگىلىيەلەيسىز.",
-    "Add new label" : "يېڭى بەلگە قوشۇڭ",
-    "Can not add new label, until all labels have a tag assigned." : "بارلىق بەلگىلەرگە بەلگە قويۇلمىغۇچە ، يېڭى بەلگە قوشالمايدۇ.",
-    "Failed to save settings" : "تەڭشەكلەرنى ساقلىيالمىدى",
-    "Policy uploaded successfully" : "سىياسەت مۇۋەپپەقىيەتلىك يۈكلەندى"
+    "Add new label" : "يېڭى بەلگە قوشۇڭ"
 },
 "nplurals=2; plural=(n != 1);");

@@ -23,15 +23,15 @@
     "Search keywords within documents" : "Kulcsszavak keresése a dokumentumokban",
     "Search keyword" : "Kulcsszókeresés",
     "Remove search keyword" : "Keresési kulcsszó eltávolítása",
+    "Can not add new label, until all labels have a tag assigned." : "Nem tud új címkét hozzáadni, amíg az összes címke nincs hozzárendelve.",
+    "Failed to save settings" : "A beállítások mentése sikertelen",
+    "Policy uploaded successfully" : "Szabályzat sikeresen feltöltve",
     "Business Authorization Framework" : "Üzleti engedélyezési keretrendszer",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "TSCP/BAILS házirend-osztályozási címkék feltöltése (XML formátumban)",
     "Upload policy" : "Feltöltési házirend",
     "Previous labels will be overwritten after successful file upload" : "A korábbi címkék a sikeres fájlfeltöltés után felülíródnak.",
     "Classification rules" : "Osztályozási szabályok",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Olyan osztályozási szabályok meghatározása, amelyek címkéket alkalmaznak a különböző dokumentumokra. E címkék alapján szabályokat határozhat meg a Nextcloud Folyamatban-ban.",
-    "Add new label" : "Új címke hozzáadása",
-    "Can not add new label, until all labels have a tag assigned." : "Nem tud új címkét hozzáadni, amíg az összes címke nincs hozzárendelve.",
-    "Failed to save settings" : "A beállítások mentése sikertelen",
-    "Policy uploaded successfully" : "Szabályzat sikeresen feltöltve"
+    "Add new label" : "Új címke hozzáadása"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

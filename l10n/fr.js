@@ -25,15 +25,15 @@ OC.L10N.register(
     "Search keywords within documents" : "Rechercher des mots-clés dans les documents",
     "Search keyword" : "Rechercher un mot-clé",
     "Remove search keyword" : "Supprimer le mot-clé de la recherche",
+    "Can not add new label, until all labels have a tag assigned." : "Impossible d'ajouter un nouveau label tant qu'un tag n'a pas été attribuée à toutes les labels.",
+    "Failed to save settings" : "Échec de l'enregistrement des paramètres",
+    "Policy uploaded successfully" : "Politique mise à jour avec succès",
     "Business Authorization Framework" : "Business Authorization Framework",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Téléversez vos étiquettes de classification de politique TSCP/BAILS (format XML)",
     "Upload policy" : "Politique de téléversement",
     "Previous labels will be overwritten after successful file upload" : "Les étiquettes précédentes seront écrasées après le téléversement réussi du fichier.",
     "Classification rules" : "Règles de classement",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Définissez des règles de classification qui appliquent des balises à différents documents. Sur la base de ces balises, vous pouvez définir des règles dans Nextcloud Flow.",
-    "Add new label" : "Ajouter un nouveau libellé",
-    "Can not add new label, until all labels have a tag assigned." : "Impossible d'ajouter un nouveau label tant qu'un tag n'a pas été attribuée à toutes les labels.",
-    "Failed to save settings" : "Échec de l'enregistrement des paramètres",
-    "Policy uploaded successfully" : "Politique mise à jour avec succès"
+    "Add new label" : "Ajouter un nouveau libellé"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

@@ -25,15 +25,15 @@ OC.L10N.register(
     "Search keywords within documents" : "Anahtar sözcükleri belgeler içinde ara",
     "Search keyword" : "Anahtar sözcük ara",
     "Remove search keyword" : "Anahtar sözcüğü kaldır",
+    "Can not add new label, until all labels have a tag assigned." : "Tüm etiketlere bir kod imi atanana kadar yeni etiket eklenemez.",
+    "Failed to save settings" : "Ayarlar kaydedilemedi",
+    "Policy uploaded successfully" : "İlke güncellendi",
     "Business Authorization Framework" : "Business Authorization Framework",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "TSCP/BAILS ilkesi sınıflandırma etiketlerinizi yükleyin (XML biçiminde)",
     "Upload policy" : "Yükleme ilkesi",
     "Previous labels will be overwritten after successful file upload" : "Dosya yüklendiğinde önceki etiketlerin üzerine yazılacak",
     "Classification rules" : "Sınıflandırma kuralları",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Farklı belgeler için geçerli olacak sınıflandırma kurallarını tanımlayın. Bu kurallara göre, Nextcloud Flow kuralları tanımlayabilirsiniz.",
-    "Add new label" : "Yeni etiket ekle",
-    "Can not add new label, until all labels have a tag assigned." : "Tüm etiketlere bir kod imi atanana kadar yeni etiket eklenemez.",
-    "Failed to save settings" : "Ayarlar kaydedilemedi",
-    "Policy uploaded successfully" : "İlke güncellendi"
+    "Add new label" : "Yeni etiket ekle"
 },
 "nplurals=2; plural=(n > 1);");

@@ -9,9 +9,9 @@ OC.L10N.register(
     "Add" : "Добавяне",
     "Enter Regular Expression" : "Въвеждане на регулярен израз",
     "Remove search expression" : "Премахване на израза за търсене",
+    "Failed to save settings" : "Неуспешно запазване на настройките",
     "Business Authorization Framework" : "Рамка за бизнес упълномощаване",
     "Upload policy" : "Правила за качване",
-    "Add new label" : "Добавяне на нов етикет",
-    "Failed to save settings" : "Неуспешно запазване на настройките"
+    "Add new label" : "Добавяне на нов етикет"
 },
 "nplurals=2; plural=(n != 1);");

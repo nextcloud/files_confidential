@@ -25,15 +25,15 @@ OC.L10N.register(
     "Search keywords within documents" : "البحث عن كلمات ضمن المستندات",
     "Search keyword" : "كلمات البحث",
     "Remove search keyword" : "حذف كلمة بحث",
+    "Can not add new label, until all labels have a tag assigned." : "لا يمكن إضافة علامات جديدة حتى يتم إسناد وسم لكل العلامات",
+    "Failed to save settings" : "فشل في حفظ الإعدادات",
+    "Policy uploaded successfully" : "تمّ تحميل السياسة بنجاح",
     "Business Authorization Framework" : "إطار تخويل الأعمال BAF",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "قم بتحميل policy classification labels علامات تصنيف سياسة TSCP/BAILS (تنسيق XML)",
     "Upload policy" : "إرفع السياسة الإجرائية",
     "Previous labels will be overwritten after successful file upload" : "العلامات السابقة سيتم استبدالها بعد إتمام رفع الملف بنجاح",
     "Classification rules" : "قواعد التصنيف",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "قُم بتعريف قواعد التصنيف التي تتيح توسيم المستندات المختلفة. بناءً على هذه الوسوم يمكنك تعريف قواعد أتمتة سير العمل",
-    "Add new label" : "أضف علامة جديدة",
-    "Can not add new label, until all labels have a tag assigned." : "لا يمكن إضافة علامات جديدة حتى يتم إسناد وسم لكل العلامات",
-    "Failed to save settings" : "فشل في حفظ الإعدادات",
-    "Policy uploaded successfully" : "تمّ تحميل السياسة بنجاح"
+    "Add new label" : "أضف علامة جديدة"
 },
 "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;");

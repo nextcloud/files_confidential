@@ -23,15 +23,15 @@
     "Search keywords within documents" : "Search keywords within documents",
     "Search keyword" : "Search keyword",
     "Remove search keyword" : "Remove search keyword",
+    "Can not add new label, until all labels have a tag assigned." : "Can not add new label, until all labels have a tag assigned.",
+    "Failed to save settings" : "Failed to save settings",
+    "Policy uploaded successfully" : "Policy uploaded successfully",
     "Business Authorization Framework" : "Business Authorization Framework",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Upload your TSCP/BAILS policy classification labels (XML format)",
     "Upload policy" : "Upload policy",
     "Previous labels will be overwritten after successful file upload" : "Previous labels will be overwritten after successful file upload",
     "Classification rules" : "Classification rules",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow.",
-    "Add new label" : "Add new label",
-    "Can not add new label, until all labels have a tag assigned." : "Can not add new label, until all labels have a tag assigned.",
-    "Failed to save settings" : "Failed to save settings",
-    "Policy uploaded successfully" : "Policy uploaded successfully"
+    "Add new label" : "Add new label"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

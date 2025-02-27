@@ -23,15 +23,15 @@ OC.L10N.register(
     "Search keywords within documents" : "Sök nyckelord i dokument",
     "Search keyword" : "Sökord",
     "Remove search keyword" : "Ta bort sökord",
+    "Can not add new label, until all labels have a tag assigned." : "Kan inte lägga till ny etikett förrän alla etiketter har en tagg tilldelad.",
+    "Failed to save settings" : "Kunde inte spara inställningarna",
+    "Policy uploaded successfully" : "Policyn har laddats upp",
     "Business Authorization Framework" : "Business Authorization Framework",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Ladda upp dina TSCP/BAILS-policyklassificeringsetiketter (XML-format)",
     "Upload policy" : "Uppladdningspolicy",
     "Previous labels will be overwritten after successful file upload" : "Tidigare etiketter kommer att skrivas över efter lyckad filuppladdning",
     "Classification rules" : "Klassificeringsregler",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definiera klassificeringsregler som tillämpar taggar på olika dokument. Baserat på dessa taggar kan du definiera regler i Nextcloud Flow.",
-    "Add new label" : "Lägg till ny etikett",
-    "Can not add new label, until all labels have a tag assigned." : "Kan inte lägga till ny etikett förrän alla etiketter har en tagg tilldelad.",
-    "Failed to save settings" : "Kunde inte spara inställningarna",
-    "Policy uploaded successfully" : "Policyn har laddats upp"
+    "Add new label" : "Lägg till ny etikett"
 },
 "nplurals=2; plural=(n != 1);");

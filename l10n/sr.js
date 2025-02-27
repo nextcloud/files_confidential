@@ -25,15 +25,15 @@ OC.L10N.register(
     "Search keywords within documents" : "Претрага кључних речи унутар докумената",
     "Search keyword" : "Тражи кључну реч",
     "Remove search keyword" : "Уклони кључну реч претраге",
+    "Can not add new label, until all labels have a tag assigned." : "Не може да се дода нови натпис све док се свим натписима не додели ознака",
+    "Failed to save settings" : "Грешка приликом чувања поставки",
+    "Policy uploaded successfully" : "Полиса је успешно отпремљена",
     "Business Authorization Framework" : "Оквир пословне ауторизације",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Отпремите своје TSCP/BAILS ознаке класификације полисе (XML формат)",
     "Upload policy" : "Отпреми полису",
     "Previous labels will be overwritten after successful file upload" : "Након успешог отпремања фајла, претходни натписи ће бити обрисани",
     "Classification rules" : "Правила класификације",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Дефинишите правила класификације која примењују ознаке на различите документе. На основу ових ознака можете да дефинишете правила у Nextcloud Flow.",
-    "Add new label" : "Додај нову ознаку",
-    "Can not add new label, until all labels have a tag assigned." : "Не може да се дода нови натпис све док се свим натписима не додели ознака",
-    "Failed to save settings" : "Грешка приликом чувања поставки",
-    "Policy uploaded successfully" : "Полиса је успешно отпремљена"
+    "Add new label" : "Додај нову ознаку"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);");

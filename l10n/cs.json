@@ -23,15 +23,15 @@
     "Search keywords within documents" : "Hledat klíčová slova v dokumentech",
     "Search keyword" : "Hledat klíčové slovo",
     "Remove search keyword" : "Odebrat klíčové slovo vyhledávání",
+    "Can not add new label, until all labels have a tag assigned." : "Není možné přidat novou visačku, dokud všechny nemají přiřazený štítek.",
+    "Failed to save settings" : "Nastavení se nepodařilo uložit",
+    "Policy uploaded successfully" : "Zásada úspěšně nahrána",
     "Business Authorization Framework" : "Aplikační rámec podnikového ověřování",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Nahrajte své štítky klasifikace zásady TSCP/BAILS (XML formát)",
     "Upload policy" : "Zásada pro nahrávání",
     "Previous labels will be overwritten after successful file upload" : "Po úspěšném nahrání souboru budou předchozí štítky přepsány",
     "Classification rules" : "Pravidla třídění",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definujte klasifikační pravidla, která přiřazují štítky různým dokumentům. V závislosti na těchto štítcích je možné v Nextcloud Tocích určovat pravidla.",
-    "Add new label" : "Přidat nový štítek",
-    "Can not add new label, until all labels have a tag assigned." : "Není možné přidat novou visačku, dokud všechny nemají přiřazený štítek.",
-    "Failed to save settings" : "Nastavení se nepodařilo uložit",
-    "Policy uploaded successfully" : "Zásada úspěšně nahrána"
+    "Add new label" : "Přidat nový štítek"
 },"pluralForm" :"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 }

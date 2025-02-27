@@ -10,9 +10,9 @@ OC.L10N.register(
     "Add" : "Gehitu",
     "Enter Regular Expression" : "Sartu adierazpen erregularra",
     "Remove search expression" : "Kendu bilaketa-espresioa",
+    "Failed to save settings" : "Ezarpenak gordetzeak huts egin du",
     "Business Authorization Framework" : "Enpresaren baimenen esparrua",
     "Upload policy" : "Igoera politika",
-    "Add new label" : "Gehitu etiketa berria",
-    "Failed to save settings" : "Ezarpenak gordetzeak huts egin du"
+    "Add new label" : "Gehitu etiketa berria"
 },
 "nplurals=2; plural=(n != 1);");

@@ -25,15 +25,15 @@ OC.L10N.register(
     "Search keywords within documents" : "Buscar palabras clave nos documentos",
     "Search keyword" : "Buscar palabra clave",
     "Remove search keyword" : "Retirar a palabra clave de busca",
+    "Can not add new label, until all labels have a tag assigned." : "Non é posíbel engadir unha nova etiqueta ata que todas as etiquetas teñan unha marca asignada.",
+    "Failed to save settings" : "Produciuse un fallo ao gardar os axustes",
+    "Policy uploaded successfully" : "Directiva enviada satisfactoriamente",
     "Business Authorization Framework" : "Marco de traballo de autorización empresarial",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Envíe as súas etiquetas de clasificación de directivas TSCP/BAILS (formato XML)",
     "Upload policy" : "Directiva de envío",
     "Previous labels will be overwritten after successful file upload" : "As etiquetas anteriores sobrescribiranse após enviar correctamente o ficheiro",
     "Classification rules" : "Regras de clasificación",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Defina as regras de clasificación que aplicarán marcas a diferentes documentos. En base a estas marcas pode definir regras en Nextcloud Flow.",
-    "Add new label" : "Engadir unha nova etiqueta",
-    "Can not add new label, until all labels have a tag assigned." : "Non é posíbel engadir unha nova etiqueta ata que todas as etiquetas teñan unha marca asignada.",
-    "Failed to save settings" : "Produciuse un fallo ao gardar os axustes",
-    "Policy uploaded successfully" : "Directiva enviada satisfactoriamente"
+    "Add new label" : "Engadir unha nova etiqueta"
 },
 "nplurals=2; plural=(n != 1);");

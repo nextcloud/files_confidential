@@ -25,15 +25,15 @@ OC.L10N.register(
     "Search keywords within documents" : "Cuardaigh eochairfhocail laistigh de dhoiciméid",
     "Search keyword" : "Cuardaigh eochairfhocal",
     "Remove search keyword" : "Bain eochairfhocal cuardaigh",
+    "Can not add new label, until all labels have a tag assigned." : "Ní féidir lipéad nua a chur leis, go dtí go mbeidh clib sannta do gach lipéad.",
+    "Failed to save settings" : "Theip ar na socruithe a shábháil",
+    "Policy uploaded successfully" : "D'éirigh le huaslódáil an polasaí",
     "Business Authorization Framework" : "Creat Údaraithe Gnó",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Uaslódáil do lipéid aicmithe polasaí TSCP/BAILS (formáid XML)",
     "Upload policy" : "Polasaí uaslódála",
     "Previous labels will be overwritten after successful file upload" : "Déanfar lipéid roimhe seo a fhorscríobh tar éis uaslódáil rathúil comhad",
     "Classification rules" : "Rialacha aicmithe",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Sainmhínigh rialacha aicmithe a chuireann clibeanna i bhfeidhm ar dhoiciméid éagsúla. Bunaithe ar na clibeanna seo is féidir leat rialacha a shainiú i Nextcloud Flow.",
-    "Add new label" : "Cuir lipéad nua leis",
-    "Can not add new label, until all labels have a tag assigned." : "Ní féidir lipéad nua a chur leis, go dtí go mbeidh clib sannta do gach lipéad.",
-    "Failed to save settings" : "Theip ar na socruithe a shábháil",
-    "Policy uploaded successfully" : "D'éirigh le huaslódáil an polasaí"
+    "Add new label" : "Cuir lipéad nua leis"
 },
 "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");

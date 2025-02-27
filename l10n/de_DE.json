@@ -23,15 +23,15 @@
     "Search keywords within documents" : "Schlüsselwörter in Dokumenten suchen",
     "Search keyword" : "Suchbegriff",
     "Remove search keyword" : "Suchbegriff entfernen",
+    "Can not add new label, until all labels have a tag assigned." : "Es kann so lange kein neues Etikett hinzugefügt werden, bis allen Etiketten ein Schlagwort zugewiesen ist.",
+    "Failed to save settings" : "Einstellungen konnten nicht gespeichert werden",
+    "Policy uploaded successfully" : "Richtlinie erfolgreich hochgeladen",
     "Business Authorization Framework" : "Framework für Geschäftsautorisierung",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Ihre TSCP/BAILS-Richtlinienklassifizierungsetiketten hochladen (XML-Format)",
     "Upload policy" : "Richtlinie für das Hochladen",
     "Previous labels will be overwritten after successful file upload" : "Vorherige Etiketten werden nach erfolgreichem Datei-Upload überschrieben.",
     "Classification rules" : "Klassifizierungsregeln",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Klassifizierungsregeln definieren, die Schlagworte auf verschiedene Dokumente anwenden. Basierend auf diesen Schlagworten können Sie Regeln in Nextcloud Flow definieren.",
-    "Add new label" : "Neue Bezeichnung hinzufügen",
-    "Can not add new label, until all labels have a tag assigned." : "Es kann so lange kein neues Etikett hinzugefügt werden, bis allen Etiketten ein Schlagwort zugewiesen ist.",
-    "Failed to save settings" : "Einstellungen konnten nicht gespeichert werden",
-    "Policy uploaded successfully" : "Richtlinie erfolgreich hochgeladen"
+    "Add new label" : "Neue Bezeichnung hinzufügen"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

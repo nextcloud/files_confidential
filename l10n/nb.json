@@ -23,15 +23,15 @@
     "Search keywords within documents" : "Søk etter nøkkelord i dokumenter",
     "Search keyword" : "Søk nøkkelord",
     "Remove search keyword" : "Fjern søkeord",
+    "Can not add new label, until all labels have a tag assigned." : "Kan ikke legge til ny etikett, før alle etiketter har et merke tilordnet.",
+    "Failed to save settings" : "Klarte ikke å lagre innstillinger",
+    "Policy uploaded successfully" : "Retningslinjene er lastet opp",
     "Business Authorization Framework" : "Rammeverk for forretningsautorisasjon",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Last opp etiketter for klassifisering av TSCP/BAILS-retningslinjer (XML-format)",
     "Upload policy" : "Retningslinjer for opplasting",
     "Previous labels will be overwritten after successful file upload" : "Tidligere etiketter blir overskrevet etter vellykket filopplasting",
     "Classification rules" : "Klassifiseringsregler",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definer klassifiseringsregler som bruker tagger på forskjellige dokumenter. Basert på disse taggene kan du definere regler i Nextcloud Flow.",
-    "Add new label" : "Legg til ny etikett",
-    "Can not add new label, until all labels have a tag assigned." : "Kan ikke legge til ny etikett, før alle etiketter har et merke tilordnet.",
-    "Failed to save settings" : "Klarte ikke å lagre innstillinger",
-    "Policy uploaded successfully" : "Retningslinjene er lastet opp"
+    "Add new label" : "Legg til ny etikett"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

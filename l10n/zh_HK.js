@@ -25,15 +25,15 @@ OC.L10N.register(
     "Search keywords within documents" : "在文件中搜尋關鍵字",
     "Search keyword" : "搜尋關鍵詞",
     "Remove search keyword" : "移除搜尋關鍵詞",
+    "Can not add new label, until all labels have a tag assigned." : "不能添加新標籤，直至所有標籤都被賦值標籤。",
+    "Failed to save settings" : "設定儲存失敗",
+    "Policy uploaded successfully" : "政策上傳成功",
     "Business Authorization Framework" : "業務授權框架",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "上傳中您的 TSCP/BAILS 政策分類標籤（XML 格式）",
     "Upload policy" : "上傳政策",
     "Previous labels will be overwritten after successful file upload" : "上傳檔案成功後，上一個標籤將被覆蓋。",
     "Classification rules" : "分類規則",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "定義將標籤套用至不同文件的分類規則。基於這些標籤，您可以在 Nextcloud Flow 中定義規則。",
-    "Add new label" : "新增標籤",
-    "Can not add new label, until all labels have a tag assigned." : "不能添加新標籤，直至所有標籤都被賦值標籤。",
-    "Failed to save settings" : "設定儲存失敗",
-    "Policy uploaded successfully" : "政策上傳成功"
+    "Add new label" : "新增標籤"
 },
 "nplurals=1; plural=0;");

@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Remove rule" : "Verwijderen regel",
     "Add" : "Toevoegen",
-    "Add new label" : "Voeg nieuw label toe",
-    "Failed to save settings" : "Kon instellingen niet opslaan"
+    "Failed to save settings" : "Kon instellingen niet opslaan",
+    "Add new label" : "Voeg nieuw label toe"
 },
 "nplurals=2; plural=(n != 1);");

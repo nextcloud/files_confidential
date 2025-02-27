@@ -1,6 +1,6 @@
 { "translations": {
     "Add" : "Tilføj",
-    "Add new label" : "Tilføj ny mærkat",
-    "Failed to save settings" : "Kunne ikke gemme indstillinger"
+    "Failed to save settings" : "Kunne ikke gemme indstillinger",
+    "Add new label" : "Tilføj ny mærkat"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

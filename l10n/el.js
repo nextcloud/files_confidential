@@ -9,8 +9,8 @@ OC.L10N.register(
     "Add" : "Προσθήκη",
     "Enter Regular Expression" : "Εισαγάγετε την κανονική έκφραση",
     "Remove search expression" : "Κατάργηση έκφρασης αναζήτησης",
+    "Failed to save settings" : "Αποτυχία αποθήκευσης ρυθμίσεων",
     "Upload policy" : "Πολιτική μεταφόρτωσης",
-    "Add new label" : "Προσθήκη νέας ετικέτας",
-    "Failed to save settings" : "Αποτυχία αποθήκευσης ρυθμίσεων"
+    "Add new label" : "Προσθήκη νέας ετικέτας"
 },
 "nplurals=2; plural=(n != 1);");

@@ -8,9 +8,9 @@ OC.L10N.register(
     "Select tag" : "Select tag",
     "Enter Regular Expression" : "Enter Regular Expression",
     "Remove search expression" : "Remove search expression",
+    "Failed to save settings" : "تنظیمات ذخیره نشدند",
     "Business Authorization Framework" : "Business Authorization Framework",
     "Upload policy" : "Upload policy",
-    "Add new label" : "Add new label",
-    "Failed to save settings" : "تنظیمات ذخیره نشدند"
+    "Add new label" : "Add new label"
 },
 "nplurals=2; plural=(n > 1);");

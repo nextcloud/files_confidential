@@ -9,8 +9,8 @@ OC.L10N.register(
     "Add" : "Lisää",
     "Enter Regular Expression" : "Kirjoita säännöllinen lauseke",
     "Remove search expression" : "Poista hakulauseke",
+    "Failed to save settings" : "Asetusten tallentaminen epäonnistui",
     "Upload policy" : "Lähetyskäytäntö",
-    "Add new label" : "Lisää uusi nimike",
-    "Failed to save settings" : "Asetusten tallentaminen epäonnistui"
+    "Add new label" : "Lisää uusi nimike"
 },
 "nplurals=2; plural=(n != 1);");

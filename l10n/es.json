@@ -10,13 +10,13 @@
     "Add" : "Añadir",
     "Enter Regular Expression" : "Ingrese la Expresión Regular",
     "Remove search expression" : "Quitar expresión de búsqueda",
+    "Can not add new label, until all labels have a tag assigned." : "No se puede agregar una etiqueta nueva, hasta que tenga una marca (tag) asignada.",
+    "Failed to save settings" : "Fallo al guardar configuraciones",
+    "Policy uploaded successfully" : "La política se cargó exitosamente",
     "Business Authorization Framework" : "Marco de Autorización Empresarial (BAF)",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Cargue sus etiquetas de clasificación de políticas TSCP/BAILS (formato XML)",
     "Upload policy" : "Cargar política",
     "Previous labels will be overwritten after successful file upload" : "Las etiquetas previas serán sobrescritas luego de que el archivo sea cargado exitosamente",
-    "Add new label" : "Añadir etiqueta nueva",
-    "Can not add new label, until all labels have a tag assigned." : "No se puede agregar una etiqueta nueva, hasta que tenga una marca (tag) asignada.",
-    "Failed to save settings" : "Fallo al guardar configuraciones",
-    "Policy uploaded successfully" : "La política se cargó exitosamente"
+    "Add new label" : "Añadir etiqueta nueva"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

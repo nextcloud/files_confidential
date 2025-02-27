@@ -25,15 +25,15 @@ OC.L10N.register(
     "Search keywords within documents" : "Vyhľadať kľúčové slová v dokumentoch",
     "Search keyword" : "Vyhľadať výraz",
     "Remove search keyword" : "Odstrániť vyhľadaný výraz",
+    "Can not add new label, until all labels have a tag assigned." : "Nie je možné pridať nový štítok, kým všetky štítky nebudú mať priradený názov.",
+    "Failed to save settings" : "Nepodarilo sa uložiť nastavenia",
+    "Policy uploaded successfully" : "Politika bola úspešne nahraná",
     "Business Authorization Framework" : "Business Authorization Framework",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Nahrať vaše označenia klasifikácie pravidiel TSCP/BAILS (formát XML)",
     "Upload policy" : "Nahrať politiku",
     "Previous labels will be overwritten after successful file upload" : "Predchodzie štítky budú prepísane po úspešnom nahraní súboru",
     "Classification rules" : "Pravidlá klasifikácie",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definujte pravidlá klasifikácie, ktoré aplikujú štítky na rôzne dokumenty. Na základe týchto značiek môžete definovať pravidlá v Nextcloud Flow.",
-    "Add new label" : "Pridať novú značku",
-    "Can not add new label, until all labels have a tag assigned." : "Nie je možné pridať nový štítok, kým všetky štítky nebudú mať priradený názov.",
-    "Failed to save settings" : "Nepodarilo sa uložiť nastavenia",
-    "Policy uploaded successfully" : "Politika bola úspešne nahraná"
+    "Add new label" : "Pridať novú značku"
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");

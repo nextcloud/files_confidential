@@ -10,9 +10,9 @@ OC.L10N.register(
     "Add" : "Afegeix",
     "Enter Regular Expression" : "Introdueixi una Expressió Regular",
     "Remove search expression" : "Eliminar l'expressió de cerca",
+    "Failed to save settings" : "Ha fallat desar els paràmetres",
     "Business Authorization Framework" : "Marc d'autorització comercial",
     "Upload policy" : "Carregar política",
-    "Add new label" : "Afegir nova etiqueta",
-    "Failed to save settings" : "Ha fallat desar els paràmetres"
+    "Add new label" : "Afegir nova etiqueta"
 },
 "nplurals=2; plural=(n != 1);");
