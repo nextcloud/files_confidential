@@ -31,3 +31,7 @@
 /vendor-bin
 /psalm.xml
 /psalm-baseline.xml
+/build-js
+README.md
+.gitkeep
+.l10nignore
