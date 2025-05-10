@@ -27,7 +27,7 @@ OC.L10N.register(
     "Remove search keyword" : "Suchbegriff entfernen",
     "Can not add new label, until all labels have a tag assigned." : "Es kann so lange kein neues Etikett hinzugefügt werden, bis allen Etiketten ein Schlagwort zugewiesen ist.",
     "Failed to save settings" : "Einstellungen konnten nicht gespeichert werden",
-    "Policy uploaded successfully" : "Richtlinie erfolgreich hochgeladen",
+    "Policy uploaded successfully" : "Richtlinie hochgeladen",
     "Business Authorization Framework" : "Framework für Geschäftsautorisierung",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Deine TSCP/BAILS-Richtlinienklassifizierungsetiketten hochladen (XML-Format)",
     "Upload policy" : "Richtlinie für das Hochladen",
