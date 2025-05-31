@@ -2,7 +2,7 @@ OC.L10N.register(
     "files_confidential",
     {
     "Unsupported file type for import. An XML file is expected." : "Tipo de arquivo não suportado para importação. Um arquivo XML é esperado.",
-    "Could not read uploaded file" : "Não foi possível ler o arquivo enviado",
+    "Could not read uploaded file" : "Não foi possível ler o arquivo carregado",
     "Could not store extracted labels" : "Não foi possível armazenar etiquetas extraídas",
     "Confidential Files" : "Arquivos Confidenciais",
     "Confidential files" : "Arquivos confidenciais",
