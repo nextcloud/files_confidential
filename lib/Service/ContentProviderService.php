@@ -28,14 +28,17 @@ class ContentProviderService {
 		$this->providers[] = $plainText;
 	}
 
-	public function getContentForFile(File $file): string {
+	/**
+	 * @return \Generator<string>
+	 */
+	public function getContentStreamForFile(File $file): \Generator {
 		$mimeType = $file->getMimeType();
 		foreach ($this->providers as $provider) {
 			if (!in_array($mimeType, $provider->getSupportedMimeTypes())) {
 				continue;
 			}
-			return $provider->getContentForFile($file);
+			return $provider->getContentStream($file);
 		}
-		return '';
+		return (static function (): \Generator { yield ''; })(); // Return an empty generator if no provider matches
 	}
 }

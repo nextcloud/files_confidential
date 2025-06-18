@@ -163,4 +163,29 @@ class ClassificationLabel implements IClassificationLabel {
 	public function getMetadataItems(): array {
 		return $this->metadataItems;
 	}
+
+	public function getMaxMatchLength(): int {
+		$maxLength = 0;
+
+		$keywords = $this->getKeywords();
+		if (count($keywords) > 0) {
+			$maxLength = max(array_map('strlen', $keywords));
+		}
+
+		$searchExpressions = $this->getSearchExpressions();
+		if (count($searchExpressions) > 0) {
+			$maxLength = max(array_map('strlen', $searchExpressions));
+		}
+
+		$regularExpressions = $this->getRegularExpressions();
+		if (count($regularExpressions) > 0) {
+			$maxLength = max(array_map('strlen', $regularExpressions));
+		}
+
+		if (count($regularExpressions) > 0 || count($searchExpressions) > 0) {
+			$maxLength = max($maxLength, 256);
+		}
+
+		return $maxLength;
+	}
 }

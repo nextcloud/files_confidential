@@ -14,5 +14,8 @@ interface IContentProvider {
 	 * @return list<string>
 	 */
 	public function getSupportedMimeTypes(): array;
-	public function getContentForFile(File $file): string;
+	/**
+	 * @return \Generator<string>
+	 */
+	public function getContentStream(File $file): \Generator;
 }

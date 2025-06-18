@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace OCA\Files_Confidential\Providers\ContentProviders;
 
-use DOMDocument;
 use OCA\Files_Confidential\Contract\IContentProvider;
 use OCP\Files\File;
 use OCP\Files\InvalidPathException;
@@ -40,60 +39,77 @@ class MicrosoftContentProvider implements IContentProvider {
 
 	/**
 	 * @param \OCP\Files\File $file
-	 * @return string
+	 * @return \Generator<string>
 	 */
-	public function getContentForFile(File $file): string {
+	public function getContentStream(File $file): \Generator {
 		try {
 			if ($file->getSize() === 0) {
-				return '';
+				return;
 			}
 		} catch (InvalidPathException|NotFoundException $e) {
-			return '';
+			return;
 		}
 
 		try {
 			$localFilepath = $file->getStorage()->getLocalFile($file->getInternalPath());
 		} catch (NotFoundException $e) {
-			return '';
+			return;
 		}
 
 		$zipArchive = new \ZipArchive();
 		if (!is_string($localFilepath) || $zipArchive->open($localFilepath) === false) {
-			return '';
+			return;
 		}
 
 		$xml = $zipArchive->getFromName('word/_rels/document.xml.rels');
-		$service = new Service();
-		$service->elementMap = [
-			self::ELEMENT_RELATIONSHIPS => function (Reader $reader) {
-				$tree = $reader->parseInnerTree();
-				$results = ['headers' => [],'footers' => []];
-
-				foreach ($tree as $child) {
-					if ($child['attributes']['Type'] === 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer') {
-						$results['footers'][] = $child['attributes']['Target'];
-					}
-					if ($child['attributes']['Type'] === 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/header') {
-						$results['headers'][] = $child['attributes']['Target'];
-					}
-				}
-
-				return $results;
-			}
-		];
-
-		try {
-			/** @var array{headers: list<string>, footers: list<string>} $rels */
-			$rels = $service->parse($xml);
-		} catch (ParseException $e) {
-			// log
+		if ($xml === false) {
+			// Fallback to empty rels if the file is missing
 			$rels = ['headers' => [],'footers' => []];
+		} else {
+			$service = new Service();
+			$service->elementMap = [
+				self::ELEMENT_RELATIONSHIPS => function (Reader $reader) {
+					$tree = $reader->parseInnerTree();
+					$results = ['headers' => [],'footers' => []];
+
+					foreach ((array)$tree as $child) {
+						if (!is_array($child) || !isset($child['attributes']['Type'])) {
+							continue;
+						}
+						if ($child['attributes']['Type'] === 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer') {
+							$results['footers'][] = $child['attributes']['Target'];
+						}
+						if ($child['attributes']['Type'] === 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/header') {
+							$results['headers'][] = $child['attributes']['Target'];
+						}
+					}
+
+					return $results;
+				}
+			];
+
+			try {
+				/** @var array{headers: list<string>, footers: list<string>} $rels */
+				$rels = (array)$service->parse($xml);
+				if (!isset($rels['headers'])) {
+					$rels['headers'] = [];
+				}
+				if (!isset($rels['footers'])) {
+					$rels['footers'] = [];
+				}
+			} catch (ParseException $e) {
+				// log
+				$rels = ['headers' => [],'footers' => []];
+			}
 		}
 
-		$content = '';
 
 		foreach ($rels['headers'] as $target) {
-			$xml = $zipArchive->getFromName("word/{$target}");
+			$xmlContent = $zipArchive->getFromName("word/{$target}");
+			if ($xmlContent === false) {
+				continue;
+			}
+
 			$service = new Service();
 			$service->elementMap = [
 				self::ELEMENT_HDR => function (Reader $reader) {
@@ -121,16 +137,19 @@ class MicrosoftContentProvider implements IContentProvider {
 							$childrenArray = $newChildrenArray;
 							$newChildrenArray = [];
 							foreach ($childrenArray as $children) {
-								foreach ($children as $child) {
+								foreach ((array)$children as $child) {
+									if (!is_array($child)) {
+										continue;
+									}
 									if ($child['name'] === $elementName) {
-										if (count($path) - 1 === $i && isset($child['attributes']['string'])) {
+										if (isset($child['attributes']['string']) && count($path) - 1 === $i) {
 											$newChildrenArray[] = $child['attributes']['string'];
 											continue;
 										}
-										if (count($path) - 1 === $i && is_array($child['value'])) {
+										if (is_array($child['value']) && count($path) - 1 === $i) {
 											continue;
 										}
-										if (count($path) - 1 !== $i && !is_array($child['value'])) {
+										if (!is_array($child['value']) && count($path) - 1 !== $i) {
 											continue;
 										}
 										$newChildrenArray[] = $child['value'];
@@ -149,7 +168,7 @@ class MicrosoftContentProvider implements IContentProvider {
 			];
 
 			try {
-				$content .= implode(' ', $service->parse($xml));
+				yield implode(' ', (array)$service->parse($xmlContent));
 			} catch (ParseException $e) {
 				// log
 			}
@@ -157,7 +176,11 @@ class MicrosoftContentProvider implements IContentProvider {
 
 
 		foreach ($rels['footers'] as $target) {
-			$xml = $zipArchive->getFromName("word/{$target}");
+			$xmlContent = $zipArchive->getFromName("word/{$target}");
+			if ($xmlContent === false) {
+				continue;
+			}
+
 			$service = new Service();
 			$service->elementMap = [
 				self::ELEMENT_FTR => function (Reader $reader) {
@@ -178,12 +201,15 @@ class MicrosoftContentProvider implements IContentProvider {
 							$childrenArray = $newChildrenArray;
 							$newChildrenArray = [];
 							foreach ($childrenArray as $children) {
-								foreach ($children as $child) {
+								foreach ((array)$children as $child) {
+									if (!is_array($child)) {
+										continue;
+									}
 									if ($child['name'] === $elementName) {
-										if (count($path) - 1 === $i && is_array($child['value'])) {
+										if (is_array($child['value']) && count($path) - 1 === $i) {
 											continue;
 										}
-										if (count($path) - 1 !== $i && !is_array($child['value'])) {
+										if (!is_array($child['value']) && count($path) - 1 !== $i) {
 											continue;
 										}
 										$newChildrenArray[] = $child['value'];
@@ -202,22 +228,43 @@ class MicrosoftContentProvider implements IContentProvider {
 			];
 
 			try {
-				$content .= implode(' ', $service->parse($xml));
+				yield implode(' ', (array)$service->parse($xmlContent));
 			} catch (ParseException $e) {
 				// log
 			}
 		}
 
-		$data = $zipArchive->getFromName('word/document.xml');
+		// Use a streaming XML reader to avoid loading the entire document.xml into memory.
+		$uri = 'zip://' . $localFilepath . '#word/document.xml';
+		$reader = \XMLReader::open($uri);
 
-		if ($data !== false) {
-			$xml = new DOMDocument();
-			$xml->loadXML($data, \LIBXML_NOENT | \LIBXML_XINCLUDE | \LIBXML_NOERROR | \LIBXML_NOWARNING);
-			$content .= ' ' . strip_tags($xml->saveXML());
+		if ($reader === false) {
+			$zipArchive->close();
+			return;
 		}
 
-		$zipArchive->close();
+		$buffer = '';
+		$chunkSize = 8192; // Yield content in 8KB chunks
 
-		return $content;
+		while ($reader->read()) {
+			// We are only interested in the text content, which is inside <w:t> elements.
+			if ($reader->nodeType === \XMLReader::ELEMENT && $reader->name === 'w:t') {
+				// readString() gets all text until the closing </w:t> tag.
+				$buffer .= $reader->readString() . ' ';
+			}
+
+			if (strlen($buffer) >= $chunkSize) {
+				yield $buffer;
+				$buffer = '';
+			}
+		}
+
+		// Yield any remaining content in the buffer
+		if (!empty($buffer)) {
+			yield $buffer;
+		}
+
+		$reader->close();
+		$zipArchive->close();
 	}
 }
