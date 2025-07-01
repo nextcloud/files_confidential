@@ -48,7 +48,7 @@ class PlainTextContentProvider implements IContentProvider {
 				}
 				fclose($stream);
 			}
-		} catch (NotPermittedException | LockedException $e) {
+		} catch (NotPermittedException|LockedException $e) {
 			// ignore and return empty generator
 		}
 	}

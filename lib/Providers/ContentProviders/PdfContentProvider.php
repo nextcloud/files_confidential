@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace OCA\Files_Confidential\Providers\ContentProviders;
 
-use Smalot\PdfParser\Config;
 use OCA\Files_Confidential\Contract\IContentProvider;
 use OCP\Files\File;
 use OCP\Files\InvalidPathException;
 use OCP\Files\NotFoundException;
+use Smalot\PdfParser\Config;
 
 class PdfContentProvider implements IContentProvider {
 	public function getSupportedMimeTypes(): array {
