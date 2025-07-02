@@ -136,7 +136,7 @@ class ClassificationService {
 		// After the loop if we still here, check the final overlap for any trailing matches.
 		if (!empty($overlap)) {
 			$matches = [];
-			if (@preg_match_all($combinedRegex, $overlap, $matches) === 1) {
+			if (@preg_match($combinedRegex, $overlap, $matches) === 1) {
 				foreach ($captureMap as $captureName => $label) {
 					if (!empty($matches[$captureName])) {
 						return $label;
