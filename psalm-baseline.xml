@@ -3,7 +3,7 @@
   - SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
-<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
   <file src="lib/Controller/AdminController.php">
     <MixedArgument>
       <code><![CDATA[$upload['tmp_name']]]></code>
@@ -68,22 +68,10 @@
       <code><![CDATA[function (Reader $reader) {]]></code>
       <code><![CDATA[function (Reader $reader) {]]></code>
     </MissingClosureReturnType>
-    <MixedArgument>
-      <code><![CDATA[$service->parse($xml)]]></code>
-      <code><![CDATA[$service->parse($xml)]]></code>
-    </MixedArgument>
-    <MixedArrayAccess>
-      <code><![CDATA[$child['attributes']]]></code>
-      <code><![CDATA[$child['attributes']['string']]]></code>
-      <code><![CDATA[$child['name']]]></code>
-      <code><![CDATA[$child['name']]]></code>
-      <code><![CDATA[$child['value']]]></code>
-      <code><![CDATA[$child['value']]]></code>
-      <code><![CDATA[$child['value']]]></code>
-      <code><![CDATA[$child['value']]]></code>
-      <code><![CDATA[$child['value']]]></code>
-      <code><![CDATA[$child['value']]]></code>
-    </MixedArrayAccess>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[(array)$service->parse($xmlContent)]]></code>
+      <code><![CDATA[(array)$service->parse($xmlContent)]]></code>
+    </MixedArgumentTypeCoercion>
     <MixedAssignment>
       <code><![CDATA[$child]]></code>
       <code><![CDATA[$child]]></code>
@@ -102,6 +90,15 @@
     <MixedPropertyAssignment>
       <code><![CDATA[$service]]></code>
     </MixedPropertyAssignment>
+    <PossiblyInvalidMethodCall>
+      <code><![CDATA[close]]></code>
+      <code><![CDATA[read]]></code>
+      <code><![CDATA[readString]]></code>
+    </PossiblyInvalidMethodCall>
+    <PossiblyInvalidPropertyFetch>
+      <code><![CDATA[$reader->name]]></code>
+      <code><![CDATA[$reader->nodeType]]></code>
+    </PossiblyInvalidPropertyFetch>
     <UndefinedClass>
       <code><![CDATA[$reader]]></code>
       <code><![CDATA[$reader]]></code>
@@ -119,9 +116,9 @@
     </UndefinedClass>
   </file>
   <file src="lib/Providers/ContentProviders/OpenDocumentContentProvider.php">
-    <MixedArgument>
-      <code><![CDATA[$service->parse($xml)]]></code>
-    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$headerFooterContent]]></code>
+    </MixedArgumentTypeCoercion>
     <MixedAssignment>
       <code><![CDATA[$service]]></code>
     </MixedAssignment>
@@ -131,6 +128,14 @@
     <MixedPropertyAssignment>
       <code><![CDATA[$service]]></code>
     </MixedPropertyAssignment>
+    <PossiblyInvalidMethodCall>
+      <code><![CDATA[close]]></code>
+      <code><![CDATA[read]]></code>
+    </PossiblyInvalidMethodCall>
+    <PossiblyInvalidPropertyFetch>
+      <code><![CDATA[$reader->nodeType]]></code>
+      <code><![CDATA[$reader->value]]></code>
+    </PossiblyInvalidPropertyFetch>
     <UndefinedClass>
       <code><![CDATA[ParseException]]></code>
       <code><![CDATA[Reader]]></code>
@@ -174,6 +179,12 @@
       <code><![CDATA[Reader]]></code>
       <code><![CDATA[Service]]></code>
     </UndefinedClass>
+  </file>
+  <file src="lib/Service/ClassificationService.php">
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[empty($matches[$captureName])]]></code>
+      <code><![CDATA[empty($matches[$captureName])]]></code>
+    </RiskyTruthyFalsyComparison>
   </file>
   <file src="lib/Service/SettingsService.php">
     <InvalidArgument>
