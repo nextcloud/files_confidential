@@ -50,6 +50,7 @@ class PlainTextContentProvider implements IContentProvider {
 			}
 		} catch (NotPermittedException|LockedException $e) {
 			// ignore and return empty generator
+			yield '';
 		}
 	}
 }
