@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace OCA\Files_Confidential\Providers\ContentProviders;
 
-use DOMDocument;
 use OCA\Files_Confidential\Contract\IContentProvider;
 use OCP\Files\File;
 use OCP\Files\InvalidPathException;
@@ -38,26 +37,26 @@ class OpenDocumentContentProvider implements IContentProvider {
 
 	/**
 	 * @param \OCP\Files\File $file
-	 * @return string
+	 * @return \Generator<string>
 	 */
-	public function getContentForFile(File $file): string {
+	public function getContentStream(File $file): \Generator {
 		try {
 			if ($file->getSize() === 0) {
-				return '';
+				return;
 			}
 		} catch (InvalidPathException|NotFoundException $e) {
-			return '';
+			return;
 		}
 
 		try {
 			$localFilepath = $file->getStorage()->getLocalFile($file->getInternalPath());
 		} catch (NotFoundException $e) {
-			return '';
+			return;
 		}
 
 		$zipArchive = new \ZipArchive();
 		if (!is_string($localFilepath) || $zipArchive->open($localFilepath) === false) {
-			return '';
+			return;
 		}
 
 		$xml = $zipArchive->getFromName('styles.xml');
@@ -121,21 +120,37 @@ class OpenDocumentContentProvider implements IContentProvider {
 		];
 
 		try {
-			$contentStrings = implode(' ', $service->parse($xml));
+			$headerFooterContent = (array)$service->parse($xml);
+			if (!empty($headerFooterContent)) {
+				yield implode(' ', $headerFooterContent);
+			}
 		} catch (ParseException $e) {
 			// log
-			$contentStrings = '';
 		}
 
-		$data = $zipArchive->getFromName('content.xml');
+		$uri = 'zip://' . $localFilepath . '#content.xml';
+		$reader = \XMLReader::open($uri);
 
-		if ($data !== false) {
-			$xml = new DOMDocument();
-			$xml->loadXML($data, \LIBXML_NOENT | \LIBXML_XINCLUDE | \LIBXML_NOERROR | \LIBXML_NOWARNING);
-			$contentStrings .= ' ' . strip_tags($xml->saveXML());
+		if ($reader) {
+			$buffer = '';
+			$chunkSize = 8192;
+
+			while ($reader->read()) {
+				if ($reader->nodeType === \XMLReader::TEXT || $reader->nodeType === \XMLReader::CDATA) {
+					$buffer .= $reader->value . ' ';
+
+					if (strlen($buffer) >= $chunkSize) {
+						yield $buffer;
+						$buffer = '';
+					}
+				}
+			}
+			if (!empty($buffer)) {
+				yield $buffer;
+			}
+			$reader->close();
 		}
 
 		$zipArchive->close();
-		return  $contentStrings;
 	}
 }

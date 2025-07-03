@@ -37,6 +37,14 @@ class ContentProviderTest extends TestCase {
 		$this->userFolder = $this->loginAndGetUserFolder(self::TEST_USER1);
 	}
 
+	private function getContentFromStream(\Generator $stream): string {
+		$content = '';
+		foreach ($stream as $chunk) {
+			$content .= $chunk;
+		}
+		return $content;
+	}
+
 	/**
 	 * @dataProvider openDocumentContentDataProvider
 	 * @return void
@@ -47,7 +55,7 @@ class ContentProviderTest extends TestCase {
 		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/' . $file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(OpenDocumentContentProvider::class);
-		$content = $provider->getContentForFile($this->testFile);
+		$content = $this->getContentFromStream($provider->getContentStream($this->testFile));
 		$this->assertStringContainsStringIgnoringCase('top secret', $content);
 	}
 
@@ -61,7 +69,7 @@ class ContentProviderTest extends TestCase {
 		$this->testFile = $this->userFolder->newFile('/test.docx', file_get_contents(__DIR__ . '/res/' . $file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(MicrosoftContentProvider::class);
-		$content = $provider->getContentForFile($this->testFile);
+		$content = $this->getContentFromStream($provider->getContentStream($this->testFile));
 		$this->assertStringContainsStringIgnoringCase('top secret', $content);
 	}
 
@@ -76,7 +84,7 @@ class ContentProviderTest extends TestCase {
 		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/' . $file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(OpenDocumentContentProvider::class);
-		$content = $provider->getContentForFile($this->testFile);
+		$content = $this->getContentFromStream($provider->getContentStream($this->testFile));
 
 		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], [], []);
 		$foundLabel = ClassificationLabel::findLabelsInText($content, [$label]);
@@ -90,10 +98,10 @@ class ContentProviderTest extends TestCase {
 	 * @throws \OCP\Files\NotPermittedException
 	 */
 	public function testPlainTextSearchExpressions(string $file) : void {
-		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/' . $file));
+		$this->testFile = $this->userFolder->newFile('/test.txt', file_get_contents(__DIR__ . '/res/' . $file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(PlainTextContentProvider::class);
-		$content = $provider->getContentForFile($this->testFile);
+		$content = $this->getContentFromStream($provider->getContentStream($this->testFile));
 
 		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], [], []);
 		$foundLabel = ClassificationLabel::findLabelsInText($content, [$label]);
@@ -107,10 +115,10 @@ class ContentProviderTest extends TestCase {
 	 * @throws \OCP\Files\NotPermittedException
 	 */
 	public function testPdfSearchExpressions(string $file) : void {
-		$this->testFile = $this->userFolder->newFile('/test.odt', file_get_contents(__DIR__ . '/res/' . $file));
+		$this->testFile = $this->userFolder->newFile('/test.pdf', file_get_contents(__DIR__ . '/res/' . $file));
 		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
 		$provider = \OC::$server->get(PdfContentProvider::class);
-		$content = $provider->getContentForFile($this->testFile);
+		$content = $this->getContentFromStream($provider->getContentStream($this->testFile));
 
 		$label = new ClassificationLabel(0, 'Protected', ['protected'], [], ['IBAN'], [], []);
 		$foundLabel = ClassificationLabel::findLabelsInText($content, [$label]);

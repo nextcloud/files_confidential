@@ -13,6 +13,7 @@ use OCA\Files_Confidential\Contract\IContentProvider;
 use OCP\Files\File;
 use OCP\Files\InvalidPathException;
 use OCP\Files\NotFoundException;
+use Smalot\PdfParser\Config;
 
 class PdfContentProvider implements IContentProvider {
 	public function getSupportedMimeTypes(): array {
@@ -24,36 +25,42 @@ class PdfContentProvider implements IContentProvider {
 
 	/**
 	 * @param \OCP\Files\File $file
-	 * @return string
+	 * @return \Generator<string>
 	 */
-	public function getContentForFile(File $file): string {
+	public function getContentStream(File $file): \Generator {
 		try {
 			if ($file->getSize() === 0) {
-				return '';
+				return;
 			}
 		} catch (InvalidPathException|NotFoundException $e) {
-			return '';
+			return;
 		}
 
 		try {
 			$localFilepath = $file->getStorage()->getLocalFile($file->getInternalPath());
 		} catch (NotFoundException $e) {
-			return '';
+			return;
 		}
 
 		if (!$localFilepath) {
-			return '';
+			return;
 		}
 
 		// Parse PDF file and build necessary objects.
-		$parser = new \Smalot\PdfParser\Parser();
+		$config = new Config();
+		// Disable image content retention to save memory and avoid decompression bombs, we don't need it
+		$config->setRetainImageContent(false);
+		// Set memory limit to 50MB to avoid decompression bombs
+		$config->setDecodeMemoryLimit(50 * 1024 * 1024);
+		$parser = new \Smalot\PdfParser\Parser([], $config);
 		try {
 			$pdf = $parser->parseFile($localFilepath);
-			$content = $pdf->getText();
+			foreach ($pdf->getPages() as $page) {
+				yield $page->getText();
+			}
 		} catch (\Exception $e) {
-			return '';
+			// ignore and return empty generator
+			yield '';
 		}
-
-		return $content;
 	}
 }

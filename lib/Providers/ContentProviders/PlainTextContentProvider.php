@@ -11,7 +11,6 @@ namespace OCA\Files_Confidential\Providers\ContentProviders;
 
 use OCA\Files_Confidential\Contract\IContentProvider;
 use OCP\Files\File;
-use OCP\Files\GenericFileException;
 use OCP\Files\InvalidPathException;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
@@ -30,21 +29,28 @@ class PlainTextContentProvider implements IContentProvider {
 
 	/**
 	 * @param \OCP\Files\File $file
-	 * @return string
+	 * @return \Generator<string>
 	 */
-	public function getContentForFile(File $file): string {
+	public function getContentStream(File $file): \Generator {
 		try {
 			if ($file->getSize() === 0) {
-				return '';
+				return;
 			}
 		} catch (InvalidPathException|NotFoundException $e) {
-			return '';
+			return;
 		}
 
 		try {
-			return $file->getContent();
-		} catch (GenericFileException|NotPermittedException|LockedException $e) {
-			return '';
+			$stream = $file->fopen('r');
+			if ($stream) {
+				while (!feof($stream)) {
+					yield fread($stream, 8192);
+				}
+				fclose($stream);
+			}
+		} catch (NotPermittedException|LockedException $e) {
+			// ignore and return empty generator
+			yield '';
 		}
 	}
 }

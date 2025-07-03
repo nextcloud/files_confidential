@@ -46,4 +46,9 @@ interface IClassificationLabel {
 	 * @return array
 	 */
 	public function toArray(): array;
+
+	/**
+	 * @return int
+	 */
+	public function getMaxMatchLength(): int;
 }
