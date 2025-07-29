@@ -7,6 +7,7 @@ OC.L10N.register(
     "Confidential Files" : "Конфіденційні файли",
     "Confidential files" : "Конфіденційні файли",
     "Workflows for handling confidential files in Nextcloud" : "Процес керування конфіденційними файлами у Nextcloud",
+    "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Ця програма дозволяє визначити набір правил класифікації, які будуть присвоювати файлам теги.\nДля кожного правила класифікації ви можете визначити, коли тег буде присвоєно файлу, на основі текстового\nвмісту, метаданих класифікації BAILS або метаданих Microsoft Information Purview.",
     "Remove rule" : "Вилучити правило",
     "Add tag…" : "Додати мітку...",
     "Select tag" : "Виберіть мітку",
