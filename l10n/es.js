@@ -8,6 +8,7 @@ OC.L10N.register(
     "Confidential files" : "Archivos confidenciales",
     "Workflows for handling confidential files in Nextcloud" : "Flujos de trabajo para el manejo de archivos confidenciales en Nextcloud",
     "Remove rule" : "Eliminar regla",
+    "Add tag…" : "Añadir etiqueta",
     "Select tag" : "Seleccionar etiqueta",
     "Add" : "Añadir",
     "Enter Regular Expression" : "Ingrese la Expresión Regular",
