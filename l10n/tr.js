@@ -7,7 +7,7 @@ OC.L10N.register(
     "Confidential Files" : "Gizli dosyalar",
     "Confidential files" : "Gizli dosyalar",
     "Workflows for handling confidential files in Nextcloud" : "Nextcloud üzerinde gizli dosyaları işleme iş akışları",
-    "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Bu uygulama, etiket dosyalarını atayacak bir sınıflandırma kuralları kümesi tanımlamanızı sağlar.\nHer sınıflandırma kuralı için, metin içeriğine, BAILS sınıflandırma üst verilerine veya \nMicrosoft Information Purview üst verilerine göre etiketin bir dosyaya ne zaman atanacağını tanımlayabilirsiniz.",
+    "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Bu uygulama, etiket dosyalarını atayacak bir sınıflandırma kuralları kümesi tanımlamanızı sağlar.\nHer sınıflandırma kuralı için, yazı içeriğine, BAILS sınıflandırma üst verilerine veya \nMicrosoft Information Purview üst verilerine göre etiketin bir dosyaya ne zaman atanacağını tanımlayabilirsiniz.",
     "Remove rule" : "Kuralı kaldır",
     "Add tag…" : "Etiket ekle…",
     "Select tag" : "Etiketi seçin",
