@@ -159,7 +159,7 @@ import NcListItem from '@nextcloud/vue/dist/Components/NcListItem.js'
 import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
-import TrashCan from 'vue-material-design-icons/TrashCan.vue'
+import TrashCan from 'vue-material-design-icons/TrashCanOutline.vue'
 
 export default {
 	name: 'ClassificationLabel',
