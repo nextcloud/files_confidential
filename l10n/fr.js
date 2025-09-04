@@ -9,7 +9,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Flux de travail pour la prise en charge des fichiers confidentiels dans Nextcloud.",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Cette application vous permet de définir un ensemble de règles de classification qui attribueront des fichiers de balises.\nPour chaque règle de classification, vous pouvez définir quand la balise sera attribuée à un fichier, en fonction du contenu du texte\n, les métadonnées de classification BAILS ou les métadonnées Microsoft Information Purview.",
     "Remove rule" : "Supprimer la règle",
-    "Add tag…" : "Ajouter une balise…",
+    "Add tag…" : "Ajouter une étiquette…",
     "Select tag" : "Sélectionner une étiquette",
     "… if document has TSCP policy category ID" : "… si le document a TSCP politique catégorie ID",
     "… or if document has all metadata values" : "… ou si document a toutes les valeurs de métadonnées",
@@ -33,7 +33,7 @@ OC.L10N.register(
     "Upload policy" : "Politique de téléversement",
     "Previous labels will be overwritten after successful file upload" : "Les étiquettes précédentes seront écrasées après le téléversement réussi du fichier.",
     "Classification rules" : "Règles de classement",
-    "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Définissez des règles de classification qui appliquent des balises à différents documents. Sur la base de ces balises, vous pouvez définir des règles dans Nextcloud Flow.",
+    "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Définissez des règles de classification qui appliquent des étiquettes à différents documents. Sur la base de ces étiquettes, vous pouvez définir des règles dans Nextcloud Flow.",
     "Add new label" : "Ajouter un nouveau libellé"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
