@@ -28,6 +28,7 @@ class MicrosoftContentProvider implements IContentProvider {
 	public const ELEMENT_SHAPE = '{urn:schemas-microsoft-com:vml}shape';
 	public const ELEMENT_TEXTPATH = '{urn:schemas-microsoft-com:vml}textpath';
 
+	#[\Override]
 	public function getSupportedMimeTypes(): array {
 		return [
 			'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // docx
@@ -41,6 +42,7 @@ class MicrosoftContentProvider implements IContentProvider {
 	 * @param \OCP\Files\File $file
 	 * @return \Generator<string>
 	 */
+	#[\Override]
 	public function getContentStream(File $file): \Generator {
 		try {
 			if ($file->getSize() === 0) {

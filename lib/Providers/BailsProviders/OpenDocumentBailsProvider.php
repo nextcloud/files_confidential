@@ -25,6 +25,7 @@ class OpenDocumentBailsProvider implements IBailsProvider {
 	public const ELEMENT_USER_DEFINED = '{urn:oasis:names:tc:opendocument:xmlns:meta:1.0}user-defined';
 	public const ATTRIBUTE_NAME = '{urn:oasis:names:tc:opendocument:xmlns:meta:1.0}name';
 
+	#[\Override]
 	public function getSupportedMimeTypes(): array {
 		return [
 			'application/vnd.oasis.opendocument.presentation', // odp
@@ -49,6 +50,7 @@ class OpenDocumentBailsProvider implements IBailsProvider {
 	 * @param \OCP\Files\File $file
 	 * @return \OCA\Files_Confidential\Contract\IBailsPolicy
 	 */
+	#[\Override]
 	public function getPolicyForFile(File $file): ?IBailsPolicy {
 		try {
 			if ($file->getSize() === 0) {
@@ -84,8 +86,8 @@ class OpenDocumentBailsProvider implements IBailsProvider {
 				}
 				foreach ($children as $child) {
 					if (
-						$child['name'] === self::ELEMENT_USER_DEFINED &&
-						isset($child['attributes'][self::ATTRIBUTE_NAME])) {
+						$child['name'] === self::ELEMENT_USER_DEFINED
+						&& isset($child['attributes'][self::ATTRIBUTE_NAME])) {
 						$props[] = [
 							'key' => $child['attributes'][self::ATTRIBUTE_NAME],
 							'value' => $child['value'],

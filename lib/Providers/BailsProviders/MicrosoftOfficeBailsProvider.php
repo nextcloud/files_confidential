@@ -24,6 +24,7 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 	public const ELEMENT_PROPERTY = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}property';
 	public const ATTRIBUTE_NAME = 'name';
 
+	#[\Override]
 	public function getSupportedMimeTypes(): array {
 		return [
 			'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // docx
@@ -45,6 +46,7 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 	 * @param \OCP\Files\File $file
 	 * @return \OCA\Files_Confidential\Contract\IBailsPolicy
 	 */
+	#[\Override]
 	public function getPolicyForFile(File $file): ?IBailsPolicy {
 		try {
 			if ($file->getSize() === 0) {
@@ -73,8 +75,8 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 				}
 				foreach ($children as $child) {
 					if (
-						$child['name'] === self::ELEMENT_PROPERTY &&
-						isset($child['attributes'][self::ATTRIBUTE_NAME], $child['value'][0], $child['value'][0]['value'])) {
+						$child['name'] === self::ELEMENT_PROPERTY
+						&& isset($child['attributes'][self::ATTRIBUTE_NAME], $child['value'][0], $child['value'][0]['value'])) {
 						$props[] = [
 							'key' => $child['attributes'][self::ATTRIBUTE_NAME],
 							'value' => $child['value'][0]['value'],
