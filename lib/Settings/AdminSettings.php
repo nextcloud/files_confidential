@@ -26,6 +26,7 @@ class AdminSettings implements ISettings {
 	/**
 	 * @return TemplateResponse
 	 */
+	#[\Override]
 	public function getForm(): TemplateResponse {
 		$labels = $this->settingsService->getClassificationLabels();
 		$labels = array_map(fn ($label) => $label->toArray(), $labels);
@@ -38,6 +39,7 @@ class AdminSettings implements ISettings {
 	/**
 	 * @inheritdoc
 	 */
+	#[\Override]
 	public function getSection(): string {
 		return 'files_confidential';
 	}
@@ -45,6 +47,7 @@ class AdminSettings implements ISettings {
 	/**
 	 * @inheritdoc
 	 */
+	#[\Override]
 	public function getPriority(): int {
 		return 1;
 	}

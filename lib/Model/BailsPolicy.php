@@ -106,6 +106,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getName(): string {
 		return $this->name;
 	}
@@ -122,6 +123,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getId(): string {
 		return $this->id;
 	}
@@ -138,6 +140,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getAuthorityName(): string {
 		return $this->authorityName;
 	}
@@ -154,6 +157,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getAuthorityId(): string {
 		return $this->authorityId;
 	}
@@ -170,6 +174,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getAuthorizationName(): string {
 		return $this->authorizationName;
 	}
@@ -186,6 +191,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getAuthorizationId(): string {
 		return $this->authorizationId;
 	}
@@ -203,6 +209,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return ?\DateTime
 	 */
+	#[\Override]
 	public function getStartValidityDate(): ?\DateTime {
 		try {
 			return new \DateTime(explode(',', $this->startValidityDate)[0]);
@@ -223,6 +230,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return ?\DateTime
 	 */
+	#[\Override]
 	public function getEndValidityDate(): ?\DateTime {
 		try {
 			return new \DateTime(explode(',', $this->endValidityDate)[0]);
@@ -243,6 +251,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getType(): string {
 		return $this->type;
 	}
@@ -259,6 +268,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getAuthorityCountry(): string {
 		return $this->authorityCountry;
 	}
@@ -275,6 +285,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getConfidentialityImpact(): string {
 		return $this->confidentialityImpact;
 	}
@@ -291,6 +302,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getIntegrityImpact(): string {
 		return $this->integrityImpact;
 	}
@@ -307,6 +319,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getAvailabilityImpact(): string {
 		return $this->availabilityImpact;
 	}
@@ -323,6 +336,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getImpactScale(): string {
 		return $this->impactScale;
 	}
@@ -339,6 +353,7 @@ class BailsPolicy implements IBailsPolicy {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function getCategories(): array {
 		return $this->categories;
 	}
