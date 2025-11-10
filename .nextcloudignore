@@ -5,7 +5,7 @@
 .gitignore
 .tx
 .vscode
-/.eslintrc.js
+/.eslintrc.cjs
 /.nextcloudignore
 /.gitattributes
 .php-cs-fixer.*
@@ -26,7 +26,7 @@
 /tests
 /vendor/bin
 /vendor/**/tests
-/webpack.js
+/vite.config.js
 /vendor/bin
 /vendor-bin
 /psalm.xml

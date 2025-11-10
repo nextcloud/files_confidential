@@ -52,16 +52,15 @@
 
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
-import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
+import NcSettingsSection from '@nextcloud/vue/components/NcSettingsSection'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import { loadState } from '@nextcloud/initial-state'
-import { generateUrl } from '@nextcloud/router'
+import { generateRemoteUrl, generateUrl } from '@nextcloud/router'
 import { showError, showSuccess, showWarning } from '@nextcloud/dialogs'
 import axios from '@nextcloud/axios'
 import ClassificationLabel from '../components/ClassificationLabel.vue'
-import client from '../DavClient.js'
 
 const SETTINGS = ['labels']
 
@@ -209,24 +208,82 @@ export default {
 				this.success = false
 			}, 3000)
 		},
+		// xmlToJson, parseXml, and xmlToTagList are borrowed from NcSelectTags
+		xmlToJson(xml) {
+			let obj = {}
 
+			if (xml.nodeType === 1) {
+				if (xml.attributes.length > 0) {
+					obj['@attributes'] = {}
+					for (let j = 0; j < xml.attributes.length; j++) {
+						const attribute = xml.attributes.item(j)
+						obj['@attributes'][attribute.nodeName] = attribute.nodeValue
+					}
+				}
+			} else if (xml.nodeType === 3) {
+				obj = xml.nodeValue
+			}
+
+			if (xml.hasChildNodes()) {
+				for (let i = 0; i < xml.childNodes.length; i++) {
+					const item = xml.childNodes.item(i)
+					const nodeName = item.nodeName
+					if (typeof (obj[nodeName]) === 'undefined') {
+						obj[nodeName] = this.xmlToJson(item)
+					} else {
+						if (typeof obj[nodeName].push === 'undefined') {
+							const old = obj[nodeName]
+							obj[nodeName] = []
+							obj[nodeName].push(old)
+						}
+						obj[nodeName].push(this.xmlToJson(item))
+					}
+				}
+			}
+			return obj
+		},
+		parseXml(xml) {
+			let dom = null
+			dom = (new DOMParser()).parseFromString(xml, 'text/xml')
+			return dom
+		},
+		xmlToTagList(xml) {
+			const json = this.xmlToJson(this.parseXml(xml))
+			const list = json['d:multistatus']['d:response']
+			const result = []
+			for (const index in list) {
+				const tag = list[index]['d:propstat']
+
+				if (tag['d:status']['#text'] !== 'HTTP/1.1 200 OK') {
+					continue
+				}
+				result.push({
+					id: parseInt(tag['d:prop']['oc:id']['#text']),
+					'display-name': tag['d:prop']['oc:display-name']['#text'],
+					'can-assign': tag['d:prop']['oc:can-assign']['#text'] === 'true',
+					'user-assignable': tag['d:prop']['oc:user-assignable']['#text'] === 'true',
+					'user-visible': tag['d:prop']['oc:user-visible']['#text'] === 'true',
+				})
+			}
+			return result
+		},
 		async getTags() {
-			const response = await client.getDirectoryContents('/systemtags/', Object.assign({}, {
+			const result = await axios({
+				method: 'PROPFIND',
+				url: generateRemoteUrl('dav') + '/systemtags/',
 				data: `<?xml version="1.0"?>
-			<d:propfind  xmlns:d="DAV:"
-				xmlns:oc="http://owncloud.org/ns">
-				<d:prop>
-					<oc:id />
-					<oc:display-name />
-					<oc:user-visible />
-					<oc:user-assignable />
-					<oc:can-assign />
-				</d:prop>
-			</d:propfind>`,
-				details: true,
-			}))
-
-			return response.data.map(item => item.props).filter(item => item.id)
+					<d:propfind  xmlns:d="DAV:"
+					xmlns:oc="http://owncloud.org/ns">
+					  <d:prop>
+						<oc:id />
+						<oc:display-name />
+						<oc:user-visible />
+						<oc:user-assignable />
+						<oc:can-assign />
+					  </d:prop>
+					</d:propfind>`,
+			})
+			return this.xmlToTagList(result.data)
 		},
 
 		async initTagsAndLabels() {
@@ -237,7 +294,6 @@ export default {
 		},
 
 		loadLabels() {
-			this.getTags()
 			axios.get(generateUrl('/apps/files_confidential/admin/settings/labels'))
 				.then(res => {
 					this.labels = res.data.map(label => ({ ...label, id: Math.random(), tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))
