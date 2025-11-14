@@ -3,22 +3,39 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import Vue from 'vue'
-import { translate, translatePlural } from '@nextcloud/l10n'
-import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
+import { createApp } from 'vue'
+import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 import App from './views/Admin.vue'
-import AppGlobal from './mixins/AppGlobal.js'
 import '@nextcloud/dialogs/style.css'
 
-Vue.mixin(AppGlobal)
-Vue.directive('tooltip', Tooltip)
-
-Vue.prototype.t = translate
-Vue.prototype.n = translatePlural
-Vue.prototype.OC = window.OC
-Vue.prototype.OCA = window.OCA
-
-global.FilesConfidential = new Vue({
-	el: '#files_confidential',
-	render: h => h(App),
+const AppInstance = createApp(App)
+AppInstance.mixin({
+	methods: { t, n },
+	computed: {
+		colorPrimary() {
+			return getComputedStyle(document.documentElement).getPropertyValue('--color-primary')
+		},
+		colorPrimaryLight() {
+			return getComputedStyle(document.documentElement).getPropertyValue('--color-primary-light')
+		},
+		colorPrimaryElement() {
+			return getComputedStyle(document.documentElement).getPropertyValue('--color-primary-element')
+		},
+		colorPrimaryElementLight() {
+			return getComputedStyle(document.documentElement).getPropertyValue('--color-primary-element-light')
+		},
+		colorPrimaryText() {
+			return getComputedStyle(document.documentElement).getPropertyValue('--color-primary-text')
+		},
+		colorMainText() {
+			return getComputedStyle(document.documentElement).getPropertyValue('--color-main-text')
+		},
+		colorMainBackground() {
+			return getComputedStyle(document.documentElement).getPropertyValue('--color-main-background')
+		},
+		colorPlaceholderDark() {
+			return getComputedStyle(document.documentElement).getPropertyValue('--color-placeholder-dark')
+		},
+	},
 })
+global.FilesConfidential = AppInstance.mount('#files_confidential')

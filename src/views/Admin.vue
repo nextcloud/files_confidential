@@ -52,10 +52,10 @@
 
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
-import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
+import NcSettingsSection from '@nextcloud/vue/components/NcSettingsSection'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl } from '@nextcloud/router'
 import { showError, showSuccess, showWarning } from '@nextcloud/dialogs'
@@ -209,7 +209,6 @@ export default {
 				this.success = false
 			}, 3000)
 		},
-
 		async getTags() {
 			const response = await client.getDirectoryContents('/systemtags/', Object.assign({}, {
 				data: `<?xml version="1.0"?>
@@ -225,6 +224,7 @@ export default {
 			</d:propfind>`,
 				details: true,
 			}))
+			console.error(response)
 
 			return response.data.map(item => item.props).filter(item => item.id)
 		},
@@ -237,7 +237,6 @@ export default {
 		},
 
 		loadLabels() {
-			this.getTags()
 			axios.get(generateUrl('/apps/files_confidential/admin/settings/labels'))
 				.then(res => {
 					this.labels = res.data.map(label => ({ ...label, id: Math.random(), tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))

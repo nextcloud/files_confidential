@@ -44,20 +44,18 @@
 			<div class="option metadata">
 				<label>
 					<span class="text">{{ t('files_confidential', '… or if document has all metadata values') }}</span>
-					<template v-for="(item, key) in label.metadataItems">
-						<NcTextField :key="'key' + key"
+					<div v-for="(item, key) in label.metadataItems" :key="key">
+						<NcTextField v-model="item.key"
 							class="field"
-							:value.sync="item.key"
 							:title="item.key"
 							:label="t('files_confidential', 'Metadata key')"
-							@update:value="$emit('change')" />
-						<NcTextField :key="'value' + key"
+							@update:model-value="$emit('change')" />
+						<NcTextField v-model="item.value"
 							class="field"
-							:value.sync="item.value"
 							:title="item.value"
 							:label="t('files_confidential', 'Metadata value')"
-							@update:value="$emit('change')" />
-					</template>
+							@update:model-value="$emit('change')" />
+					</div>
 					<NcButton class="field" style="margin: 0 5px;" @click="addMetadataItem()">{{ t('files_confidential', 'Add') }}</NcButton>
 				</label>
 			</div>
@@ -153,11 +151,11 @@
 </template>
 
 <script>
-import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcListItem from '@nextcloud/vue/dist/Components/NcListItem.js'
-import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import NcSelect from '@nextcloud/vue/components/NcSelect'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcListItem from '@nextcloud/vue/components/NcListItem'
+import NcActionButton from '@nextcloud/vue/components/NcActionButton'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 import TrashCan from 'vue-material-design-icons/TrashCanOutline.vue'
 
@@ -251,9 +249,6 @@ export default {
 .option.metadata .field {
 	position: relative;
 	left: 353px;
-}
-
-.option.metadata .field {
 	width: 42% !important;
 }
 
