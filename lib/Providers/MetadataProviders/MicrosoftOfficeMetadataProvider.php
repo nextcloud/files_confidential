@@ -22,6 +22,7 @@ class MicrosoftOfficeMetadataProvider implements IMetadataProvider {
 	public const ELEMENT_PROPERTY = '{http://schemas.openxmlformats.org/officeDocument/2006/custom-properties}property';
 	public const ATTRIBUTE_NAME = 'name';
 
+	#[\Override]
 	public function getSupportedMimeTypes(): array {
 		return [
 			'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // docx
@@ -42,6 +43,7 @@ class MicrosoftOfficeMetadataProvider implements IMetadataProvider {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function getMetadataForFile(File $file): array {
 		try {
 			if ($file->getSize() === 0) {
@@ -71,8 +73,8 @@ class MicrosoftOfficeMetadataProvider implements IMetadataProvider {
 				/** @var array{name: string, attributes: array<string, string>, value: array} $child */
 				foreach ($children as $child) {
 					if (
-						$child['name'] === self::ELEMENT_PROPERTY &&
-						isset($child['attributes'][self::ATTRIBUTE_NAME], $child['value'][0], $child['value'][0]['value'])) {
+						$child['name'] === self::ELEMENT_PROPERTY
+						&& isset($child['attributes'][self::ATTRIBUTE_NAME], $child['value'][0], $child['value'][0]['value'])) {
 						$items[] = new MetadataItem($child['attributes'][self::ATTRIBUTE_NAME], $child['value'][0]['value']);
 					}
 				}

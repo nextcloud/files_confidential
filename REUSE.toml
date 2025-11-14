@@ -12,7 +12,7 @@ SPDX-FileCopyrightText = "2022 Nextcloud translators"
 SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
-path = ["composer.json", "composer.lock", "package.json", "package-lock.json", "test/res/*"]
+path = ["composer.json", "composer.lock", "package.json", "package-lock.json", "test/res/*", "psalm-baseline.xml"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2022 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"

@@ -23,6 +23,7 @@ class Application extends App implements IBootstrap {
 		parent::__construct(self::APP_ID);
 	}
 
+	#[\Override]
 	public function register(IRegistrationContext $context): void {
 		@include_once __DIR__ . '/../../vendor/autoload.php';
 		$context->registerEventListener(NodeWrittenEvent::class, HookListener::class);
@@ -31,6 +32,7 @@ class Application extends App implements IBootstrap {
 	/**
 	 * @throws \Throwable
 	 */
+	#[\Override]
 	public function boot(IBootContext $context): void {
 	}
 }

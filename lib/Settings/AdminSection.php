@@ -23,6 +23,7 @@ class AdminSection implements IIconSection {
 	/**
 	 * @inheritdoc
 	 */
+	#[\Override]
 	public function getID(): string {
 		return 'files_confidential';
 	}
@@ -30,6 +31,7 @@ class AdminSection implements IIconSection {
 	/**
 	 * @inheritdoc
 	 */
+	#[\Override]
 	public function getName(): string {
 		return $this->l->t('Confidential Files');
 	}
@@ -37,6 +39,7 @@ class AdminSection implements IIconSection {
 	/**
 	 * @inheritdoc
 	 */
+	#[\Override]
 	public function getIcon(): string {
 		return $this->urlGenerator->imagePath('files_confidential', 'files_confidential-dark.svg');
 	}
@@ -44,6 +47,7 @@ class AdminSection implements IIconSection {
 	/**
 	 * @inheritdoc
 	 */
+	#[\Override]
 	public function getPriority(): int {
 		return 80;
 	}

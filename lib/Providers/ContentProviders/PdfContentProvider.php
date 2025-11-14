@@ -16,6 +16,7 @@ use OCP\Files\NotFoundException;
 use Smalot\PdfParser\Config;
 
 class PdfContentProvider implements IContentProvider {
+	#[\Override]
 	public function getSupportedMimeTypes(): array {
 		return [
 			'application/pdf',
@@ -27,6 +28,7 @@ class PdfContentProvider implements IContentProvider {
 	 * @param \OCP\Files\File $file
 	 * @return \Generator<string>
 	 */
+	#[\Override]
 	public function getContentStream(File $file): \Generator {
 		try {
 			if ($file->getSize() === 0) {

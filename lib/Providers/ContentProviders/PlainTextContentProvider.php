@@ -18,6 +18,7 @@ use OCP\Lock\LockedException;
 
 class PlainTextContentProvider implements IContentProvider {
 
+	#[\Override]
 	public function getSupportedMimeTypes(): array {
 		return [
 			'text/plain',
@@ -28,9 +29,11 @@ class PlainTextContentProvider implements IContentProvider {
 	}
 
 	/**
-	 * @param \OCP\Files\File $file
-	 * @return \Generator<string>
+	 * @param File $file
+	 *
+	 * @return \Generator<int, string, false|mixed, void>
 	 */
+	#[\Override]
 	public function getContentStream(File $file): \Generator {
 		try {
 			if ($file->getSize() === 0) {

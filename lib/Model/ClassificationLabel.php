@@ -112,11 +112,11 @@ class ClassificationLabel implements IClassificationLabel {
 	}
 
 	/**
-	 * @param array{index:int, tag:string, keywords:list<string>, categories:list<string>, metadataItems: list<array{key: string, value: string}>} $labelRaw
-	 * @return IClassificationLabel
+	 * @param array{index:int, tag:string, keywords:list<string>, categories:list<string>, searchExpressions:list<string>, regularExpressions:list<string>, metadataItems: list<array{key: string, value: string}>} $labelRaw
+	 *
 	 * @throws \ValueError
 	 */
-	public static function fromArray(array $labelRaw): ClassificationLabel {
+	public static function fromArray(array $labelRaw): self {
 		if (!isset($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'])) {
 			throw new \ValueError();
 		}
@@ -124,6 +124,7 @@ class ClassificationLabel implements IClassificationLabel {
 		return new ClassificationLabel($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'], $metadata);
 	}
 
+	#[\Override]
 	public function toArray() : array {
 		return [
 			'index' => $this->getIndex(),
@@ -136,34 +137,42 @@ class ClassificationLabel implements IClassificationLabel {
 		];
 	}
 
+	#[\Override]
 	public function getIndex(): int {
 		return $this->index;
 	}
 
+	#[\Override]
 	public function getTag(): string {
 		return $this->tag;
 	}
 
+	#[\Override]
 	public function getKeywords(): array {
 		return $this->keywords;
 	}
 
+	#[\Override]
 	public function getBailsCategories(): array {
 		return $this->categories;
 	}
 
+	#[\Override]
 	public function getSearchExpressions(): array {
 		return $this->searchExpressions;
 	}
 
+	#[\Override]
 	public function getRegularExpressions(): array {
 		return $this->regularExpressions;
 	}
 
+	#[\Override]
 	public function getMetadataItems(): array {
 		return $this->metadataItems;
 	}
 
+	#[\Override]
 	public function getMaxMatchLength(): int {
 		$maxLength = 0;
 

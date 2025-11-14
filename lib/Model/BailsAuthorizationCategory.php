@@ -19,6 +19,7 @@ class BailsAuthorizationCategory implements IBailsAuthorizationCategory {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getName(): string {
 		return $this->name;
 	}
@@ -35,6 +36,7 @@ class BailsAuthorizationCategory implements IBailsAuthorizationCategory {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getId(): string {
 		return $this->id;
 	}
@@ -51,6 +53,7 @@ class BailsAuthorizationCategory implements IBailsAuthorizationCategory {
 	/**
 	 * @return string
 	 */
+	#[\Override]
 	public function getIdOID(): string {
 		return $this->idOID;
 	}

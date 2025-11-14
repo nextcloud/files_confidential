@@ -26,6 +26,7 @@ class OpenDocumentContentProvider implements IContentProvider {
 	public const ELEMENT_TEXT_P = '{urn:oasis:names:tc:opendocument:xmlns:text:1.0}p';
 	public const ELEMENT_CUSTOM_SHAPE = '{urn:oasis:names:tc:opendocument:xmlns:drawing:1.0}custom-shape';
 
+	#[\Override]
 	public function getSupportedMimeTypes(): array {
 		return [
 			'application/vnd.oasis.opendocument.text', // odt
@@ -39,6 +40,7 @@ class OpenDocumentContentProvider implements IContentProvider {
 	 * @param \OCP\Files\File $file
 	 * @return \Generator<string>
 	 */
+	#[\Override]
 	public function getContentStream(File $file): \Generator {
 		try {
 			if ($file->getSize() === 0) {
