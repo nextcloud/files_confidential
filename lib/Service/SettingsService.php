@@ -10,12 +10,12 @@ declare(strict_types=1);
 namespace OCA\Files_Confidential\Service;
 
 use OCA\Files_Confidential\Model\ClassificationLabel;
-use OCP\IConfig;
+use OCP\IAppConfig;
 use Psr\Log\LoggerInterface;
 
 class SettingsService {
 	public function __construct(
-		private IConfig $config,
+		private IAppConfig $appConfig,
 		private LoggerInterface $logger,
 	) {
 	}
@@ -29,7 +29,7 @@ class SettingsService {
 			 * @var array $labelsRaw
 			 * @psalm-suppress DeprecatedMethod
 			 */
-			$labelsRaw = json_decode($this->config->getAppValue('files_confidential', 'labels', '[]'), true);
+			$labelsRaw = json_decode($this->appConfig->getValueString('files_confidential', 'labels', '[]', lazy: true), true);
 		} catch (\JsonException $e) {
 			$this->logger->warning('Could not load labels setting', ['exception' => $e]);
 			return [];
@@ -63,7 +63,6 @@ class SettingsService {
 			$this->logger->warning('Could not store labels setting', ['exception' => $e]);
 			throw $e;
 		}
-		/** @psalm-suppress DeprecatedMethod */
-		$this->config->setAppValue('files_confidential', 'labels', $json);
+		$this->appConfig->getValueString('files_confidential', 'labels', $json, lazy: true);
 	}
 }
