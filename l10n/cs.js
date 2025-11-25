@@ -9,7 +9,7 @@ OC.L10N.register(
     "Workflows for handling confidential files in Nextcloud" : "Pracovní postupy pro obsluhu důvěrných souborů v Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Tato aplikace umožňuje definovat sadu pravidel důvěrnosti, které budu souborům v Nextcloud přiřazovat štítky.\nPro každé z pravidel důvěrnosti je možné určit kdy bude štítek přiřazen souboru, v závislosti na textovém obsahu nebo metadatech klasifikace BAILS nebo Microsoft Information Pureview.",
     "Remove rule" : "Odebrat pravidlo",
-    "Add tag…" : "Přidat štítek…",
+    "Add tag…" : "Přidat štítek …",
     "Select tag" : "Vybrat štítek",
     "… if document has TSCP policy category ID" : "…pokud dokument má identifikátor kategorie TSCP zásady",
     "… or if document has all metadata values" : "… nebo pokud má dokument všechny hodnoty metadat",
