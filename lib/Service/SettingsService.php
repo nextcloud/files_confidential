@@ -21,6 +21,13 @@ class SettingsService {
 	}
 
 	/**
+	 * @return list<string>
+	 */
+	public function getTags(): array {
+		return array_map(fn ($labelRaw) => $labelRaw->getTag(), $this->getClassificationLabels());
+	}
+
+	/**
 	 * @return list<\OCA\Files_Confidential\Contract\IClassificationLabel>
 	 */
 	public function getClassificationLabels(): array {
@@ -63,6 +70,6 @@ class SettingsService {
 			$this->logger->warning('Could not store labels setting', ['exception' => $e]);
 			throw $e;
 		}
-		$this->appConfig->getValueString('files_confidential', 'labels', $json, lazy: true);
+		$this->appConfig->setValueString('files_confidential', 'labels', $json, lazy: true);
 	}
 }
