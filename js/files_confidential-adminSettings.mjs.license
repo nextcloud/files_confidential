@@ -204,7 +204,7 @@ This file is generated from multiple sources. Included packages:
 	- version: 4.5.3
 	- license: MIT
 - files_confidential
-	- version: 3.4.0-dev.0
+	- version: 4.0.0
 	- license: AGPL-3.0-or-later
 - floating-vue
 	- version: 5.2.2
