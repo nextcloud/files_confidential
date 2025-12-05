@@ -8,6 +8,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2025-12-05
+
+### Breaking changes
+
+- Drop support for Nextcloud 28
+
+### Changed
+
+- Use outlined icons [#214](https://github.com/nextcloud/files_confidential/pull/214) @AndyScherzinger
+- Support Nextcloud 33 [#215](https://github.com/nextcloud/files_confidential/pull/215) @nickvergessen
+- Upgrade to vue3 and vite [#221](https://github.com/nextcloud/files_confidential/pull/221) @lukasdotcom
+- Use IAppConfig and lazy loading instead of IConfig [#222](https://github.com/nextcloud/files_confidential/pull/222) @lukasdotcom
+
+### Added
+
+- Autoremove classification labels that are not needed anymore [#223](https://github.com/nextcloud/files_confidential/pull/223) @lukasdotcom
+
+### Fixed
+
+- Update composer dependencies and use psalm 6 [#218](https://github.com/nextcloud/files_confidential/pull/218) @lukasdotcom
+
 ## [3.3.0] - 2025-07-03
 
 ### Fixed
