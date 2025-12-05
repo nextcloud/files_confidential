@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace OCA\Files_Confidential\Listener;
 
 use OCA\Files_Confidential\Service\ClassificationService;
+use OCA\Files_Confidential\Service\SettingsService;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\Files\Events\Node\NodeWrittenEvent;
@@ -25,6 +26,7 @@ class HookListener implements IEventListener {
 		private ClassificationService $classificationService,
 		private ISystemTagObjectMapper $tagMapper,
 		private LoggerInterface $logger,
+		private SettingsService $settingsService,
 	) {
 	}
 
@@ -37,11 +39,20 @@ class HookListener implements IEventListener {
 			$node = $event->getNode();
 			if ($node instanceof File) {
 				try {
+					// Find all tags that files confidential manages on this file
+					$classificationTags = $this->settingsService->getTags();
+					$fileTags = $this->tagMapper->getTagIdsForObjects((string)$node->getId(), 'files')[$node->getId()] ?? [];
+					$knownAppliedTags = array_intersect($classificationTags, $fileTags); // Get all tags from file that files_confidential manages
+
+					// Find the tag that the file should be assigned to based on the classification policy
 					$label = $this->classificationService->getClassificationLabelForFile($node);
-					if ($label === null) {
-						return;
+
+					if ($label !== null) {
+						$this->tagMapper->assignTags((string)$event->getNode()->getId(), 'files', [$label->getTag()]);
+						$knownAppliedTags = array_diff($knownAppliedTags, [$label->getTag()]); // Remove the tag that the file should be assigned to from the list of unnecessary tags
 					}
-					$this->tagMapper->assignTags((string)$event->getNode()->getId(), 'files', [(int)$label->getTag()]);
+
+					$this->tagMapper->unassignTags((string)$event->getNode()->getId(), 'files', $knownAppliedTags);
 				} catch (\Throwable $e) {
 					$this->logger->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
 				}
