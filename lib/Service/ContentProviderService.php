@@ -39,6 +39,8 @@ class ContentProviderService {
 			}
 			return $provider->getContentStream($file);
 		}
-		return (static function (): \Generator { yield ''; })(); // Return an empty generator if no provider matches
+		return (static function (): \Generator {
+			yield '';
+		})(); // Return an empty generator if no provider matches
 	}
 }

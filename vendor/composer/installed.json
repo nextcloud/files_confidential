@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "smalot/pdfparser",
-            "version": "v2.12.1",
-            "version_normalized": "2.12.1.0",
+            "version": "v2.12.3",
+            "version_normalized": "2.12.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smalot/pdfparser.git",
-                "reference": "98d31ba34ef5b5a98897ef4b6c3925d502ea53b1"
+                "reference": "61c9bcafcb92899b76d8ebda6508267bae77e264"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smalot/pdfparser/zipball/98d31ba34ef5b5a98897ef4b6c3925d502ea53b1",
-                "reference": "98d31ba34ef5b5a98897ef4b6c3925d502ea53b1",
+                "url": "https://api.github.com/repos/smalot/pdfparser/zipball/61c9bcafcb92899b76d8ebda6508267bae77e264",
+                "reference": "61c9bcafcb92899b76d8ebda6508267bae77e264",
                 "shasum": ""
             },
             "require": {
@@ -21,7 +21,7 @@
                 "php": ">=7.1",
                 "symfony/polyfill-mbstring": "^1.18"
             },
-            "time": "2025-07-31T06:19:56+00:00",
+            "time": "2026-01-08T08:04:04+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -50,7 +50,7 @@
             ],
             "support": {
                 "issues": "https://github.com/smalot/pdfparser/issues",
-                "source": "https://github.com/smalot/pdfparser/tree/v2.12.1"
+                "source": "https://github.com/smalot/pdfparser/tree/v2.12.3"
             },
             "install-path": "../smalot/pdfparser"
         },

@@ -12,14 +12,6 @@
       <code><![CDATA[JsonException]]></code>
     </UndefinedClass>
   </file>
-  <file src="lib/Listener/HookListener.php">
-    <MixedArgument>
-      <code><![CDATA[$fileTags]]></code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code><![CDATA[$fileTags]]></code>
-    </MixedAssignment>
-  </file>
   <file src="lib/Model/MetadataItem.php">
     <MixedArgument>
       <code><![CDATA[$metadataItem['key'] ?? '']]></code>
