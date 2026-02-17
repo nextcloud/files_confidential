@@ -11,31 +11,31 @@ class ComposerStaticInit5191f78e660e56319adea2f768f18cac
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
         ),
-        'O' => 
+        'O' =>
         array (
             'OCA\\Files_Confidential\\' => 23,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'OCA\\Files_Confidential\\' => 
+        'OCA\\Files_Confidential\\' =>
         array (
             0 => __DIR__ . '/../..' . '/lib',
         ),
     );
 
     public static $prefixesPsr0 = array (
-        'S' => 
+        'S' =>
         array (
-            'Smalot\\PdfParser\\' => 
+            'Smalot\\PdfParser\\' =>
             array (
                 0 => __DIR__ . '/..' . '/smalot/pdfparser/src',
             ),
