@@ -41,18 +41,19 @@ class HookListener implements IEventListener {
 				try {
 					// Find all tags that files confidential manages on this file
 					$classificationTags = $this->settingsService->getTags();
-					$fileTags = $this->tagMapper->getTagIdsForObjects((string)$node->getId(), 'files')[$node->getId()] ?? [];
+					$nodeId = (string)$node->getId();
+					$fileTags = $this->tagMapper->getTagIdsForObjects($nodeId, 'files')[$nodeId] ?? [];
 					$knownAppliedTags = array_intersect($classificationTags, $fileTags); // Get all tags from file that files_confidential manages
 
 					// Find the tag that the file should be assigned to based on the classification policy
 					$label = $this->classificationService->getClassificationLabelForFile($node);
 
 					if ($label !== null) {
-						$this->tagMapper->assignTags((string)$event->getNode()->getId(), 'files', [$label->getTag()]);
+						$this->tagMapper->assignTags($nodeId, 'files', [$label->getTag()]);
 						$knownAppliedTags = array_diff($knownAppliedTags, [$label->getTag()]); // Remove the tag that the file should be assigned to from the list of unnecessary tags
 					}
 
-					$this->tagMapper->unassignTags((string)$event->getNode()->getId(), 'files', $knownAppliedTags);
+					$this->tagMapper->unassignTags($nodeId, 'files', array_values($knownAppliedTags));
 				} catch (\Throwable $e) {
 					$this->logger->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
 				}
