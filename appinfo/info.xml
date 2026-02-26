@@ -13,7 +13,7 @@ This app allows you to define a set of classification rules that will assign tag
 For each classification rule you can define when the tag will be assigned to a file, based on text
 content, BAILS classification metadata or Microsoft Information Purview metadata.
 ]]></description>
-	<version>4.1.0-dev.0</version>
+	<version>4.1.0</version>
 	<licence>agpl</licence>
 	<author mail="mklehr@gmx.net" homepage="https://marcelklehr.de">Marcel Klehr</author>
 	<namespace>Files_Confidential</namespace>
