@@ -51,7 +51,7 @@
     "extends @nextcloud/browserslist-config"
   ],
   "dependencies": {
-    "url-parse": "^1.5.10",
-    "webdav": "^4.11.4"
+    "@nextcloud/files": "^4.0.0",
+    "url-parse": "^1.5.10"
   }
 }

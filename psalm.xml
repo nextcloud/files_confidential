@@ -5,7 +5,7 @@
 -->
 <psalm
     errorLevel="1"
-    phpVersion="8.0"
+    phpVersion="8.2"
     findUnusedCode="false"
     resolveFromConfigFile="true"
     ensureOverrideAttribute="false"
