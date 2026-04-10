@@ -5,6 +5,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+use OCP\App\IAppManager;
+use OCP\Server;
+
 define('PHPUNIT_RUN', 1);
 
 require_once __DIR__ . '/../../../lib/base.php';
@@ -13,6 +16,6 @@ require_once __DIR__ . '/../../../lib/base.php';
 \OC::$composerAutoloader->addPsr4('Tests\\', OC::$SERVERROOT . '/tests/', true);
 
 // load all enabled apps
-\OC_App::loadApps();
+Server::get(IAppManager::class)->loadApps();
 
 OC_Hook::clear();
