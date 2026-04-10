@@ -29,7 +29,7 @@ class MetadataProviderTest extends TestCase {
 
 	public function setUp(): void {
 		parent::setUp();
-		$this->rootFolder = \OC::$server->getRootFolder();
+		$this->rootFolder = \OC::$server->get(IRootFolder::class);
 		$this->userFolder = $this->loginAndGetUserFolder(self::TEST_USER1);
 	}
 
