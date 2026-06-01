@@ -87,7 +87,6 @@ class MicrosoftOfficeBailsProvider implements IBailsProvider {
 			}
 		];
 
-
 		try {
 			/** @var list<array{key:string, value:string}>  $props */
 			$props = $service->parse($xml);

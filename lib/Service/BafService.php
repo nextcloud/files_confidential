@@ -65,7 +65,6 @@ class BafService {
 			}
 		];
 
-
 		try {
 			/** @var IClassificationLabel[] $labels */
 			$labels = $service->parse($xml);

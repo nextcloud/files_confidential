@@ -205,7 +205,6 @@ class BailsPolicy implements IBailsPolicy {
 		return $this;
 	}
 
-
 	/**
 	 * @return ?\DateTime
 	 */

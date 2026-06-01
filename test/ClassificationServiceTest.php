@@ -30,7 +30,6 @@ class ClassificationServiceTest extends TestCase {
 	private MatcherService|MockObject $matcherService;
 	private ClassificationService $classificationService;
 
-
 	public function setUp(): void {
 		parent::setUp();
 		$this->contentProvider = $this->createMock(ContentProviderService::class);
@@ -89,7 +88,6 @@ class ClassificationServiceTest extends TestCase {
 			->method('getMatchExpression')
 			->with('IBAN')
 			->willReturn('/\b([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}\b)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?\b/');
-
 
 		$this->metadataProvider->expects($this->once())->method('getMetadataForFile')->willReturn([]);
 		$this->bailsProvider->expects($this->once())->method('getPolicyForFile')->willReturn(null);
