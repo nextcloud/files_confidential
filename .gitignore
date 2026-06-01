@@ -1,8 +1,26 @@
 # SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
 # SPDX-License-Identifier: AGPL-3.0-or-later
-node_modules
 bin
-build
 .idea
-/.php-cs-fixer.cache
 /watch.sh
+
+# Vue.js
+/build/
+node_modules/
+js/*hot-update.*
+coverage
+cypress/screenshots/
+cypress/videos/
+
+# Tests - auto-generated files
+/PhantomJS_*
+/tests/.phpunit.result.cache
+/tests/.phpunit.cache/
+/tests/coverage*
+/tests/clover.xml
+/tests/js/node_modules
+/tests/js/run.sh
+/tests/karma-coverage
+/vendor
+/vendor-bin/*/vendor
+/.php-cs-fixer.cache
