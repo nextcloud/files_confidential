@@ -19,7 +19,6 @@ class MetadataItem {
 	) {
 	}
 
-
 	public function getKey(): string {
 		return $this->key;
 	}

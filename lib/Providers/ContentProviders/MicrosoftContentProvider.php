@@ -105,7 +105,6 @@ class MicrosoftContentProvider implements IContentProvider {
 			}
 		}
 
-
 		foreach ($rels['headers'] as $target) {
 			$xmlContent = $zipArchive->getFromName("word/{$target}");
 			if ($xmlContent === false) {
@@ -175,7 +174,6 @@ class MicrosoftContentProvider implements IContentProvider {
 				// log
 			}
 		}
-
 
 		foreach ($rels['footers'] as $target) {
 			$xmlContent = $zipArchive->getFromName("word/{$target}");

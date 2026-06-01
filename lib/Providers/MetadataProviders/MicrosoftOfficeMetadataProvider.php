@@ -82,7 +82,6 @@ class MicrosoftOfficeMetadataProvider implements IMetadataProvider {
 			}
 		];
 
-
 		try {
 			/** @var MetadataItem[] $items */
 			$items = $service->parse($xml);
