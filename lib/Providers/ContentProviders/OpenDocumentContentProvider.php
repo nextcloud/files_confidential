@@ -130,7 +130,21 @@ class OpenDocumentContentProvider implements IContentProvider {
 			// log
 		}
 
-		$uri = 'zip://' . $localFilepath . '#content.xml';
+		$path = $localFilepath;
+		$tmpLink = null;
+		if (str_contains($path, '#')) {
+			$tmpLink = tempnam(sys_get_temp_dir(), 'odt-');
+			if ($tmpLink === false) {
+				throw new \RuntimeException('Failed to create temp file for symlink');
+			}
+			// tempnam creates a file so we need to remove it for the symlink to work
+			if (!unlink($tmpLink) || !symlink($path, $tmpLink)) {
+				throw new \RuntimeException('Failed to create temp symlink');
+			}
+			$path = $tmpLink;
+		}
+
+		$uri = 'zip://' . $path . '#content.xml';
 		$reader = \XMLReader::open($uri);
 
 		if ($reader) {
@@ -154,5 +168,8 @@ class OpenDocumentContentProvider implements IContentProvider {
 		}
 
 		$zipArchive->close();
+		if ($tmpLink !== null) {
+			unlink($tmpLink);
+		}
 	}
 }
