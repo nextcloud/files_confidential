@@ -59,7 +59,7 @@ class AdminController extends Controller {
 	public function importBaf() : JSONResponse {
 		$upload = $this->request->getUploadedFile('baf');
 		$result = [];
-		if ($upload['type'] !== 'text/xml') {
+		if ($upload === null || $upload['type'] !== 'text/xml') {
 			$result['errors'][] = $this->l10n->t('Unsupported file type for import. An XML file is expected.');
 			return new JSONResponse(['status' => 'error', 'data' => $result['errors']]);
 		}
