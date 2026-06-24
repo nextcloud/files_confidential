@@ -8,6 +8,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.1.0] - 2026-06-24
+
+### Changed
+
+- Support Nextcloud 35 [#247](https://github.com/nextcloud/files_confidential/pull/247) @nickvergessen
+- Port away from OC_App [#241](https://github.com/nextcloud/files_confidential/pull/241) @CarlSchwan
+- Update composer and node dependencies [#261](https://github.com/nextcloud/files_confidential/pull/261) @lukasdotcom
+
+### Fixed
+
+- Create temp file copy without `#` when needed [#262](https://github.com/nextcloud/files_confidential/pull/262) @lukasdotcom
+
 ## [5.0.0] - 2026-02-26
 
 ### Breaking changes
