@@ -234,12 +234,29 @@ class MicrosoftContentProvider implements IContentProvider {
 			}
 		}
 
+		$path = $localFilepath;
+		$tmpLink = null;
+		if (str_contains($path, '#')) {
+			$tmpLink = tempnam(sys_get_temp_dir(), 'docx-');
+			if ($tmpLink === false) {
+				throw new \RuntimeException('Failed to create temp file for symlink');
+			}
+			// tempnam creates a file so we need to remove it for the symlink to work
+			if (!unlink($tmpLink) || !symlink($path, $tmpLink)) {
+				throw new \RuntimeException('Failed to create temp symlink');
+			}
+			$path = $tmpLink;
+		}
+
 		// Use a streaming XML reader to avoid loading the entire document.xml into memory.
-		$uri = 'zip://' . $localFilepath . '#word/document.xml';
+		$uri = 'zip://' . $path . '#word/document.xml';
 		$reader = \XMLReader::open($uri);
 
 		if ($reader === false) {
 			$zipArchive->close();
+			if ($tmpLink !== null) {
+				unlink($tmpLink);
+			}
 			return;
 		}
 
@@ -266,5 +283,8 @@ class MicrosoftContentProvider implements IContentProvider {
 
 		$reader->close();
 		$zipArchive->close();
+		if ($tmpLink !== null) {
+			unlink($tmpLink);
+		}
 	}
 }
