@@ -42,6 +42,7 @@ class HookListener implements IEventListener {
 					// Find all tags that files confidential manages on this file
 					$classificationTags = $this->settingsService->getTags();
 					$nodeId = (string)$node->getId();
+					/** @var list<string> $fileTags */
 					$fileTags = $this->tagMapper->getTagIdsForObjects($nodeId, 'files')[$nodeId] ?? [];
 					$knownAppliedTags = array_intersect($classificationTags, $fileTags); // Get all tags from file that files_confidential manages
 
