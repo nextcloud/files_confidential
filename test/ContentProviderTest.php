@@ -74,6 +74,27 @@ class ContentProviderTest extends TestCase {
 	}
 
 	/**
+	 * @dataProvider hashInFilenameDataProvider
+	 * @return void
+	 * @throws \OCP\AppFramework\QueryException
+	 * @throws \OCP\Files\NotPermittedException
+	 */
+	public function testProviderWithHashInFilename(string $fixture, string $uploadName, string $providerClass): void {
+		$this->testFile = $this->userFolder->newFile($uploadName, file_get_contents(__DIR__ . '/res/' . $fixture));
+		/** @var \OCA\Files_Confidential\Contract\IContentProvider $provider */
+		$provider = \OC::$server->get($providerClass);
+		$content = $this->getContentFromStream($provider->getContentStream($this->testFile));
+		$this->assertStringContainsStringIgnoringCase('top secret', $content);
+	}
+
+	public function hashInFilenameDataProvider(): array {
+		return [
+			['test_footer_top_secret.docx', '/test_with_#.docx', MicrosoftContentProvider::class],
+			['test_text_top_secret.odt', '/test_with_#.odt', OpenDocumentContentProvider::class],
+		];
+	}
+
+	/**
 	 * @dataProvider openDocumentSearchDataProvider
 	 * @param string $file
 	 * @return void
