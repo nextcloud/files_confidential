@@ -1,7 +1,32 @@
 OC.L10N.register(
     "files_confidential",
     {
+    "Unsupported file type for import. An XML file is expected." : "Importimiseks mittetoetatud failitüüp. Peaks olema XML-fail.",
+    "Could not read uploaded file" : "Üleslaaditud faili lugemine ei õnnestunud",
+    "Could not store extracted labels" : "Eraldatud märgiste salvestamine ei õnnestunud",
+    "Confidential Files" : "Konfidentsiaalsed failid",
+    "Confidential files" : "Konfidentsiaalsed failid",
+    "Workflows for handling confidential files in Nextcloud" : "Töövoog konfidentsiaalsete failide käsitlemiseks Nextcloudis",
+    "Remove rule" : "Eemalda reegel",
+    "Add tag…" : "Lisa silt…",
+    "Select tag" : "Vali silt",
+    "… or if document has all metadata values" : "… võik kui dokumendil on kõik metateave väärtused",
+    "Metadata key" : "Metateabe võti",
+    "Metadata value" : "Metateabe väärtus",
     "Add" : "Lisa",
-    "Failed to save settings" : "Seadistuste salvestamine ei õnnestunud"
+    "… or if document contains" : "… või kui dokument sisaldab",
+    "Enter Regular Expression" : "Sisesta regulaaravaldis",
+    "Remove regular expression" : "Eemalda regulaaravaldis",
+    "Search keywords within documents" : "Otsingu märksõnad dokumentides",
+    "Search keyword" : "Otsingu märksõna",
+    "Remove search keyword" : "Eemalda otsingu märksõna",
+    "Can not add new label, until all labels have a tag assigned." : "Uue märgise lisamine pole võimalik seni, kuni kõik märgised pole sildiga seotud.",
+    "Failed to save settings" : "Seadistuste salvestamine ei õnnestunud",
+    "Policy uploaded successfully" : "Reegli üleslaadimine õnnestus",
+    "Upload your TSCP/BAILS policy classification labels (XML format)" : "Laadi üles oma TSCP/BAILS reeglite klassifitseerimismärgised (XML-vormingus)",
+    "Upload policy" : "Üleslaadimise reeglid",
+    "Previous labels will be overwritten after successful file upload" : "Faili õnnestunud üleslaadimise järel kirjutatakse kõik märgised üle",
+    "Classification rules" : "Klassifitseerimise reeglid",
+    "Add new label" : "Lisa uus märgis"
 },
 "nplurals=2; plural=(n != 1);");
