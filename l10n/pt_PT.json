@@ -1,4 +1,5 @@
 { "translations": {
+    "Confidential files" : "Arquivos confidenciais",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Esta aplicação permite definir um conjunto de regras de classificação que atribuirão etiquetas aos ficheiros. Para cada regra de classificação, pode definir quando a etiqueta será atribuída a um ficheiro, com base no conteúdo do texto, nos metadados de classificação BAILS ou nos metadados Microsoft Information Purview.",
     "Add" : "Adicionar",
     "Failed to save settings" : "Erro ao gravar as definições",
