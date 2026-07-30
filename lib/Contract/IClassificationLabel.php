@@ -15,6 +15,14 @@ interface IClassificationLabel {
 	 * @return int
 	 */
 	public function getIndex(): int;
+
+	/**
+	 * The priority of the label (higher value = higher priority)
+	 * Used for determining which label takes precedence when multiple match
+	 * @return int
+	 */
+	public function getPriority(): int;
+
 	public function getTag(): string;
 
 	/**

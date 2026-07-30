@@ -12,6 +12,14 @@ based on text content or TSCP/BAILS classification metadata.
 
 The assigned tags can then be used with the files_accesscontrol app to restrict access to specific groups of users.
 
+## Features
+
+* Define classification rules based on document content, metadata, or TSCP/BAILS policy categories
+* Import classification labels from a Business Authorization Framework (BAF) XML file
+* **Priority-based classification**: assign a priority value to each rule to control which takes precedence
+* **Multi-tag assignment**: when multiple rules match a document, all matching tags are applied (e.g. a file can be tagged as both "PII" and "Internal")
+* Integrate with Nextcloud Flow to automate actions based on classification tags
+
 
 ## Install
 * Place this app in **nextcloud/apps/**

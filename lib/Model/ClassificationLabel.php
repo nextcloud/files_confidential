@@ -15,6 +15,7 @@ use OCA\Files_Confidential\Service\MatcherService;
 class ClassificationLabel implements IClassificationLabel {
 	private string $tag;
 	private int $index;
+	private int $priority;
 	/**
 	 * @var list<string>
 	 */
@@ -100,8 +101,9 @@ class ClassificationLabel implements IClassificationLabel {
 	 * @param list<string> $searchExpressions
 	 * @param list<string> $regularExpressions
 	 * @param MetadataItem[] $metadataItems
+	 * @param int $priority
 	 */
-	public function __construct(int $index, string $tag, array $keywords, array $categories, array $searchExpressions, array $regularExpressions, array $metadataItems) {
+	public function __construct(int $index, string $tag, array $keywords, array $categories, array $searchExpressions, array $regularExpressions, array $metadataItems, int $priority = 0) {
 		$this->index = $index;
 		$this->tag = $tag;
 		$this->keywords = $keywords;
@@ -109,10 +111,11 @@ class ClassificationLabel implements IClassificationLabel {
 		$this->searchExpressions = $searchExpressions;
 		$this->regularExpressions = $regularExpressions;
 		$this->metadataItems = $metadataItems;
+		$this->priority = $priority;
 	}
 
 	/**
-	 * @param array{index:int, tag:string, keywords:list<string>, categories:list<string>, searchExpressions:list<string>, regularExpressions:list<string>, metadataItems: list<array{key: string, value: string}>} $labelRaw
+	 * @param array{index:int, tag:string, keywords:list<string>, categories:list<string>, searchExpressions:list<string>, regularExpressions:list<string>, metadataItems: list<array{key: string, value: string}>, priority?: int} $labelRaw
 	 *
 	 * @throws \ValueError
 	 */
@@ -121,7 +124,8 @@ class ClassificationLabel implements IClassificationLabel {
 			throw new \ValueError();
 		}
 		$metadata = array_values(array_filter(array_map(fn ($item) => MetadataItem::fromArray($item), $labelRaw['metadataItems'] ?? []), fn ($item) => $item->getKey() !== ''));
-		return new ClassificationLabel($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'], $metadata);
+		$priority = max(0, min(100, (int)($labelRaw['priority'] ?? 0)));
+		return new ClassificationLabel($labelRaw['index'], $labelRaw['tag'], $labelRaw['keywords'], $labelRaw['categories'], $labelRaw['searchExpressions'], $labelRaw['regularExpressions'], $metadata, $priority);
 	}
 
 	#[\Override]
@@ -129,6 +133,7 @@ class ClassificationLabel implements IClassificationLabel {
 		return [
 			'index' => $this->getIndex(),
 			'tag' => $this->getTag(),
+			'priority' => $this->getPriority(),
 			'keywords' => $this->getKeywords(),
 			'categories' => $this->getBailsCategories(),
 			'searchExpressions' => $this->getSearchExpressions(),
@@ -140,6 +145,11 @@ class ClassificationLabel implements IClassificationLabel {
 	#[\Override]
 	public function getIndex(): int {
 		return $this->index;
+	}
+
+	#[\Override]
+	public function getPriority(): int {
+		return $this->priority;
 	}
 
 	#[\Override]

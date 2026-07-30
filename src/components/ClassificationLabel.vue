@@ -27,6 +27,16 @@
 				:placeholder="t('files_confidential', 'Select tag')"
 				@input="$emit('change')" />
 		</label>
+		<label class="priority-label">
+			<span class="text">{{ t('files_confidential', 'Priority') }}</span>
+			<input v-model.number="label.priority"
+				type="number"
+				min="0"
+				max="100"
+				class="priority-input"
+				:placeholder="t('files_confidential', 'Priority (higher = more important)')"
+				@input="$emit('change')">
+		</label>
 		<div class="options">
 			<div class="option">
 				<label>
@@ -244,6 +254,17 @@ export default {
 </script>
 
 <style scoped>
+.priority-label {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.priority-input {
+	width: 80px;
+	margin-left: 10px;
+}
+
 .option.regex,
 .option.keywords,
 .option.metadata .field {

@@ -46,12 +46,13 @@ class HookListener implements IEventListener {
 					$fileTags = $this->tagMapper->getTagIdsForObjects($nodeId, 'files')[$nodeId] ?? [];
 					$knownAppliedTags = array_intersect($classificationTags, $fileTags); // Get all tags from file that files_confidential manages
 
-					// Find the tag that the file should be assigned to based on the classification policy
-					$label = $this->classificationService->getClassificationLabelForFile($node);
+					// Find all matching labels for the file based on classification rules
+					$matchedLabels = $this->classificationService->getClassificationLabelsForFile($node);
 
-					if ($label !== null) {
-						$this->tagMapper->assignTags($nodeId, 'files', [$label->getTag()]);
-						$knownAppliedTags = array_diff($knownAppliedTags, [$label->getTag()]); // Remove the tag that the file should be assigned to from the list of unnecessary tags
+					if (!empty($matchedLabels)) {
+						$matchedTags = array_map(static fn ($label) => $label->getTag(), $matchedLabels);
+						$this->tagMapper->assignTags($nodeId, 'files', $matchedTags);
+						$knownAppliedTags = array_diff($knownAppliedTags, $matchedTags);
 					}
 
 					$this->tagMapper->unassignTags($nodeId, 'files', array_values($knownAppliedTags));

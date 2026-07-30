@@ -99,7 +99,29 @@ class ClassificationServiceTest extends TestCase {
 		self::assertNull($predictedLabel);
 	}
 
-	public function testMultipleLabelsFoundReturnsFirstMatch() : void {
+	public function testMultipleLabelsFoundReturnsHighestPriority() : void {
+		$content = 'This document is about email: test@example.com and is CONFIDENTIAL';
+		$this->contentProvider->expects($this->once())
+			->method('getContentStreamForFile')
+			->willReturn($this->createGenerator($content));
+		$this->matcherService->expects($this->any())
+			->method('getMatchExpression')
+			->with('E-Mail')
+			->willReturn('/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/');
+
+		$this->metadataProvider->expects($this->once())->method('getMetadataForFile')->willReturn([]);
+		$this->bailsProvider->expects($this->once())->method('getPolicyForFile')->willReturn(null);
+
+		$label1 = new ClassificationLabel(0, 'tag1', ['CONFIDENTIAL'], [], [], [], []);
+		$label2 = new ClassificationLabel(1, 'tag2', [], [], ['E-Mail'], [], [], 10);
+		$this->settings->expects($this->once())->method('getClassificationLabels')->willReturn([$label1, $label2]);
+
+		// label2 has higher priority (10 > 0), so it should be returned
+		$predictedLabel = $this->classificationService->getClassificationLabelForFile($this->createMock(File::class));
+		self::assertSame($label2, $predictedLabel);
+	}
+
+	public function testMultipleLabelsFoundReturnsAllMatches() : void {
 		$content = 'This document is about email: test@example.com and is CONFIDENTIAL';
 		$this->contentProvider->expects($this->once())
 			->method('getContentStreamForFile')
@@ -116,8 +138,12 @@ class ClassificationServiceTest extends TestCase {
 		$label2 = new ClassificationLabel(1, 'tag2', [], [], ['E-Mail'], [], []);
 		$this->settings->expects($this->once())->method('getClassificationLabels')->willReturn([$label1, $label2]);
 
-		$predictedLabel = $this->classificationService->getClassificationLabelForFile($this->createMock(File::class));
-		self::assertSame($label2, $predictedLabel);
+		// Both labels should be found when using getClassificationLabelsForFile
+		$predictedLabels = $this->classificationService->getClassificationLabelsForFile($this->createMock(File::class));
+		self::assertCount(2, $predictedLabels);
+		// Default priority (0) for both, so sorted by index
+		self::assertSame($label1, $predictedLabels[0]);
+		self::assertSame($label2, $predictedLabels[1]);
 	}
 
 	public function testMetadataClassificationPositive() : void {
@@ -234,5 +260,137 @@ class ClassificationServiceTest extends TestCase {
 
 		$predictedLabel = $this->classificationService->getClassificationLabelForFile($this->createMock(File::class));
 		self::assertSame($targetLabel, $predictedLabel);
+	}
+
+	public function testPriorityHigherValueWins(): void {
+		$content = 'This document contains CONFIDENTIAL information and also has an IBAN: AL35202111090000000001234567';
+		$this->contentProvider->expects($this->once())
+			->method('getContentStreamForFile')
+			->willReturn($this->createGenerator($content));
+		$this->matcherService->expects($this->any())
+			->method('getMatchExpression')
+			->with('IBAN')
+			->willReturn('/\b([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}\b)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?\b/');
+
+		$this->metadataProvider->expects($this->once())->method('getMetadataForFile')->willReturn([]);
+		$this->bailsProvider->expects($this->once())->method('getPolicyForFile')->willReturn(null);
+
+		$lowPriorityLabel = new ClassificationLabel(0, 'INTERNAL', ['CONFIDENTIAL'], [], [], [], [], 1);
+		$highPriorityLabel = new ClassificationLabel(1, 'PII', [], [], ['IBAN'], [], [], 10);
+		$this->settings->expects($this->once())->method('getClassificationLabels')->willReturn([
+			$lowPriorityLabel,
+			$highPriorityLabel,
+		]);
+
+		// Higher priority label (PII, priority=10) should be returned first
+		$predictedLabel = $this->classificationService->getClassificationLabelForFile($this->createMock(File::class));
+		self::assertSame($highPriorityLabel, $predictedLabel);
+	}
+
+	public function testPriorityTiebreakByIndex(): void {
+		$content = 'This document contains CONFIDENTIAL info and RESTRICTED data';
+		$this->contentProvider->expects($this->once())
+			->method('getContentStreamForFile')
+			->willReturn($this->createGenerator($content));
+
+		$this->metadataProvider->expects($this->once())->method('getMetadataForFile')->willReturn([]);
+		$this->bailsProvider->expects($this->once())->method('getPolicyForFile')->willReturn(null);
+
+		// Same priority, different index — lower index wins
+		$label1 = new ClassificationLabel(0, 'tag1', ['CONFIDENTIAL'], [], [], [], [], 5);
+		$label2 = new ClassificationLabel(1, 'tag2', ['RESTRICTED'], [], [], [], [], 5);
+		$this->settings->expects($this->once())->method('getClassificationLabels')->willReturn([$label1, $label2]);
+
+		$predictedLabel = $this->classificationService->getClassificationLabelForFile($this->createMock(File::class));
+		self::assertSame($label1, $predictedLabel);
+	}
+
+	public function testGetClassificationLabelsForFileReturnsAllMatches(): void {
+		$content = 'This document has SSN: 123-45-6789 and IBAN: AL35202111090000000001234567';
+		$this->contentProvider->expects($this->once())
+			->method('getContentStreamForFile')
+			->willReturn($this->createGenerator($content));
+		$this->matcherService->expects($this->any())
+			->method('getMatchExpression')
+			->willReturnMap([
+				['IBAN', '/\b([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}\b)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?\b/'],
+				['SSN', '/\b\d{3}-\d{2}-\d{4}\b/'],
+			]);
+
+		$this->metadataProvider->expects($this->once())->method('getMetadataForFile')->willReturn([]);
+		$this->bailsProvider->expects($this->once())->method('getPolicyForFile')->willReturn(null);
+
+		$ibanLabel = new ClassificationLabel(0, 'FINANCIAL', [], [], ['IBAN'], [], [], 5);
+		$ssnLabel = new ClassificationLabel(1, 'PII', [], [], ['SSN'], [], [], 10);
+		$this->settings->expects($this->once())->method('getClassificationLabels')->willReturn([
+			$ibanLabel,
+			$ssnLabel,
+		]);
+
+		$labels = $this->classificationService->getClassificationLabelsForFile($this->createMock(File::class));
+		self::assertCount(2, $labels);
+		// Sorted by priority: PII (10) first, FINANCIAL (5) second
+		self::assertSame($ssnLabel, $labels[0]);
+		self::assertSame($ibanLabel, $labels[1]);
+	}
+
+	public function testGetClassificationLabelsForFileMixedSources(): void {
+		$content = 'This document contains CONFIDENTIAL information';
+		$this->contentProvider->expects($this->once())
+			->method('getContentStreamForFile')
+			->willReturn($this->createGenerator($content));
+
+		$this->metadataProvider->expects($this->once())->method('getMetadataForFile')->willReturn([
+			new MetadataItem('RESTRICTION', 'HIGH'),
+		]);
+		$this->bailsProvider->expects($this->once())->method('getPolicyForFile')->willReturn(null);
+
+		$contentLabel = new ClassificationLabel(0, 'INTERNAL', ['CONFIDENTIAL'], [], [], [], [], 1);
+		$metadataLabel = new ClassificationLabel(1, 'RESTRICTED', [], [], [], [], [
+			new MetadataItem('RESTRICTION', 'HIGH'),
+		], 5);
+		$this->settings->expects($this->once())->method('getClassificationLabels')->willReturn([
+			$contentLabel,
+			$metadataLabel,
+		]);
+
+		// Both match — one from content, one from metadata
+		$labels = $this->classificationService->getClassificationLabelsForFile($this->createMock(File::class));
+		self::assertCount(2, $labels);
+		// metadataLabel has higher priority
+		self::assertSame($metadataLabel, $labels[0]);
+		self::assertSame($contentLabel, $labels[1]);
+	}
+
+	public function testDefaultPriorityIsZero(): void {
+		// Labels created without explicit priority should default to 0
+		$label = new ClassificationLabel(0, 'tag1', ['keyword'], [], [], [], []);
+		self::assertSame(0, $label->getPriority());
+	}
+
+	public function testPriorityInToArrayAndFromArray(): void {
+		$label = new ClassificationLabel(0, 'tag1', ['keyword'], ['cat1'], ['expr1'], ['regex1'], [], 7);
+		$array = $label->toArray();
+
+		self::assertSame(7, $array['priority']);
+
+		$restored = ClassificationLabel::fromArray($array);
+		self::assertSame(7, $restored->getPriority());
+	}
+
+	public function testFromArrayBackwardCompatibleWithoutPriority(): void {
+		// Simulates loading a label saved before the priority field existed
+		$array = [
+			'index' => 0,
+			'tag' => 'CONFIDENTIAL',
+			'keywords' => ['secret'],
+			'categories' => [],
+			'searchExpressions' => [],
+			'regularExpressions' => [],
+			'metadataItems' => [],
+		];
+
+		$label = ClassificationLabel::fromArray($array);
+		self::assertSame(0, $label->getPriority());
 	}
 }

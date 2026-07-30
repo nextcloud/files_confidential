@@ -135,9 +135,10 @@ export default {
 				return
 			}
 			this.labels.push({
-				id: Math.random(),
+				id: crypto.randomUUID(),
 				index: this.labels.length,
 				tag: '',
+				priority: 0,
 				keywords: [],
 				categories: [],
 				searchExpressions: [],
@@ -170,7 +171,9 @@ export default {
 		async setValue(setting, value) {
 			if (setting === 'labels') {
 				value = value.map(label => ({
-					...label, tag: String(label?.tag?.id) || '',
+					...label,
+					tag: String(label?.tag?.id) || '',
+					priority: label.priority || 0,
 				}))
 			}
 			try {
@@ -233,13 +236,13 @@ export default {
 			this.tags = await this.getTags()
 			this.searchExpressions = loadState('files_confidential', 'searchExpressions')
 			this.labels = loadState('files_confidential', 'labels')
-				.map(label => ({ ...label, id: Math.random(), tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))
+				.map(label => ({ ...label, id: crypto.randomUUID(), priority: label.priority || 0, tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))
 		},
 
 		loadLabels() {
 			axios.get(generateUrl('/apps/files_confidential/admin/settings/labels'))
 				.then(res => {
-					this.labels = res.data.map(label => ({ ...label, id: Math.random(), tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))
+					this.labels = res.data.map(label => ({ ...label, id: crypto.randomUUID(), priority: label.priority || 0, tag: this.tags.find(tag => String(tag.id) === String(label.tag)) }))
 				})
 		},
 	},
