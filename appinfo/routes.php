@@ -13,5 +13,6 @@ return [
 		['name' => 'admin#setClassificationLabels', 'url' => '/admin/settings/labels', 'verb' => 'PUT'],
 		['name' => 'admin#getClassificationLabels', 'url' => '/admin/settings/labels', 'verb' => 'GET'],
 		['name' => 'admin#importBaf', 'url' => '/admin/baf', 'verb' => 'POST'],
+		['name' => 'admin#createTag', 'url' => '/admin/tag', 'verb' => 'POST'],
 	],
 ];

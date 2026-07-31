@@ -24,7 +24,10 @@
 					return option['display-name'].toString().toLowerCase().includes(search.toLowerCase())
 				}"
 				:limit="5"
-				:placeholder="t('files_confidential', 'Select tag')"
+				taggable
+				:create-option="createTagOption"
+				:placeholder="t('files_confidential', 'Select or create tag')"
+				@option:created="onTagCreated"
 				@input="$emit('change')" />
 		</label>
 		<div class="options">
@@ -185,6 +188,8 @@ export default {
 		},
 	},
 
+	emits: ['change', 'remove', 'moveUp', 'moveDown', 'tagCreated'],
+
 	data() {
 		return {
 			input: '',
@@ -218,6 +223,30 @@ export default {
 		},
 	},
 	methods: {
+		/**
+		 * Create the option object for a new tag name typed in the select
+		 * @param {string} name The tag name typed by the user
+		 * @return {object} Option object compatible with the tags format
+		 */
+		createTagOption(name) {
+			return {
+				id: null,
+				'display-name': name,
+				'user-visible': true,
+				'user-assignable': false,
+				'can-assign': true,
+				isNew: true,
+			}
+		},
+
+		/**
+		 * Handle creation of a new tag when the user types a name not in the list
+		 * @param {object} option The newly created option object
+		 */
+		onTagCreated(option) {
+			this.$emit('tagCreated', option)
+		},
+
 		addExpression(val) {
 			if (this.searchExpressions[this.input]) {
 				this.label.searchExpressions.push(this.input)
