@@ -11,15 +11,14 @@ namespace OCA\Files_Confidential\Controller;
 
 use OCA\Files_Confidential\Service\BafService;
 use OCA\Files_Confidential\Service\SettingsService;
-use OCA\Files_Confidential\Settings\AdminSettings;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
-use OCP\AppFramework\Http\Attribute\AuthorizedAdminSetting;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\Files\IAppData;
 use OCP\Files\NotFoundException;
 use OCP\IL10N;
 use OCP\IRequest;
+use OCP\SystemTag\ISystemTag;
 use OCP\SystemTag\ISystemTagManager;
 use OCP\SystemTag\TagAlreadyExistsException;
 use Safe\Exceptions\JsonException;
@@ -42,7 +41,6 @@ class AdminController extends Controller {
 	 * @param array $value
 	 * @return \OCP\AppFramework\Http\JSONResponse
 	 */
-	#[AuthorizedAdminSetting(settings: AdminSettings::class)]
 	public function setClassificationLabels(array $value): JSONResponse {
 		try {
 			$this->settingsService->setClassificationLabels($value);
@@ -52,7 +50,6 @@ class AdminController extends Controller {
 		}
 	}
 
-	#[AuthorizedAdminSetting(settings: AdminSettings::class)]
 	public function getClassificationLabels(): JSONResponse {
 		$labels = $this->settingsService->getClassificationLabels();
 		$labels = array_map(static fn ($label):array => $label->toArray(), $labels);
@@ -63,7 +60,6 @@ class AdminController extends Controller {
 	 * @return \OCP\AppFramework\Http\JSONResponse
 	 * @throws \OCP\Files\NotPermittedException
 	 */
-	#[AuthorizedAdminSetting(settings: AdminSettings::class)]
 	public function importBaf() : JSONResponse {
 		$upload = $this->request->getUploadedFile('baf');
 		$result = [];
@@ -102,7 +98,6 @@ class AdminController extends Controller {
 	 * @param string $name
 	 * @return JSONResponse
 	 */
-	#[AuthorizedAdminSetting(settings: AdminSettings::class)]
 	public function createTag(string $name): JSONResponse {
 		$name = trim($name);
 		if ($name === '') {
@@ -114,16 +109,16 @@ class AdminController extends Controller {
 
 		try {
 			$tag = $this->systemTagManager->createTag($name, true, false);
-			return new JSONResponse([
-				'id' => $tag->getId(),
-				'name' => $tag->getName(),
-				'userVisible' => $tag->isUserVisible(),
-				'userAssignable' => $tag->isUserAssignable(),
-			], Http::STATUS_CREATED);
+			return new JSONResponse($this->tagToArray($tag), Http::STATUS_CREATED);
 		} catch (TagAlreadyExistsException $e) {
+			foreach ($this->systemTagManager->getAllTags(null, $name) as $existingTag) {
+				if (mb_strtolower($existingTag->getName()) === mb_strtolower($name)) {
+					return new JSONResponse($this->tagToArray($existingTag), Http::STATUS_OK);
+				}
+			}
 			return new JSONResponse(
-				['error' => $this->l10n->t('Tag "%s" already exists', [$name])],
-				Http::STATUS_CONFLICT
+				['error' => $this->l10n->t('Failed to create tag')],
+				Http::STATUS_INTERNAL_SERVER_ERROR
 			);
 		} catch (\Exception $e) {
 			return new JSONResponse(
@@ -131,5 +126,17 @@ class AdminController extends Controller {
 				Http::STATUS_INTERNAL_SERVER_ERROR
 			);
 		}
+	}
+
+	/**
+	 * @return array{id: string, name: string, userVisible: bool, userAssignable: bool}
+	 */
+	private function tagToArray(ISystemTag $tag): array {
+		return [
+			'id' => $tag->getId(),
+			'name' => $tag->getName(),
+			'userVisible' => $tag->isUserVisible(),
+			'userAssignable' => $tag->isUserAssignable(),
+		];
 	}
 }

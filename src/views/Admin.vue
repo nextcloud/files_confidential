@@ -32,7 +32,7 @@
 					@moveUp="moveUpLabel(label.index)"
 					@moveDown="moveDownLabel(label.index)"
 					@remove="removeLabel(label.index)"
-					@tagCreated="onTagCreated($event, label.index)"
+					@tag-created="onTagCreated($event, label.index)"
 					@change="onChange()" />
 				<div :key="'--new--'" :class="{'label':true, 'collapsed': true, 'add': true}">
 					<NcButton type="primary"

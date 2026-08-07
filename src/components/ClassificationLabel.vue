@@ -188,7 +188,7 @@ export default {
 		},
 	},
 
-	emits: ['change', 'remove', 'moveUp', 'moveDown', 'tagCreated'],
+	emits: ['change', 'remove', 'moveUp', 'moveDown', 'tag-created'],
 
 	data() {
 		return {
@@ -229,6 +229,13 @@ export default {
 		 * @return {object} Option object compatible with the tags format
 		 */
 		createTagOption(name) {
+			const exists = this.tags.some(
+				(tag) => tag['display-name'].toString().toLowerCase() === name.toString().toLowerCase(),
+			)
+			if (exists) {
+				throw new Error('Tag already exists')
+			}
+
 			return {
 				id: null,
 				'display-name': name,
@@ -244,7 +251,7 @@ export default {
 		 * @param {object} option The newly created option object
 		 */
 		onTagCreated(option) {
-			this.$emit('tagCreated', option)
+			this.$emit('tag-created', option)
 		},
 
 		addExpression(val) {
