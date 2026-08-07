@@ -18,6 +18,9 @@ use OCP\Files\IAppData;
 use OCP\Files\NotFoundException;
 use OCP\IL10N;
 use OCP\IRequest;
+use OCP\SystemTag\ISystemTag;
+use OCP\SystemTag\ISystemTagManager;
+use OCP\SystemTag\TagAlreadyExistsException;
 use Safe\Exceptions\JsonException;
 
 class AdminController extends Controller {
@@ -29,6 +32,7 @@ class AdminController extends Controller {
 		private IL10N $l10n,
 		private BafService $bafService,
 		private IAppData $appData,
+		private ISystemTagManager $systemTagManager,
 	) {
 		parent::__construct($appName, $request);
 	}
@@ -57,9 +61,10 @@ class AdminController extends Controller {
 	 * @throws \OCP\Files\NotPermittedException
 	 */
 	public function importBaf() : JSONResponse {
+		/** @var array|null $upload */
 		$upload = $this->request->getUploadedFile('baf');
 		$result = [];
-		if ($upload === null || $upload['type'] !== 'text/xml') {
+		if ($upload === null || ($upload['type'] ?? null) !== 'text/xml') {
 			$result['errors'][] = $this->l10n->t('Unsupported file type for import. An XML file is expected.');
 			return new JSONResponse(['status' => 'error', 'data' => $result['errors']]);
 		}
@@ -86,5 +91,53 @@ class AdminController extends Controller {
 		$folder->newFile('baf.xml', $xml);
 
 		return new JSONResponse([]);
+	}
+
+	/**
+	 * Create a new restricted tag (visible but not user-assignable)
+	 *
+	 * @param string $name
+	 * @return JSONResponse
+	 */
+	public function createTag(string $name): JSONResponse {
+		$name = trim($name);
+		if ($name === '') {
+			return new JSONResponse(
+				['error' => $this->l10n->t('Tag name cannot be empty')],
+				Http::STATUS_BAD_REQUEST
+			);
+		}
+
+		try {
+			$tag = $this->systemTagManager->createTag($name, true, false);
+			return new JSONResponse($this->tagToArray($tag), Http::STATUS_CREATED);
+		} catch (TagAlreadyExistsException $e) {
+			foreach ($this->systemTagManager->getAllTags(null, $name) as $existingTag) {
+				if (mb_strtolower($existingTag->getName()) === mb_strtolower($name)) {
+					return new JSONResponse($this->tagToArray($existingTag), Http::STATUS_OK);
+				}
+			}
+			return new JSONResponse(
+				['error' => $this->l10n->t('Failed to create tag')],
+				Http::STATUS_INTERNAL_SERVER_ERROR
+			);
+		} catch (\Exception $e) {
+			return new JSONResponse(
+				['error' => $this->l10n->t('Failed to create tag')],
+				Http::STATUS_INTERNAL_SERVER_ERROR
+			);
+		}
+	}
+
+	/**
+	 * @return array{id: string, name: string, userVisible: bool, userAssignable: bool}
+	 */
+	private function tagToArray(ISystemTag $tag): array {
+		return [
+			'id' => $tag->getId(),
+			'name' => $tag->getName(),
+			'userVisible' => $tag->isUserVisible(),
+			'userAssignable' => $tag->isUserAssignable(),
+		];
 	}
 }

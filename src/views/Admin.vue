@@ -32,6 +32,7 @@
 					@moveUp="moveUpLabel(label.index)"
 					@moveDown="moveDownLabel(label.index)"
 					@remove="removeLabel(label.index)"
+					@tag-created="onTagCreated($event, label.index)"
 					@change="onChange()" />
 				<div :key="'--new--'" :class="{'label':true, 'collapsed': true, 'add': true}">
 					<NcButton type="primary"
@@ -170,7 +171,7 @@ export default {
 		async setValue(setting, value) {
 			if (setting === 'labels') {
 				value = value.map(label => ({
-					...label, tag: String(label?.tag?.id) || '',
+					...label, tag: (label?.tag?.id && label.tag.id !== null) ? String(label.tag.id) : '',
 				}))
 			}
 			try {
@@ -227,6 +228,54 @@ export default {
 			console.error(response)
 
 			return response.data.map(item => item.props).filter(item => item.id)
+		},
+
+		/**
+		 * Create a new restricted tag via the backend API
+		 * @param {object} option The tag option created by the user
+		 * @param {number} labelIndex The index of the label that triggered the creation
+		 */
+		async onTagCreated(option, labelIndex) {
+			const name = option['display-name']
+			if (!name || !name.trim()) {
+				return
+			}
+
+			try {
+				const response = await axios.post(generateUrl('/apps/files_confidential/admin/tag'), {
+					name: name.trim(),
+				})
+
+				const tagData = response.data
+				const newTag = {
+					id: String(tagData.id),
+					'display-name': tagData.name,
+					'user-visible': tagData.userVisible,
+					'user-assignable': tagData.userAssignable,
+					'can-assign': true,
+				}
+
+				// Add the new tag to the tags list
+				this.tags.push(newTag)
+
+				// Update the label to reference the newly created tag
+				const label = this.labels.find(l => l.index === labelIndex)
+				if (label) {
+					label.tag = newTag
+				}
+
+				this.onChange()
+				showSuccess(t('files_confidential', 'Tag "{tag}" created successfully', { tag: name.trim() }))
+			} catch (e) {
+				console.error('Failed to create tag', e)
+				const errorMsg = e.response?.data?.error || t('files_confidential', 'Failed to create tag "{tag}"', { tag: name.trim() })
+				showError(errorMsg)
+				// Reset the label tag selection since creation failed
+				const label = this.labels.find(l => l.index === labelIndex)
+				if (label) {
+					label.tag = ''
+				}
+			}
 		},
 
 		async initTagsAndLabels() {
