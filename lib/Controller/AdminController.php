@@ -61,9 +61,10 @@ class AdminController extends Controller {
 	 * @throws \OCP\Files\NotPermittedException
 	 */
 	public function importBaf() : JSONResponse {
+		/** @var array|null $upload */
 		$upload = $this->request->getUploadedFile('baf');
 		$result = [];
-		if ($upload === null || $upload['type'] !== 'text/xml') {
+		if ($upload === null || ($upload['type'] ?? null) !== 'text/xml') {
 			$result['errors'][] = $this->l10n->t('Unsupported file type for import. An XML file is expected.');
 			return new JSONResponse(['status' => 'error', 'data' => $result['errors']]);
 		}
