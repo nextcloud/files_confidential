@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_confidential",
     {
+    "Failed to create tag" : "No se pudo crear la etiqueta",
     "Add" : "Guardar",
     "Failed to save settings" : "No se pudo guardar la configuración"
 },

@@ -1,6 +1,8 @@
 OC.L10N.register(
     "files_confidential",
     {
+    "Tag name cannot be empty" : "タグ名は空にできません",
+    "Failed to create tag" : "タグの作成に失敗しました",
     "Add" : "追加",
     "Failed to save settings" : "設定の保存に失敗しました",
     "Upload policy" : "アップロードポリシー"

@@ -1,17 +1,18 @@
 { "translations": {
     "Could not read uploaded file" : "Lähetettyä tiedostoa ei voitu lukea",
+    "Failed to create tag" : "Tunnisteen luominen epäonnistui",
     "Confidential Files" : "Luottamukselliset tiedostot",
     "Confidential files" : "Luottamukselliset tiedostot",
     "Workflows for handling confidential files in Nextcloud" : "Työnkulut luottamuksellisten tiedostojen käsittelyyn Nextcloudissa",
     "Remove rule" : "Poista sääntö",
     "Add tag…" : "Lisää tunniste…",
-    "Select tag" : "Valitse tunniste",
     "Add" : "Lisää",
     "Enter Regular Expression" : "Kirjoita säännöllinen lauseke",
     "Remove search expression" : "Poista hakulauseke",
     "Failed to save settings" : "Asetusten tallentaminen epäonnistui",
     "Upload policy" : "Lähetyskäytäntö",
     "Classification rules" : "Luokittelusäännöt",
-    "Add new label" : "Lisää uusi nimike"
+    "Add new label" : "Lisää uusi nimike",
+    "Select tag" : "Valitse tunniste"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

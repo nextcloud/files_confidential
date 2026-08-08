@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Tipo de archivo no soportado para la importación. Se espera un archivo XML.",
     "Could not read uploaded file" : "No se pudo leer el archivo cargado",
     "Could not store extracted labels" : "No se pudieron almacenar las etiquetas extraídas",
+    "Tag name cannot be empty" : "El nombre de la etiqueta no puede estar vacío",
+    "Failed to create tag" : "Fallo al crear etiqueta",
     "Confidential Files" : "Archivos Confidenciales",
     "Confidential files" : "Archivos confidenciales",
     "Workflows for handling confidential files in Nextcloud" : "Flujos de trabajo para el manejo de archivos confidenciales en Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Esta app le permite definir una serie de etiquetas de clasificación que serán asignadas a los archivos como etiquetas.\nPara cada regla de clasificación, puede definir cuando una etiqueta será asignada a un archivo, basándose en el contenido\ndel texto, metadatos BAILS de clasificación o bien metadatos de Microsoft Information Purview.",
     "Remove rule" : "Eliminar regla",
     "Add tag…" : "Añadir etiqueta…",
-    "Select tag" : "Seleccionar etiqueta",
     "… if document has TSCP policy category ID" : "… si el documento tiene una ID de categoría de política TSCP",
     "… or if document has all metadata values" : "… o si el documento tiene todos los valores de los metadatos",
     "Metadata key" : "Clave de metadatos",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Las etiquetas previas serán sobrescritas luego de que el archivo sea cargado exitosamente",
     "Classification rules" : "Reglas de clasificación",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Defina reglas de clasificación que asignarán etiquetas a diferentes documentos. Basándose en estas etiquetas puede definir reglas en Nextcloud Flow.",
-    "Add new label" : "Añadir etiqueta nueva"
+    "Add new label" : "Añadir etiqueta nueva",
+    "Select tag" : "Seleccionar etiqueta"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

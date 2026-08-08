@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Importuoti negalima tokio tipo failo. Turėtų būti XML failas.",
     "Could not read uploaded file" : "Nepavyko perskaityti įkelto failo",
     "Could not store extracted labels" : "Nepavyko išsaugoti ištrauktų etikečių",
+    "Tag name cannot be empty" : "Žymos pavadinimas negali būti tuščias",
+    "Failed to create tag" : "Nepavyko sukurti žymos",
     "Confidential Files" : "Konfidencialūs failai",
     "Confidential files" : "Konfidencialūs failai",
     "Workflows for handling confidential files in Nextcloud" : "Konfidencialių failų tvarkymo procesai „Nextcloud“",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Ši programa leidžia nustatyti klasifikavimo taisyklių rinkinį, pagal kurį failams bus priskiriamos žymos.\nKiekvienai klasifikavimo taisyklei galite nustatyti, kada žyma bus priskirta failui, remiantis teksto\nturiniu, BAILS klasifikavimo metaduomenimis arba „Microsoft Information Purview“ metaduomenimis.",
     "Remove rule" : "Pašalinti taisyklę",
     "Add tag…" : "Pridėti žymą...",
-    "Select tag" : "Pasirinkite žymę",
     "… if document has TSCP policy category ID" : "... jei dokumentas turi TSCP politikos kategorijos ID",
     "… or if document has all metadata values" : "... arba jei dokumente yra visos metaduomenų reikšmės",
     "Metadata key" : "Metaduomenų raktas",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Sėkmingai įkėlus failą, ankstesnės etiketės bus perrašytos",
     "Classification rules" : "Klasifikavimo taisyklės",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Nustatykite klasifikavimo taisykles, pagal kurias įvairiems dokumentams priskiriamos žymės. Remdamiesi šiomis žymėmis, galite nustatyti taisykles „Nextcloud Eigos“.",
-    "Add new label" : "Pridėti naują etiketę"
+    "Add new label" : "Pridėti naują etiketę",
+    "Select tag" : "Pasirinkite žymę"
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");

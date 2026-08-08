@@ -1,5 +1,7 @@
 { "translations": {
     "Could not read uploaded file" : "无法读取上传的文件",
+    "Tag name cannot be empty" : "标签名称不能为空",
+    "Failed to create tag" : "创建标签失败",
     "Remove rule" : "移除规则",
     "Add" : "添加",
     "Failed to save settings" : "保存设置失败"

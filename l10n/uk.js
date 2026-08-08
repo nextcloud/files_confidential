@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Цей тип файлу не підтримується. Очікується файл із розширенням XML.",
     "Could not read uploaded file" : "Неможливо прочитати файл, який було завантажено",
     "Could not store extracted labels" : "Неможливо зберегти ярлики, які було видобуно",
+    "Tag name cannot be empty" : "Назва мітки не може бути порожньою",
+    "Failed to create tag" : "Не вдалося створити мітку",
     "Confidential Files" : "Конфіденційні файли",
     "Confidential files" : "Конфіденційні файли",
     "Workflows for handling confidential files in Nextcloud" : "Процес керування конфіденційними файлами у Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Ця програма дозволяє визначити набір правил класифікації, які будуть присвоювати файлам мітки.\nДля кожного правила класифікації ви можете визначити, коли мітку буде призначено файлу, на основі текстового\nвмісту, метаданих класифікації BAILS або метаданих Microsoft Information Purview.",
     "Remove rule" : "Вилучити правило",
     "Add tag…" : "Додати мітку...",
-    "Select tag" : "Виберіть мітку",
     "… if document has TSCP policy category ID" : "... якщо документ містить такий ідентифікатор категорії політики TSCP",
     "… or if document has all metadata values" : "... або документи має такі значення метаданих",
     "Metadata key" : "Ключ метаданих",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Попередні ярлики буде перезаписано після успішного завантаження файлу",
     "Classification rules" : "Правила класифікації",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Визначіть правила класифікації, згідно з якими буде додано мітки до документів. На основі цих міток ви можете визначити подальші процеси роботи з документами у Nextcloud Flows.",
-    "Add new label" : "Створити ярлик"
+    "Add new label" : "Створити ярлик",
+    "Select tag" : "Виберіть мітку"
 },
 "nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);");

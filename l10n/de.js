@@ -10,7 +10,6 @@ OC.L10N.register(
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Mit dieser App kannst du eine Reihe von Klassifizierungsregeln definieren, die Dateien Schlagworte zuweisen.\nFür jede Klassifizierungsregel kannst du, basierend auf Textinhalt, BAILS-Klassifizierungsmetadaten oder Microsoft Information Purview-Metadaten festlegen, wann das Schlagwort einer Datei zugewiesen wird, .",
     "Remove rule" : "Regel entfernen",
     "Add tag…" : "Schlagwort hinzufügen …",
-    "Select tag" : "Schlagwort auswählen",
     "… if document has TSCP policy category ID" : "… wenn das Dokument die TSCP-Richtlinienkategorie-ID hat",
     "… or if document has all metadata values" : "… oder wenn das Dokument alle Metadatenwerte enthält",
     "Metadata key" : "Metadaten-Schlüssel",
@@ -34,6 +33,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Vorherige Etiketten werden nach erfolgreichem Datei-Upload überschrieben.",
     "Classification rules" : "Klassifizierungsregeln",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Klassifizierungsregeln definieren, die Schlagworte auf verschiedene Dokumente anwenden. Basierend auf diesen Schlagworten kannst du Regeln in Nextcloud Flow definieren.",
-    "Add new label" : "Neue Bezeichnung hinzufügen"
+    "Add new label" : "Neue Bezeichnung hinzufügen",
+    "Select tag" : "Schlagwort auswählen"
 },
 "nplurals=2; plural=(n != 1);");

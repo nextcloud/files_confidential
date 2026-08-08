@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Importimiseks mittetoetatud failitüüp. Peaks olema XML-fail.",
     "Could not read uploaded file" : "Üleslaaditud faili lugemine ei õnnestunud",
     "Could not store extracted labels" : "Eraldatud märgiste salvestamine ei õnnestunud",
+    "Tag name cannot be empty" : "Sildi nimi ei saa jääda tühjaks",
+    "Failed to create tag" : "Sildi loomine ei õnnestunud",
     "Confidential Files" : "Konfidentsiaalsed failid",
     "Confidential files" : "Konfidentsiaalsed failid",
     "Workflows for handling confidential files in Nextcloud" : "Töövoog konfidentsiaalsete failide käsitlemiseks Nextcloudis",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Selle rakendusega saad määratleda klassifitseerimisreeglite kogumi, mille abil failidele lisatakse sildid.\nIga klassifitseerimisreegli puhul saad määrata, millal silt failile määratakse, lähtudes teksti\nsisust, BAILS-klassifitseerimise metaandmetest või Microsoft Information Purview'i metaandmetest.",
     "Remove rule" : "Eemalda reegel",
     "Add tag…" : "Lisa silt…",
-    "Select tag" : "Vali silt",
     "… if document has TSCP policy category ID" : "… kas dokumendile on lisatud TSCP reeglite kategooria tunnus",
     "… or if document has all metadata values" : "… või kui dokumendil on kõik metateabe väärtused",
     "Metadata key" : "Metateabe võti",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Faili õnnestunud üleslaadimise järel kirjutatakse kõik märgised üle",
     "Classification rules" : "Klassifitseerimise reeglid",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Määratle klassifitseerimisreeglid, millega erinevatele dokumentidele lisatakse silte. Nende siltide alusel saad määrata reegleid Nextcloudi töövoorakenduses.",
-    "Add new label" : "Lisa uus märgis"
+    "Add new label" : "Lisa uus märgis",
+    "Select tag" : "Vali silt"
 },
 "nplurals=2; plural=(n != 1);");

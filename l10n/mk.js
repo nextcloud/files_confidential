@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_confidential",
     {
+    "Failed to create tag" : "Неуспешно креирање на ознака",
     "Add" : "Додади",
     "Failed to save settings" : "Неуспешно зачувување на параметрите"
 },

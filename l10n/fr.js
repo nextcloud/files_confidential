@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Type de fichier non pris en charge pour l'import. Un fichier XML est attendu.",
     "Could not read uploaded file" : "Impossible de lire le fichier téléversé",
     "Could not store extracted labels" : "Impossible de stocker les libellés extraits",
+    "Tag name cannot be empty" : "Le nom de l'étiquette ne peut pas être vide",
+    "Failed to create tag" : "Impossible de créer l'étiquette",
     "Confidential Files" : "Fichiers confidentiels",
     "Confidential files" : "Fichiers confidentiels",
     "Workflows for handling confidential files in Nextcloud" : "Workflows pour la prise en charge des fichiers confidentiels dans Nextcloud.",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Cette application vous permet de définir un ensemble de règles de classification qui attribueront des étiquettes de fichiers.\nPour chaque règle de classification, vous pouvez définir quand l'étiquette sera attribuée à un fichier, en fonction du contenu textuel\n, les métadonnées de classification BAILS ou les métadonnées Microsoft Information Purview.",
     "Remove rule" : "Supprimer la règle",
     "Add tag…" : "Ajouter une étiquette…",
-    "Select tag" : "Sélectionner une étiquette",
     "… if document has TSCP policy category ID" : "… si le document comporte un ID de catégorie de politique TSCP",
     "… or if document has all metadata values" : "… ou si le document contient toutes les valeurs de métadonnées",
     "Metadata key" : "Clé de métadonnée",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Les étiquettes précédentes seront écrasées après le téléversement réussi du fichier.",
     "Classification rules" : "Règles de classification",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Définissez des règles de classification qui appliquent des étiquettes à différents documents. Sur la base de ces étiquettes, vous pouvez définir des règles dans Nextcloud Flux.",
-    "Add new label" : "Ajouter un nouveau libellé"
+    "Add new label" : "Ajouter un nouveau libellé",
+    "Select tag" : "Sélectionner une étiquette"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

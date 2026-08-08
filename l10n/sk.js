@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Nepodporovaný typ súboru pre import. Je očakávaný súbor XML.",
     "Could not read uploaded file" : "Nepodarilo sa prečítať nahraný súbor",
     "Could not store extracted labels" : "Extrahované štítky sa nepodarilo uložiť",
+    "Tag name cannot be empty" : "Názov štítka nemôže byť prázdny",
+    "Failed to create tag" : "Nepodarilo sa vytvoriť štítok",
     "Confidential Files" : "Tajné Súbory",
     "Confidential files" : "Tajné súbory",
     "Workflows for handling confidential files in Nextcloud" : "Pracovné postupy pre spracovanie dôverných súborov v Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Táto aplikácia vám umožňuje definovať súbor pravidiel klasifikácie, ktoré budú priraďovať značky k súborom.\nPre každé pravidlo klasifikácie môžete definovať, kedy bude značka priradená k súboru na základe textu\nobsahu, metadáta klasifikácie BAILS alebo metadáta Microsoft Information Purview.",
     "Remove rule" : "Odstrániť pravidlo",
     "Add tag…" : "Pridať štítok...",
-    "Select tag" : "Vyberte štítok",
     "… if document has TSCP policy category ID" : "… ak má dokument ID kategórie politiky TSCP",
     "… or if document has all metadata values" : "... alebo ak dokument má všetky hodnoty metadát",
     "Metadata key" : "Kľúč metadáť",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Predchodzie štítky budú prepísane po úspešnom nahraní súboru",
     "Classification rules" : "Pravidlá klasifikácie",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definujte pravidlá klasifikácie, ktoré aplikujú štítky na rôzne dokumenty. Na základe týchto značiek môžete definovať pravidlá v Nextcloud Flow.",
-    "Add new label" : "Pridať novú značku"
+    "Add new label" : "Pridať novú značku",
+    "Select tag" : "Vyberte štítok"
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");
