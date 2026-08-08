@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_confidential",
     {
+    "Failed to create tag" : "Ustvarjanje oznake je spodletelo",
     "Add" : "Dodaj",
     "Failed to save settings" : "Shranjevanje nastavitev je spodletelo",
     "Add new label" : "Dodaj novo oznako"

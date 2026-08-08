@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Увози се тип фајла који није подржан. Очекује се XML.",
     "Could not read uploaded file" : "Не може да се чита отпремљени фајл",
     "Could not store extracted labels" : "Не могу да се сачувају издвојене ознаке",
+    "Tag name cannot be empty" : "Назив ознаке не може бити празан",
+    "Failed to create tag" : "Ознака није могла да се креира",
     "Confidential Files" : "Поверљиви фајлови",
     "Confidential files" : "Поверљиви фајлови",
     "Workflows for handling confidential files in Nextcloud" : "Процеси рада за управљање поверљивим фјаловима у Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Ова апликација вам омогућава да дефинишете скуп правила за класификацију која ће додељивати ознаке фајловима.\nЗа свако правило класификације можете да дефинишете када се ознака додељује фајлу, у зависности од садржаја текста,\nили BAILS метаподацима класификације или Microsoft Information Purview метаподацима.",
     "Remove rule" : "Уклони правило",
     "Add tag…" : "Додај ознаку...",
-    "Select tag" : "Изабери ознаку",
     "… if document has TSCP policy category ID" : "… ако документ има ID категорије TSCP полисе",
     "… or if document has all metadata values" : "… или ако документ има све вредности метаподатака",
     "Metadata key" : "Кључ метаподатака",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Након успешог отпремања фајла, претходни натписи ће бити обрисани",
     "Classification rules" : "Правила класификације",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Дефинишите правила класификације која примењују ознаке на различите документе. На основу ових ознака можете да дефинишете правила у Nextcloud Flow.",
-    "Add new label" : "Додај нову ознаку"
+    "Add new label" : "Додај нову ознаку",
+    "Select tag" : "Изабери ознаку"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);");

@@ -3,13 +3,14 @@ OC.L10N.register(
     {
     "Unsupported file type for import. An XML file is expected." : "Tipo de arquivo não suportado para importação. Um arquivo XML é esperado.",
     "Could not store extracted labels" : "Não foi possível armazenar rótulos extraídos",
+    "Tag name cannot be empty" : "O nome da etiqueta não pode ficar vazio",
+    "Failed to create tag" : "Falha ao criar etiqueta",
     "Confidential Files" : "Arquivos Confidenciais",
     "Confidential files" : "Arquivos confidenciais",
     "Workflows for handling confidential files in Nextcloud" : "Fluxos de trabalho para lidar com arquivos confidenciais no Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Esta aplicação permite definir um conjunto de regras de classificação que atribuirão etiquetas aos ficheiros. Para cada regra de classificação, pode definir quando a etiqueta será atribuída a um ficheiro, com base no conteúdo do texto, nos metadados de classificação BAILS ou nos metadados Microsoft Information Purview.",
     "Remove rule" : "Remover regra",
     "Add tag…" : "Adicionar etiqueta…",
-    "Select tag" : "Selecionar etiqueta",
     "… if document has TSCP policy category ID" : "… se o documento tiver ID de categoria de política TSCP",
     "… or if document has all metadata values" : "… ou se o documento tiver todos os valores de metadados",
     "Metadata key" : "Chave de metadados",
@@ -32,6 +33,7 @@ OC.L10N.register(
     "Upload policy" : "Carregar política",
     "Classification rules" : "Regras de classificação",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Defina regras de classificação que aplicam etiquetas a diferentes documentos. Com base nestas etiquetas, pode definir regras no Nextcloud Flow.",
-    "Add new label" : "Adicionar nova etiqueta"
+    "Add new label" : "Adicionar nova etiqueta",
+    "Select tag" : "Selecionar etiqueta"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

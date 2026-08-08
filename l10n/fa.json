@@ -2,13 +2,14 @@
     "Unsupported file type for import. An XML file is expected." : "نوع فایل برای وارد کردن پشتیبانی نمی‌شود. یک فایل XML مورد انتظار است.",
     "Could not read uploaded file" : "فایل آپلود شده قابل خواندن نیست",
     "Could not store extracted labels" : "برچسب‌های استخراج شده قابل ذخیره‌سازی نیستند",
+    "Tag name cannot be empty" : "نام برچسب نمی‌تواند خالی باشد",
+    "Failed to create tag" : "ایجاد برچسب ناموفق بود",
     "Confidential Files" : "فایل‌های محرمانه",
     "Confidential files" : "فایل‌های محرمانه",
     "Workflows for handling confidential files in Nextcloud" : "گردش‌کارهای مدیریت فایل‌های محرمانه در نکست‌کلود",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "این برنامه به شما امکان می‌دهد مجموعه‌ای از قوانین طبقه‌بندی تعریف کنید که به فایل‌ها برچسب اختصاص می‌دهد. برای هر قانون طبقه‌بندی می‌توانید تعیین کنید که برچسب چه زمانی بر اساس محتوای متنی، فراداده‌های طبقه‌بندی BAILS یا فراداده‌های Microsoft Information Purview به فایل اختصاص یابد.",
     "Remove rule" : "حذف قانون",
     "Add tag…" : "افزودن برچسب…",
-    "Select tag" : "انتخاب برچسب",
     "… if document has TSCP policy category ID" : "… اگر سند دارای شناسه دسته‌بندی خط‌مشی TSCP باشد",
     "… or if document has all metadata values" : "… یا اگر سند دارای تمام مقادیر فراداده باشد",
     "Metadata key" : "کلید فراداده",
@@ -32,6 +33,7 @@
     "Previous labels will be overwritten after successful file upload" : "برچسب‌های قبلی پس از آپلود موفق فایل بازنویسی خواهند شد",
     "Classification rules" : "قوانین طبقه‌بندی",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "قوانین طبقه‌بندی که برچسب‌هایی را به اسناد مختلف اعمال می‌کنند تعریف کنید. بر اساس این برچسب‌ها می‌توانید قوانینی را در نکست‌کلود فلو تعریف کنید.",
-    "Add new label" : "افزودن برچسب جدید"
+    "Add new label" : "افزودن برچسب جدید",
+    "Select tag" : "انتخاب برچسب"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

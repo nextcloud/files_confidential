@@ -2,13 +2,14 @@
     "Unsupported file type for import. An XML file is expected." : "İçe aktarılacak dosya türü desteklenmiyor. Bir XML dosyası olmalı.",
     "Could not read uploaded file" : "Yüklenen dosya okunamadı",
     "Could not store extracted labels" : "Ayıklanmış etiketler kaydedilemedi",
+    "Tag name cannot be empty" : "Etiket adı boş olamaz",
+    "Failed to create tag" : "Etiket oluşturulamadı",
     "Confidential Files" : "Gizli dosyalar",
     "Confidential files" : "Gizli dosyalar",
     "Workflows for handling confidential files in Nextcloud" : "Nextcloud üzerinde gizli dosyaları işleme iş akışları",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Bu uygulama, etiket dosyalarını atayacak bir sınıflandırma kuralları kümesi tanımlamanızı sağlar.\nHer sınıflandırma kuralı için, yazı içeriğine, BAILS sınıflandırma üst verilerine veya \nMicrosoft Information Purview üst verilerine göre etiketin bir dosyaya ne zaman atanacağını tanımlayabilirsiniz.",
     "Remove rule" : "Kuralı kaldır",
     "Add tag…" : "Etiket ekle…",
-    "Select tag" : "Etiketi seçin",
     "… if document has TSCP policy category ID" : "… belgede TSCP ilke kategori kimliği varsa",
     "… or if document has all metadata values" : "… veya belgenin tüm üst veri değerleri varsa",
     "Metadata key" : "Üst veri anahtarı",
@@ -32,6 +33,7 @@
     "Previous labels will be overwritten after successful file upload" : "Dosya yüklendiğinde önceki etiketlerin üzerine yazılacak",
     "Classification rules" : "Sınıflandırma kuralları",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Farklı belgeler için geçerli olacak sınıflandırma kurallarını tanımlayın. Bu kurallara göre, Nextcloud Flow kuralları tanımlayabilirsiniz.",
-    "Add new label" : "Yeni etiket ekle"
+    "Add new label" : "Yeni etiket ekle",
+    "Select tag" : "Etiketi seçin"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

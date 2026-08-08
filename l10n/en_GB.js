@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Unsupported file type for import. An XML file is expected.",
     "Could not read uploaded file" : "Could not read uploaded file",
     "Could not store extracted labels" : "Could not store extracted labels",
+    "Tag name cannot be empty" : "Tag name cannot be empty",
+    "Failed to create tag" : "Failed to create tag",
     "Confidential Files" : "Confidential Files",
     "Confidential files" : "Confidential files",
     "Workflows for handling confidential files in Nextcloud" : "Workflows for handling confidential files in Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata.",
     "Remove rule" : "Remove rule",
     "Add tag…" : "Add tag…",
-    "Select tag" : "Select tag",
     "… if document has TSCP policy category ID" : "… if document has TSCP policy category ID",
     "… or if document has all metadata values" : "… or if document has all metadata values",
     "Metadata key" : "Metadata key",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Previous labels will be overwritten after successful file upload",
     "Classification rules" : "Classification rules",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow.",
-    "Add new label" : "Add new label"
+    "Add new label" : "Add new label",
+    "Select tag" : "Select tag"
 },
 "nplurals=2; plural=(n != 1);");

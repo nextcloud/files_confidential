@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Неподдерживаемый тип файла для импорта. Ожидается файл XML.",
     "Could not read uploaded file" : "Не удалось прочитать загруженный файл",
     "Could not store extracted labels" : "Не удалось сохранить извлеченные метки",
+    "Tag name cannot be empty" : "Имя тега не может быть пустым",
+    "Failed to create tag" : "Не удалось создать метку",
     "Confidential Files" : "Конфиденциальные файлы",
     "Confidential files" : "Конфиденциальные файлы",
     "Workflows for handling confidential files in Nextcloud" : "Рабочие процессы для обработки конфиденциальных файлов в Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Это приложение позволяет вам определить набор правил классификации, которые будут назначать теги файлам.\nДля каждого правила классификации вы можете определить, когда тег будет назначен файлу, на основе текстового содержимого, метаданных классификации BAILS или метаданных Microsoft Information Purview.",
     "Remove rule" : "Удалить правило",
     "Add tag…" : "Добавить тег…",
-    "Select tag" : "Выберите тег",
     "… if document has TSCP policy category ID" : "… если документ имеет идентификатор категории политики TSCP",
     "… or if document has all metadata values" : "… или если документ имеет все значения метаданных",
     "Metadata key" : "Ключ метаданных",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Предыдущие метки будут перезаписаны после успешной загрузки файла.",
     "Classification rules" : "Правила классификации",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Определите правила классификации, которые применяют теги к различным документам. На основе этих тегов вы можете определить правила в Nextcloud Flow.",
-    "Add new label" : "Добавить новую метку"
+    "Add new label" : "Добавить новую метку",
+    "Select tag" : "Выберите тег"
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");

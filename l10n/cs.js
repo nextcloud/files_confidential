@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Nepodporovaný typ souboru pro import. Očekáván XML soubor.",
     "Could not read uploaded file" : "Nahraný soubor se nedaří číst",
     "Could not store extracted labels" : "Nepodařilo se uložit vyzískané popisky",
+    "Tag name cannot be empty" : "Štítek je třeba nějak nazvat",
+    "Failed to create tag" : "Štítek se nepodařilo vytvořit",
     "Confidential Files" : "Důvěrné soubory",
     "Confidential files" : "Důvěrné soubory",
     "Workflows for handling confidential files in Nextcloud" : "Pracovní postupy pro obsluhu důvěrných souborů v Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Tato aplikace umožňuje definovat sadu pravidel důvěrnosti, které budu souborům v Nextcloud přiřazovat štítky.\nPro každé z pravidel důvěrnosti je možné určit kdy bude štítek přiřazen souboru, v závislosti na textovém obsahu nebo metadatech klasifikace BAILS nebo Microsoft Information Pureview.",
     "Remove rule" : "Odebrat pravidlo",
     "Add tag…" : "Přidat štítek …",
-    "Select tag" : "Vybrat štítek",
     "… if document has TSCP policy category ID" : "…pokud dokument má identifikátor kategorie TSCP zásady",
     "… or if document has all metadata values" : "… nebo pokud má dokument všechny hodnoty metadat",
     "Metadata key" : "Klíč metadat",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Po úspěšném nahrání souboru budou předchozí štítky přepsány",
     "Classification rules" : "Pravidla třídění",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definujte klasifikační pravidla, která přiřazují štítky různým dokumentům. V závislosti na těchto štítcích je možné v Nextcloud Tocích určovat pravidla.",
-    "Add new label" : "Přidat nový štítek"
+    "Add new label" : "Přidat nový štítek",
+    "Select tag" : "Vybrat štítek"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

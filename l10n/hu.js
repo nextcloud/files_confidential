@@ -4,13 +4,13 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Nem támogatott importálandó fájltípus. XML fájl az elvárt típus.",
     "Could not read uploaded file" : "A feltöltött fájl olvasása sikertelen",
     "Could not store extracted labels" : "A kinyert címkék tárolása sikertelen",
+    "Failed to create tag" : "A címke létrehozása sikertelen",
     "Confidential Files" : "Bizalmas fájlok",
     "Confidential files" : "Bizalmas fájlok",
     "Workflows for handling confidential files in Nextcloud" : "Munkafolyamatok a bizalmas fájlok kezeléséhez a Nextcloudba",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Az alkalmazás lehetővé teszi, hogy olyan osztályozási szabályokat határozzon meg, amelyek címkéket rendelnek a fájlokhoz.\nMinden egyes osztályozási szabály esetében meghatározhatja, hogy a címkék mikor kerüljenek hozzárendelésre egy fájlhoz a szövegtartalmuk, \na BAILS osztályozási metaadatok vagy a Microsoft Information Purview metaadatok alapján.",
     "Remove rule" : "Szabály eltávolítása",
     "Add tag…" : "Címke hozzáadása…",
-    "Select tag" : "Címke hozzáadása",
     "… if document has TSCP policy category ID" : "…ha a dokumentum TSCP-házirend kategóriaazonosítóval rendelkezik",
     "… or if document has all metadata values" : "…vagy ha a dokumentum rendelkezik az összes metaadatértékkel",
     "Metadata key" : "Metaadatkulcs",
@@ -34,6 +34,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "A korábbi címkék a sikeres fájlfeltöltés után felülíródnak",
     "Classification rules" : "Osztályozási szabályok",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Olyan osztályozási szabályok meghatározása, amelyek címkéket alkalmaznak a különböző dokumentumokra. E címkék alapján szabályokat határozhat meg a Nextcloud Folyamatban.",
-    "Add new label" : "Új címke hozzáadása"
+    "Add new label" : "Új címke hozzáadása",
+    "Select tag" : "Címke hozzáadása"
 },
 "nplurals=2; plural=(n != 1);");

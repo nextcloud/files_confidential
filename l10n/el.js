@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Μη υποστηριζόμενος τύπος αρχείου για εισαγωγή. Αναμένεται αρχείο XML.",
     "Could not read uploaded file" : "Δεν ήταν δυνατή η ανάγνωση του μεταφορτωμένου αρχείου",
     "Could not store extracted labels" : "Δεν ήταν δυνατή η αποθήκευση εξαγόμενων ετικετών",
+    "Tag name cannot be empty" : "Το όνομα ετικέτας δεν μπορεί να είναι κενό",
+    "Failed to create tag" : "Αποτυχία δημιουργίας ετικέτας",
     "Confidential Files" : "Εμπιστευτικά Αρχεία",
     "Confidential files" : "Εμπιστευτικά αρχεία",
     "Workflows for handling confidential files in Nextcloud" : "Ροές εργασιών για το χειρισμό εμπιστευτικών αρχείων στο Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Αυτή η εφαρμογή σας επιτρέπει να ορίσετε ένα σύνολο κανόνων ταξινόμησης που θα αντιστοιχούν ετικέτες σε αρχεία.\nΓια κάθε κανόνα ταξινόμησης μπορείτε να ορίσετε πότε θα αντιστοιχείται η ετικέτα σε ένα αρχείο, με βάση το περιεχόμενο κειμένου,\nτα μεταδεδομένα ταξινόμησης BAILS ή τα μεταδεδομένα Microsoft Information Purview.",
     "Remove rule" : "Κατάργηση κανόνα",
     "Add tag…" : "Προσθήκη ετικέτας…",
-    "Select tag" : "Επιλογή ετικέτας",
     "… if document has TSCP policy category ID" : "… εάν το έγγραφο έχει αναγνωριστικό κατηγορίας πολιτικής TSCP",
     "… or if document has all metadata values" : "… ή εάν το έγγραφο έχει όλες τις τιμές μεταδεδομένων",
     "Metadata key" : "Κλειδί μεταδεδομένων",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Οι προηγούμενες ετικέτες θα αντικατασταθούν μετά από επιτυχή μεταφόρτωση αρχείου",
     "Classification rules" : "Κανόνες ταξινόμησης",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Ορίστε κανόνες ταξινόμησης που εφαρμόζουν ετικέτες σε διαφορετικά έγγραφα. Με βάση\nαυτές τις ετικέτες μπορείτε να ορίσετε κανόνες στο Nextcloud Flow.",
-    "Add new label" : "Προσθήκη νέας ετικέτας"
+    "Add new label" : "Προσθήκη νέας ετικέτας",
+    "Select tag" : "Επιλογή ετικέτας"
 },
 "nplurals=2; plural=(n != 1);");

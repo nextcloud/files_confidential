@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Ikke støttet fil for import. En XML-fil forventes.",
     "Could not read uploaded file" : "Kunne ikke lese opplastet fil",
     "Could not store extracted labels" : "Kunne ikke lagre utpakkede etiketter",
+    "Tag name cannot be empty" : "Navn for merkelapp kan ikke være tom",
+    "Failed to create tag" : "Oppretting av merkelapp feilet",
     "Confidential Files" : "Konfidensielle filer",
     "Confidential files" : "Konfidensielle filer",
     "Workflows for handling confidential files in Nextcloud" : "Arbeidsflyt for håndtering av konfidensielle filer i Nextcloud",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Denne appen lar deg definere et sett med klassifiseringsregler som vil tilordne taggerfiler.\nFor hver klassifiseringsregel kan du definere når taggen skal tilordnes en fil, basert på tekst-\ninnhold, BAILS-klassifiseringsmetadata eller Microsoft Information Purview-metadata.",
     "Remove rule" : "Fjern regel",
     "Add tag…" : "Legg til tagg...",
-    "Select tag" : "Velg merke",
     "… if document has TSCP policy category ID" : "...hvis dokumentet har TSCP-policykategori-ID",
     "… or if document has all metadata values" : "...eller hvis dokumentet har alle metadataverdiene",
     "Metadata key" : "Metadata nøkkel",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Tidligere etiketter blir overskrevet etter vellykket filopplasting",
     "Classification rules" : "Klassifiseringsregler",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definer klassifiseringsregler som bruker tagger på forskjellige dokumenter. Basert på disse taggene kan du definere regler i Nextcloud Flow.",
-    "Add new label" : "Legg til ny etikett"
+    "Add new label" : "Legg til ny etikett",
+    "Select tag" : "Velg merke"
 },
 "nplurals=2; plural=(n != 1);");

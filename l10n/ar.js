@@ -10,7 +10,6 @@ OC.L10N.register(
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "يتيح لك هذا التطبيق تحديد مجموعة من قواعد التصنيف التي ستقوم بتعيين وسوم الملفات. لكل قاعدة تصنيف، يمكنك تحديد متى سيتم تعيين الوسم لملفٍ ما، بناءً على محتوى النص، أو البيانات الوصفية لتصنيف BAILS أو البيانات الوصفية لـ Microsoft Information Purview.",
     "Remove rule" : "حذف شرط",
     "Add tag…" : "إضافة وسم ...",
-    "Select tag" : "تحديد وسم",
     "… if document has TSCP policy category ID" : "... إذا كان المستند لديه مُعرِّف تصنيف لسياسة TSCP",
     "… or if document has all metadata values" : "... أو إذا كان المستند لديه كل قيم البيانات الوصفية",
     "Metadata key" : "مفتاح البيانات الوصفية",
@@ -34,6 +33,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "العلامات السابقة سيتم استبدالها بعد إتمام رفع الملف بنجاح",
     "Classification rules" : "قواعد التصنيف",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "قُم بتعريف قواعد التصنيف التي تتيح توسيم المستندات المختلفة. بناءً على هذه الوسوم يمكنك تعريف قواعد أتمتة سير العمل",
-    "Add new label" : "أضف علامة جديدة"
+    "Add new label" : "أضف علامة جديدة",
+    "Select tag" : "تحديد وسم"
 },
 "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;");

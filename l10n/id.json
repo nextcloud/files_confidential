@@ -1,4 +1,6 @@
 { "translations": {
+    "Tag name cannot be empty" : "Nama tag tidak boleh kosong",
+    "Failed to create tag" : "Gagal membuat tag",
     "Add" : "Tambah",
     "Failed to save settings" : "Gagal simpan setelan"
 },"pluralForm" :"nplurals=1; plural=0;"

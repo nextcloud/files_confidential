@@ -2,6 +2,8 @@ OC.L10N.register(
     "files_confidential",
     {
     "Could not read uploaded file" : "Nie można odczytać przesłanego pliku",
+    "Tag name cannot be empty" : "Nazwa etykiety nie może być pusta",
+    "Failed to create tag" : "Błąd tworzenia etykiety",
     "Confidential files" : "Poufne pliki",
     "Remove rule" : "Usuń regułę",
     "Add" : "Dodaj",

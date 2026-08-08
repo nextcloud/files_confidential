@@ -4,13 +4,14 @@ OC.L10N.register(
     "Unsupported file type for import. An XML file is expected." : "Nepodržana vrsta datoteke za uvoz. Očekuje se XML datoteka.",
     "Could not read uploaded file" : "Nije moguće pročitati prenesenu datoteku",
     "Could not store extracted labels" : "Nije moguće pohraniti izdvojene oznake",
+    "Tag name cannot be empty" : "Naziv oznake ne može biti prazan",
+    "Failed to create tag" : "Stvaranje oznake nije uspjelo",
     "Confidential Files" : "Povjerljive datoteke",
     "Confidential files" : "Povjerljive datoteke",
     "Workflows for handling confidential files in Nextcloud" : "Tijekovi rada za obradu povjerljivih datoteka u Nextcloudu",
     "This app allows you to define a set of classification rules that will assign tags files.\nFor each classification rule you can define when the tag will be assigned to a file, based on text\ncontent, BAILS classification metadata or Microsoft Information Purview metadata." : "Ova aplikacija omogućuje definiranje skupa klasifikacijskih pravila koja će dodjeljivati oznake datotekama.\nZa svako klasifikacijsko pravilo možete odrediti kada će se oznaka dodijeliti datoteci, na temelju tekstualnog sadržaja, BAILS klasifikacijskih metapodataka ili metapodataka Microsoft Information Purviewa.",
     "Remove rule" : "Ukloni pravio",
     "Add tag…" : "Dodaj oznaku...",
-    "Select tag" : "Odaberi oznaku",
     "… if document has TSCP policy category ID" : "… ako dokument ima ID kategorije TSCP politike",
     "… or if document has all metadata values" : "… ili ako dokument ima sve vrijednosti metapodataka",
     "Metadata key" : "Ključ metapodataka",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Prethodne oznake bit će prebrisane nakon uspješnog prijenosa datoteke",
     "Classification rules" : "Klasifikacijska pravila",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definirajte klasifikacijska pravila koja primjenjuju oznake na različite dokumente. Na temelju tih oznaka možete definirati pravila u Nextcloud Flowu.",
-    "Add new label" : "Dodaj novu oznaku"
+    "Add new label" : "Dodaj novu oznaku",
+    "Select tag" : "Odaberi oznaku"
 },
 "nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;");
