@@ -1,6 +1,8 @@
 { "translations": {
     "Could not read uploaded file" : "No s'ha pogut carregar el fitxer",
     "Could not store extracted labels" : "No s'ha pogut guardar les etiquetes extretes",
+    "Tag name cannot be empty" : "El nom de l'etiqueta no pot estar buit",
+    "Failed to create tag" : "No s'ha pogut crear l'etiqueta",
     "Confidential files" : "Fitxers confidencials",
     "Workflows for handling confidential files in Nextcloud" : "Fluxos de treball per gestionar fitxers confidencials a Nextcloud",
     "Remove rule" : "Suprimeix la regla",

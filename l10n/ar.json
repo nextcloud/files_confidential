@@ -2,6 +2,8 @@
     "Unsupported file type for import. An XML file is expected." : "نوع الملف المطلوب استيراده غير متوقع. النوع المتوقع هو ملف XML.",
     "Could not read uploaded file" : "الملف المرفوع تعذرت قراءته",
     "Could not store extracted labels" : "لم يُمكن تخزين العلامات المستخرجة",
+    "Tag name cannot be empty" : "اسم السِّمَة لا يمكن أن يكون فارغاً",
+    "Failed to create tag" : "فشل إنشاء الوسم",
     "Confidential Files" : "ملفات سرية",
     "Confidential files" : "ملفات سرّية",
     "Workflows for handling confidential files in Nextcloud" : "أتمتة سير العمل الخاص بالتعامل مع الملفات السرية",
