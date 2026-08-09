@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_confidential",
     {
+    "Failed to create tag" : "Не ўдалося стварыць тэг",
     "Add" : "Дадаць",
     "Failed to save settings" : "Не ўдалося захаваць налады"
 },

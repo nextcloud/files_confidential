@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Could not read uploaded file" : "Каченият файл не може да бъде прочетен",
     "Could not store extracted labels" : "Извлечените етикети не можаха да бъдат съхранени",
+    "Failed to create tag" : "Неуспешно създаване на етикет",
     "Confidential files" : "Поверителни файлове",
     "Workflows for handling confidential files in Nextcloud" : "Работни потоци за обработка на поверителни файлове в Nextcloud",
     "Add" : "Добавяне",
