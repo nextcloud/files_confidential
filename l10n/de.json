@@ -28,7 +28,7 @@
     "Can not add new label, until all labels have a tag assigned." : "Es kann so lange kein neues Etikett hinzugefügt werden, bis allen Etiketten ein Schlagwort zugewiesen ist.",
     "Failed to save settings" : "Einstellungen konnten nicht gespeichert werden",
     "Policy uploaded successfully" : "Richtlinie hochgeladen",
-    "Tag \"{tag}\" created successfully" : "Tag \"{tag}\" erstellt",
+    "Tag \"{tag}\" created successfully" : "Schlagwort \"{tag}\" erstellt",
     "Failed to create tag \"{tag}\"" : "Schlagwort \"{tag}\" konnte nicht erstellt werden",
     "Business Authorization Framework" : "Framework für Geschäftsautorisierung",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Deine TSCP/BAILS-Richtlinienklassifizierungsetiketten hochladen (XML-Format)",
