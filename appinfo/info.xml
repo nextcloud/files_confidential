@@ -14,7 +14,7 @@ For each classification rule you can define when the tag will be assigned to a f
 content, BAILS classification metadata or Microsoft Information Purview metadata.
 ]]></description>
 	<version>5.2.0-dev.0</version>
-	<licence>agpl</licence>
+	<licence>AGPL-3.0-or-later</licence>
 	<author mail="mklehr@gmx.net" homepage="https://marcelklehr.de">Marcel Klehr</author>
 	<namespace>Files_Confidential</namespace>
 	<category>organization</category>
