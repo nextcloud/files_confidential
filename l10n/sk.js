@@ -22,7 +22,7 @@ OC.L10N.register(
     "Enter Regular Expression" : "Vložte regulárny výraz",
     "Search expressions within documents" : "Vyhľadať výrazy v dokumentoch",
     "Remove search expression" : "Odstrániť hľadané výrazy",
-    "Regular search expression" : "Vyhľadať regulárnym výrazom",
+    "Regular search expression" : "Regulárny výraz",
     "Remove regular expression" : "Odstrániť regulárny výraz",
     "Search keywords within documents" : "Vyhľadať kľúčové slová v dokumentoch",
     "Search keyword" : "Vyhľadať výraz",
