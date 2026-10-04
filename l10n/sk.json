@@ -33,7 +33,7 @@
     "Business Authorization Framework" : "Business Authorization Framework",
     "Upload your TSCP/BAILS policy classification labels (XML format)" : "Nahrať vaše označenia klasifikácie pravidiel TSCP/BAILS (formát XML)",
     "Upload policy" : "Politika nahrávania",
-    "Previous labels will be overwritten after successful file upload" : "Predchodzie štítky budú prepísane po úspešnom nahraní súboru",
+    "Previous labels will be overwritten after successful file upload" : "Predchádzajúce štítky budú prepísané po úspešnom nahraní súboru",
     "Classification rules" : "Pravidlá klasifikácie",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definujte pravidlá klasifikácie, ktoré aplikujú štítky na rôzne dokumenty. Na základe týchto značiek môžete definovať pravidlá v Nextcloud Flow.",
     "Add new label" : "Pridať novú značku",
