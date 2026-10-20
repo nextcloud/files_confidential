@@ -14,7 +14,6 @@ OC.L10N.register(
     "Failed to save settings" : "Ezarpenak gordetzeak huts egin du",
     "Business Authorization Framework" : "Enpresaren baimenen esparrua",
     "Upload policy" : "Igoera politika",
-    "Add new label" : "Gehitu etiketa berria",
-    "Select tag" : "Hautatu etiketa"
+    "Add new label" : "Gehitu etiketa berria"
 },
 "nplurals=2; plural=(n != 1);");

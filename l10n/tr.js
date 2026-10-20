@@ -38,7 +38,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Dosya yüklendiğinde önceki etiketlerin üzerine yazılacak",
     "Classification rules" : "Sınıflama kuralları",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Farklı belgeler için geçerli olacak sınıflama kurallarını tanımlayın. Bu kurallara göre, Nextcloud Flow kuralları tanımlayabilirsiniz.",
-    "Add new label" : "Yeni etiket ekle",
-    "Select tag" : "Etiketi seçin"
+    "Add new label" : "Yeni etiket ekle"
 },
 "nplurals=2; plural=(n > 1);");

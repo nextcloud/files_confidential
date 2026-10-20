@@ -33,7 +33,6 @@ OC.L10N.register(
     "Upload policy" : "Carregar política",
     "Classification rules" : "Regras de classificação",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Defina regras de classificação que aplicam etiquetas a diferentes documentos. Com base nestas etiquetas, pode definir regras no Nextcloud Flow.",
-    "Add new label" : "Adicionar nova etiqueta",
-    "Select tag" : "Selecionar etiqueta"
+    "Add new label" : "Adicionar nova etiqueta"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

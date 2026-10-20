@@ -34,7 +34,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Lebo za awali zitafutwa baada ya upakiaji wa faili",
     "Classification rules" : "Sheria za uainishaji",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Bainisha sheria za uainishaji zinazotumia lebo kwenye hati tofauti. Kulingana na lebo hizi unaweza kufafanua sheria katika Nextcloud Flow.",
-    "Add new label" : "Ongeza lebo mpya",
-    "Select tag" : "Chagua nembo"
+    "Add new label" : "Ongeza lebo mpya"
 },
 "nplurals=2; plural=(n != 1);");

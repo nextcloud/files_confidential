@@ -9,7 +9,6 @@ OC.L10N.register(
     "Add" : "추가",
     "Failed to save settings" : "환경설정 저장 실패",
     "Upload policy" : "업로드 정책",
-    "Add new label" : "새 라벨 추가",
-    "Select tag" : "태그 선택"
+    "Add new label" : "새 라벨 추가"
 },
 "nplurals=1; plural=0;");

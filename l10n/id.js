@@ -38,7 +38,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Label sebelumnya akan ditimpa setelah file berhasil diunggah",
     "Classification rules" : "Aturan klasifikasi",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Tentukan aturan klasifikasi yang menerapkan tag pada berbagai dokumen. Berdasarkan tag tersebut, Anda dapat menentukan aturan dalam Nextcloud Flow.",
-    "Add new label" : "Tambahkan label baru",
-    "Select tag" : "Pilih tag"
+    "Add new label" : "Tambahkan label baru"
 },
 "nplurals=1; plural=0;");

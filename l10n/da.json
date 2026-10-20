@@ -36,7 +36,6 @@
     "Previous labels will be overwritten after successful file upload" : "Tidligere etiketter overskrives, når filen er overført",
     "Classification rules" : "Klassifikationsregler",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definer klassifikationsregler, der tildeler mærker til forskellige dokumenter. Ud fra disse mærker kan du definere regler i Nextcloud Flow.",
-    "Add new label" : "Tilføj ny mærkat",
-    "Select tag" : "Vælg mærke"
+    "Add new label" : "Tilføj ny mærkat"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

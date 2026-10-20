@@ -33,7 +33,6 @@
     "Previous labels will be overwritten after successful file upload" : "Las etiquetas previas serán sobrescritas luego de que el archivo sea cargado exitosamente",
     "Classification rules" : "Reglas de clasificación",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Defina reglas de clasificación que asignarán etiquetas a diferentes documentos. Basándose en estas etiquetas puede definir reglas en Nextcloud Flow.",
-    "Add new label" : "Añadir etiqueta nueva",
-    "Select tag" : "Seleccionar etiqueta"
+    "Add new label" : "Añadir etiqueta nueva"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

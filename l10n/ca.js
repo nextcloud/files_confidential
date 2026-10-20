@@ -14,7 +14,6 @@ OC.L10N.register(
     "Failed to save settings" : "Ha fallat desar els paràmetres",
     "Business Authorization Framework" : "Marc d'autorització comercial",
     "Upload policy" : "Carregar política",
-    "Add new label" : "Afegir nova etiqueta",
-    "Select tag" : "Seleccionar etiqueta"
+    "Add new label" : "Afegir nova etiqueta"
 },
 "nplurals=2; plural=(n != 1);");

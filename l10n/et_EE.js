@@ -38,7 +38,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Faili õnnestunud üleslaadimise järel kirjutatakse kõik märgised üle",
     "Classification rules" : "Klassifitseerimise reeglid",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Määratle klassifitseerimisreeglid, millega erinevatele dokumentidele lisatakse silte. Nende siltide alusel saad määrata reegleid Nextcloudi töövoorakenduses.",
-    "Add new label" : "Lisa uus märgis",
-    "Select tag" : "Vali silt"
+    "Add new label" : "Lisa uus märgis"
 },
 "nplurals=2; plural=(n != 1);");

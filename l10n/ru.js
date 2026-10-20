@@ -38,7 +38,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Предыдущие грифы будут перезаписаны после загрузки файла",
     "Classification rules" : "Правила классификации",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Задайте правила классификации, которые назначают документам метки. На основе этих меток можно настроить правила в Nextcloud Flow.",
-    "Add new label" : "Добавить гриф",
-    "Select tag" : "Выберите метку"
+    "Add new label" : "Добавить гриф"
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");

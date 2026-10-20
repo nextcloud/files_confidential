@@ -35,7 +35,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Le etichette precedenti verranno sovrascritte dopo il caricamento corretto del file",
     "Classification rules" : "Regole di classificazione",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definisci regole di classificazione che applicano tag a documenti diversi. Sulla base di questi tag puoi definire regole in Nextcloud Flow.",
-    "Add new label" : "Aggiungi nuova etichetta",
-    "Select tag" : "Seleziona tag"
+    "Add new label" : "Aggiungi nuova etichetta"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

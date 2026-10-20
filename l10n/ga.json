@@ -36,7 +36,6 @@
     "Previous labels will be overwritten after successful file upload" : "Déanfar lipéid roimhe seo a fhorscríobh tar éis uaslódáil rathúil comhad",
     "Classification rules" : "Rialacha aicmithe",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Sainmhínigh rialacha aicmithe a chuireann clibeanna i bhfeidhm ar dhoiciméid éagsúla. Bunaithe ar na clibeanna seo is féidir leat rialacha a shainiú i Nextcloud Flow.",
-    "Add new label" : "Cuir lipéad nua leis",
-    "Select tag" : "Roghnaigh clib"
+    "Add new label" : "Cuir lipéad nua leis"
 },"pluralForm" :"nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);"
 }

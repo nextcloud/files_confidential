@@ -33,7 +33,6 @@
     "Previous labels will be overwritten after successful file upload" : "برچسب‌های قبلی پس از آپلود موفق فایل بازنویسی خواهند شد",
     "Classification rules" : "قوانین طبقه‌بندی",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "قوانین طبقه‌بندی که برچسب‌هایی را به اسناد مختلف اعمال می‌کنند تعریف کنید. بر اساس این برچسب‌ها می‌توانید قوانینی را در نکست‌کلود فلو تعریف کنید.",
-    "Add new label" : "افزودن برچسب جدید",
-    "Select tag" : "انتخاب برچسب"
+    "Add new label" : "افزودن برچسب جدید"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

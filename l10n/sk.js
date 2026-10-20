@@ -38,7 +38,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Predchádzajúce štítky budú prepísané po úspešnom nahraní súboru",
     "Classification rules" : "Pravidlá klasifikácie",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definujte pravidlá klasifikácie, ktoré aplikujú štítky na rôzne dokumenty. Na základe týchto značiek môžete definovať pravidlá v Nextcloud Flow.",
-    "Add new label" : "Pridať novú značku",
-    "Select tag" : "Vyberte štítok"
+    "Add new label" : "Pridať novú značku"
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");

@@ -35,7 +35,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Prethodne oznake bit će prebrisane nakon uspješnog prijenosa datoteke",
     "Classification rules" : "Klasifikacijska pravila",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Definirajte klasifikacijska pravila koja primjenjuju oznake na različite dokumente. Na temelju tih oznaka možete definirati pravila u Nextcloud Flowu.",
-    "Add new label" : "Dodaj novu oznaku",
-    "Select tag" : "Odaberi oznaku"
+    "Add new label" : "Dodaj novu oznaku"
 },
 "nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;");

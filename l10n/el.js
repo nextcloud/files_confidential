@@ -35,7 +35,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Οι προηγούμενες ετικέτες θα αντικατασταθούν μετά από επιτυχή μεταφόρτωση αρχείου",
     "Classification rules" : "Κανόνες ταξινόμησης",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Ορίστε κανόνες ταξινόμησης που εφαρμόζουν ετικέτες σε διαφορετικά έγγραφα. Με βάση\nαυτές τις ετικέτες μπορείτε να ορίσετε κανόνες στο Nextcloud Flow.",
-    "Add new label" : "Προσθήκη νέας ετικέτας",
-    "Select tag" : "Επιλογή ετικέτας"
+    "Add new label" : "Προσθήκη νέας ετικέτας"
 },
 "nplurals=2; plural=(n != 1);");

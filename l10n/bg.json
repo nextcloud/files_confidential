@@ -10,7 +10,6 @@
     "Failed to save settings" : "Неуспешно запазване на настройките",
     "Business Authorization Framework" : "Рамка за бизнес упълномощаване",
     "Upload policy" : "Правила за качване",
-    "Add new label" : "Добавяне на нов етикет",
-    "Select tag" : "Избор на етикет"
+    "Add new label" : "Добавяне на нов етикет"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -33,7 +33,6 @@
     "Previous labels will be overwritten after successful file upload" : "ئالدىنقى بەلگە مۇۋەپپەقىيەتلىك ھۆججەت يوللانغاندىن كېيىن يېزىلىدۇ",
     "Classification rules" : "تۈرگە ئايرىش قائىدىسى",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "ئوخشىمىغان ھۆججەتلەرگە بەلگە ئىشلىتىدىغان تۈرگە ئايرىش قائىدىلىرىگە ئېنىقلىما بېرىڭ. بۇ بەلگىلەرگە ئاساسەن Nextcloud ئېقىمىدىكى قائىدىلەرنى بەلگىلىيەلەيسىز.",
-    "Add new label" : "يېڭى بەلگە قوشۇڭ",
-    "Select tag" : "خەتكۈچنى تاللاڭ"
+    "Add new label" : "يېڭى بەلگە قوشۇڭ"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

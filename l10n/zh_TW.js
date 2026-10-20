@@ -38,7 +38,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "檔案上傳成功後，先前的標籤將會被覆寫",
     "Classification rules" : "分類規則",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "定義將標籤套用至不同文件的分類規則。以這些標籤為基礎，您可以在 Nextcloud Flow 中定義規則。",
-    "Add new label" : "新增標籤",
-    "Select tag" : "選取標籤"
+    "Add new label" : "新增標籤"
 },
 "nplurals=1; plural=0;");

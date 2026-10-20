@@ -35,7 +35,6 @@ OC.L10N.register(
     "Previous labels will be overwritten after successful file upload" : "Попередні ярлики буде перезаписано після успішного завантаження файлу",
     "Classification rules" : "Правила класифікації",
     "Define classification rules that apply tags to different documents. Based on these tags you can define rules in Nextcloud Flow." : "Визначіть правила класифікації, згідно з якими буде додано мітки до документів. На основі цих міток ви можете визначити подальші процеси роботи з документами у Nextcloud Flows.",
-    "Add new label" : "Створити ярлик",
-    "Select tag" : "Виберіть мітку"
+    "Add new label" : "Створити ярлик"
 },
 "nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);");

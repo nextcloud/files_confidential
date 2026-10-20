@@ -14,7 +14,6 @@ OC.L10N.register(
     "Failed to save settings" : "Asetusten tallentaminen epäonnistui",
     "Upload policy" : "Lähetyskäytäntö",
     "Classification rules" : "Luokittelusäännöt",
-    "Add new label" : "Lisää uusi nimike",
-    "Select tag" : "Valitse tunniste"
+    "Add new label" : "Lisää uusi nimike"
 },
 "nplurals=2; plural=(n != 1);");
