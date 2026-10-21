@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_confidential",
     {
+    "Tag name cannot be empty" : "Numele etichetei nu poate fi gol",
     "Failed to create tag" : "Eticheta nu a putut fi creată",
     "Add" : "Adaugă",
     "Failed to save settings" : "Setările nu au putut fi salvate"
