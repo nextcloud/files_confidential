@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace OCA\Files_Confidential\Listener;
 
+use OCA\Files_Confidential\AuditLog\AuditLogger;
+use OCA\Files_Confidential\AuditLog\Operation;
 use OCA\Files_Confidential\Service\ClassificationService;
 use OCA\Files_Confidential\Service\SettingsService;
 use OCP\EventDispatcher\Event;
@@ -27,6 +29,7 @@ class HookListener implements IEventListener {
 		private ISystemTagObjectMapper $tagMapper,
 		private LoggerInterface $logger,
 		private SettingsService $settingsService,
+		private AuditLogger $auditLogger,
 	) {
 	}
 
@@ -44,17 +47,36 @@ class HookListener implements IEventListener {
 					$nodeId = (string)$node->getId();
 					/** @var array<string, list<string>> $fileTags */
 					$fileTags = $this->tagMapper->getTagIdsForObjects($nodeId, 'files')[$nodeId] ?? [];
-					$knownAppliedTags = array_intersect($classificationTags, $fileTags); // Get all tags from file that files_confidential manages
+					$knownAppliedTags = array_values(array_intersect($classificationTags, $fileTags)); // Get all tags from file that files_confidential manages
+					$previousTags = $knownAppliedTags;
 
 					// Find the tag that the file should be assigned to based on the classification policy
 					$label = $this->classificationService->getClassificationLabelForFile($node);
+					$assignedTag = $label?->getTag();
 
-					if ($label !== null) {
-						$this->tagMapper->assignTags($nodeId, 'files', [$label->getTag()]);
-						$knownAppliedTags = array_diff($knownAppliedTags, [$label->getTag()]); // Remove the tag that the file should be assigned to from the list of unnecessary tags
+					if ($assignedTag !== null) {
+						$this->tagMapper->assignTags($nodeId, 'files', [$assignedTag]);
+						$knownAppliedTags = array_values(array_diff($knownAppliedTags, [$assignedTag])); // Remove the tag that the file should be assigned to from the list of unnecessary tags
 					}
 
-					$this->tagMapper->unassignTags($nodeId, 'files', array_values($knownAppliedTags));
+					$this->tagMapper->unassignTags($nodeId, 'files', $knownAppliedTags);
+
+					$isNewAssignment = $assignedTag !== null && !in_array($assignedTag, $previousTags, true);
+					$removedOtherTags = $knownAppliedTags !== [];
+					if ($isNewAssignment || $removedOtherTags || ($assignedTag === null && $previousTags !== [])) {
+						if ($assignedTag !== null) {
+							$this->auditLogger->log(Operation::FileClassified, 'File %s was classified with tag %s', [
+								'fileId' => $nodeId,
+								'tagId' => $assignedTag,
+								'previousTags' => implode(',', $previousTags),
+							]);
+						} else {
+							$this->auditLogger->log(Operation::FileClassified, 'Classification was removed from file %s', [
+								'fileId' => $nodeId,
+								'previousTags' => implode(',', $previousTags),
+							]);
+						}
+					}
 				} catch (\Throwable $e) {
 					$this->logger->error('Failed to tag during NodeWrittenEvent', ['exception' => $e]);
 				}
