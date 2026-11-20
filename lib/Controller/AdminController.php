@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace OCA\Files_Confidential\Controller;
 
+use OCA\Files_Confidential\AuditLog\AuditLogger;
+use OCA\Files_Confidential\AuditLog\Operation;
 use OCA\Files_Confidential\Service\BafService;
 use OCA\Files_Confidential\Service\SettingsService;
 use OCP\AppFramework\Controller;
@@ -33,6 +35,7 @@ class AdminController extends Controller {
 		private BafService $bafService,
 		private IAppData $appData,
 		private ISystemTagManager $systemTagManager,
+		private AuditLogger $auditLogger,
 	) {
 		parent::__construct($appName, $request);
 	}
@@ -44,6 +47,14 @@ class AdminController extends Controller {
 	public function setClassificationLabels(array $value): JSONResponse {
 		try {
 			$this->settingsService->setClassificationLabels($value);
+			$tagIds = array_values(array_map(
+				static fn (array $label): string => (string)($label['tag'] ?? ''),
+				$value,
+			));
+			$this->auditLogger->log(Operation::LabelsUpdated, 'Classification labels were updated (%s labels)', [
+				'labelCount' => count($value),
+				'tags' => implode(',', $tagIds),
+			]);
 			return new JSONResponse([], Http::STATUS_OK);
 		} catch (\Exception $e) {
 			return new JSONResponse([], Http::STATUS_BAD_REQUEST);
@@ -89,6 +100,11 @@ class AdminController extends Controller {
 			$folder = $this->appData->newFolder('files_confidential');
 		}
 		$folder->newFile('baf.xml', $xml);
+
+		$this->auditLogger->log(Operation::BafImported, 'BAF policy was imported (%s labels)', [
+			'labelCount' => count($labels),
+			'fileName' => (string)($upload['name'] ?? ''),
+		]);
 
 		return new JSONResponse([]);
 	}
